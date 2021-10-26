@@ -7,12 +7,11 @@ import {
 } from "../tasks/authFlow.tasks";
 import { playEpisode } from "../tasks/unAuthFlow.tasks";
 import { verifyProgressBarValues } from "../assertions/unAuthFlow.assertions";
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { acceptCookies } from "../actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
-
 
 
 var { setDefaultTimeout } = require("@cucumber/cucumber");

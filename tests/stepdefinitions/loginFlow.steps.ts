@@ -8,7 +8,7 @@ import { verifyUserIsLoggedIn } from '../assertions/loginFlow.assertions'
 import { openSignInForm, fillSignUpForm } from '../tasks/authFlow.tasks'
 import { openTheSignInForm, fillTheSignInForm, fillTheSignUpForm } from '../tasks/loginFlow.tasks'
 import { fillInSignUpForm, fillSignInForm } from "../tasks/broadcastPage.tasks"
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 var { setDefaultTimeout } = require('@cucumber/cucumber');

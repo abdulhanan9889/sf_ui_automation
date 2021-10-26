@@ -1,5 +1,5 @@
 import { Given } from '@cucumber/cucumber'
-import { SFDataInsertion } from "../testDataGeneration/testDataLogic/SFDataInsertion"
+import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion"
 
 
 Given('user generates data for authenticated flows', async function (datatable) {
