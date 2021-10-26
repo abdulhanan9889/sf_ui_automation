@@ -8,16 +8,23 @@ import { verifyUserIsLoggedIn } from '../assertions/loginFlow.assertions'
 import { openSignInForm, fillSignUpForm } from '../tasks/authFlow.tasks'
 import { openTheSignInForm, fillTheSignInForm, fillTheSignUpForm } from '../tasks/loginFlow.tasks'
 import { fillInSignUpForm, fillSignInForm } from "../tasks/broadcastPage.tasks"
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(60000)
-
+export var cliUsername;
+export var cliPassword;
+export var cliLoginUrl;
+export var cliInstanceUrl;
 let page
-var email
+
 
 Given('user generates data for authenticated flows', async function (datatable) {
+    cliUsername= this.parameters.username
+    cliPassword =this.parameters.password
+    cliLoginUrl =this.parameters.loginUrl
+    cliInstanceUrl = this.parameters.instanceUrl
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })

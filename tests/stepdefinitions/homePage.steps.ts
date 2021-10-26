@@ -20,14 +20,21 @@ import {
 } from "../actions/homePage.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 import { navigateToDreamforceTab, navigateToExploreSFPage } from "../tasks/homePage.tasks";
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
-
+export var cliUsername;
+export var cliPassword;
+export var cliLoginUrl;
+export var cliInstanceUrl;
 
 let page;
 
 Given('user generates data for authenticated flows', async function (datatable) {
+    cliUsername= this.parameters.username
+  cliPassword =this.parameters.password
+  cliLoginUrl =this.parameters.loginUrl
+  cliInstanceUrl = this.parameters.instanceUrl
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })

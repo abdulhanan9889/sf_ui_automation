@@ -1,4 +1,4 @@
-import { Given, When, After, Then } from "@cucumber/cucumber";
+import { Given, When, After, Then,AfterAll } from "@cucumber/cucumber";
 import { loadBrowser } from "../utilities/loadBrowser";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 var { setDefaultTimeout } = require("@cucumber/cucumber");
@@ -44,15 +44,22 @@ import {
 
 import { acceptCookies } from "../actions/unAuthFlow.actions";
 
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { maximizeVideoPlayer, minimizeVideoPlayer } from "../tasks/episodePage.tasks";
-
+export var cliUsername;
+export var cliPassword;
+export var cliLoginUrl;
+export var cliInstanceUrl;
 let page;
 
 
 Given('user generates data for authenticated flows', async function (datatable) {
+  cliUsername= this.parameters.username
+  cliPassword =this.parameters.password
+  cliLoginUrl =this.parameters.loginUrl
+  cliInstanceUrl = this.parameters.instanceUrl
   const testDataParameters = await datatable.hashes()[0]
   // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
