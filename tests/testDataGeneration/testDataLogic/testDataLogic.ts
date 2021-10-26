@@ -15,8 +15,12 @@ import Segment from "../entities/Segment"
 import { Map_Object } from "../entities/types"
 import { SObject } from "jsforce"
 
-
-
+import connectionSetupClass from "./connection";
+const connectionSetup = new connectionSetupClass();
+var userName = connectionSetup.username;
+var password = connectionSetup.password;
+var loginURL = connectionSetup.loginUrl;
+var instanceURL = connectionSetup.instanceUrl;
 export default class SFDataLogic {
 
   // let dateFormat = 'MM/DD/YYYY HH:mm:ss'
@@ -340,7 +344,7 @@ export default class SFDataLogic {
     ev.getSeriesList().push(sr);
   }
   static async insertRecord(dataMap: Map_Object, type: string) {
-    let conn = SFDataLogic.setUpConnection("mah.noorautomation@appexchange.com.test", "PasswordForSF1");
+    let conn = SFDataLogic.setUpConnection();
     //console.log(dataMap);
     let id: string = ""
 
@@ -364,7 +368,7 @@ export default class SFDataLogic {
 
   }
   static async updateRecord(type: string, id: string, attribute: object) {
-    let conn = SFDataLogic.setUpConnection("mah.noorautomation@appexchange.com.test", "PasswordForSF1");
+    let conn = SFDataLogic.setUpConnection();
    
     await conn.sobject(type).record(id).update({ Publish_Status__c: "Publish" }, function (err:any, result:any) {
       if (err) {
@@ -376,7 +380,7 @@ export default class SFDataLogic {
     })
   }
   static async retrieveRecord(type: string, id: string) {
-    let conn = SFDataLogic.setUpConnection("mah.noorautomation@appexchange.com.test", "PasswordForSF1");
+    let conn = SFDataLogic.setUpConnection();
 
     
     await conn.sobject(type).record(id).retrieve(function (err:any, result:any) {
@@ -389,7 +393,7 @@ export default class SFDataLogic {
     })
   }
   static async deleteRecord(type:string,id:string) {
-    let conn = SFDataLogic.setUpConnection("mah.noorautomation@appexchange.com.test", "PasswordForSF1");
+    let conn = SFDataLogic.setUpConnection();
 
 await conn.sobject(type).delete(id, function(err:any,result:any)
 {
@@ -399,13 +403,16 @@ await conn.sobject(type).delete(id, function(err:any,result:any)
   }
 
 
-  static setUpConnection(userName: string, password: string) {
+  static setUpConnection() {
 
-
+    console.log("Username:",userName)
+    console.log("Password:",password)
+    console.log("Login Url:",loginURL)
+    console.log("Instance Url:",instanceURL)
     let connection = new jsforce.Connection({
 
-      loginUrl: "https://test.salesforce.com/services/Soap/u/41.0",
-      instanceUrl: "https://appexchange--Test.my.salesforce.com"
+      loginUrl: loginURL,
+      instanceUrl: instanceURL
 
     });
 

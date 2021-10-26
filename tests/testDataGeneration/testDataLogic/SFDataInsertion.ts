@@ -111,4 +111,38 @@ export default class SFDataInsertion {
 		await SFDataInsertion.updateSeriesStatus(oSeries, "Publish");
 		return oSeries;
 	}
+
+	static createOriginalSeriesWithEpisodes(noOfSeries: number, noOfEpisodesPerSeries: number, seriesStartDayFromToday: number, seriesEndDayFromToday: number) {
+		for (let i = 1; i <= noOfSeries; i++) {
+			// @ts-ignore
+			let oSeries: Series = SFDataLogic.createSeries(seriesStartDayFromToday, seriesEndDayFromToday);
+
+			for (let j = 0; j <= noOfEpisodesPerSeries; j++) {
+				// @ts-ignore
+				let oEpisode: Episode = SFDataLogic.createEpisode();
+				// @ts-ignore
+				SFDataLogic.assignEpisodeToSeries(oEpisode, oSeries, false, j, "Publish");
+			}
+			SFDataInsertion.updateSeriesStatus(oSeries, "Publish");
+			return oSeries;
+		}
+	}
+
+	static createEventFlowHavingSeriesWithEpisodes(noOfSeries: number, noOfEpisodesPerSeries: number, eventStartDayFromToday: number, eventStartHour: number, eventEndDayFromToday: number, eventEndHour: number) {
+		console.log("Create an Event with a channel for 3days having 7 segments and 2 series with 5 episodes");
+		// create Event
+		// @ts-ignore
+		let oEvent: Events = SFDataLogic.createEvent(eventStartDayFromToday, eventStartHour, eventEndDayFromToday, eventEndHour);
+
+		// @ts-ignore
+		SFDataInsertion.createSeriesWithEpisodes(oEvent, noOfSeries, noOfEpisodesPerSeries);
+
+		// update the Event status to publish
+		SFDataInsertion.updateEventStatus(oEvent, "Publish");
+
+		// print the details
+		console.log("Event is created, objectId is - " + oEvent.getObjectId() + ",and Name is -" + oEvent.getObjectName());
+
+		return oEvent;
+	}
 }
