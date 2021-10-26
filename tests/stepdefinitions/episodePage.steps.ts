@@ -6,7 +6,7 @@ import { acceptCookies, clickSecondEpisodeButton } from '../actions/unAuthFlow.a
 import { verifyProgressBarValues } from '../assertions/unAuthFlow.assertions'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
-import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { openEpisode, playEpisode } from '../tasks/unAuthFlow.tasks'
