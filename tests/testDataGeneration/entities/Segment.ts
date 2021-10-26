@@ -14,8 +14,10 @@ export default class Segment extends BaseObject {
 	}
 
 	toString() {
-		return `Segment [speakerList="${this.speakerList}", getSpeakerList()="${this.getSpeakerList()} ", getObjectName()="
-			${this.getObjectName()}", getObjectId()="${this.getObjectId()}", getObjectApi()="${this.getObjectApi()
-			}", getFieldsDetails()="${this.getFieldsDetails()}", getFieldsDetailsToBeUpdated()=" ${this.getFieldsDetailsToBeUpdated()}"] `
+		return "Segment [speakerList=" + this.speakerList + ", getSpeakerList()=" + this.getSpeakerList() + ", getObjectName()="
+			+ this.getObjectName() + ", getObjectId()=" + this.getObjectId() + ", getObjectApi()=" + this.getObjectApi()
+			+ ", getFieldsDetails()=" + this.getFieldsDetails() + ", getFieldsDetailsToBeUpdated()="
+			+ this.getFieldsDetailsToBeUpdated() + ", toString()=" + super.toString() + ", getClass()=" + Segment
+			+ "]";
 	}
 }

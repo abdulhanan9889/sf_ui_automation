@@ -95,13 +95,13 @@ export default class TestDataTemplate {
 	}
 
 	toString() {
-		return `TestDataTemplate [apiName="${ this.apiName} ", objectType="${this.objectType} ", objectId=" +${this.objectId}
-			 ", fieldValue=" ${this.fieldValue }", fieldName=" ${this.fieldName} ", updateFieldValue=" ${this.updateFieldValue}
-			 ", updateFieldName=" ${this.updateFieldName}", graphQLAttribute="${this.graphQLAttribute} ", getApiName()="
-			 ${this.getApiName()}", getObjectType()="${this.getObjectType()  }", getObjectId()="${this.getObjectId()}
-			 ", getFieldValue()="${this.getFieldValue() }", getFieldName()="${this.getFieldName()}
-			 ", getUpdateFieldValue()="${this.getUpdateFieldValue() } ", getUpdateFieldName()="${this.getUpdateFieldName()}
-			 ", getGraphQLAttribute()=" +${this.getGraphQLAttribute()}   "]`;
+		return "TestDataTemplate [apiName=" + this.apiName + ", objectType=" + this.objectType + ", objectId=" + this.objectId
+			+ ", fieldValue=" + this.fieldValue + ", fieldName=" + this.fieldName + ", updateFieldValue=" + this.updateFieldValue
+			+ ", updateFieldName=" + this.updateFieldName + ", graphQLAttribute=" + this.graphQLAttribute + ", getApiName()="
+			+ this.getApiName() + ", getObjectType()=" + this.getObjectType() + ", getObjectId()=" + this.getObjectId()
+			+ ", getFieldValue()=" + this.getFieldValue() + ", getFieldName()=" + this.getFieldName()
+			+ ", getUpdateFieldValue()=" + this.getUpdateFieldValue() + ", getUpdateFieldName()=" + this.getUpdateFieldName()
+			+ ", getGraphQLAttribute()=" + this.getGraphQLAttribute() + ", getClass()=" + ", toString()=" + toString() + "]";
 	}
 
 

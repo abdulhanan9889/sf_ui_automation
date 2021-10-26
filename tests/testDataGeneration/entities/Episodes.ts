@@ -14,9 +14,10 @@ export default class Episode extends BaseObject {
 	}
 
 	toString() {
-		return `Episode [speakerList= "${this.speakerList}" , getSpeakerList()= "${this.getSpeakerList()} , getObjectName()=
-			"${this.getObjectName()}  , getObjectId()="${this.getObjectId()}", getObjectApi()= "${this.getObjectApi()}"
-			 , getFieldsDetails()= "${this.getFieldsDetails()}", getFieldsDetailsToBeUpdated()="
-			"${this.getFieldsDetailsToBeUpdated()}"]`
+		return "Episode [speakerList=" + this.speakerList + ", getSpeakerList()=" + this.getSpeakerList() + ", getObjectName()="
+			+ this.getObjectName() + ", getObjectId()=" + this.getObjectId() + ", getObjectApi()=" + this.getObjectApi()
+			+ ", getFieldsDetails()=" + this.getFieldsDetails() + ", getFieldsDetailsToBeUpdated()="
+			+ this.getFieldsDetailsToBeUpdated() + ", toString()=" + super.toString() + ", getClass()=" + Episode.name
+			+ ", hashCode()=" + "]";
 	}
 }

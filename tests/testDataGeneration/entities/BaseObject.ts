@@ -1,11 +1,11 @@
-import Calendar from "typescript-calendar-date"
+
 import { Map_Object } from "./types";
 
 export default class BaseObject {
 	objectName: string;
 	objectId: string;
 	objectApi: string;
-	calendar?: Date;
+	calendar?: string;
 	fieldsDetails : Map_Object; //1-1 mapping of field values and field names
 	#fieldsDetailsToBeUpdated?: Map_Object; 
 
@@ -18,6 +18,7 @@ export default class BaseObject {
 		this.fieldsDetails = {};
 		this.#fieldsDetailsToBeUpdated = {}
 		this.#graphQlAttributeMapping ={}
+		this.calendar = ""
 	}
 
 	getObjectName(): string {
@@ -52,7 +53,7 @@ export default class BaseObject {
 		return this.calendar;
 	}
 
-	setCalendar(calendar: Date) {
+	setCalendar(calendar: string) {
 		this.calendar = calendar;
 	}
 

@@ -1,12 +1,13 @@
 {
 	"apiName": "bxp_Content_Group__c",
 	"fieldValue": [
+		"bxp_Content_Group__c",
 		"CG_CardImageAltText : implement magnetic infrastructures",
 		"https://res.cloudinary.com/aarbrownsfdc/video/upload/v1626312643/simply-put/hero-simply-put_aoqa4r.mp4",
 		"CG_Description : implement magnetic infrastructures",
 		null,
 		null,
-		null,
+		0,
 		"CG_ImageAltText : implement magnetic infrastructures",
 		"https://robohash.org/autetet.png?size=600x500&set=set1",
 		"https://robohash.org/praesentiumreprehenderitmolestias.png?size=500x500&set=set1",
@@ -15,7 +16,6 @@
 		null,
 		"Coming Soon",
 		"#222861",
-		null,
 		"Architect",
 		"Slack",
 		null,
@@ -25,6 +25,7 @@
 		"Series"
 	],
 	"fieldName": [
+		"type",
 		"Card_Image_Alt_Text__c",
 		"Card_Image_Url__c",
 		"Description__c",
@@ -39,7 +40,6 @@
 		"Publish_Date__c",
 		"Publish_Status__c",
 		"Series_Color__c",
-		"Series_Industry__c",
 		"Series_Role__c",
 		"Series_Topics__c",
 		"Slack_HTML__c",

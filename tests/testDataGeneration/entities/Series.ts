@@ -21,10 +21,11 @@ export default class Series extends BaseObject {
 	}
 
 	toString() {
-		return `Series [episodeList="${this.episodeList}", speakerList="${this.speakerList}", getEpisodeList()="${this.getEpisodeList()}"
-		, getSpeakerList()="${this.getSpeakerList()}", getObjectName()="${this.getObjectName()
-		}", getObjectId()="${this.getObjectId()}", getObjectApi()=" ${ this.getObjectApi() }+ ", getFieldsDetails()="
-			${this.getFieldsDetails()} ", getFieldsDetailsToBeUpdated()=" ${this.getFieldsDetailsToBeUpdated(
-			)}"]`;
+		return "Series [episodeList=" + this.episodeList + ", speakerList=" + this.speakerList + ", getEpisodeList()="
+			+ this.getEpisodeList() + ", getSpeakerList()=" + this.getSpeakerList() + ", getObjectName()=" + this.getObjectName()
+			+ ", getObjectId()=" + this.getObjectId() + ", getObjectApi()=" + this.getObjectApi() + ", getFieldsDetails()="
+			+ this.getFieldsDetails() + ", getFieldsDetailsToBeUpdated()=" + this.getFieldsDetailsToBeUpdated()
+			+ ", toString()=" + super.toString() + ", getClass()=" + Series.name +
+			+ "]";
 	}
 }

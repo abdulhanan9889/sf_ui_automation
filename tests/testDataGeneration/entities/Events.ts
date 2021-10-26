@@ -28,10 +28,11 @@ export default class Events extends BaseObject {
 
 
 	toString() {
-		return `Event [seriesList="${this.seriesList}", channelList="${this.channelList}", speakerList="${this.speakerList
-		}", getSeriesList()="${ this.getSeriesList()}", getChannelList()="${this.getChannelList()
-		}", getSpeakerList()="${this.getSpeakerList()}", getObjectName()="${this.getObjectName()}", getObjectId()="
-			${this.getObjectId()}", getObjectApi()="${this.getObjectApi()}", getFieldsDetails()="${this.getFieldsDetails()}
-			", getFieldsDetailsToBeUpdated()="${this.getFieldsDetailsToBeUpdated()}"]`;
+		return "Event [seriesList=" + this.seriesList + ", channelList=" + this.channelList + ", speakerList=" + this.speakerList
+			+ ", getSeriesList()=" + this.getSeriesList() + ", getChannelList()=" + this.getChannelList()
+			+ ", getSpeakerList()=" + this.getSpeakerList() + ", getObjectName()=" + this.getObjectName() + ", getObjectId()="
+			+ this.getObjectId() + ", getObjectApi()=" + this.getObjectApi() + ", getFieldsDetails()=" + this.getFieldsDetails()
+			+ ", getFieldsDetailsToBeUpdated()=" + this.getFieldsDetailsToBeUpdated() + ", toString()="
+			+ super.toString() + ", getClass()=" + Events + "]";
 	}
 }

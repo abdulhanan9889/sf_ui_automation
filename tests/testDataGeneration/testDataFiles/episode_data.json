@@ -1,6 +1,7 @@
 {
 	"apiName": "bxp_Content__c",
 	"fieldValue": [
+		"bxp_Content__c",
 		null,
 		"https://share.vidyard.com/watch/PqVLsep4p6b1UFJQn9PbwS",
 		"C_PreviewImageAltText : evolve world-class technologies",
@@ -10,6 +11,7 @@
 		"VOD"
 	],
 	"fieldName": [
+		"type",
 		"Name",
 		"Content_URL__c",
 		"Description__c",
