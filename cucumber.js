@@ -82,15 +82,27 @@ let unauthDataGeneration = [
 
 
 let qaEnv = [
-  "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'"
+  "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'",
+  "--world-parameters '{\"username\":\"iusm\"}'",
+  "--world-parameters '{\"password\":\"iusm2\"}'",
+  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
+  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
 ].join(' ');
 
 let uatEnv = [
-  "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'"
+  "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'",
+  "--world-parameters '{\"username\":\"iusm\"}'",
+  "--world-parameters '{\"password\":\"iusm2\"}'",
+  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
+  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
 ].join(' ');
 
 let perfEnv = [
-  "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
+  "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'",
+  "--world-parameters '{\"username\":\"iusm\"}'",
+  "--world-parameters '{\"password\":\"iusm2\"}'",
+  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
+  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
 ].join(' ');
 
 let expReport = [
@@ -115,7 +127,7 @@ module.exports = {
   'uatEnv': uatEnv,
   'perfEnv': perfEnv,
   'expReport': expReport,
-  'homePageReport': homePageReport
+  'homePageReport': homePageReport,
 };
 
 
