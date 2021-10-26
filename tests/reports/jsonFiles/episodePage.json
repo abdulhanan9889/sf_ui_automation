@@ -1,0 +1,278 @@
+[
+  {
+    "description": "              As an unauthenticated user\n         User would like to browse through available series\n              And is able to play selected episodes",
+    "elements": [
+      {
+        "description": "",
+        "id": "unauthenticated-flow;unthenticated-user-plays-the-selected-episode",
+        "keyword": "Scenario Outline",
+        "line": 8,
+        "name": "unthenticated user plays the selected episode",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "numberOfSeries",
+                      "numberOfEpisodesPerSeries",
+                      "seriesStartDayFromToday",
+                      "seriesEndDayFromToday"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "2",
+                      "5",
+                      "1",
+                      "4"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "user has generated the test data",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "user is on salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:21"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "user navigates to episodes page and clicks on a particular episode",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "user is able to play the episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 34000000,
+              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:134:16)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:162:12)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 2000000,
+              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:58:16)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:73:12)"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "unauthenticated-flow",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Unauthenticated Flow",
+    "tags": [],
+    "uri": "tests\\features\\unAuthFlow.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "episode-page;verify-episode-details-are-present-in-the-episode-details-modal",
+        "keyword": "Scenario Outline",
+        "line": 5,
+        "name": "Verify episode details are present in the episode details modal",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "numberOfSeries",
+                      "numberOfEpisodesPerSeries",
+                      "seriesStartDayFromToday",
+                      "seriesEndDayFromToday"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "2",
+                      "5",
+                      "1",
+                      "4"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "user has generated the test data",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "guest user loads salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:30"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "user navigates to episodes page and clicks on a particular episode",
+            "result": {
+              "status": "ambiguous",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "user is able to verify episode number: \"EPISODE 1\"",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:41"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "user is able to verify series title: \"LEADING THROUGH CHANGE\"",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:45"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "user is able to verify episode title: \"How a Coffee Shop Continues Serving Customers from Home\"",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:49"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "user is able to verify speaker one name and card title: \"Ben Wright & Co-Founders, Bitty and Beau's Coffee\"",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:53"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "user is able to verify speaker two name and card title: \"Bill Patterson & EVP, CRM Applications, Salesforce\"",
+            "match": {
+              "location": "tests\\stepdefinitions\\episodePage.steps.ts:57"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 2000000,
+              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:134:16)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\episodePage.steps.ts:162:12)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 1000000,
+              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:58:16)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\tests\\stepdefinitions\\unAuthFlow.steps.ts:73:12)"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "episode-page",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Episode Page",
+    "tags": [],
+    "uri": "tests\\features\\episodePage.feature"
+  }
+]

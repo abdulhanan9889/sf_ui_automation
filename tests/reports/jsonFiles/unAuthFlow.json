@@ -1,0 +1,111 @@
+[
+  {
+    "description": "              As an unauthenticated user\n         User would like to browse through available series\n              And is able to play selected episodes",
+    "elements": [
+      {
+        "description": "",
+        "id": "unauthenticated-flow;unthenticated-user-plays-the-selected-episode",
+        "keyword": "Scenario Outline",
+        "line": 8,
+        "name": "unthenticated user plays the selected episode",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "numberOfSeries",
+                      "numberOfEpisodesPerSeries",
+                      "seriesStartDayFromToday",
+                      "seriesEndDayFromToday"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "2",
+                      "5",
+                      "1",
+                      "4"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "user has generated the test data",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "user is on salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19269000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "user navigates to episodes page and clicks on a particular episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11057000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "user is able to play the episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 23456000000,
+              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'split')\n    at __puppeteer_evaluation_script__:1:19\n    at ExecutionContext._evaluateInternal (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 165000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 7
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "unauthenticated-flow",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Unauthenticated Flow",
+    "tags": [],
+    "uri": "tests\\features\\unAuthFlow.feature"
+  }
+]

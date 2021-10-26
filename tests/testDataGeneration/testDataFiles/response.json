@@ -1,0 +1,22 @@
+{
+	"data": {
+		"event": [
+			{
+				"featured": false,
+				"postEventRedirectImg": null,
+				"publishDate": 1631636462,
+				"description": "Welcome to Salesforce+, Learn more about Salesforce Dreamforce",
+				"cardImageUrl": null,
+				"title": "Event_Automation-09140920",
+				"cardImageAltText": null,
+				"sponsorHTML": null,
+				"postEventHeroHTML": null,
+				"slackHTML": null,
+				"startTime": 1631631600,
+				"endTime": 1631682000,
+				"publishStatus": "Publish",
+				"uniqueId": "Event_Automation-09140920"
+			}
+		]
+	}
+}

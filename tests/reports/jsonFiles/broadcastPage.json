@@ -1,0 +1,206 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "broadcast-page;an-authenticated-user-interact-with-the-video-player-controls",
+        "keyword": "Scenario Outline",
+        "line": 57,
+        "name": "an authenticated user interact with the video player controls",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "numberOfSeries",
+                      "numberOfEpisodesPerSeries",
+                      "eventStartDayFromToday",
+                      "eventStartHour",
+                      "eventEndDayFromToday",
+                      "eventEndHour"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "2",
+                      "5",
+                      "0",
+                      "7",
+                      "3",
+                      "22"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "user has generated the authenticated test data",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 61,
+            "name": "authenticated user is on salesforce plus webpage",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:229"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16658000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 62,
+            "name": "authenticated user logins with loginqc4ci3cymy2sf@mailinator.com",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:241"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42585000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 63,
+            "name": "authenticated user plays the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:250"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2004000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "authenticated user pause the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:255"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "authenticated user click the forward video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:259"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 2017000000,
+              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'split')\n    at __puppeteer_evaluation_script__:1:19\n    at ExecutionContext._evaluateInternal (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 66,
+            "name": "authenticated user click the reverse video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:263"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 67,
+            "name": "authenticated user decrease volume",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:267"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 68,
+            "name": "authenticated user increase volume",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:272"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 69,
+            "name": "authenticated user click the maximize video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:276"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 70,
+            "name": "authenticated user click the minimize video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:281"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 56
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "broadcast-page",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Broadcast Page",
+    "tags": [],
+    "uri": "tests\\features\\broadcastPage.feature"
+  }
+]

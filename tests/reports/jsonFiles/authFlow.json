@@ -1,0 +1,160 @@
+[
+  {
+    "description": "              As an authenticated user\n         User would like to browse through available series\n              And is able to play selected episodes",
+    "elements": [
+      {
+        "description": "",
+        "id": "authenticated-flow;authenticated-user-plays-the-selected-episode",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "authenticated user plays the selected episode",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "numberOfSeries",
+                      "numberOfEpisodesPerSeries",
+                      "eventStartDayFromToday",
+                      "eventStartHour",
+                      "eventEndDayFromToday",
+                      "eventEndHour"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "2",
+                      "5",
+                      "0",
+                      "7",
+                      "3",
+                      "22"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "user has generated the authenticated test data",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "user is on salesforce plus",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19627000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "user tries to login with a dummy email",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27612000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 12,
+            "name": "user signs up for the page with following details",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38525000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "user is able to play the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:54"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 24345000000,
+              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'split')\n    at __puppeteer_evaluation_script__:1:19\n    at ExecutionContext._evaluateInternal (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 149000000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "authenticated-flow",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Authenticated Flow",
+    "tags": [],
+    "uri": "tests\\features\\authFlow.feature"
+  }
+]
