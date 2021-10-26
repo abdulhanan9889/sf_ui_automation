@@ -1,4 +1,4 @@
-import { Given, When, After, Then } from '@cucumber/cucumber'
+import { Given, When, After, Then, AfterAll } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
 import { fillSignUpForms, loginThroughSignedUpUser, loginThroughTrailblazerId, logoutFromSFPlatform, maximizeVideoPlayer, minimizeVideoPlayer, openAuthorizedEpisode } from '../tasks/episodePage.tasks'
 import { verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifySpeakerOneDetails, verifySpeakerTwoDetails, verifySpeakerThreeDetails, verifyForwardedVideo, verifyReversedVideo, verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer } from '../assertions/episodePage.assertions'
@@ -17,12 +17,12 @@ setDefaultTimeout(60000)
 
 let page
 
-Given('user has generated the test data', async function (datatable) {
+Given('user generates data for authenticated flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })
 
-Given('user has generated the authenticated test data', async function (datatable) {
+Given('user generates data for unauthenticated flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
@@ -129,7 +129,10 @@ Then('the user is logged out', async function () {
 
 
 After(async function () {
+    await page.close()
+})
+
+AfterAll(async function () {
     let baseobject = new BaseObject()
     // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-    await page.close()
 })

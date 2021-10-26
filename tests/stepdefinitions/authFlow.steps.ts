@@ -1,4 +1,4 @@
-import { After, Given, Then, When } from "@cucumber/cucumber";
+import { After, Given, Then, When, AfterAll } from "@cucumber/cucumber";
 import { loadBrowser } from "../utilities/loadBrowser";
 import {
   openSignInForm,
@@ -21,7 +21,7 @@ setDefaultTimeout(60000);
 let page;
 var email;
 
-Given('user has generated the authenticated test data', async function (datatable) {
+Given('user generates data for authenticated flows', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
   // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
@@ -57,7 +57,10 @@ Then("user is able to play the video", async function () {
 });
 
 After(async function () {
+  await page.close()
+})
+
+AfterAll(async function () {
   let baseobject = new BaseObject()
   // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-  await page.close()
 })

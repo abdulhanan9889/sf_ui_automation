@@ -1,11 +1,18 @@
 
 Feature: Episode Page
 
-        @current
-        Scenario Outline: Verify episode details are present in the episode details modal
-            Given user has generated the test data
+        Scenario: user generates data for authenticated flows
+            Given: user generates data for authenticated flows
+                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
+                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
+
+        Scenario: user generates data for unauthenticated flows
+            Given: user generates data for unauthenticated flows
                   | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
                   | 2              | 5                         | 1                       | 4                     |
+
+
+        Scenario Outline: Verify episode details are present in the episode details modal
             Given guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
              Then user is able to verify episode number: <episodeNumber>
@@ -19,9 +26,6 @@ Feature: Episode Page
 
  
         Scenario Outline: Verify user can interact with the video player controls
-            Given user has generated the test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
-                  | 2              | 5                         | 1                       | 4                     |
             Given guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
              Then user can play and pause the video
@@ -31,9 +35,6 @@ Feature: Episode Page
 
 
         Scenario Outline: Verify user can play the authenticated episode
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms
@@ -43,9 +44,6 @@ Feature: Episode Page
          
 
         Scenario Outline: Verify user can play two back to back authenticated episodes
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms
@@ -57,9 +55,6 @@ Feature: Episode Page
 
        
         Scenario Outline: Verify already signed up user can play authenticated content
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id: <email>
              Then authenticated user can play the authorized episode
@@ -69,9 +64,6 @@ Feature: Episode Page
 
 
         Scenario Outline: Verify user can interact with the video player controls of authenticated episode
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms
@@ -85,9 +77,6 @@ Feature: Episode Page
 
 
         Scenario Outline: user verifies the authenticated content details
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms
@@ -105,9 +94,6 @@ Feature: Episode Page
 
 
         Scenario Outline: guest user logs out by clicking cancel and logout button
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms and clicks cancel and logout button

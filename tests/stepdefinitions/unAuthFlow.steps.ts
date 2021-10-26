@@ -1,4 +1,4 @@
-import { After, Given, Then, When } from '@cucumber/cucumber'
+import { After, Given, Then, When, AfterAll } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
 import { openEpisode, playEpisode, openFirstEpisode, openSecondEpisode } from '../tasks/unAuthFlow.tasks'
 import { acceptCookies } from '../actions/unAuthFlow.actions'
@@ -13,7 +13,7 @@ setDefaultTimeout(60000)
 
 let page
 
-Given('user has generated the test data', async function (datatable) {
+Given('user generates data for unauthenticated flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })
@@ -53,7 +53,10 @@ Then('user is able to play the second episode', async function () {
 })
 
 After(async function () {
+    await page.close()
+})
+
+AfterAll(async function () {
     let baseobject = new BaseObject()
     // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-    await page.close()
 })

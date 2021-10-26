@@ -1,10 +1,13 @@
 Feature: Broadcast Page
 
    
-        Scenario Outline: authenticated user plays the selected episode
-            Given user has generated the authenticated test data
+        Scenario: user generates data for authenticated flows
+            Given: user generates data for authenticated flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
                   | 2              | 5                         | 0                      | 7              | 3                    | 22           |
+
+
+        Scenario Outline: authenticated user plays the selected episode
             Given user is on the salesforce plus webpage
              When user open the sign in form
              When user login with the following <email>
@@ -15,9 +18,6 @@ Feature: Broadcast Page
         
     
         Scenario Outline: user logouts from the trailBlazzer
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given user is on the salesforce plus page
              When user tries to login with a dummy email
              When user click cancel and logout button after filling following details
@@ -28,9 +28,6 @@ Feature: Broadcast Page
 
     
         Scenario Outline: Verify broadcast details are present in the episode details modal
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given guest user loads the salesforce plus platform
              When guest user login through trailblazzer using <email>
              Then guest user is able to verify the episode number: <episodeNumber>
@@ -54,9 +51,6 @@ Feature: Broadcast Page
 
         @current
         Scenario Outline: an authenticated user interact with the video player controls
-            Given user has generated the authenticated test data
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
             Given authenticated user is on salesforce plus webpage
              When authenticated user logins with <email>
              Then authenticated user plays the video

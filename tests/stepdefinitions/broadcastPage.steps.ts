@@ -52,9 +52,9 @@ import { maximizeVideoPlayer, minimizeVideoPlayer } from "../tasks/episodePage.t
 let page;
 
 
-Given('user has generated the authenticated test data', async function (datatable) {
+Given('user generates data for authenticated flows', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
-  await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+  // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
 
 Given("user is on the salesforce plus webpage", async function () {
@@ -285,7 +285,10 @@ Then("authenticated user click the minimize video button", async function () {
 
 
 After(async function () {
-  let baseobject = new BaseObject()
-  SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
   await page.close()
+})
+
+AfterAll(async function () {
+  let baseobject = new BaseObject()
+  // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
 })
