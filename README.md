@@ -40,6 +40,13 @@ After installing Node.js, you need to install the remaining dependencies using `
       +jsonFiles
         homePage.json
         .
+      +videos
+        +homePage
+            +qa
+            navigateToDreamForceTab.mp4
+            .
+            +uat
+            +perf
     +selectors
       homePage.selectors.ts
       .
@@ -76,11 +83,13 @@ After installing Node.js, you need to install the remaining dependencies using `
   package.json
   
   tsconfig.json
+  
+  multiple-report.js
 
 ### How to run tests
 Test for specific page can be executed using a single command
 ```
-node node_modules/@cucumber/cucumber/bin/cucumber-js -p profileName -p environmentName
+node node_modules/@cucumber/cucumber/bin/cucumber-js -p profileName -p environmentName --tags=@chosenTags
 ```
 where 'profileName' depends upon the flow to be executed and can have one of these values:
 
@@ -103,9 +112,10 @@ while the 'environmentName' depends upon the enviornment the test is to be execu
 |uatEnv| https://www-uat1.salesforce.com/plus|
 |perfEnv| https://www-perf.salesforce.com/plus|
 
+and 'chosenTags' will be according to which will be defined in the Feature files and are editable as required.
 
 ### How to view reports
-Data for Reports is generated automatically when the above command is executed and is saved in the **tests/reports/jsonFiles** folder in the form of a jSON file. The latest report for a test can be viewed by executing the following command:
+Videos for the specific Features and Data for Reports are generated automatically when the above command is executed and saved in the *tests/reports/videos/homePage/*  and *tests/reports/jsonFiles* folders, respectively. The latest report for a test can be viewed by executing the following command:
 ```
 node reports/reportName.js
 ```
@@ -120,9 +130,14 @@ where reportName.js can have one of the following values with prefix defining th
 |broadcastPageReport.js| Generates a HTML report for the Broadcast Page|
 |episodePageReport.js| Generates a HTML report for the Episode Page|
 
-so for example, if HTML report for the episode page test on the UAT environment is to be generated, the command to be executed will be:
+for example, if HTML report for the episode page test on the UAT environment is to be generated, the command to be executed will be:
 ```
 node reports/uat_episodePage.js
 ```
 
 This generates a HTML report for the test, which is saved in **tests/reports/htmlReports**.
+To view a combined form of the reports for the test, for if tests were executed for the homePage and the episodePage on the 'qa' environment, following commands needs to be executed:
+```
+node multiple-report.js
+```
+
