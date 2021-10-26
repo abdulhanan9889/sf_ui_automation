@@ -7,22 +7,29 @@ import {
 } from "../tasks/authFlow.tasks";
 import { playEpisode } from "../tasks/unAuthFlow.tasks";
 import { verifyProgressBarValues } from "../assertions/unAuthFlow.assertions";
-import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { acceptCookies } from "../actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 
-
+export var cliUsername;
+export var cliPassword;
+export var cliLoginUrl;
+export var cliInstanceUrl;
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(60000);
 
 let page;
-var email;
+
 
 Given('user generates data for authenticated flows', async function (datatable) {
+  cliUsername= this.parameters.username
+  cliPassword =this.parameters.password
+  cliLoginUrl =this.parameters.loginUrl
+  cliInstanceUrl = this.parameters.instanceUrl
   const testDataParameters = await datatable.hashes()[0]
-  // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+  //await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
 
 Given("user is on salesforce plus", async function () {
@@ -61,5 +68,5 @@ After(async function () {
 
 AfterAll(async function () {
   let baseobject = new BaseObject()
-  // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+  //SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
 })

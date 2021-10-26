@@ -1,13 +1,13 @@
 [
   {
-    "description": "              As an authenticated user\n         User would like to browse through available series\n              And is able to play selected episodes",
+    "description": "",
     "elements": [
       {
         "description": "",
-        "id": "authenticated-flow;authenticated-user-plays-the-selected-episode",
+        "id": "authenticated-flow;user-generates-data-for-authenticated-flows",
         "keyword": "Scenario Outline",
-        "line": 6,
-        "name": "authenticated user plays the selected episode",
+        "line": 4,
+        "name": "user generates data for authenticated flows",
         "steps": [
           {
             "arguments": [
@@ -37,116 +37,32 @@
               }
             ],
             "keyword": "Given ",
-            "line": 7,
-            "name": "user has generated the authenticated test data",
+            "line": 5,
+            "name": "user generates data for authenticated flows",
             "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:24"
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:26"
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 10,
-            "name": "user is on salesforce plus",
-            "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 19627000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 11,
-            "name": "user tries to login with a dummy email",
-            "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27612000000
-            }
-          },
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "firstName",
-                      "lastName",
-                      "roleName",
-                      "relation",
-                      "companyName",
-                      "jobTitle",
-                      "country",
-                      "state",
-                      "companySize",
-                      "phoneNumber",
-                      "countryCode",
-                      "jobRole"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "dummy",
-                      "here",
-                      "Marketer",
-                      "Customer",
-                      "xyz",
-                      "QA",
-                      "US",
-                      "CA",
-                      "21-200 employees",
-                      "0342561342",
-                      "1",
-                      "Marketing"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "When ",
-            "line": 12,
-            "name": "user signs up for the page with following details",
-            "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 38525000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "user is able to play the video",
-            "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:54"
-            },
-            "result": {
-              "status": "failed",
-              "duration": 24345000000,
-              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'split')\n    at __puppeteer_evaluation_script__:1:19\n    at ExecutionContext._evaluateInternal (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+              "duration": 17000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "passed",
-              "duration": 149000000
+              "status": "failed",
+              "duration": 5000000,
+              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:67:14)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:67:12)"
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 3
+          }
+        ],
         "type": "scenario"
       }
     ],
