@@ -1,7 +1,7 @@
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(60000);
 import { loadBrowser } from "../utilities/loadBrowser";
-import { After, Before, Given, Then, When, AfterStep } from "@cucumber/cucumber";
+import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
 import { acceptCookies, clickOnDreamForce } from "../actions/homePage.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 const { setWorldConstructor } = require("@cucumber/cucumber")
@@ -22,9 +22,17 @@ import {
     checkTrailorTitleForSeriesInRoles,
     checkTrailorTitleForSeriesInTopic,
 } from "../assertions/experiencepage.assertions";
+import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import BaseObject from '../testDataGeneration/entities/BaseObject'
+import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 
 
 let page;
+
+Given('user generates data for authenticated flows', async function (datatable) {
+    const testDataParameters = await datatable.hashes()[0]
+    // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+})
 
 // User Navigates to the Experience of Salesforce Plus platform(The Background Given step to all of the Scenarios)
 Given("user is on the experience page for Salesforce+", async function () {
@@ -111,3 +119,8 @@ AfterStep(async function () {
 After(async function () {
     await page.close();
 });
+
+AfterAll(async function () {
+    let baseobject = new BaseObject()
+    // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+})

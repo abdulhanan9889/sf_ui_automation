@@ -1,7 +1,7 @@
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(60000);
 import { loadBrowser } from "../utilities/loadBrowser";
-import { After, Given, Then, When, AfterStep } from "@cucumber/cucumber";
+import { After, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
 import {
     checkExploreSFisPresent,
     checkExploreMoreIsPresent,
@@ -20,8 +20,22 @@ import {
 } from "../actions/homePage.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 import { navigateToDreamforceTab, navigateToExploreSFPage } from "../tasks/homePage.tasks";
+import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import BaseObject from '../testDataGeneration/entities/BaseObject'
+import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
+
 
 let page;
+
+Given('user generates data for authenticated flows', async function (datatable) {
+    const testDataParameters = await datatable.hashes()[0]
+    // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
+})
+
+Given('user generates data for unauthenticated flows', async function (datatable) {
+    const testDataParameters = await datatable.hashes()[0]
+    // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+})
 
 Given("user is on the salesforcePlus Homepage", async function () {
     page = await loadBrowser();
@@ -91,3 +105,8 @@ AfterStep(async function () {
 After(async function () {
     await page.close();
 });
+
+AfterAll(async function () {
+    let baseobject = new BaseObject()
+    // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+})

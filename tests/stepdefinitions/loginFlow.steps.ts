@@ -1,4 +1,4 @@
-import { Given, When, Before, Then } from '@cucumber/cucumber'
+import { Given, When, Then, After, AfterAll } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
@@ -8,11 +8,19 @@ import { verifyUserIsLoggedIn } from '../assertions/loginFlow.assertions'
 import { openSignInForm, fillSignUpForm } from '../tasks/authFlow.tasks'
 import { openTheSignInForm, fillTheSignInForm, fillTheSignUpForm } from '../tasks/loginFlow.tasks'
 import { fillInSignUpForm, fillSignInForm } from "../tasks/broadcastPage.tasks"
+import { SFDataInsertion } from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import BaseObject from '../testDataGeneration/entities/BaseObject'
+import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(60000)
 
 let page
 var email
+
+Given('user generates data for authenticated flows', async function (datatable) {
+    const testDataParameters = await datatable.hashes()[0]
+    // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+})
 
 Given('the user loads salesforce plus platform', async function () {
     page = await loadBrowser()
@@ -72,3 +80,11 @@ When("user signs up for the page with following details", { timeout: 90 * 1000 }
     await fillSignUpForm(page, datatable);
 });
 
+After(async function () {
+    await page.close()
+})
+
+AfterAll(async function () {
+    let baseobject = new BaseObject()
+    // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+})
