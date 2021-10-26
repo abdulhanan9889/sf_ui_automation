@@ -73,6 +73,7 @@ export default class SFDataInsertion {
 
 			await SFDataInsertion.updateSeriesStatus(oSeries, "Publish");
 			await SFDataLogic.assignSeriesToEvent(oEvent, oSeries);
+			await SFDataInsertion.updateEventStatus(oEvent,"Publish")
 		}
 	}
 
