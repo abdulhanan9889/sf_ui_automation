@@ -1,13 +1,11 @@
 Feature: Authenticated Flow
-              As an authenticated user
-         User would like to browse through available series
-              And is able to play selected episodes
-
-        Scenario: user generates data for authenticated flows
-            Given: user generates data for authenticated flows
+            
+        @current
+        Scenario Outline: user generates data for authenticated flows
+            Given user generates data for authenticated flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
                   | 2              | 5                         | 0                      | 7              | 3                    | 22           |
-
+        
         Scenario Outline: authenticated user plays the selected episode
             Given user is on salesforce plus
              When user tries to login with a dummy email
