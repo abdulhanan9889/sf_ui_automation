@@ -8,7 +8,7 @@ Feature: Broadcast Page
 
 
         Scenario Outline: authenticated user plays the selected episode
-            Given user is on the salesforce plus webpage
+            Given the user is on the salesforce plus webpage
              When user open the sign in form
              When user login with the following <email>
              Then user plays a video
@@ -18,9 +18,9 @@ Feature: Broadcast Page
         
     
         Scenario Outline: user logouts from the trailBlazzer
-            Given user is on the salesforce plus page
-             When user tries to login with a dummy email
-             When user click cancel and logout button after filling following details
+            Given the user is on the salesforce plus webpage
+             When the user tries to login with a dummy email
+             When the user click cancel and logout button after filling the following details
                   | firstName | lastName | roleName | relation | companyName | jobTitle | country | state | companySize      | phoneNumber | countryCode | jobRole   |
                   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
              Then user is logged out

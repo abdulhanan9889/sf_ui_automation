@@ -13,7 +13,7 @@ Feature: Episode Page
 
 
         Scenario Outline: Verify episode details are present in the episode details modal
-            Given guest user loads salesforce plus platform
+            Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
              Then user is able to verify episode number: <episodeNumber>
              Then user is able to verify series title: <seriesTitle>
@@ -26,7 +26,7 @@ Feature: Episode Page
 
  
         Scenario Outline: Verify user can interact with the video player controls
-            Given guest user loads salesforce plus platform
+            Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
              Then user can play and pause the video
              Then user can forward and reverse the video
@@ -35,16 +35,16 @@ Feature: Episode Page
 
 
         Scenario Outline: Verify user can play the authenticated episode
-            Given guest user loads salesforce plus platform
-             When guest user access authorized content and logs in through trailblazer id
-             When guest user fills out the sign up forms
+            Given a guest user loads salesforce plus platform
+             When a guest user access authorized content and logs in through trailblazer id
+             When a guest user fills out the sign up forms
                   | firstName | lastName | roleName | relation | companyName | jobTitle | country | state | companySize      | phoneNumber | countryCode | jobRole   |
                   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
-             Then authenticated user can play the authorized episode
+             Then an authenticated user can play the authorized episode
          
 
         Scenario Outline: Verify user can play two back to back authenticated episodes
-            Given guest user loads salesforce plus platform
+            Given a guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
              When guest user fills out the sign up forms
                   | firstName | lastName | roleName | relation | companyName | jobTitle | country | state | companySize      | phoneNumber | countryCode | jobRole   |

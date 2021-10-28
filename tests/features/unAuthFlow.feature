@@ -11,13 +11,13 @@ Feature: Unauthenticated Flow
 
 
         Scenario Outline: unthenticated user plays the selected episode
-            Given user is on salesforce plus platform
-             When user navigates to episodes page and clicks on a particular episode
-             Then user is able to play the episode
+            Given a user is on the salesforce plus platform
+             When user navigates to the episodes page and clicks on a particular episode
+             Then user is able to play the episode now
         
        
         Scenario Outline: unthenticated user plays two back to back episodes
-            Given user is on salesforce plus platform
+            Given a user is on the salesforce plus platform
              When user navigates to episodes page and clicks on the first episode
              Then user is able to play the first episode
              Then user clicks on the second episode

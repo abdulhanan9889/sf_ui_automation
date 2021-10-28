@@ -25,18 +25,18 @@ Given('user generates data for unauthenticated flows', async function (datatable
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })
 
-Given('user is on salesforce plus platform', async function () {
+Given('a user is on the salesforce plus platform', async function () {
     page = await loadBrowser()
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
     await waitTillHTMLRendered(page)
     await acceptCookies(page)
 });
 
-When('user navigates to episodes page and clicks on a particular episode', async function () {
+When('user navigates to the episodes page and clicks on a particular episode', async function () {
     await openEpisode(page)
 });
 
-Then('user is able to play the episode', async function () {
+Then('user is able to play the episode now', async function () {
     await playEpisode(page)
     await verifyProgressBarValues(page)
 })

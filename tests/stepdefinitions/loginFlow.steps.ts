@@ -29,7 +29,7 @@ Given('user generates data for authenticated flows', async function (datatable) 
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
 
-Given('the user loads salesforce plus platform', async function () {
+Given('the user loads the salesforce plus platform', async function () {
     page = await loadBrowser()
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 });
     await waitTillHTMLRendered(page);
@@ -37,7 +37,7 @@ Given('the user loads salesforce plus platform', async function () {
     await waitTillHTMLRendered(page);
 })
 
-When('user access authorized content and logs in through trailblazer id', { timeout: 80 * 1000 }, async function () {
+When('the user access authorized content and logs in through trailblazer id', { timeout: 80 * 1000 }, async function () {
     await openAuthorizedEpisode(page)
     await loginThroughTrailblazerId(page)
 })
@@ -69,7 +69,7 @@ Then("the user is logged out from the salesforce+ platform", async function () {
     await isUserLoggedOut(page);
 });
 
-When("user tries to login with an email", { timeout: 80 * 1000 }, async function () {
+When("user tries to login with an email address", { timeout: 80 * 1000 }, async function () {
     await openTheSignInForm(page);
     await fillTheSignInForm(page);
 });
@@ -78,12 +78,12 @@ Then("user signs up for the page with the following details", { timeout: 90 * 10
     await fillTheSignUpForm(page, dataTable);
 });
 
-When("user tries to login with a dummy email", { timeout: 90 * 1000 }, async function () {
+When("user tries to login with a dummy email address", { timeout: 90 * 1000 }, async function () {
     await openSignInForm(page);
     await fillSignInForm(page);
 });
 
-When("user signs up for the page with following details", { timeout: 90 * 1000 }, async function (datatable) {
+When("user signs up with following details on salesforce platform", { timeout: 90 * 1000 }, async function (datatable) {
     await fillSignUpForm(page, datatable);
 });
 

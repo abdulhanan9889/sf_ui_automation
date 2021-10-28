@@ -9,6 +9,7 @@ import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
 import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
+
 import { openEpisode, playEpisode } from '../tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../actions/broadcastPage.actions'
 
@@ -34,7 +35,7 @@ Given('user generates data for unauthenticated flows', async function (datatable
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
 
-Given('guest user loads salesforce plus platform', async function () {
+Given('a guest user loads salesforce plus platform', async function () {
     page = await loadBrowser()
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
     await waitTillHTMLRendered(page)
@@ -95,12 +96,12 @@ Then('user can mute and unmute the video', async function () {
     // await verifyUnmutedVideo(page)
 })
 
-When('guest user access authorized content and logs in through trailblazer id', async function () {
+When('a guest user access authorized content and logs in through trailblazer id', async function () {
     await openAuthorizedEpisode(page)
     await loginThroughTrailblazerId(page)
 })
 
-When('guest user fills out the sign up forms', async function (datatable) {
+When('a guest user fills out the sign up forms', async function (datatable) {
     const dataFields = await datatable.hashes()[0];
     await fillSignUpForms(page, dataFields)
 })
@@ -121,11 +122,11 @@ Then('authenticated user clicks on second episode and can play the authorized ep
     await verifyProgressBarValues(page)
 })
 
-When('guest user access authorized content and logs in through trailblazer id: {word}', async function (emailId) {
+When('a guest user access authorized content and logs in through trailblazer id: {word}', async function (emailId) {
     await loginThroughSignedUpUser(page, emailId)
 })
 
-When('guest user fills out the sign up forms and clicks cancel and logout button', async function (datatable) {
+When('a guest user fills out the sign up forms and clicks cancel and logout button', async function (datatable) {
     const dataFields = await datatable.hashes()[0];
     await logoutFromSFPlatform(page, dataFields)
 })

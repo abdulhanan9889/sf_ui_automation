@@ -64,7 +64,7 @@ Given('user generates data for authenticated flows', async function (datatable) 
   // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
 
-Given("user is on the salesforce plus webpage", async function () {
+Given("the user is on the salesforce plus webpage", async function () {
   page = await loadBrowser();
   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
   await waitTillHTMLRendered(page);
@@ -90,20 +90,8 @@ Then("user plays a video", async function () {
 });
 
 var email;
-Given(
-  "user is on the salesforce plus page",
-  { timeout: 80000 },
-  async function () {
-    page = await loadBrowser();
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await waitTillHTMLRendered(page);
-    await acceptCookies(page);
-    await page.waitFor(2000);
-  }
-);
-
 When(
-  "user tries to login with a dummy email",
+  "the user tries to login with a dummy email",
   { timeout: 80000 },
   async function () {
     await openSignInForm(page);
@@ -112,7 +100,7 @@ When(
 );
 
 When(
-  "user click cancel and logout button after filling following details",
+  "the user click cancel and logout button after filling following details",
   { timeout: 90000 },
   async function (dataTable) {
     await fillInSignUpForm(page, dataTable);
