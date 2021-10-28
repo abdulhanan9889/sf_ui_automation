@@ -25,9 +25,7 @@
   "author": "emumba",
   "license": "ISC",
   "scripts": {},
-  "directories": {
-    "test": "tests"
-  },
+  "directories": {},
   "description": "This project consists of the test-generation scripts along with the UI automation scripts for the different environments(QA, UAT, etc)\r ## Dependencies and setup\r *Node.js* needs to be installed globally on your machine. You can find the latest version for your system [here](https://nodejs.org/en/download/)",
   "repository": {
     "type": "git",

@@ -12,6 +12,4 @@ class Connection {
     this.instanceUrl = config.instanceUrl
   }
 }
-let c = new Connection()
-console.log(c.password)
 export default Connection;
