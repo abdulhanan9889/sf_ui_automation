@@ -4,32 +4,82 @@
     "elements": [
       {
         "description": "",
-        "id": "broadcast-page;an-authenticated-user-interact-with-the-video-player-controls",
+        "id": "broadcast-page;user-logouts-from-the-trailblazzer",
         "keyword": "Scenario Outline",
-        "line": 53,
-        "name": "an authenticated user interact with the video player controls",
+        "line": 21,
+        "name": "user logouts from the trailBlazzer",
         "steps": [
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 54,
-            "name": "authenticated user is on salesforce plus webpage",
+            "line": 22,
+            "name": "user is on the salesforce plus page",
             "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:230"
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:93"
             },
             "result": {
-              "status": "failed",
-              "duration": 6997000000,
-              "error_message": "Error: Protocol error (Performance.enable): Target closed.\n    at C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Connection.ts:291:57\n    at new Promise (<anonymous>)\n    at CDPSession.send (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Connection.ts:290:12)\n    at Page._initialize (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Page.ts:587:20)\n    at Function.create (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Page.ts:443:16)\n    at C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Target.ts:120:14\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async Promise.all (index 0)\n    at async BrowserContext.pages (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Browser.ts:718:19)\n    at async Promise.all (index 0)\n    at async Browser.pages (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Browser.ts:541:26)"
+              "status": "passed",
+              "duration": 26177000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 55,
-            "name": "authenticated user logins with login7bscdpf5ys2sf@mailinator.com",
+            "line": 23,
+            "name": "user tries to login with a dummy email",
             "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:242"
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:105"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 11697000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 24,
+            "name": "user click cancel and logout button after filling following details",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:114"
             },
             "result": {
               "status": "skipped",
@@ -39,101 +89,10 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 56,
-            "name": "authenticated user plays the video",
+            "line": 27,
+            "name": "user is logged out",
             "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:251"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 57,
-            "name": "authenticated user pause the video",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:256"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 58,
-            "name": "authenticated user click the forward video button",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:260"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 59,
-            "name": "authenticated user click the reverse video button",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:264"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 60,
-            "name": "authenticated user decrease volume",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:268"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 61,
-            "name": "authenticated user increase volume",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:273"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 62,
-            "name": "authenticated user click the maximize video button",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:277"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 63,
-            "name": "authenticated user click the minimize video button",
-            "match": {
-              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:282"
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:122"
             },
             "result": {
               "status": "skipped",
@@ -144,23 +103,397 @@
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "failed",
-              "duration": 1000000,
-              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\broadcastPage.steps.ts:288:14)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\broadcastPage.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\broadcastPage.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\broadcastPage.steps.ts:228:12)"
+              "status": "passed",
+              "duration": 108000000
             }
           }
         ],
         "tags": [
           {
             "name": "@current",
-            "line": 52
+            "line": 20
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "broadcast-page;verify-broadcast-details-are-present-in-the-episode-details-modal",
+        "keyword": "Scenario Outline",
+        "line": 31,
+        "name": "Verify broadcast details are present in the episode details modal",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 32,
+            "name": "guest user loads the salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:126"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34298000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "guest user login through trailblazzer using loginaixk5800aw2sf@mailinator.com",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:137"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 10696000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "guest user is able to verify the episode number: 'EPISODE 2'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:146"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "guest user is able to verify the series title: 'BEST OF DF'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:153"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "guest user is able to verify the episode title: 'Welcome to the Trusted Enterprise'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:160"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "guest user is able to verify the speaker one name and card title: 'Leah McGowen-Hare & VP, Trailblazer Community and Engagement, Salesforce'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:167"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "guest user is able to verify the speaker two name and card title: 'Ola Källenius & CEO, Mercedes-Benz'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:174"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "guest user is able to verify the speaker three name and card title: 'Marc Benioff & Chair and CEO, Salesforce'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:181"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "guest user is able to verify the speaker four name and card title: 'Bret Taylor & President &amp; Chief Operating Officer, Salesforce'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:188"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "guest user is able to verify the speaker five name and card title: 'Stewart Butterfield & CEO &amp; Co-Founder, Slack'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:195"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 42,
+            "name": "guest user is able to verify the speaker six name and card title: 'Tamar Yehoshua & Chief Product Officer, Slack Technologies'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:202"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "guest user is able to verify the speaker seven name and card title: 'Sarah Franklin & President &amp; Chief Marketing Officer, Salesforce'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:209"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "guest user is able to verify the speaker eight name and card title: 'Ebony Beckwith & CEO of Salesforce Foundation &amp; Chief Philanthropy Officer, Salesforce'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:216"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 45,
+            "name": "guest user is able to verify the speaker nine name and card title: 'Marquita Sidibe & Business Analyst, Liberty Mutual Insurance'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:223"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 46,
+            "name": "guest user is able to verify the speaker ten name and card title: 'Catherine MacGregor & CEO, Engie'",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:230"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 141000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 30
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "broadcast-page;an-authenticated-user-interact-with-the-video-player-controls",
+        "keyword": "Scenario Outline",
+        "line": 54,
+        "name": "an authenticated user interact with the video player controls",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 55,
+            "name": "authenticated user is on salesforce plus webpage",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:237"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21545000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 56,
+            "name": "authenticated user logins with login7bscdpf5ys2sf@mailinator.com",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:249"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 9195000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "authenticated user plays the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:258"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 58,
+            "name": "authenticated user pause the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:263"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 59,
+            "name": "authenticated user click the forward video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:267"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "authenticated user click the reverse video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:271"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 61,
+            "name": "authenticated user decrease volume",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:275"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 62,
+            "name": "authenticated user increase volume",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:280"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 63,
+            "name": "authenticated user click the maximize video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:284"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "authenticated user click the minimize video button",
+            "match": {
+              "location": "tests\\stepdefinitions\\broadcastPage.steps.ts:289"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 196000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 53
           }
         ],
         "type": "scenario"
       }
     ],
     "id": "broadcast-page",
-    "line": 1,
+    "line": 2,
     "keyword": "Feature",
     "name": "Broadcast Page",
     "tags": [],

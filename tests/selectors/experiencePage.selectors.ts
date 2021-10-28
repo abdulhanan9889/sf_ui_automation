@@ -18,6 +18,17 @@ export async function getExploreMoreButton(page) {
     });
 }
 
+export async function getWatchNowButton(page) {
+    return await page.evaluateHandle(() => {
+        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
+        ?.shadowRoot?.querySelector("div > salesforceplus-router")
+        ?.shadowRoot?.querySelector("div > salesforceplus-view")
+        ?.shadowRoot?.querySelector("div > div > bxp-hero")
+        ?.shadowRoot?.querySelector("div > div.grid > div > div > div > div.hero--ctas > div > bxp-text-button")
+        ?.shadowRoot?.querySelector("a > div > span.button-text")
+    });
+}
+
 export async function getPlayForSeriesInRoleButton(page) {
     return await page.evaluateHandle(() => {
         return document

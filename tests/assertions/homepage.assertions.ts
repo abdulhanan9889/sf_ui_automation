@@ -1,4 +1,4 @@
-import { getExploreMoreButton } from "../selectors/experiencePage.selectors";
+import { getExploreMoreButton, getWatchNowButton } from "../selectors/experiencePage.selectors";
 import { getExploreSFButton, getFeatureEpisodeButton, getFeatureEpisodeTitle, getTrailorTitle, getWatchTrailorButton } from "../selectors/homePage.selectors";
 
 var assert = require('assert')
@@ -9,6 +9,11 @@ export async function checkExploreSFisPresent(page) {
     let exploreSFbutton = await getExploreSFButton(page)
     let exploreSFbuttonText = await exploreSFbutton.evaluate(text => text.innerHTML)
     assert.equal(exploreSFbuttonText, 'Explore Salesforce+')
+}
+export async function checkWatchNowisPresent(page) {
+    let watchNowbutton = await getWatchNowButton(page)
+    let watchNowbuttonText = await watchNowbutton.evaluate(text => text.innerHTML)
+    assert.equal(watchNowbuttonText, 'Watch Now')
 }
 export async function checkExploreMoreIsPresent(page) {
     let exploreMoreButton = await getExploreMoreButton(page)
@@ -28,18 +33,9 @@ export async function checkForWatchTrailorButton(page) {
 }
 
 export async function checkFeaturedEpisodeTitle(page) {
-    // var episodeTitle = await page.evaluate(() => {
-    //     return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-    //     ?.shadowRoot?.querySelector("div > salesforceplus-router")
-    //     ?.shadowRoot?.querySelector("div > salesforceplus-view")
-    //     ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-    //     ?.shadowRoot?.querySelector("div > span")?.innerHTML;
-
-    // })
     let featureEpisodeTitle = await getFeatureEpisodeTitle(page)
     let featureEpisodeTitleText = await featureEpisodeTitle.evaluate(text => text.innerHTML)
-    assert.equal(featureEpisodeTitleText, 'SIMPLY PUT + EPISODE 1')
-
+    assert.equal(featureEpisodeTitleText, 'CONNECTIONS + EPISODE 3')
 }
 
 

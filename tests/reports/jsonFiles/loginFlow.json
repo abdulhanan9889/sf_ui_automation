@@ -1,0 +1,442 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-flow;user-can-login-through-clicking-authorized-episode-button",
+        "keyword": "Scenario Outline",
+        "line": 9,
+        "name": "user can login through clicking authorized episode button",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "the user loads salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30114000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "user access authorized content and logs in through trailblazer id",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:40"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 10307000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 12,
+            "name": "the user fills out the sign up forms",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:45"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user is logged in",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:50"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 304000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 8
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-flow;user-logs-out-by-clicking-cancel-and-logout-button",
+        "keyword": "Scenario Outline",
+        "line": 17,
+        "name": "user logs out by clicking cancel and logout button",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 18,
+            "name": "the user loads salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24710000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "the user clicks on dreamforce button and access authorized content",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:54"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 6979000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 20,
+            "name": "the user fills out the sign up forms and clicks cancel and logout button",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:62"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "the user is logged out from the salesforce+ platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:68"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 16
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-flow;user-logins-through-login-button",
+        "keyword": "Scenario Outline",
+        "line": 26,
+        "name": "user logins through login button",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 27,
+            "name": "the user loads salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32235000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "user tries to login with an email",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25012000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "user signs up for the page with the following details",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31874000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 149000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 25
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-flow;user-logins-using-watch-now-button",
+        "keyword": "Scenario Outline",
+        "line": 33,
+        "name": "user logins using watch now button",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 34,
+            "name": "the user loads salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26686000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 35,
+            "name": "user tries to login with a dummy email",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:81"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 7191000000,
+              "error_message": "TypeError: Cannot read property 'click' of null\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:51:50\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\actions\\authFlow.actions.ts:5:58)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 36,
+            "name": "user signs up for the page with following details",
+            "match": {
+              "location": "tests\\stepdefinitions\\loginFlow.steps.ts:86"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 70000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 32
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-flow",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login flow",
+    "tags": [],
+    "uri": "tests\\features\\loginFlow.feature"
+  }
+]

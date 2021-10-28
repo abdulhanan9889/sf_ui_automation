@@ -4,47 +4,99 @@
     "elements": [
       {
         "description": "",
-        "id": "authenticated-flow;user-generates-data-for-authenticated-flows",
+        "id": "authenticated-flow;authenticated-user-plays-the-selected-episode",
         "keyword": "Scenario Outline",
-        "line": 4,
-        "name": "user generates data for authenticated flows",
+        "line": 9,
+        "name": "authenticated user plays the selected episode",
         "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "user is on salesforce plus",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:35"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 9120000000,
+              "error_message": "Error: Navigation failed because browser has disconnected!\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\LifecycleWatcher.ts:111:13\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\vendor\\mitt\\src\\index.ts:88:75\n    at Array.map (<anonymous>)\n    at Object.emit (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\vendor\\mitt\\src\\index.ts:88:56)\n    at CDPSession.emit (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\EventEmitter.ts:102:18)\n    at CDPSession._onClosed (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Connection.ts:340:10)\n    at Connection._onMessage (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Connection.ts:136:17)\n    at WebSocket.<anonymous> (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\node\\NodeWebSocketTransport.ts:47:42)\n    at WebSocket.onMessage (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\ws\\lib\\event-target.js:132:16)\n    at WebSocket.emit (events.js:400:28)\n    at WebSocket.emit (domain.js:470:12)\n    at Receiver.receiverOnMessage (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\ws\\lib\\websocket.js:834:20)\n    at Receiver.emit (events.js:400:28)\n    at Receiver.emit (domain.js:470:12)\n    at Receiver.dataMessage (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\ws\\lib\\receiver.js:437:14)\n    at Receiver.getData (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\ws\\lib\\receiver.js:367:17)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "user tries to login with a dummy email",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:43"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
           {
             "arguments": [
               {
                 "rows": [
                   {
                     "cells": [
-                      "numberOfSeries",
-                      "numberOfEpisodesPerSeries",
-                      "eventStartDayFromToday",
-                      "eventStartHour",
-                      "eventEndDayFromToday",
-                      "eventEndHour"
+                      "firstName",
+                      "lastName",
+                      "roleName",
+                      "relation",
+                      "companyName",
+                      "jobTitle",
+                      "country",
+                      "state",
+                      "companySize",
+                      "phoneNumber",
+                      "countryCode",
+                      "jobRole"
                     ]
                   },
                   {
                     "cells": [
-                      "2",
-                      "5",
-                      "0",
-                      "7",
-                      "3",
-                      "22"
+                      "dummy",
+                      "here",
+                      "Marketer",
+                      "Customer",
+                      "xyz",
+                      "QA",
+                      "US",
+                      "CA",
+                      "21-200 employees",
+                      "0342561342",
+                      "1",
+                      "Marketing"
                     ]
                   }
                 ]
               }
             ],
-            "keyword": "Given ",
-            "line": 5,
-            "name": "user generates data for authenticated flows",
+            "keyword": "When ",
+            "line": 12,
+            "name": "user signs up for the page with following details",
             "match": {
-              "location": "tests\\stepdefinitions\\authFlow.steps.ts:26"
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:52"
             },
             "result": {
-              "status": "passed",
-              "duration": 17000000
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "user is able to play the video",
+            "match": {
+              "location": "tests\\stepdefinitions\\authFlow.steps.ts:60"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -52,15 +104,15 @@
             "hidden": true,
             "result": {
               "status": "failed",
-              "duration": 5000000,
-              "error_message": "TypeError: Cannot read property 'close' of undefined\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:67:14)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\smaroof\\Downloads\\salesforce\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:67:12)"
+              "duration": 10000000,
+              "error_message": "Error: Protocol error: Connection closed. Most likely the page has been closed.\n    at Object.assert (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\assert.ts:23:21)\n    at Page.close (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\Page.ts:2839:5)\n    at World.<anonymous> (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:66:14)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:4:12)\n    at World.<anonymous> (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\tests\\stepdefinitions\\authFlow.steps.ts:64:12)"
             }
           }
         ],
         "tags": [
           {
             "name": "@current",
-            "line": 3
+            "line": 8
           }
         ],
         "type": "scenario"

@@ -49,18 +49,13 @@ export async function getArrowIcon(page) {
 
 export async function getFeatureEpisodeButton(page) {
     return await page.evaluateHandle(() => {
-        return document
-            ?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div:nth-child(3) > bxp-carousel")
-            ?.shadowRoot?.querySelector(
-                "div > ul > li:nth-child(2) > div > bxp-episode-card"
-            )
-            ?.shadowRoot?.querySelector(
-                "div.episode-card.bxp-global-card-shadow > div.play-icon > bxp-icon-button"
-            )
-            ?.shadowRoot?.querySelector("a");
+        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
+        ?.shadowRoot?.querySelector("div > salesforceplus-router")
+        ?.shadowRoot?.querySelector("div > salesforceplus-view")
+        ?.shadowRoot?.querySelector("div > div:nth-child(3) > bxp-carousel")
+        ?.shadowRoot?.querySelector("div > ul > li:nth-child(1) > div > bxp-episode-card")
+        ?.shadowRoot?.querySelector("div.episode-card.bxp-global-card-shadow > div.play-icon > bxp-icon-button")
+        ?.shadowRoot?.querySelector("a")
     });
 }
 

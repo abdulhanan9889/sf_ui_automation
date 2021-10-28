@@ -6,81 +6,47 @@
         "description": "",
         "id": "unauthenticated-flow;unthenticated-user-plays-the-selected-episode",
         "keyword": "Scenario Outline",
-        "line": 8,
+        "line": 13,
         "name": "unthenticated user plays the selected episode",
         "steps": [
           {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "numberOfSeries",
-                      "numberOfEpisodesPerSeries",
-                      "seriesStartDayFromToday",
-                      "seriesEndDayFromToday"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "2",
-                      "5",
-                      "1",
-                      "4"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "Given ",
-            "line": 9,
-            "name": "user has generated the test data",
-            "match": {
-              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4000000
-            }
-          },
-          {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 14,
             "name": "user is on salesforce plus platform",
-            "match": {
-              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 19269000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 13,
-            "name": "user navigates to episodes page and clicks on a particular episode",
             "match": {
               "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 11057000000
+              "duration": 17504000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "user navigates to episodes page and clicks on a particular episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:35"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 35000000,
+              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')\n    at __puppeteer_evaluation_script__:1:15\n    at ExecutionContext._evaluateInternal (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
+            "line": 16,
             "name": "user is able to play the episode",
             "match": {
-              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:32"
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:39"
             },
             "result": {
-              "status": "failed",
-              "duration": 23456000000,
-              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'split')\n    at __puppeteer_evaluation_script__:1:19\n    at ExecutionContext._evaluateInternal (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\fraza\\Desktop\\Salesforce+ UI Automation\\SF-UI-Automation-Tasks\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -88,14 +54,104 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 165000000
+              "duration": 292000000
             }
           }
         ],
         "tags": [
           {
             "name": "@current",
-            "line": 7
+            "line": 12
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "unauthenticated-flow;unthenticated-user-plays-two-back-to-back-episodes",
+        "keyword": "Scenario Outline",
+        "line": 19,
+        "name": "unthenticated user plays two back to back episodes",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "user is on salesforce plus platform",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19163000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 21,
+            "name": "user navigates to episodes page and clicks on the first episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:44"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 68000000,
+              "error_message": "Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')\n    at __puppeteer_evaluation_script__:1:15\n    at ExecutionContext._evaluateInternal (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:273:13)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async ExecutionContext.evaluate (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\ExecutionContext.ts:140:12)\n    at async JSHandle.evaluate (C:\\Users\\mbinjaved\\Desktop\\Latest Merged Code\\sf_ui_automation\\node_modules\\puppeteer\\src\\common\\JSHandle.ts:161:12)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "user is able to play the first episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:48"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "user clicks on the second episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:53"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "user is able to play the second episode",
+            "match": {
+              "location": "tests\\stepdefinitions\\unAuthFlow.steps.ts:57"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 527000000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@current",
+            "line": 18
           }
         ],
         "type": "scenario"

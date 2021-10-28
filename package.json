@@ -33,5 +33,7 @@
     "type": "git",
     "url": "https://git.soma.salesforce.com/fraza/SF-UI-Automation-Tasks.git"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "puppeteer-screen-recorder": "^2.0.2"
+  }
 }
