@@ -5,7 +5,7 @@ Feature: Unauthenticated Flow
               And is able to play selected episodes
      
         Scenario: user generates data for unauthenticated flows
-            Given: user generates data for unauthenticated flows
+            Given user generates data for unauthenticated flows
                   | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
                   | 2              | 5                         | 1                       | 4                     |
 
