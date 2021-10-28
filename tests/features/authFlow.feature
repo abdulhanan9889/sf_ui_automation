@@ -1,6 +1,5 @@
 Feature: Authenticated Flow
             
-        @current
         Scenario Outline: user generates data for authenticated flows
             Given user generates data for authenticated flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
