@@ -80,29 +80,22 @@ let unauthDataGeneration = [
   '--tags=@unauthenticatedData'
 ].join(' ');
 
-
 let qaEnv = [
-  "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'",
-  "--world-parameters '{\"username\":\"iusm\"}'",
-  "--world-parameters '{\"password\":\"iusm2\"}'",
-  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
-  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
+  "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'"
 ].join(' ');
 
+let qaCred =["-p qaEnv $env:NODE_ENV='qaCred'"].join(' ')
+
+let uatCred = ["-p uatEnv $env:NODE_ENV='uatCred'"].join(' ')
+
+let perfCred = ["-p perfEnv $env:NODE_ENV='perfCred'"].join(' ')
+
 let uatEnv = [
-  "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'",
-  "--world-parameters '{\"username\":\"iusm\"}'",
-  "--world-parameters '{\"password\":\"iusm2\"}'",
-  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
-  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
+  "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'"
 ].join(' ');
 
 let perfEnv = [
-  "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'",
-  "--world-parameters '{\"username\":\"iusm\"}'",
-  "--world-parameters '{\"password\":\"iusm2\"}'",
-  "--world-parameters '{\"loginUrl\":\"dummyUrlLogin\"}'",
-  "--world-parameters '{\"instanceUrl\":\"dummyInstanceUrl\"}'"
+  "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
 ].join(' ');
 
 let expReport = [
@@ -124,10 +117,13 @@ module.exports = {
   'authDataGeneration': authDataGeneration,
   'unauthDataGeneration': unauthDataGeneration,
   'qaEnv': qaEnv,
+  'qaCred':qaCred,
   'uatEnv': uatEnv,
+  'uatCred':uatCred,
   'perfEnv': perfEnv,
+  'perfCred':perfCred,
   'expReport': expReport,
-  'homePageReport': homePageReport,
+  'homePageReport': homePageReport
 };
 
 

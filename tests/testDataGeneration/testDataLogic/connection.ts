@@ -1,16 +1,17 @@
-import {cliUsername,cliPassword,cliInstanceUrl,cliLoginUrl} from "../../stepdefinitions/authFlow.steps"
 
+var config = require("../../../config/config")[process.env.NODE_ENV || "uatCred"]
 class Connection {
-  username: string;
+  username: string;  
   password: string;
   loginUrl:string;
   instanceUrl:string;
   constructor() {
-    this.username = cliUsername
-    this.password = cliPassword
-    this.loginUrl = cliLoginUrl
-    this.instanceUrl = cliInstanceUrl
+    this.username = config.username
+    this.password =  config.password
+    this.loginUrl =  config.loginUrl
+    this.instanceUrl = config.instanceUrl
   }
 }
-
+let c = new Connection()
+console.log(c.password)
 export default Connection;

@@ -10,17 +10,9 @@ import BaseObject from '../testDataGeneration/entities/BaseObject'
 
 var { setDefaultTimeout } = require('@cucumber/cucumber')
 setDefaultTimeout(60000)
-export var cliUsername;
-export var cliPassword;
-export var cliLoginUrl;
-export var cliInstanceUrl;
 let page
 
 Given('user generates data for unauthenticated flows', async function (datatable) {
-    cliUsername= this.parameters.username
-  cliPassword =this.parameters.password
-  cliLoginUrl =this.parameters.loginUrl
-  cliInstanceUrl = this.parameters.instanceUrl
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })

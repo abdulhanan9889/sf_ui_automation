@@ -1,0 +1,21 @@
+{
+    "qaCred":{
+        "username": "hello",
+        "password": "ssswords",
+        "loginUrl": "google",
+        "instanceUrl": "emumba"
+    },
+    "uatCred":{
+        "username": "hello",
+        "password": "lords",
+        "loginUrl": "google",
+        "instanceUrl": "emumba"
+    },
+    "perfCred":{
+        "username": "hello",
+        "password": "swordsss",
+        "loginUrl": "google",
+        "instanceUrl": "emumba"
+    }
+    
+}

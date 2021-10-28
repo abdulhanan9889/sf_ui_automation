@@ -185,7 +185,7 @@ import {
   export async function typeWorkEmail(page, email) {
     await page.waitFor(2000);
     let workEmailField = await getWorkEmailField(page);
-    await workEmailField.asElement().type(email);
+    await workEmailField.evaluate((field)=>field.type(email))
   }
   
   export async function typeWorkPhone(page, phone) {

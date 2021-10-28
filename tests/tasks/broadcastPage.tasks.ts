@@ -87,7 +87,7 @@ export async function fillInSignUpForm(page, datatable) {
   await selectStateName(page, dataFields.country, dataFields.state);
   await checkPrivacyStatement(page);
   await clickDoneButton(page);
-  await page.waitFor(20000);
+  await page.waitFor(25000);
   await typeWorkEmail(page, email);
   await typeWorkPhone(page, dataFields.phoneNumber);
   await selectCompanySize(page, dataFields.companySize);

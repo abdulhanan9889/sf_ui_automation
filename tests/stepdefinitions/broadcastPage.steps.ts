@@ -48,18 +48,10 @@ import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertio
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { maximizeVideoPlayer, minimizeVideoPlayer } from "../tasks/episodePage.tasks";
-export var cliUsername;
-export var cliPassword;
-export var cliLoginUrl;
-export var cliInstanceUrl;
 let page;
 
 
 Given('user generates data for authenticated flows', async function (datatable) {
-  cliUsername= this.parameters.username
-  cliPassword =this.parameters.password
-  cliLoginUrl =this.parameters.loginUrl
-  cliInstanceUrl = this.parameters.instanceUrl
   const testDataParameters = await datatable.hashes()[0]
   // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
@@ -72,7 +64,7 @@ Given("the user is on the salesforce plus webpage", async function () {
   await page.waitFor(2000);
 });
 
-When("user open the sign in form ", async function () {
+When("user open the sign in form", async function () {
   await openSignInForm(page);
 });
 
