@@ -93,22 +93,7 @@ let perfEnv = [
 ].join(' ');
 
 console.log(authFlow)
-// let authenticatedContentFlows = [`-p authFlow -p broadcastPage -p loginFlow -p experiencePage`].join(' ')
-let authenticatedContentFlows= [
-  'tests/features/unAuthFlow.feature',
-  '--require tests/stepdefinitions/unAuthFlow.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/unAuthFlow.json',
-  'tests/features/homePage.feature',
-  '--require tests/stepdefinitions/homePage.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/homePage.json'
-].join(' ');
-
+let authenticatedContentFlows = `${authFlow} ${broadcastPage} ${loginFlow} ${experiencePage}`
 let unAuthenticatedContentFlows = `-${unAuthFlow} ${episodePage}`
 let bothFlows = `-${homePage} ${episodePage}`
 let allFlows = `${authFlow} ${broadcastPage} ${episodePage} ${experiencePage} ${homePage} ${loginFlow} ${unAuthFlow}`
