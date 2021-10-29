@@ -84,12 +84,6 @@ let qaEnv = [
   "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'"
 ].join(' ');
 
-let qaCred =["-p qaEnv $env:NODE_ENV='qaCred'"].join(' ')
-
-let uatCred = ["-p uatEnv $env:NODE_ENV='uatCred'"].join(' ')
-
-let perfCred = ["-p perfEnv $env:NODE_ENV='perfCred'"].join(' ')
-
 let uatEnv = [
   "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'"
 ].join(' ');
@@ -98,6 +92,11 @@ let perfEnv = [
   "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
 ].join(' ');
 
+
+let authenticatedContentFlows = ["-p authFlow -p broadcastPage -p loginFlow -p expierncePage"]
+let unAuthenticatedContentFlows = ["-p unAuthFlow -p episodePage"]
+let bothFlows = ["-p homePage -p episodePage"]
+let allFlows = ["-p authFlow -p broadcastPage -p episodePage -p experiencePage -p homePage -p loginFlow -p unAuthFlow"]
 let expReport = [
   "--format json:tests/reports/experiencePage.json"
 ].join(' ');
@@ -117,11 +116,12 @@ module.exports = {
   'authDataGeneration': authDataGeneration,
   'unauthDataGeneration': unauthDataGeneration,
   'qaEnv': qaEnv,
-  'qaCred':qaCred,
   'uatEnv': uatEnv,
-  'uatCred':uatCred,
   'perfEnv': perfEnv,
-  'perfCred':perfCred,
+  "authContentFlow": authenticatedContentFlows,
+  "unAuthContentFlow": unAuthenticatedContentFlows,
+  "bothFlow":bothFlows,
+  "allFlows":allFlows,
   'expReport': expReport,
   'homePageReport': homePageReport
 };

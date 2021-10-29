@@ -12,9 +12,7 @@ import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { acceptCookies } from "../actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
-
-
-var { setDefaultTimeout } = require("@cucumber/cucumber");
+var { setDefaultTimeout } = require("@cucumber/cucumber`");
 setDefaultTimeout(60000);
 
 let page;
