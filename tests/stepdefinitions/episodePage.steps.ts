@@ -17,12 +17,12 @@ var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(60000)
 let page
 
-Given('user generates data for authenticated flows', async function (datatable) {
+Given('user generates data for authenticated epsiode flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
 })
 
-Given('user generates data for unauthenticated flows', async function (datatable) {
+Given('user generates data for unauthenticated epsiode flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })

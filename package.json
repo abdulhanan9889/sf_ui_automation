@@ -25,7 +25,7 @@
   "author": "emumba",
   "license": "ISC",
   "scripts": {
-    "test_qaEnv":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p authFlow -p qaEnv",
+    "test_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p qaEnv",
     "test_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p uatEnv",
     "test_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p perfEnv",
     "test_parallel_qaENV": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authContentFlow -p unAuthContentFlow -p qaEnv",

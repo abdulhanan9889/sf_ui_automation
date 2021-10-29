@@ -92,11 +92,26 @@ let perfEnv = [
   "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
 ].join(' ');
 
+console.log(authFlow)
+// let authenticatedContentFlows = [`-p authFlow -p broadcastPage -p loginFlow -p experiencePage`].join(' ')
+let authenticatedContentFlows= [
+  'tests/features/unAuthFlow.feature',
+  '--require tests/stepdefinitions/unAuthFlow.steps.ts',
+  '--require-module ts-node/register',
+  '--format progress-bar',
+  '--publish-quiet',
+  '--format json:tests/reports/jsonFiles/unAuthFlow.json',
+  'tests/features/homePage.feature',
+  '--require tests/stepdefinitions/homePage.steps.ts',
+  '--require-module ts-node/register',
+  '--format progress-bar',
+  '--publish-quiet',
+  '--format json:tests/reports/jsonFiles/homePage.json'
+].join(' ');
 
-let authenticatedContentFlows = ["-p authFlow -p broadcastPage -p loginFlow -p expierncePage"]
-let unAuthenticatedContentFlows = ["-p unAuthFlow -p episodePage"]
-let bothFlows = ["-p homePage -p episodePage"]
-let allFlows = ["-p authFlow -p broadcastPage -p episodePage -p experiencePage -p homePage -p loginFlow -p unAuthFlow"]
+let unAuthenticatedContentFlows = `-${unAuthFlow} ${episodePage}`
+let bothFlows = `-${homePage} ${episodePage}`
+let allFlows = `${authFlow} ${broadcastPage} ${episodePage} ${experiencePage} ${homePage} ${loginFlow} ${unAuthFlow}`
 let expReport = [
   "--format json:tests/reports/experiencePage.json"
 ].join(' ');

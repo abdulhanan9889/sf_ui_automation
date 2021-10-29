@@ -18,7 +18,7 @@ setDefaultTimeout(60000);
 let page;
 
 
-Given('user generates data for authenticated flows', async function (datatable) {
+Given('user generates data for auth flow', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
   //await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })

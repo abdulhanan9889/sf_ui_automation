@@ -31,7 +31,7 @@ let page;
 let ss;
 let recorder;
 
-Given('user generates data for authenticated flows', async function (datatable) {
+Given('user generates data for authenticated experience flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
