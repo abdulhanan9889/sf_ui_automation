@@ -141,7 +141,7 @@ AfterStep(async function () {
     await this.attach(ss, 'image/png')
 })
 
-After(async function () {
+After("@episodePage",async function () {
     await page.close()
 })
 

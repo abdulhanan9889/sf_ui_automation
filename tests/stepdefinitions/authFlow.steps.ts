@@ -56,14 +56,13 @@ Then('user is able to play the video', async function () {
 //   // ss = await page.screenshot({ fullPage: true })
 //   // await this.attach(ss, 'image/png')
 // });
-
 AfterStep(async function () {
   await waitTillHTMLRendered(page);
   ss = await page.screenshot({ fullPage: true })
   await this.attach(ss, 'image/png')
 })
 
-After(async function () {
+After("@authFlow",async function () {
   await page.close()
 });
 

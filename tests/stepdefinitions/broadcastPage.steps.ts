@@ -98,7 +98,7 @@ When(
 );
 
 When(
-  "the user click cancel and logout button after filling following details",
+  "the user click cancel and logout button after filling the following details",
   { timeout: 90000 },
   async function (dataTable) {
     await fillInSignUpForm(page, dataTable);
@@ -287,7 +287,7 @@ AfterStep(async function () {
   await this.attach(ss, 'image/png')
 })
 
-After(async function () {
+After("@broadcastPage",async function () {
   await page.close()
 })
 

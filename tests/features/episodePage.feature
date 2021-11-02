@@ -11,7 +11,7 @@ Feature: Episode Page
      #              | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
      #              | 2              | 5                         | 1                       | 4                     |
 
-
+        @episodePage
         Scenario Outline: Verify episode details are present in the episode details modal
             Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
@@ -24,7 +24,7 @@ Feature: Episode Page
                   | episodeNumber | seriesTitle              | episodeTitle                                              | speakerOneDetails                                   | speakerTwoDetails                                    |
                   | "EPISODE 1"   | "LEADING THROUGH CHANGE" | "How a Coffee Shop Continues Serving Customers from Home" | "Ben Wright & Co-Founders, Bitty and Beau's Coffee" | "Bill Patterson & EVP, CRM Applications, Salesforce" |
 
- 
+        @episodePage
         Scenario Outline: Verify user can interact with the video player controls
             Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
@@ -33,7 +33,7 @@ Feature: Episode Page
              Then user can maximize and minimize the video player
              Then user can mute and unmute the video
 
-
+        @episodePage
         Scenario Outline: Verify user can play the authenticated episode
             Given a guest user loads salesforce plus platform
              When a guest user access authorized content and logs in through trailblazer id
@@ -42,7 +42,7 @@ Feature: Episode Page
                   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
              Then an authenticated user can play the authorized episode
          
-
+        @episodePage
         Scenario Outline: Verify user can play two back to back authenticated episodes
             Given a guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
@@ -53,7 +53,7 @@ Feature: Episode Page
              Then authenticated user clicks on second episode and can play the authorized episode
         
 
-       
+        @episodePage
         Scenario Outline: Verify already signed up user can play authenticated content
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id: <email>
@@ -62,7 +62,7 @@ Feature: Episode Page
                   | email                                    |
                   | newdummyuser31isavailable@mailinator.com |
 
-
+        @episodePage
         Scenario Outline: Verify user can interact with the video player controls of authenticated episode
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
@@ -74,8 +74,7 @@ Feature: Episode Page
              Then user can maximize and minimize the video player
              Then authenticated user clicks on second episode and can play the authorized episode
         
-
-
+        @episodePage
         Scenario Outline: user verifies the authenticated content details
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id
@@ -91,8 +90,8 @@ Feature: Episode Page
         Examples:
                   | episodeNumber | seriesTitle | episodeTitle                                                | speakerOneDetails                                    | speakerTwoDetails                                    |
                   | "EPISODE 2"   | "SALES"     | "Modernize Selling with the Roadmap for Today's Sales Team" | "MaryAnn Patel & VP, Product Management, Salesforce" | "Kylie Fuentes & VP, Product Management, Salesforce" |
-
-
+ 
+        @episodePage
         Scenario Outline: guest user logs out by clicking cancel and logout button
             Given guest user loads salesforce plus platform
              When guest user access authorized content and logs in through trailblazer id

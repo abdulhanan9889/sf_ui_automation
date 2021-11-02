@@ -4,7 +4,8 @@ Feature: Authenticated Flow
         #     Given user generates data for auth flow
         #           | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
         #           | 2              | 5                         | 0                      | 7              | 3                    | 22           |
-       
+        
+        @authFlow
         Scenario Outline: authenticated user plays the selected episode
             Given user is on salesforce plus
              When user tries to login with a dummy email

@@ -9,13 +9,13 @@ Feature: Unauthenticated Flow
         #           | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
         #           | 2              | 5                         | 1                       | 4                     |
 
-
+        @unAuthFlow
         Scenario Outline: unthenticated user plays the selected episode
             Given a user is on the salesforce plus platform
              When user navigates to the episodes page and clicks on a particular episode
              Then user is able to play the episode now
         
-       
+        @unAuthFlow
         Scenario Outline: unthenticated user plays two back to back episodes
             Given a user is on the salesforce plus platform
              When user navigates to episodes page and clicks on the first episode
