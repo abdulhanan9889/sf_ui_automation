@@ -92,10 +92,9 @@ let perfEnv = [
   "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
 ].join(' ');
 
-console.log(authFlow)
 let authenticatedContentFlows = `${authFlow} ${broadcastPage} ${loginFlow} ${experiencePage}`
-let unAuthenticatedContentFlows = `-${unAuthFlow} ${episodePage}`
-let bothFlows = `-${homePage} ${episodePage}`
+let unAuthenticatedContentFlows = `${unAuthFlow} ${episodePage}`
+let bothFlows = `${homePage} ${episodePage}`
 let allFlows = `${authFlow} ${broadcastPage} ${episodePage} ${experiencePage} ${homePage} ${loginFlow} ${unAuthFlow}`
 let expReport = [
   "--format json:tests/reports/experiencePage.json"
