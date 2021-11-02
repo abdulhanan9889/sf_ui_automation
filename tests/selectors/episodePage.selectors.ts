@@ -2,7 +2,7 @@ export async function forwardButton(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
             ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main >salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
             ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
             ?.shadowRoot?.querySelector("div > div > div > div.seek-container > button")
     })

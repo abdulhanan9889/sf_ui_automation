@@ -5,7 +5,7 @@ export async function getCancelAndLogoutButton(page) {
     return document
       ?.querySelector("body > div.section.target.parbase > salesforceplus-app")
       ?.shadowRoot?.querySelector("div > salesforceplus-router")
-      ?.shadowRoot?.querySelector("div > salesforceplus-view")
+      ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
       ?.shadowRoot?.querySelector("bxp-login-modal")
       ?.shadowRoot?.querySelector("div > div > div > div.login__form-ctas > p");
   });
@@ -41,7 +41,7 @@ export async function getSpeakerFourName(page) {
     return document
       ?.querySelector("body > div.section.target.parbase > salesforceplus-app")
       ?.shadowRoot?.querySelector("div > salesforceplus-router")
-      ?.shadowRoot?.querySelector("div > salesforceplus-view")
+      ?.shadowRoot?.querySelector("div >  main > salesforceplus-view")
       ?.shadowRoot?.querySelector(
         "div > div.episode-info > div.details-container > bxp-episode-details"
       )

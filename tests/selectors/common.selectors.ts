@@ -14,7 +14,7 @@ export async function getWatchNowButton(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
             ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
             ?.shadowRoot?.querySelector("div > div > bxp-hero")
             ?.shadowRoot?.querySelector("div > div.grid > div > div > div > div.hero--ctas > div:nth-child(1) > bxp-text-button")
             ?.shadowRoot?.querySelector("a");
@@ -25,7 +25,7 @@ export async function getLoginWithTrailblazzerIDButton(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
             ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
             ?.shadowRoot?.querySelector("bxp-login-modal")
             ?.shadowRoot?.querySelector("div > div > div > div.login--prompt > div > div > a");
     });
