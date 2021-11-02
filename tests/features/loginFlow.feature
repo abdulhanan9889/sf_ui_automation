@@ -1,9 +1,9 @@
 Feature: Login flow
         
-        Scenario: user generates data for authenticated flows
-            Given user generates data for authenticated login flows
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
+     #    Scenario: user generates data for authenticated flows
+     #        Given user generates data for authenticated login flows
+     #              | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
+     #              | 2              | 5                         | 0                      | 7              | 3                    | 22           |
 
 
         Scenario Outline: user can login through clicking authorized episode button

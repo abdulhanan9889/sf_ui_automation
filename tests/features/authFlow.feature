@@ -1,9 +1,9 @@
 Feature: Authenticated Flow
             
-        Scenario Outline: user generates data for authenticated flows
-            Given user generates data for auth flow
-                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-                  | 2              | 5                         | 0                      | 7              | 3                    | 22           |
+        # Scenario Outline: user generates data for authenticated flows
+        #     Given user generates data for auth flow
+        #           | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
+        #           | 2              | 5                         | 0                      | 7              | 3                    | 22           |
        
         Scenario Outline: authenticated user plays the selected episode
             Given user is on salesforce plus

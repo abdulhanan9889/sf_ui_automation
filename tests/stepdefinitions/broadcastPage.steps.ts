@@ -1,7 +1,8 @@
-import { Given, When, After, Then,AfterAll } from "@cucumber/cucumber";
+import { Given, When, After, Then,AfterAll, AfterStep } from "@cucumber/cucumber";
 import { loadBrowser } from "../utilities/loadBrowser";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 var { setDefaultTimeout } = require("@cucumber/cucumber");
+import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 setDefaultTimeout(60000);
 
 import {
@@ -49,6 +50,8 @@ import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { maximizeVideoPlayer, minimizeVideoPlayer } from "../tasks/episodePage.tasks";
 let page;
+let ss
+let recorder
 
 
 Given('user generates data for broadcast page', async function (datatable) {
@@ -58,6 +61,8 @@ Given('user generates data for broadcast page', async function (datatable) {
 
 Given("the user is on the salesforce plus webpage", async function () {
   page = await loadBrowser();
+  // recorder = new PuppeteerScreenRecorder(page);
+    // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
   await waitTillHTMLRendered(page);
   await acceptCookies(page);
@@ -79,6 +84,7 @@ When(
 Then("user plays a video", async function () {
   await playEpisode(page);
   await verifyProgressBarValues(page);
+  // await recorder.stop()
 });
 
 var email;
@@ -101,6 +107,7 @@ When(
 
 Then("user is logged out", async function () {
   await isUserLoggedOut(page);
+  // await recorder.stop()
 });
 
 Given(
@@ -211,6 +218,7 @@ Then(
   "guest user is able to verify the speaker ten name and card title: {string}",
   async function (speakerTenDetails) {
     await verifySpeakerTenDetails(page, speakerTenDetails);
+    // await recorder.stop()
   }
 );
 
@@ -219,6 +227,8 @@ Given(
   { timeout: 80000 },
   async function () {
     page = await loadBrowser();
+      // recorder = new PuppeteerScreenRecorder(page);
+    // await recorder.start('tests/reports/videos/broadCastPage/videoPlayerControls.mp4');
     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
     await waitTillHTMLRendered(page);
     await acceptCookies(page);
@@ -268,8 +278,14 @@ Then("authenticated user click the maximize video button", async function () {
 
 Then("authenticated user click the minimize video button", async function () {
   await minimizeVideoPlayer(page);
+  // await recorder.stop()
 });
 
+AfterStep(async function () {
+  await waitTillHTMLRendered(page);
+  ss = await page.screenshot({ fullPage: true })
+  await this.attach(ss, 'image/png')
+})
 
 After(async function () {
   await page.close()

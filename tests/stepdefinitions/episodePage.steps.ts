@@ -1,4 +1,4 @@
-import { Given, When, After, Then, AfterAll } from '@cucumber/cucumber'
+import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
 import { fillSignUpForms, loginThroughSignedUpUser, loginThroughTrailblazerId, logoutFromSFPlatform, maximizeVideoPlayer, minimizeVideoPlayer, openAuthorizedEpisode } from '../tasks/episodePage.tasks'
 import { verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifySpeakerOneDetails, verifySpeakerTwoDetails, verifySpeakerThreeDetails, verifyForwardedVideo, verifyReversedVideo, verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer } from '../assertions/episodePage.assertions'
@@ -9,6 +9,7 @@ import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
 import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
+import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 
 import { openEpisode, playEpisode } from '../tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../actions/broadcastPage.actions'
@@ -16,6 +17,8 @@ import { muteVideoButton, unmuteVideoButton } from '../actions/broadcastPage.act
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(60000)
 let page
+let ss 
+let recorder
 
 Given('user generates data for authenticated epsiode flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
@@ -29,6 +32,8 @@ Given('user generates data for unauthenticated epsiode flows', async function (d
 
 Given('a guest user loads salesforce plus platform', async function () {
     page = await loadBrowser()
+     // recorder = new PuppeteerScreenRecorder(page);
+    // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
     await waitTillHTMLRendered(page)
     await acceptCookies(page)
@@ -56,6 +61,7 @@ Then('user is able to verify speaker one name and card title: {string}', async f
 
 Then('user is able to verify speaker two name and card title: {string}', async function (speakerTwoDetails) {
     await verifySpeakerTwoDetails(page, speakerTwoDetails)
+    // await recorder.stop()
 });
 
 Then('user is able to verify speaker three name and card title: {string}', async function (speakerThreeDetails) {
@@ -86,6 +92,7 @@ Then('user can mute and unmute the video', async function () {
     await page.waitForTimeout(3000)
     await unmuteVideoButton(page)
     // await verifyUnmutedVideo(page)
+    // await recorder.stop()
 })
 
 When('a guest user access authorized content and logs in through trailblazer id', async function () {
@@ -101,6 +108,7 @@ When('a guest user fills out the sign up forms', async function (datatable) {
 Then('authenticated user can play the authorized episode', async function () {
     await playEpisode(page)
     await verifyProgressBarValues(page)
+    // recorder.stop()
 })
 
 Then('authenticated user can play the first authorized episode', async function () {
@@ -112,6 +120,7 @@ Then('authenticated user clicks on second episode and can play the authorized ep
     await clickSecondEpisodeButton(page)
     await playEpisode(page)
     await verifyProgressBarValues(page)
+    // await recorder.stop()
 })
 
 When('a guest user access authorized content and logs in through trailblazer id: {word}', async function (emailId) {
@@ -126,7 +135,11 @@ When('a guest user fills out the sign up forms and clicks cancel and logout butt
 Then('the user is logged out', async function () {
     await isUserLoggedOut(page);
 })
-
+AfterStep(async function () {
+    await waitTillHTMLRendered(page);
+    ss = await page.screenshot({ fullPage: true })
+    await this.attach(ss, 'image/png')
+})
 
 After(async function () {
     await page.close()

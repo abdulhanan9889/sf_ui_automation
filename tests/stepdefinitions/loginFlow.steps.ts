@@ -1,4 +1,4 @@
-import { Given, When, Then, After, AfterAll } from '@cucumber/cucumber'
+import { Given, When, Then, After, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
@@ -12,9 +12,11 @@ import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertio
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 var { setDefaultTimeout } = require('@cucumber/cucumber');
+import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 setDefaultTimeout(60000)
 let page
-
+let ss
+let recorder
 
 Given('user generates data for authenticated login flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
@@ -23,6 +25,8 @@ Given('user generates data for authenticated login flows', async function (datat
 
 Given('the user loads the salesforce plus platform', async function () {
     page = await loadBrowser()
+     // recorder = new PuppeteerScreenRecorder(page);
+    // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 });
     await waitTillHTMLRendered(page);
     await acceptCookies(page);
@@ -37,6 +41,7 @@ When('the user access authorized content and logs in through trailblazer id', { 
 When('the user fills out the sign up forms', { timeout: 90 * 1000 }, async function (datatable) {
     const dataFields = await datatable.hashes()[0];
     await fillSignUpForms(page, dataFields)
+    // await recorder.stop()
 })
 
 Then('the user is logged in', async function () {
@@ -54,6 +59,7 @@ When(
 When(
     "the user fills out the sign up forms and clicks cancel and logout button", { timeout: 90 * 1000 }, async function (dataTable) {
         await fillInSignUpForm(page, dataTable);
+        // await recorder.stop()
     }
 );
 
@@ -68,6 +74,7 @@ When("user tries to login with an email address", { timeout: 80 * 1000 }, async 
 
 Then("user signs up for the page with the following details", { timeout: 90 * 1000 }, async function (dataTable) {
     await fillTheSignUpForm(page, dataTable);
+    // await recorder.stop()
 });
 
 When("user tries to login with a dummy email address", { timeout: 90 * 1000 }, async function () {
@@ -77,8 +84,13 @@ When("user tries to login with a dummy email address", { timeout: 90 * 1000 }, a
 
 When("user signs up with following details on salesforce platform", { timeout: 90 * 1000 }, async function (datatable) {
     await fillSignUpForm(page, datatable);
+    //  await recorder.stop()
 });
-
+AfterStep(async function () {
+    await waitTillHTMLRendered(page);
+    ss = await page.screenshot({ fullPage: true })
+    await this.attach(ss, 'image/png')
+})
 After(async function () {
     await page.close()
 })

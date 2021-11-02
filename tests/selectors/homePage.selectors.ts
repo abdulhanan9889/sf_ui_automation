@@ -83,21 +83,21 @@ export async function getWatchTrailorButton(page) {
 export async function getFeatureEpisodeTitle(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > span");
+        ?.shadowRoot?.querySelector("div > salesforceplus-router")
+        ?.shadowRoot?.querySelector("div > salesforceplus-view")
+        ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
+        ?.shadowRoot?.querySelector("div > span")
     });
 }
 
 export async function getExperienceSectionButton(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div:nth-child(4) > bxp-carousel")
-            ?.shadowRoot?.querySelector("div > ul > li:nth-child(1) > div > bxp-event-card")
-            ?.shadowRoot?.querySelector("div > div > div.card-buttons.--bottom--right > bxp-icon-button")
-            ?.shadowRoot?.querySelector("a");
+        ?.shadowRoot?.querySelector("div > salesforceplus-router")
+        ?.shadowRoot?.querySelector("div > salesforceplus-view")
+        ?.shadowRoot?.querySelector("div > div:nth-child(4) > bxp-carousel")
+        ?.shadowRoot?.querySelector("div > ul > li:nth-child(2) > div > bxp-event-card")
+        ?.shadowRoot?.querySelector("div > div > div.card-buttons.--bottom--right > bxp-icon-button")
+        ?.shadowRoot?.querySelector("a")
     });
 }
