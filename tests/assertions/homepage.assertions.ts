@@ -1,4 +1,5 @@
-import { getExploreMoreButton, getWatchNowButton } from "../selectors/experiencePage.selectors";
+import { getWatchNowButton } from "../selectors/common.selectors";
+import { getExploreMoreButton } from "../selectors/experiencePage.selectors";
 import { getExploreSFButton, getFeatureEpisodeButton, getFeatureEpisodeTitle, getTrailorTitle, getWatchTrailorButton } from "../selectors/homePage.selectors";
 
 var assert = require('assert')

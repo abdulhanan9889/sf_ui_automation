@@ -33,13 +33,16 @@
     "test_parallel_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p perfEnv",
     "testHome_ExperiencePage": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p uatEnv"
   },
-  "directories": {},
+  "directories": {
+    "test": "tests"
+  },
   "description": "This project consists of the test-generation scripts along with the UI automation scripts for the different environments(QA, UAT, etc)\r ## Dependencies and setup\r *Node.js* needs to be installed globally on your machine. You can find the latest version for your system [here](https://nodejs.org/en/download/)",
   "repository": {
     "type": "git",
     "url": "https://git.soma.salesforce.com/fraza/SF-UI-Automation-Tasks.git"
   },
   "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0",
     "puppeteer-screen-recorder": "^2.0.2"
   }
 }

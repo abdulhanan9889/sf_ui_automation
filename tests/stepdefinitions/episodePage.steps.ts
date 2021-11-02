@@ -6,7 +6,7 @@ import { acceptCookies, clickSecondEpisodeButton } from '../actions/unAuthFlow.a
 import { verifyProgressBarValues } from '../assertions/unAuthFlow.assertions'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import { isUserLoggedOut } from '../assertions/broadcastPage.assertions'
-import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
@@ -15,9 +15,9 @@ import { openEpisode, playEpisode } from '../tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../actions/broadcastPage.actions'
 
 var { setDefaultTimeout } = require('@cucumber/cucumber');
-setDefaultTimeout(60000)
+setDefaultTimeout(80000)
 let page
-let ss 
+let ss
 let recorder
 
 Given('user generates data for authenticated epsiode flows', async function (datatable) {
@@ -32,11 +32,12 @@ Given('user generates data for unauthenticated epsiode flows', async function (d
 
 Given('a guest user loads salesforce plus platform', async function () {
     page = await loadBrowser()
-     // recorder = new PuppeteerScreenRecorder(page);
+    // recorder = new PuppeteerScreenRecorder(page);
     // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
     await waitTillHTMLRendered(page)
     await acceptCookies(page)
+    await waitTillHTMLRendered(page)
 });
 
 When('user navigates to episodes page and clicks on a particular episode', async function () {
@@ -91,7 +92,7 @@ Then('user can mute and unmute the video', async function () {
     await verifyMutedVideo(page)
     await page.waitForTimeout(3000)
     await unmuteVideoButton(page)
-    // await verifyUnmutedVideo(page)
+    await verifyUnmutedVideo(page)
     // await recorder.stop()
 })
 
@@ -105,7 +106,7 @@ When('a guest user fills out the sign up forms', async function (datatable) {
     await fillSignUpForms(page, dataFields)
 })
 
-Then('authenticated user can play the authorized episode', async function () {
+Then('an authenticated user can play the authorized episode', async function () {
     await playEpisode(page)
     await verifyProgressBarValues(page)
     // recorder.stop()
@@ -141,7 +142,7 @@ AfterStep(async function () {
     await this.attach(ss, 'image/png')
 })
 
-After("@episodePage",async function () {
+After("@episodePage", async function () {
     await page.close()
 })
 

@@ -118,8 +118,6 @@ export async function verifyMutedVideo(page) {
 export async function verifyUnmutedVideo(page) {
     var unmuteButtonViewboxValue = await getMuteButtonViewboxValue(page)
     await Assertion.softAssert(unmuteButtonViewboxValue, '0 0 24 25', 'mute button assertion failed', [])
-    await Assertion.softAssertAll()
-
 }
 
 export async function verifyMaximizedPlayer(page) {

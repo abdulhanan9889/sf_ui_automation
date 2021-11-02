@@ -40,6 +40,7 @@ var email;
 export async function openSignInForm(page) {
   await clickDreamForceTab(page);
   await waitTillHTMLRendered(page);
+  await page.waitForTimeout(15000)
   await clickWatchNowButton(page);
   await waitTillHTMLRendered(page);
 }

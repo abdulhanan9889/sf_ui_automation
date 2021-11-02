@@ -13,6 +13,7 @@ export async function openAuthorizedEpisode(page) {
     await waitTillHTMLRendered(page)
     await clickAuthorizedSeriesButton(page)
     await waitTillHTMLRendered(page)
+    await page.waitForTimeout(10000)
     await clickEpisodeButton(page)
     await waitTillHTMLRendered(page)
 }
@@ -22,6 +23,7 @@ export async function loginThroughTrailblazerId(page) {
     await page.waitForNavigation({ waitUntil: 'networkidle2' })
     await waitTillHTMLRendered(page)
     await acceptCookies(page)
+    await waitTillHTMLRendered(page)
     await clickEmailButton(page)
     await waitTillHTMLRendered(page)
     email = await generateRandomEmail()
@@ -31,8 +33,10 @@ export async function loginThroughTrailblazerId(page) {
 
     //user enters OTP from mailinator
     let context = await openSalesForceEmail(email);
+    await page.waitForTimeout(2000)
     await typeEmailTokenInTrailBlazzer(page, context);
     await clickConitnueButton(page);
+    await waitTillHTMLRendered(page)
 }
 
 export async function fillSignUpForms(page, dataFields) {
@@ -53,7 +57,7 @@ export async function fillSignUpForms(page, dataFields) {
     await selectStateName(page, dataFields.country, dataFields.state);
     await checkPrivacyStatement(page);
     await clickDoneButton(page);
-    await page.waitFor(25000);
+    await page.waitFor(28000);
     await typeWorkEmail(page, email);
     await typeWorkPhone(page, dataFields.phoneNumber);
     await selectCompanySize(page, dataFields.companySize);
@@ -70,6 +74,7 @@ export async function loginThroughSignedUpUser(page, emailId) {
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
     await waitTillHTMLRendered(page)
     await acceptCookies(page)
+    await waitTillHTMLRendered(page)
     await clickEmailButton(page)
     await waitTillHTMLRendered(page)
     await typeEmailAddressInTrailBlazer(page, emailId)
@@ -78,11 +83,12 @@ export async function loginThroughSignedUpUser(page, emailId) {
 
     //user enters OTP from mailinator
     let context = await openSalesForceEmail(emailId);
+    await page.waitForTimeout(2000)
     await typeEmailTokenInTrailBlazzer(page, context);
     await clickConitnueButton(page);
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
     await clickSkipForNowButton(page)
-    await page.waitForTimeout(10000)
+    await page.waitForTimeout(15000)
 }
 
 export async function logoutFromSFPlatform(page, dataFields) {
@@ -103,7 +109,7 @@ export async function logoutFromSFPlatform(page, dataFields) {
     await selectStateName(page, dataFields.country, dataFields.state);
     await checkPrivacyStatement(page);
     await clickDoneButton(page);
-    await page.waitFor(25000);
+    await page.waitFor(28000);
     await typeWorkEmail(page, email);
     await typeWorkPhone(page, dataFields.phoneNumber);
     await selectCompanySize(page, dataFields.companySize);
