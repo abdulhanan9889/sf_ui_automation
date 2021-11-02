@@ -1,108 +1,91 @@
 
 let unAuthFlow = [
-  'tests/features/unAuthFlow.feature',
-  '--require tests/stepdefinitions/unAuthFlow.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/unAuthFlow.json'
-].join(' ');
+  `tests/features/unAuthFlow.feature
+  --require tests/stepdefinitions/unAuthFlow.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/unAuthFlow.json`
+]
 
 let authFlow = [
-  'tests/features/authFlow.feature',
-  '--require tests/stepdefinitions/authFlow.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/authFlow.json'
-].join(' ');
+  `tests/features/authFlow.feature
+  --require tests/stepdefinitions/authFlow.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/authFlow.json`
+]
 
 let broadcastPage = [
-  'tests/features/broadcastPage.feature',
-  '--require tests/stepdefinitions/broadcastPage.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/broadcastPage.json'
-].join(' ');
+  `tests/features/broadcastPage.feature
+  --require tests/stepdefinitions/broadcastPage.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/broadcastPage.json`
+]
 
 let episodePage = [
-  'tests/features/episodePage.feature',
-  '--require tests/stepdefinitions/episodePage.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/episodePage.json'
-].join(' ');
+  `tests/features/episodePage.feature
+  --require tests/stepdefinitions/episodePage.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/episodePage.json`
+]
 
 let loginFlow = [
-  'tests/features/loginFlow.feature',
-  '--require tests/stepdefinitions/loginFlow.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/loginFlow.json'
-].join(' ');
+  `tests/features/loginFlow.feature
+  --require tests/stepdefinitions/loginFlow.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/loginFlow.json`
+]
 
 let experiencePage = [
-  'tests/features/experiencePage.feature',
-  '--require tests/stepdefinitions/experiencePage.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/experiencePage.json'
-].join(' ');
+  `tests/features/experiencePage.feature
+  --require tests/stepdefinitions/experiencePage.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/experiencePage.json`
+]
 
 let homePage = [
-  'tests/features/homePage.feature',
-  '--require tests/stepdefinitions/homePage.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--format json:tests/reports/jsonFiles/homePage.json'
-].join(' ');
-
-let authDataGeneration = [
-  'tests/features/testDataGeneration.feature',
-  '--require tests/stepdefinitions/testDataGeneration.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--tags=@authenticatedData'
-].join(' ');
-
-let unauthDataGeneration = [
-  'tests/features/testDataGeneration.feature',
-  '--require tests/stepdefinitions/testDataGeneration.steps.ts',
-  '--require-module ts-node/register',
-  '--format progress-bar',
-  '--publish-quiet',
-  '--tags=@unauthenticatedData'
-].join(' ');
+  `tests/features/homePage.feature
+  --require tests/stepdefinitions/homePage.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet
+  --format json:tests/reports/jsonFiles/homePage.json`
+]
 
 let qaEnv = [
-  "--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'"
-].join(' ');
+  `--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}`
+]
 
 let uatEnv = [
-  "--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}'"
-].join(' ');
+  `--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}`
+]
 
 let perfEnv = [
-  "--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}'"
-].join(' ');
+  `--world-parameters '{\"URL\":\"https://www-perf.salesforce.com/plus\"}`
+]
 
 let authenticatedContentFlows = `${authFlow} ${broadcastPage} ${loginFlow} ${experiencePage}`
 let unAuthenticatedContentFlows = `${unAuthFlow} ${episodePage}`
 let bothFlows = `${homePage} ${episodePage}`
 let allFlows = `${authFlow} ${broadcastPage} ${episodePage} ${experiencePage} ${homePage} ${loginFlow} ${unAuthFlow}`
+
 let expReport = [
-  "--format json:tests/reports/experiencePage.json"
-].join(' ');
+  `--format json:tests/reports/experiencePage.json`
+]
 
 let homePageReport = [
-  "--format json:tests/reports/homePage.json"
-].join(' ');
+  `--format json:tests/reports/homePage.json`
+]
 
 module.exports = {
   'unAuthFlow': unAuthFlow,
@@ -112,8 +95,6 @@ module.exports = {
   'loginFlow': loginFlow,
   'experiencePage': experiencePage,
   'homePage': homePage,
-  'authDataGeneration': authDataGeneration,
-  'unauthDataGeneration': unauthDataGeneration,
   'qaEnv': qaEnv,
   'uatEnv': uatEnv,
   'perfEnv': perfEnv,
