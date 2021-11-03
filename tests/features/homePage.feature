@@ -17,7 +17,7 @@ Feature: Homepage
              When user clicks on Explore Salesforce Button
              Then user clicks on the Dreamforce tab
         
-        @homePage
+        @homePage @current
         Scenario: User Navigates to Trailor Page of a series from the Home page
             Given user navigates to the salesforcePlus Homepage
              When user scrolls down Clicks on the play icon for a Series

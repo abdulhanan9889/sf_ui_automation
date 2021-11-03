@@ -35,29 +35,31 @@ export async function clickOnDreamForce(page) {
 }
 
 export async function clickOnPlayIcon(page) {
-    let playIcon = await getPlayIcon(page);
-    if (!playIcon) { setTimeout(clickOnPlayIcon, 100) }
-    else {
-        await playIcon.asElement().click();
-    }
-
+    await page.waitForSelector(getPlayIcon)
+    let playIcon = await page.$(getPlayIcon);
+    await playIcon.click()
 }
 
 export async function clickOnArrowIcon(page) {
-    let arrowIcon = await getArrowIcon(page);
-    if (!arrowIcon) { setTimeout(clickOnArrowIcon, 100) }
-    else {
-        await arrowIcon.asElement().click();
-    }
+    await page.waitForSelector(getArrowIcon)
+    let arrowIcon = await page.$(getArrowIcon);
+    await arrowIcon.click()
+    // if (!arrowIcon) { setTimeout(clickOnArrowIcon, 100) }
+    // else {
+    //     await arrowIcon.asElement().click();
+    // }
 
 }
 
 export async function clickOnFeaturedEpisode(page) {
-    let featureEpisodeButton = await getFeatureEpisodeButton(page);
-    if (!featureEpisodeButton) { setTimeout(clickOnFeaturedEpisode, 100) }
-    else {
-        await featureEpisodeButton.asElement().click();
-    }
+    await page.waitForSelector(getFeatureEpisodeButton)
+    let featureEpisodeButton = await page.$(getFeatureEpisodeButton);
+    await featureEpisodeButton.click()
+   // let featureEpisodeButton = await getFeatureEpisodeButton;
+    // if (!featureEpisodeButton) { setTimeout(clickOnFeaturedEpisode, 100) }
+    // else {
+    //     await featureEpisodeButton.asElement().click();
+    // }
 
 }
 

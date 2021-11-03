@@ -57,16 +57,16 @@ Given("user navigates to the salesforcePlus Homepage", async function () {
   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });  
   await waitTillHTMLRendered(page);
   await acceptCookies(page);
-  await waitTillHTMLRendered(page);
+  //await waitTillHTMLRendered(page);
 });
 When("user scrolls down Clicks on the play icon for a Series", async function () {
-  await waitTillHTMLRendered(page);
+  //await waitTillHTMLRendered(page);
   await clickOnPlayIcon(page);
 });
 Then("user should be navigated to Trailor page of the series", async function () { 
-  await waitTillHTMLRendered(page);
+  //await waitTillHTMLRendered(page);
   await checkTrailorTitle(page);
-  await recorder.stop()
+  //await recorder.stop()
   
 }
 );

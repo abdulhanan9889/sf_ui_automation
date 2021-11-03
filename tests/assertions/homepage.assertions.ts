@@ -22,9 +22,11 @@ export async function checkExploreMoreIsPresent(page) {
     assert.equal(exploreMoreButtonText, 'Explore More')
 }
 export async function checkTrailorTitle(page) {
-    let trailorTitle = await getTrailorTitle(page)
+    await page.waitForSelector(getTrailorTitle)
+    const trailorTitle = await page.$(getTrailorTitle)
+    // let trailorTitle = await getTrailorTitle(page)
     let trailorTitleText = await trailorTitle.evaluate(text => text.innerHTML)
-    assert.equal(trailorTitleText, 'INFLECTION POINT + Trailer')
+    await assert.equal(trailorTitleText, 'BXP_LEARN_SERIES-1 + Trailer')
 }
 
 export async function checkForWatchTrailorButton(page) {
@@ -36,7 +38,7 @@ export async function checkForWatchTrailorButton(page) {
 export async function checkFeaturedEpisodeTitle(page) {
     let featureEpisodeTitle = await getFeatureEpisodeTitle(page)
     let featureEpisodeTitleText = await featureEpisodeTitle.evaluate(text => text.innerHTML)
-    assert.equal(featureEpisodeTitleText, 'CONNECTIONS + EPISODE 3')
+    assert.equal(featureEpisodeTitleText, 'ORIGINAL SERIES3 + Trailer')
 }
 
 
