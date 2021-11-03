@@ -1,12 +1,20 @@
 const puppeteer = require('puppeteer');
+import { After } from "@cucumber/cucumber";
 
+
+let browser
 export const loadBrowser = async () => {
-  const browser = await puppeteer.launch({
+  browser = await puppeteer.launch({
     headless: false,
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--start-maximized'],
     defaultViewport: null,
   })
-  const page = (await browser.pages())[0]
+  const context = await browser.createIncognitoBrowserContext()
+  const page = await context.newPage()
   return page
 }
+
+After(async function () {
+  await browser.close()
+});
 
