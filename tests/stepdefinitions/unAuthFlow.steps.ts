@@ -26,7 +26,7 @@ Given('a user is on the salesforce plus platform', async function () {
     // recorder = new PuppeteerScreenRecorder(page);
     // await recorder.start('tests/reports/videos/unAuthFlow/unAuthFlowVideo.mp4');
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
-    await waitTillHTMLRendered(page)
+    // await waitTillHTMLRendered(page)
     await acceptCookies(page)
 });
 
@@ -60,12 +60,12 @@ Then('user is able to play the second episode', async function () {
 })
 
 AfterStep(async function () {
-    await waitTillHTMLRendered(page);
+    // await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')
-  })
+})
 
-After("@unAuthFlow",async function () {
+After("@unAuthFlow", async function () {
     await page.close()
 })
 

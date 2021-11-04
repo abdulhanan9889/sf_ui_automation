@@ -34,6 +34,8 @@ import {
   checkPrivacyStatement,
 } from "../actions/authFlow.actions";
 import { acceptCookies } from "../actions/unAuthFlow.actions";
+import { verifySignupRecordFromDatabase } from "../assertions/authFlow.assertions";
+import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 
 var email;
@@ -91,4 +93,10 @@ export async function fillSignUpForm(page, datatable) {
   await selectGiveInformationForMarketingPurposeCheckbox(page);
   await clickCompleteMyMembership(page);
   await page.waitForTimeout(3000);
+}
+
+export async function verifySignupFields(page, dataTable) {
+  const signupParameters = await dataTable.hashes()[0]
+  let signupRecord = await SFDataLogic.queryUser(email)
+  await verifySignupRecordFromDatabase(signupParameters, signupRecord)
 }

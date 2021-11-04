@@ -1,56 +1,16 @@
+const puppeteer = require("puppeteer");
+const { QueryHandler } = require("query-selector-shadow-dom/plugins/puppeteer");
+puppeteer.registerCustomQueryHandler("shadow", QueryHandler);
 export let ACCEPT_COOKIES_BUTTON = "button#onetrust-accept-btn-handler";
-
-export async function getDreamForceTab(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > salesforceplus-menu")
-            ?.shadowRoot?.querySelector("div > nav > salesforceplus-link:nth-child(3)")
-            ?.shadowRoot?.querySelector("a");
-    });
-}
-
-export async function getWatchNowButton(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div > bxp-hero")
-            ?.shadowRoot?.querySelector("div > div.grid > div > div > div > div.hero--ctas > div:nth-child(1) > bxp-text-button")
-            ?.shadowRoot?.querySelector("a");
-    });
-}
-
-export async function getLoginWithTrailblazzerIDButton(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("bxp-login-modal")
-            ?.shadowRoot?.querySelector("div > div > div > div.login--prompt > div > div > a");
-    });
-}
-
-export async function getEmailButton(page) {
-    return await page.$(`[id="loginPage:j_id61"] [aria-label="Email"]`);
-}
-
-export async function getEmailInputField(page) {
-    return await page.$(`input[id="loginPage:email-card-form:emailTextInput"]`);
-}
-
-export async function getLoginButton(page) {
-    return await page.$(`[id="submit-email"]`);
-}
-
-export async function getTokenInputField(page) {
-    return await page.$(`[id="loginPage:email-card-form:challengeTextInput"]`);
-}
-
-export async function getContinueButton(page) {
-    return await page.$(`[id="verify-challenge-button"]`);
-}
-
+export let getDreamForceTab = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1"]`
+export let getWatchNowButton = `shadow/[href="/experience/Dreamforce_2021"] .link-content`
+export let getLoginWithTrailblazzerIDButton = `shadow/[href="/a/auth"] .link-content`
+export let getEmailButton = `[id="loginPage:j_id61"] [aria-label="Email"]`
+export let getEmailInputField = `input[id="loginPage:email-card-form:emailTextInput"]`
+export let getLoginButton = `[id="submit-email"]`
+export let getTokenInputField = `[id="loginPage:email-card-form:challengeTextInput"]`
+export let getContinueButton = `[id="verify-challenge-button"]`
+// export const getVideoProgressbar = `shadow/div > h5`
 export async function getVideoProgressbar(page) {
     return await page.evaluateHandle(() => {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
@@ -62,125 +22,15 @@ export async function getVideoProgressbar(page) {
     });
 }
 
-export async function getEpisodeNumber(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > span");
-    });
-}
-
-export async function getSeriesTitle(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > span");
-    });
-}
-
-export async function getEpisodeTitle(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > h3");
-    });
-}
-
-export async function getSpeakerOneName(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(1) > div > span.speaker-name");
-    });
-}
-
-export async function getSpeakerOneDesignation(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(1) > div > span.speaker-card-title");
-    });
-}
-
-export async function getSpeakerTwoName(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(2) > div > span.speaker-name");
-    });
-}
-
-export async function getSpeakerTwoDesignation(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(2) > div > span.speaker-card-title");
-    });
-}
-
-export async function getSpeakerThreeName(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(3) > div > span.speaker-name");
-    });
-}
-
-export async function getSpeakerThreeDesignation(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.episode-info > div.details-container > bxp-episode-details")
-            ?.shadowRoot?.querySelector("div > div > ul > li:nth-child(3) > div > span.speaker-card-title");
-    });
-}
-
-export async function getMuteButtonViewboxValue(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
-            ?.shadowRoot?.querySelector("div > div > div > div.volume-container > button > bxp-global-icon")
-            ?.shadowRoot?.querySelector("svg")?.getAttribute("viewBox")
-    });
-}
-
-export async function getMaximizeButtonPathValue(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
-            ?.shadowRoot?.querySelector("div > div > div > div.right-side-controls > button.player-button.fullscreen-button.fullscreen-expand-icon > bxp-global-icon")
-            ?.shadowRoot?.querySelector("svg > path")?.getAttribute("d")?.includes("M23")
-    });
-}
-
-export async function getMinimizedButtonPathValue(page) {
-    return await page.evaluateHandle(() => {
-        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
-            ?.shadowRoot?.querySelector("div > salesforceplus-router")
-            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
-            ?.shadowRoot?.querySelector("div > div > div > div.right-side-controls > button.player-button.fullscreen-button.fullscreen-expand-icon > bxp-global-icon")
-            ?.shadowRoot?.querySelector("svg > path")?.getAttribute("d")?.includes("M13")
-    });
-}
+export const getEpisodeNumber = `shadow/div.episode-details .bxp-global-eyebrow`
+export const getSeriesTitle = `shadow/div.episode-details .bxp-global-eyebrow`
+export const getEpisodeTitle = `shadow/div.episode-details .episode-details--title bxp-global-headline-three`
+export const getSpeakerOneName = `shadow/ul.speakers-container li:nth-child(1) .speaker-name`
+export const getSpeakerOneDesignation = `shadow/ul.speakers-container li:nth-child(1) .speaker-card-title`
+export const getSpeakerTwoName = `shadow/ul.speakers-container li:nth-child(2) .speaker-name`
+export const getSpeakerTwoDesignation = `shadow/ul.speakers-container li:nth-child(2) .speaker-card-title`
+export const getSpeakerThreeName = `shadow/ul.speakers-container li:nth-child(3) .speaker-name`
+export const getSpeakerThreeDesignation = `shadow/ul.speakers-container li:nth-child(3) .speaker-card-title`
+export const getMuteButtonViewboxValue = `shadow/div.volume-container svg`
+export const getMaximizeButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
+export const getMinimizedButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`

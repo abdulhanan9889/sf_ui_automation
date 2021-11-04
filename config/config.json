@@ -1,21 +1,20 @@
 {
-    "qaCred":{
-        "username": "hello",
-        "password": "ssswords",
-        "loginUrl": "google",
-        "instanceUrl": "emumba"
+    "qaCred": {
+        "username": "mah.noorautomation@appexchange.com.test",
+        "password": "PasswordForSF1",
+        "loginUrl": "https://test.salesforce.com/services/Soap/u/41.0",
+        "instanceUrl": "https://appexchange--Test.my.salesforce.com"
     },
-    "uatCred":{
+    "uatCred": {
         "username": "hello",
         "password": "lords",
         "loginUrl": "google",
         "instanceUrl": "emumba"
     },
-    "perfCred":{
+    "perfCred": {
         "username": "hello",
         "password": "swordsss",
         "loginUrl": "google",
         "instanceUrl": "emumba"
     }
-    
 }

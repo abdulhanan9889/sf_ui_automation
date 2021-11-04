@@ -18,13 +18,14 @@ Feature: Episode Page
              Then user is able to verify episode number: <episodeNumber>
              Then user is able to verify series title: <seriesTitle>
              Then user is able to verify episode title: <episodeTitle>
-             Then user is able to verify speaker one name and card title: <speakerOneDetails>
-             Then user is able to verify speaker two name and card title: <speakerTwoDetails>
+     #        Then user is able to verify speaker one name and card title: <speakerOneDetails>
+     #        Then user is able to verify speaker two name and card title: <speakerTwoDetails>
         Examples:
                   | episodeNumber | seriesTitle              | episodeTitle                                              | speakerOneDetails                                   | speakerTwoDetails                                    |
                   | "EPISODE 1"   | "LEADING THROUGH CHANGE" | "How a Coffee Shop Continues Serving Customers from Home" | "Ben Wright & Co-Founders, Bitty and Beau's Coffee" | "Bill Patterson & EVP, CRM Applications, Salesforce" |
 
         @episodePage
+        @current
         Scenario Outline: Verify user can interact with the video player controls
             Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode

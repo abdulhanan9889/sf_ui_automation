@@ -17,21 +17,20 @@ export async function acceptCookies(page) {
 }
 
 export async function clickOnExploreSF(page) {
-    let exploreSFButton = await getExploreSFButton(page);
-    if (!exploreSFButton) { setTimeout(clickOnExploreSF, 100) }
-    else {
-        await exploreSFButton.asElement().click();
-    }
-
+    // let exploreSFButton = await getExploreSFButton(page);
+    // if (!exploreSFButton) { setTimeout(clickOnExploreSF, 100) }
+    // else {
+    //     await exploreSFButton.asElement().click();
+    // }
+    await page.waitForSelector(getExploreSFButton)
+    let exploreSFButton = await page.$(getExploreSFButton);
+    await exploreSFButton.click()
 }
 
 export async function clickOnDreamForce(page) {
-    let dreamForceTab = await getDreamForceTab(page);
-    if (!dreamForceTab) { setTimeout(clickOnDreamForce, 100) }
-    else {
-        await dreamForceTab.asElement().click();
-    }
-
+    await page.waitForSelector(getDreamForceTab)
+    let dreamForceTab = await page.$(getDreamForceTab);
+    await dreamForceTab.click()
 }
 
 export async function clickOnPlayIcon(page) {
@@ -55,7 +54,7 @@ export async function clickOnFeaturedEpisode(page) {
     await page.waitForSelector(getFeatureEpisodeButton)
     let featureEpisodeButton = await page.$(getFeatureEpisodeButton);
     await featureEpisodeButton.click()
-   // let featureEpisodeButton = await getFeatureEpisodeButton;
+    // let featureEpisodeButton = await getFeatureEpisodeButton;
     // if (!featureEpisodeButton) { setTimeout(clickOnFeaturedEpisode, 100) }
     // else {
     //     await featureEpisodeButton.asElement().click();
@@ -64,10 +63,13 @@ export async function clickOnFeaturedEpisode(page) {
 }
 
 export async function clickOnExperienceSectionButton(page) {
-    let experienceSectionButton = await getExperienceSectionButton(page)
-    if (!experienceSectionButton) { setTimeout(clickOnExperienceSectionButton, 100) }
-    else {
-        await experienceSectionButton.asElement().click();
-    }
+    // let experienceSectionButton = await getExperienceSectionButton(page)
+    // if (!experienceSectionButton) { setTimeout(clickOnExperienceSectionButton, 100) }
+    // else {
+    //     await experienceSectionButton.asElement().click();
+    // }
+    await page.waitForSelector(getExperienceSectionButton)
+    let experienceSectionButton = await page.$(getExperienceSectionButton);
+    await experienceSectionButton.click()
 
 }

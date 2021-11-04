@@ -343,6 +343,21 @@ export default class SFDataLogic {
     }
     ev.getSeriesList().push(sr);
   }
+
+  static async queryUser(email: string) {
+    let conn = SFDataLogic.setUpConnection();
+    let q = conn.query(`SELECT Id,CreatedById,Company_Size__c,Country__c,First_Name__c,Work_Number__c,
+    Job_Role__c,State__c,Last_Name__c,Company_Name__c,Job_Title__c,Mobile_Number__c,
+    Work_Email__C FROM bxp_Subscriber__c WHERE Work_Email__c = '${email}'`)
+    //@ts-ignore
+    await q.run(function (err: any, result: any) {
+      if (err) { console.log(err) }
+      else
+        console.log(result)
+      return result
+    })
+  }
+
   static async insertRecord(dataMap: Map_Object, type: string) {
     let conn = SFDataLogic.setUpConnection();
     //console.log(dataMap);
@@ -369,8 +384,8 @@ export default class SFDataLogic {
   }
   static async updateRecord(type: string, id: string, attribute: object) {
     let conn = SFDataLogic.setUpConnection();
-   
-    await conn.sobject(type).record(id).update({ Publish_Status__c: "Publish" }, function (err:any, result:any) {
+
+    await conn.sobject(type).record(id).update({ Publish_Status__c: "Publish" }, function (err: any, result: any) {
       if (err) {
         console.log(err)
       }
@@ -382,8 +397,8 @@ export default class SFDataLogic {
   static async retrieveRecord(type: string, id: string) {
     let conn = SFDataLogic.setUpConnection();
 
-    
-    await conn.sobject(type).record(id).retrieve(function (err:any, result:any) {
+
+    await conn.sobject(type).record(id).retrieve(function (err: any, result: any) {
       if (err) {
         console.log(err)
       }
@@ -392,23 +407,22 @@ export default class SFDataLogic {
       }
     })
   }
-  static async deleteRecord(type:string,id:string) {
+  static async deleteRecord(type: string, id: string) {
     let conn = SFDataLogic.setUpConnection();
 
-await conn.sobject(type).delete(id, function(err:any,result:any)
-{
-  if(err){console.log(err)}
-  else(console.log(result))
-})
+    await conn.sobject(type).delete(id, function (err: any, result: any) {
+      if (err) { console.log(err) }
+      else (console.log(result))
+    })
   }
 
 
   static setUpConnection() {
 
-    console.log("Username:",userName)
-    console.log("Password:",password)
-    console.log("Login Url:",loginURL)
-    console.log("Instance Url:",instanceURL)
+    console.log("Username:", userName)
+    console.log("Password:", password)
+    console.log("Login Url:", loginURL)
+    console.log("Instance Url:", instanceURL)
     let connection = new jsforce.Connection({
 
       loginUrl: loginURL,

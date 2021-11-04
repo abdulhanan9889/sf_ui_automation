@@ -19,14 +19,14 @@ import {
 } from "../selectors/broadcastPage.selectors";
 
 export async function verifySpeakerFourDetails(page, speakerFourDetails) {
-  let speakerNameElement = await getSpeakerFourName(page);
+  await page.waitForSelector(getSpeakerFourName)
+  let speakerNameElement = await page.$(getSpeakerFourName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerFourDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerFourDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
   let speakerFourDetailsValue = speakerName + " & " + speakerCardTitle;
-  //assert.equal(speakerFourDetailsValue, speakerFourDetails);
   await assertion.softAssert(
     speakerFourDetailsValue,
     speakerFourDetails,
@@ -36,14 +36,14 @@ export async function verifySpeakerFourDetails(page, speakerFourDetails) {
 }
 
 export async function verifySpeakerFiveDetails(page, speakerFiveDetails) {
-  let speakerNameElement = await getSpeakerFiveName(page);
+  await page.waitForSelector(getSpeakerFiveName)
+  let speakerNameElement = await page.$(getSpeakerFiveName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerFiveDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerFiveDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
   let speakerFiveDetailsValue = speakerName + " & " + speakerCardTitle;
-  // assert.equal(speakerFiveDetailsValue, speakerFiveDetails);
   await assertion.softAssert(
     speakerFiveDetailsValue,
     speakerFiveDetails,
@@ -53,14 +53,14 @@ export async function verifySpeakerFiveDetails(page, speakerFiveDetails) {
 }
 
 export async function verifySpeakerSixDetails(page, speakerSixDetails) {
-  let speakerNameElement = await getSpeakerSixName(page);
+  await page.waitForSelector(getSpeakerSixName)
+  let speakerNameElement = await page.$(getSpeakerSixName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerSixDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerSixDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
   let speakerSixDetailsValue = speakerName + " & " + speakerCardTitle;
-  //assert.equal(speakerSixDetailsValue, speakerSixDetails);
   await assertion.softAssert(
     speakerSixDetailsValue,
     speakerSixDetails,
@@ -70,14 +70,14 @@ export async function verifySpeakerSixDetails(page, speakerSixDetails) {
 }
 
 export async function verifySpeakerSevenDetails(page, speakerSevenDetails) {
-  let speakerNameElement = await getSpeakerSevenName(page);
+  await page.waitForSelector(getSpeakerSevenName)
+  let speakerNameElement = await page.$(getSpeakerSevenName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerSevenDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerSevenDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
   let speakerSevenDetailsValue = speakerName + " & " + speakerCardTitle;
-  //assert.equal(speakerSevenDetailsValue, speakerSevenDetails);
   await assertion.softAssert(
     speakerSevenDetailsValue,
     speakerSevenDetails,
@@ -87,14 +87,14 @@ export async function verifySpeakerSevenDetails(page, speakerSevenDetails) {
 }
 
 export async function verifySpeakerEightDetails(page, speakerEightDetails) {
-  let speakerNameElement = await getSpeakerEightName(page);
+  await page.waitForSelector(getSpeakerEightName)
+  let speakerNameElement = await page.$(getSpeakerEightName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerEightDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerEightDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
   let speakerEightDetailsValue = speakerName + " & " + speakerCardTitle;
-  //assert.equal(speakerEightDetailsValue, speakerEightDetails);
   await assertion.softAssert(
     speakerEightDetailsValue,
     speakerEightDetails,
@@ -104,9 +104,10 @@ export async function verifySpeakerEightDetails(page, speakerEightDetails) {
 }
 
 export async function verifySpeakerNineDetails(page, speakerNineDetails) {
-  let speakerNameElement = await getSpeakerNineName(page);
+  await page.waitForSelector(getSpeakerNineName)
+  let speakerNameElement = await page.$(getSpeakerNineName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerNineDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerNineDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
@@ -120,9 +121,10 @@ export async function verifySpeakerNineDetails(page, speakerNineDetails) {
 }
 
 export async function verifySpeakerTenDetails(page, speakerTenDetails) {
-  let speakerNameElement = await getSpeakerTenName(page);
+  await page.waitForSelector(getSpeakerTenName)
+  let speakerNameElement = await page.$(getSpeakerTenName);
   let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-  let speakerCardTitleElement = await getSpeakerTenDesignation(page);
+  let speakerCardTitleElement = await page.$(getSpeakerTenDesignation);
   let speakerCardTitle = await speakerCardTitleElement.evaluate(
     (ele) => ele.innerHTML
   );
@@ -137,8 +139,8 @@ export async function verifySpeakerTenDetails(page, speakerTenDetails) {
 }
 
 export async function isUserLoggedOut(page) {
-  let text = await getLogedOutText(page);
+  await page.waitForSelector(getLogedOutText);
+  let text = await page.$(getLogedOutText);
   let IS_LOGGED_OUT = await text.evaluate((status) => status?.innerText);
-  console.log("Text appearing is", IS_LOGGED_OUT);
   await assert.equal(IS_LOGGED_OUT, "Login");
 }

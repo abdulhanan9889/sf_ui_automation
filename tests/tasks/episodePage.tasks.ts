@@ -1,8 +1,8 @@
 
 import { clickDreamForceTab, clickLoginInWithTrailblazaerID, clickEmailButton, generateRandomEmail, typeEmailAddressInTrailBlazer, clickLoginButton, openSalesForceEmail, typeEmailTokenInTrailBlazzer, clickConitnueButton, clickOnSignUpButton, typeFirstName, typeLastName, generateRandomProfileUrl, typeProfileUrl, clickNextButton, typeCompanyName, typeJobTitle, selectRoleName, selectRelationshipToSalesForce, selectCountryName, selectStateName, checkPrivacyStatement, clickDoneButton, typeWorkEmail, typeWorkPhone, selectCompanySize, selectJobRole, selectGetRecentUpdateCheckbox, typeCountryCode, typePhoneNumber, selectGiveInformationForMarketingPurposeCheckbox, clickCompleteMyMembership } from '../actions/authFlow.actions'
 import { clickSkipForNowButton, clickCancelAndLogoutButton } from '../actions/broadcastPage.actions'
-import { clickAuthorizedSeriesButton } from '../actions/episodePage.actions'
-import { acceptCookies, clickEpisodeButton } from '../actions/unAuthFlow.actions'
+import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton } from '../actions/episodePage.actions'
+import { acceptCookies } from '../actions/unAuthFlow.actions'
 import { maximizeVideoPlayerButton, minimizeVideoPlayerButton } from '../selectors/episodePage.selectors'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 
@@ -14,7 +14,7 @@ export async function openAuthorizedEpisode(page) {
     await clickAuthorizedSeriesButton(page)
     await waitTillHTMLRendered(page)
     await page.waitForTimeout(10000)
-    await clickEpisodeButton(page)
+    await clickAuthorizedEpisodeButton(page)
     await waitTillHTMLRendered(page)
 }
 
@@ -88,7 +88,7 @@ export async function loginThroughSignedUpUser(page, emailId) {
     await clickConitnueButton(page);
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
     await clickSkipForNowButton(page)
-    await page.waitForTimeout(15000)
+    await page.waitForTimeout(20000)
 }
 
 export async function logoutFromSFPlatform(page, dataFields) {
@@ -124,13 +124,11 @@ export async function logoutFromSFPlatform(page, dataFields) {
 }
 
 export async function maximizeVideoPlayer(page) {
-    let MAXIMIZE_BUTTON = await maximizeVideoPlayerButton(page)
-    MAXIMIZE_BUTTON.evaluate((ele) => ele.click())
+    let MAXIMIZE_BUTTON = await page.$(maximizeVideoPlayerButton)
+    MAXIMIZE_BUTTON.click()
 }
 
 export async function minimizeVideoPlayer(page) {
-    let MINIMIZE_BUTTON = await minimizeVideoPlayerButton(page)
-    MINIMIZE_BUTTON.evaluate((ele) => ele.click())
+    let MINIMIZE_BUTTON = await page.$(minimizeVideoPlayerButton)
+    MINIMIZE_BUTTON.click()
 }
-
-

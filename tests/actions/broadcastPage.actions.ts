@@ -5,8 +5,9 @@ import {
 } from "../selectors/broadcastPage.selectors";
 
 export async function clickCancelAndLogoutButton(page) {
-  let cancelAndLogoutButton = await getCancelAndLogoutButton(page);
-  await cancelAndLogoutButton.asElement().click();
+  await page.waitForSelector(getCancelAndLogoutButton)
+  let cancelAndLogoutButton = await page.$(getCancelAndLogoutButton);
+  await cancelAndLogoutButton.click();
 }
 export async function clickSkipForNowButton(page) {
   if ((await page.waitForSelector(skipForNowButton)) != null) {
@@ -15,11 +16,13 @@ export async function clickSkipForNowButton(page) {
   }
 }
 export async function muteVideoButton(page) {
-  let muteButton = await getMuteOrUnmuteButton(page);
-  await muteButton.evaluate((ele) => ele.click())
+  await page.waitForSelector(getMuteOrUnmuteButton)
+  let muteButton = await page.$(getMuteOrUnmuteButton);
+  await muteButton.click()
 }
 
 export async function unmuteVideoButton(page) {
-  let unmuteButton = await getMuteOrUnmuteButton(page);
-  await unmuteButton.evaluate((ele) => ele.click())
+  await page.waitForSelector(getMuteOrUnmuteButton)
+  let unmuteButton = await page.$(getMuteOrUnmuteButton);
+  await unmuteButton.click()
 }

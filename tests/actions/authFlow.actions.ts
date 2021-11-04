@@ -31,39 +31,43 @@ import {
   getStateField,
   getWorkEmailField,
   getWorkPhoneField,
+  getShareContactInfoCheckbox
 } from "../selectors/authFlow.selectors";
 
 export async function clickDreamForceTab(page) {
-  let dreamForce = await getDreamForceTab(page);
-  await dreamForce.asElement().click();
+  await page.waitForSelector(getDreamForceTab)
+  let dreamForce = await page.$(getDreamForceTab)
+  await dreamForce.click();
 }
 
 import { Inbox } from "mailinator-inbox";
 
 export async function clickWatchNowButton(page) {
-  let watchNowButton = await getWatchNowButton(page);
-  await watchNowButton.asElement().click();
+  await page.waitForSelector(getWatchNowButton, { visible: true })
+  let watchNowButton = await page.$(getWatchNowButton)
+  await watchNowButton.click();
 }
 export async function clickLoginInWithTrailblazaerID(page) {
-  let loginWithTrailblazzerButton = await getLoginWithTrailblazzerIDButton(
-    page
-  );
-  await loginWithTrailblazzerButton.asElement().click();
+  await page.waitForSelector(getLoginWithTrailblazzerIDButton)
+  let loginWithTrailblazzerButton = await page.$(getLoginWithTrailblazzerIDButton)
+  await loginWithTrailblazzerButton.click();
 }
 export async function clickEmailButton(page) {
-  let emailButton = await getEmailButton(page);
-  await emailButton.asElement().click();
+  await page.waitForSelector(getEmailButton)
+  let emailButton = await page.$(getEmailButton)
+  await emailButton.click();
 }
 
 export async function typeEmailAddressInTrailBlazer(page, email) {
-  await page.waitFor(1000);
-  let emailField = await getEmailInputField(page);
-  await emailField.asElement().type(email);
+  await page.waitForSelector(getEmailInputField)
+  let emailField = await page.$(getEmailInputField)
+  await emailField.type(email);
 }
 
 export async function clickLoginButton(page) {
-  let loginButton = await getLoginButton(page);
-  await loginButton.asElement().click();
+  await page.waitForSelector(getLoginButton)
+  let loginButton = await page.$(getLoginButton)
+  await loginButton.click();
 }
 
 export async function generateRandomEmail() {
@@ -94,29 +98,33 @@ export async function openSalesForceEmail(email) {
 }
 
 export async function typeEmailTokenInTrailBlazzer(page, token) {
-  await page.waitFor(1000);
-  let tokenField = await getTokenInputField(page);
-  await tokenField.asElement().type(token);
+  await page.waitForSelector(getTokenInputField)
+  let tokenField = await page.$(getTokenInputField)
+  await tokenField.type(token);
 }
 
 export async function clickConitnueButton(page) {
-  let continueButton = await getContinueButton(page);
-  await continueButton.asElement().click();
+  await page.waitForSelector(getContinueButton)
+  let continueButton = await page.$(getContinueButton)
+  await continueButton.click();
 }
 
 export async function clickOnSignUpButton(page) {
-  let signUpButton = await getSignUpButton(page);
-  await signUpButton.asElement().click();
+  await page.waitForSelector(getSignUpButton)
+  let signUpButton = await page.$(getSignUpButton)
+  await signUpButton.click();
 }
 
 export async function typeFirstName(page, fName) {
-  let firstNameField = await getFirstNameField(page);
-  await firstNameField.asElement().type(fName);
+  await page.waitForSelector(getFirstNameField)
+  let firstNameField = await page.$(getFirstNameField)
+  await firstNameField.type(fName);
 }
 
 export async function typeLastName(page, lName) {
-  let lastNameField = await getLastNameField(page);
-  await lastNameField.asElement().type(lName);
+  await page.waitForSelector(getLastNameField)
+  let lastNameField = await page.$(getLastNameField)
+  await lastNameField.type(lName);
 }
 
 export async function generateRandomProfileUrl() {
@@ -130,96 +138,122 @@ export async function generateRandomProfileUrl() {
 }
 
 export async function typeProfileUrl(page, profileUrl) {
-  let profileUrlField = await getProfileUrlField(page);
-  await profileUrlField.asElement().type(profileUrl);
+  await page.waitForSelector(getProfileUrlField)
+  let profileUrlField = await page.$(getProfileUrlField)
+  await profileUrlField.type(profileUrl);
 }
 
 export async function clickNextButton(page) {
-  let nextButton = await getNextButton(page);
-  await nextButton.asElement().click();
+  await page.waitForSelector(getNextButton)
+  let nextButton = await page.$(getNextButton)
+  await nextButton.click();
 }
 
 export async function typeCompanyName(page, name) {
-  let companyNameField = await getCompanyNameField(page);
-  await companyNameField.asElement().type(name);
+  await page.waitForSelector(getCompanyNameField)
+  let companyNameField = await page.$(getCompanyNameField)
+  await companyNameField.type(name);
 }
 
 export async function typeJobTitle(page, name) {
-  let jobTitleField = await getJobTitleField(page);
-  await jobTitleField.asElement().type(name);
+  await page.waitForSelector(getJobTitleField)
+  let jobTitleField = await page.$(getJobTitleField)
+  await jobTitleField.type(name);
 }
 export async function selectRoleName(page, roleName) {
-  let roleNameField = await getRoleNameField(page);
-  await roleNameField.asElement().select(roleName);
+  await page.waitForSelector(getRoleNameField)
+  let roleNameField = await page.$(getRoleNameField)
+  await roleNameField.select(roleName);
 }
 
 export async function selectRelationshipToSalesForce(page, relation) {
-  let relationshipField = await getRelationshipToSalesforceField(page);
-  await relationshipField.asElement().select(relation);
+  await page.waitForSelector(getRelationshipToSalesforceField)
+  let relationshipField = await page.$(getRelationshipToSalesforceField)
+  await relationshipField.select(relation);
 }
 
 export async function selectCountryName(page, country) {
   if (country !== "US") {
-    let countryField = await getCountryField(page);
-    await countryField.asElement().select(country);
+    await page.waitForSelector(getCountryField)
+    let countryField = await page.$(getCountryField)
+    await countryField.select(country);
   }
 }
 
 export async function selectStateName(page, country, state) {
   if (country === "US") {
-    let stateField = await getStateField(page);
-    await stateField.asElement().select(state);
+    await page.waitForSelector(getStateField)
+    let stateField = await page.$(getStateField)
+    await stateField.select(state);
   }
 }
 
 export async function checkPrivacyStatement(page) {
-  let privarcyStatement = await getPrivacyCheckbox(page);
-  await privarcyStatement.asElement().click();
+  await page.waitForSelector(getPrivacyCheckbox)
+  let privarcyStatement = await page.$(getPrivacyCheckbox)
+  await privarcyStatement.click();
 }
 
 export async function clickDoneButton(page) {
-  let doneButton = await getDoneButton(page);
-  await doneButton.asElement().click();
+  await page.waitForSelector(getDoneButton)
+  let doneButton = await page.$(getDoneButton)
+  await doneButton.click();
 }
 
 export async function typeWorkEmail(page, email) {
-  await page.waitFor(2000);
-  let workEmailField = await getWorkEmailField(page);
-  await workEmailField.asElement().type(email)
+  await page.waitForSelector(getWorkEmailField)
+  let workEmailField = await page.$(getWorkEmailField)
+  await workEmailField.type(email)
 }
 
 export async function typeWorkPhone(page, phone) {
-  let workPhoneField = await getWorkPhoneField(page);
-  await workPhoneField.asElement().type(phone);
+  await page.waitForSelector(getWorkPhoneField)
+  let workPhoneField = await page.$(getWorkPhoneField)
+  await workPhoneField.type(phone);
 }
 
 export async function selectCompanySize(page, companySize) {
-  let companySizeField = await getCompanySizeDropDown(page);
-  await companySizeField.asElement().select(companySize);
+  await page.waitForSelector(getCompanySizeDropDown)
+  let companySizeField = await page.$(getCompanySizeDropDown)
+  await companySizeField.select(companySize);
 }
+
 export async function selectJobRole(page, role) {
-  let jobRoleField = await getJobRoleDropDown(page);
-  await jobRoleField.asElement().select(role);
+  await page.waitForSelector(getJobRoleDropDown)
+  let jobRoleField = await page.$(getJobRoleDropDown)
+  await jobRoleField.select(role);
 }
+
 export async function selectGetRecentUpdateCheckbox(page) {
-  let recentUpdateCheckbox = await getRecentUpdateCheckbox(page);
-  await recentUpdateCheckbox.asElement().click();
+  await page.waitForSelector(getRecentUpdateCheckbox)
+  let recentUpdateCheckbox = await page.$(getRecentUpdateCheckbox)
+  await recentUpdateCheckbox.click();
 }
 export async function typeCountryCode(page, countryCode) {
-  let countryCodeField = await getCountryCodeField(page);
-  await countryCodeField.asElement().type(countryCode);
+  await page.waitForSelector(getCountryCodeField)
+  let countryCodeField = await page.$(getCountryCodeField)
+  await countryCodeField.type(countryCode);
 }
 export async function typePhoneNumber(page, phoneNum) {
-  let phoneField = await getPhoneField(page);
-  await phoneField.asElement().type(phoneNum);
+  await page.waitForSelector(getPhoneField)
+  let phoneField = await page.$(getPhoneField)
+  await phoneField.type(phoneNum);
+}
+
+export async function clickShareContactInformationCheckbox(page) {
+  await page.waitForSelector(getShareContactInfoCheckbox)
+  let checkbox = await page.$(getShareContactInfoCheckbox)
+  await checkbox.click();
 }
 
 export async function selectGiveInformationForMarketingPurposeCheckbox(page) {
-  let informationCheckbox = await getInformationForMarketPurposesCheckbox(page);
-  await informationCheckbox.asElement().click();
+  await page.waitForSelector(getInformationForMarketPurposesCheckbox)
+  let informationCheckbox = await page.$(getInformationForMarketPurposesCheckbox)
+  await informationCheckbox.click();
 }
 
 export async function clickCompleteMyMembership(page) {
-  let membershipButton = await getCompleteMyMembershipButton(page);
-  await membershipButton.asElement().click();
+  await page.waitForSelector(getCompleteMyMembershipButton)
+  let membershipButton = await page.$(getCompleteMyMembershipButton)
+  await membershipButton.click();
 }

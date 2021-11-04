@@ -4,6 +4,7 @@ import {
   openSignInForm,
   fillSignInForm,
   fillSignUpForm,
+  verifySignupFields,
 } from "../tasks/authFlow.tasks";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { playEpisode } from "../tasks/unAuthFlow.tasks";
@@ -37,12 +38,12 @@ Given('user is on salesforce plus', async function () {
 });
 
 When('user tries to login with a dummy email', async function () {
-    await openSignInForm(page);
-    await fillSignInForm(page);
-  });
+  await openSignInForm(page);
+  await fillSignInForm(page);
+});
 
 When('user signs up for the page with following details', async function (dataTable) {
-    await fillSignUpForm(page, dataTable);
+  await fillSignUpForm(page, dataTable);
 });
 
 Then('user is able to play the video', async function () {
@@ -50,6 +51,10 @@ Then('user is able to play the video', async function () {
   await verifyProgressBarValues(page)
   // await recorder.stop()
 });
+
+Then('user is able to verify sign up details', async function (dataTable) {
+  await verifySignupFields(page, dataTable)
+})
 
 // AfterStep(async function () {
 //   // await waitTillHTMLRendered(page);
@@ -62,7 +67,7 @@ AfterStep(async function () {
   await this.attach(ss, 'image/png')
 })
 
-After("@authFlow",async function () {
+After("@authFlow", async function () {
   await page.close()
 });
 

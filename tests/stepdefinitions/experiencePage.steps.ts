@@ -13,17 +13,18 @@ import {
     clickOnExploreMore,
     clickOnPlayForSeriesInRoles,
     clickOnPlayForSeriesInTopics,
+    closeLoginModal,
 } from "../tasks/experiencePage.tasks";
 import {
+    checkExperiencePagetitle,
     checkForAllEpisodesTitle,
     checkForAllSponsorsButton,
     checkForAllSponsorsTitle,
     checkForUpNextTitle,
-    checkTrailorTitleForSeriesInRoles,
-    checkTrailorTitleForSeriesInTopic,
+    checkWatchcNowButton,
 } from "../assertions/experiencepage.assertions";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
-import SFDataInsertion  from '../testDataGeneration/testDataLogic/SFDataInsertion'
+import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 export var cliUsername;
@@ -34,12 +35,13 @@ export var cliInstanceUrl;
 let page;
 let ss;
 let recorder;
+let target;
 
 Given('user generates data for authenticated flows', async function (datatable) {
-    cliUsername= this.parameters.username
-  cliPassword =this.parameters.password
-  cliLoginUrl =this.parameters.loginUrl
-  cliInstanceUrl = this.parameters.instanceUrl
+    cliUsername = this.parameters.username
+    cliPassword = this.parameters.password
+    cliLoginUrl = this.parameters.loginUrl
+    cliInstanceUrl = this.parameters.instanceUrl
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
 })
@@ -52,19 +54,22 @@ Given("user navigates to the experience page for Salesforce+ page", async functi
     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
     await waitTillHTMLRendered(page);
     await acceptCookies(page);
-    await waitTillHTMLRendered(page)
+    // await waitTillHTMLRendered(page)
     await clickOnDreamForce(page)
-    await waitTillHTMLRendered(page)
+    // await waitTillHTMLRendered(page)
 
 });
 
 When("user clicks on Explore More", async function () {
-    await checkExploreMoreIsPresent(page);
+    await waitTillHTMLRendered(page)
+    // await checkWatchcNowButton(page)
+    // // await checkExploreMoreIsPresent(page);
+    await checkExperiencePagetitle(page)
     await clickOnExploreMore(page);
 });
 
 Then("user is navigated to Best of DF series", async function () {
-    await checkForAllEpisodesTitle(page);
+    // await checkForAllEpisodesTitle(page);
     // await recorder.stop()
 });
 
@@ -100,8 +105,10 @@ When("user clicks on the arrow button for series in Role section", async functio
 }
 );
 
-Then("user should be navigated to Episode1 of the series in Role section", async function () {
+Then("user should be navigated to Episode1 of the series", async function () {
+    await closeLoginModal(page)
     await checkForUpNextTitle(page)
+    // await checkForSeriesTitle(page)
     // await recorder.stop()
 }
 );
@@ -121,11 +128,11 @@ When("user clicks on the play button for series in Topic section", async functio
 }
 );
 
-Then("user should be navigated to Episode1 of the series in topic section", async function () {
-    await checkTrailorTitleForSeriesInTopic(page);
-    // await recorder.stop()
-}
-);
+// Then("user should be navigated to Episode1 of the series in topic section", async function () {
+//     await checkTrailorTitleForSeriesInTopic(page);
+//     // await recorder.stop()
+// }
+// );
 
 Given("user opens the experiencePage for Salesforce+", async function () {
     page = await loadBrowser()
@@ -163,22 +170,17 @@ Given("user is on the experience page for Salesforce+", async function () {
 });
 When("user clicks on the View All Sponsors button", async function () {
     await checkForAllSponsorsButton(page);
-    // await clickOnAllSponsors(page);
-    // let newPromise = new Promise(x => page.once('targetcreated', target => x(target.page())));
     await clickOnAllSponsors(page);
-    // const sponsorsPage = await newPromise;
-    // await sponsorsPage.bringToFront();
-    // console.log((await page.pages()).length)
 });
 
 Then("user should be navigated to the Sponsors page", async function () {
-    // let sponsorsPage = page.targets();
-    // await waitTillHTMLRendered(sponsorsPage);
+    // let sponsorsPage = await target.page()
+    // // await waitTillHTMLRendered(sponsorsPage);
     // checkForAllSponsorsTitle(sponsorsPage)
-    // await sponsorsPage.close()
+    // // await sponsorsPage.close()
     // await page.waitForNavigation();
     // await checkForAllSponsorsTitle(page[1]);
-    // await recorder.stop()
+    // // await recorder.stop()
 });
 
 AfterStep(async function () {
@@ -187,7 +189,7 @@ AfterStep(async function () {
     await this.attach(ss, 'image/png')
 })
 
-After("@experiencePage",async function () {
+After("@experiencePage", async function () {
     await page.close();
 });
 

@@ -13,6 +13,7 @@ import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 
 import { openEpisode, playEpisode } from '../tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../actions/broadcastPage.actions'
+import { clickSecondAuthorizedEpisodeButton } from '../actions/episodePage.actions'
 
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(80000)
@@ -118,7 +119,7 @@ Then('authenticated user can play the first authorized episode', async function 
 })
 
 Then('authenticated user clicks on second episode and can play the authorized episode', async function () {
-    await clickSecondEpisodeButton(page)
+    await clickSecondAuthorizedEpisodeButton(page)
     await playEpisode(page)
     await verifyProgressBarValues(page)
     // await recorder.stop()
