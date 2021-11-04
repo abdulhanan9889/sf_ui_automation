@@ -59,7 +59,7 @@ Then('user is able to play the second episode', async function () {
     // await recorder.stop()
 })
 
-AfterStep(async function () {
+AfterStep("@unAuthFlow",async function () {
     // await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')

@@ -137,7 +137,7 @@ When('a guest user fills out the sign up forms and clicks cancel and logout butt
 Then('the user is logged out', async function () {
     await isUserLoggedOut(page);
 })
-AfterStep(async function () {
+AfterStep("@episodePage", async function () {
     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')

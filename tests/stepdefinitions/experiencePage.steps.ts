@@ -183,7 +183,7 @@ Then("user should be navigated to the Sponsors page", async function () {
     // // await recorder.stop()
 });
 
-AfterStep(async function () {
+AfterStep("@experiencePage", async function () {
     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')

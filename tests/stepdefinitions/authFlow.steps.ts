@@ -61,7 +61,7 @@ Then('user is able to verify sign up details', async function (dataTable) {
 //   // ss = await page.screenshot({ fullPage: true })
 //   // await this.attach(ss, 'image/png')
 // });
-AfterStep(async function () {
+AfterStep("@authFlow",async function () {
   await waitTillHTMLRendered(page);
   ss = await page.screenshot({ fullPage: true })
   await this.attach(ss, 'image/png')

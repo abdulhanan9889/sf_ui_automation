@@ -129,7 +129,7 @@ Then("user should be navigated to the relevant experience page", async function 
 }
 );
 
-AfterStep(async function () {
+AfterStep("@homePage",async function () {
   await waitTillHTMLRendered(page);
   ss = await page.screenshot({ fullPage: true })
   await this.attach(ss, 'image/png')

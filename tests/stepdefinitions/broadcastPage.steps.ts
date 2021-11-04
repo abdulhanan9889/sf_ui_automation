@@ -281,7 +281,7 @@ Then("authenticated user click the minimize video button", async function () {
   // await recorder.stop()
 });
 
-AfterStep(async function () {
+AfterStep("@broadcastPage",async function () {
   await waitTillHTMLRendered(page);
   ss = await page.screenshot({ fullPage: true })
   await this.attach(ss, 'image/png')

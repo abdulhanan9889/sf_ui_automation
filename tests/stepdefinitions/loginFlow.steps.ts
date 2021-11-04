@@ -86,7 +86,7 @@ When("user signs up with following details on salesforce platform", { timeout: 9
     await fillSignUpForm(page, datatable);
     //  await recorder.stop()
 });
-AfterStep(async function () {
+AfterStep("@loginFlow",async function () {
     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')
