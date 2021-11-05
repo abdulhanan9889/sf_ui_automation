@@ -1,5 +1,5 @@
 import { ACCEPT_COOKIES_BUTTON } from "../selectors/common.selectors";
-import { getExploreSalesforceButton, seriesButton, episodeButton, playButton, pauseButton, firstEpisodeButton, secondEpisodeButton } from "./unAuthFlow.selectors";
+import { getExploreSalesforceButton, seriesButton, episodeButton, playButton, pauseButton, firstEpisodeButton, secondEpisodeButton } from "../selectors/unAuthFlow.selectors";
 
 export async function acceptCookies(page) {
     if (await page.waitForSelector(ACCEPT_COOKIES_BUTTON) !== 'null') {
@@ -17,15 +17,16 @@ export async function clickExploreSalesforceButton(page) {
 }
 
 export async function clickSeriesButton(page) {
-    await page.waitForSelector(seriesButton)
-    let SERIES_BUTTON = await page.$(seriesButton)
+    await page.waitForSelector(seriesButton())
+    let SERIES_BUTTON = await page.$(seriesButton())
     SERIES_BUTTON.click()
     // SERIES_BUTTON.evaluate((ele) => ele.click())
 }
 
 export async function clickEpisodeButton(page) {
-    await page.waitForSelector(episodeButton)
-    let EPISODE_BUTTON = await page.$(episodeButton)
+   
+    await page.waitForSelector(episodeButton())
+    let EPISODE_BUTTON = await page.$(episodeButton())
     EPISODE_BUTTON.click()
     // EPISODE_BUTTON.evaluate((ele) => ele.click())
 }
@@ -33,27 +34,29 @@ export async function clickEpisodeButton(page) {
 export async function clickPlayButton(page) {
     await page.waitForSelector(playButton)
     let PLAY_BUTTON = await page.$(playButton)
-    // PLAY_BUTTON.click()
-    PLAY_BUTTON.evaluate((ele) => ele.click())
+    //PLAY_BUTTON.click()
+     PLAY_BUTTON.evaluate((ele) => ele.click())
 }
 
 export async function clickPauseButton(page) {
     await page.waitForSelector(pauseButton)
     let PAUSE_BUTTON = await page.$(pauseButton)
-    // PAUSE_BUTTON.click()
+   // PAUSE_BUTTON.click()
     PAUSE_BUTTON.evaluate((ele) => ele.click())
 }
 
 export async function clickFirstEpisodeButton(page) {
-    await page.waitForSelector(firstEpisodeButton)
-    let FIRST_EPISODE_BUTTON = await page.$(firstEpisodeButton)
+ 
+    await page.waitForSelector(firstEpisodeButton())
+    let FIRST_EPISODE_BUTTON = await page.$(firstEpisodeButton())
     FIRST_EPISODE_BUTTON.click()
     // FIRST_EPISODE_BUTTON.evaluate((ele) => ele.click())
 }
 
 export async function clickSecondEpisodeButton(page) {
-    await page.waitForSelector(secondEpisodeButton)
-    let SECOND_EPISODE_BUTTON = await page.$(secondEpisodeButton)
+    
+    await page.waitForSelector(secondEpisodeButton())
+    let SECOND_EPISODE_BUTTON = await page.$(secondEpisodeButton())
     SECOND_EPISODE_BUTTON.click()
     // SECOND_EPISODE_BUTTON.evaluate((ele) => ele.click())
 }
