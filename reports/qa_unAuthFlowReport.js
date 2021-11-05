@@ -5,6 +5,7 @@ var options = {
         jsonFile: 'tests/reports/jsonFiles/unAuthFlow.json',
         output: 'tests/reports/htmlReports/qa_unAuthFlow.html',
         reportSuiteAsScenarios: true,
+        showExecutionTime: true,
         scenarioTimestamp: true,
         launchReport: true,
         screenshotsDirectory: 'tests/screenshots/unAuthFlow/qa/',
