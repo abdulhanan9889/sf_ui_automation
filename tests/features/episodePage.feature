@@ -8,8 +8,8 @@ Feature: Episode Page
 
         Scenario: user generates data for unauthenticated flows
             Given user generates data for unauthenticated epsiode flows
-                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday | numberOfSpeakers
-                  | 2              | 5                         | 1                       | 4                     | 2
+                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday | numberOfSpeakers|
+                  | 2              | 5                         | 1                       | 4                     | 2                |
 
         @episodePage
         Scenario Outline: Verify episode details are present in the episode details modal
@@ -18,8 +18,8 @@ Feature: Episode Page
              Then user is able to verify episode number: <episodeNumber>
              Then user is able to verify series title: <seriesTitle>
              Then user is able to verify episode title: <episodeTitle>
-     #        Then user is able to verify speaker one name and card title: <speakerOneDetails>
-     #        Then user is able to verify speaker two name and card title: <speakerTwoDetails>
+            Then user is able to verify speaker one name and card title: <speakerOneDetails>
+            Then user is able to verify speaker two name and card title: <speakerTwoDetails>
         Examples:
                   | episodeNumber | seriesTitle              | episodeTitle                                              | speakerOneDetails                                   | speakerTwoDetails                                    |
                   | "EPISODE 1"   | "LEADING THROUGH CHANGE" | "How a Coffee Shop Continues Serving Customers from Home" | "Ben Wright & Co-Founders, Bitty and Beau's Coffee" | "Bill Patterson & EVP, CRM Applications, Salesforce" |

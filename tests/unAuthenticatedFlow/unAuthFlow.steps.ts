@@ -1,7 +1,7 @@
 import { BeforeAll, After, Given, Then, When, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
-import { acceptCookies } from '../actions/unAuthFlow.actions'
-import { verifyProgressBarValues } from '../assertions/unAuthFlow.assertions'
+import { acceptCookies } from './unAuthFlow.actions'
+import { verifyProgressBarValues } from './unAuthFlow.assertions'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
@@ -15,7 +15,7 @@ let page
 let recorder
 let ss
 
-import { testData,testDataSet,destroy,openEpisode, playEpisode, openFirstEpisode, openSecondEpisode } from '../tasks/unAuthFlow.tasks'
+import { testData,testDataSet,destroy,openEpisode, playEpisode, openFirstEpisode, openSecondEpisode } from './unAuthFlow.tasks'
 Given('user generates data for unauthenticated flows', async function(datatable) {
     const testDataParameters = await datatable.hashes()[0]
 

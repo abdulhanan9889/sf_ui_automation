@@ -6,8 +6,8 @@ Feature: Unauthenticated Flow
      
         Scenario: user generates data for unauthenticated flows
             Given user generates data for unauthenticated flows
-                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday | numberOfSpeakers
-                  | 1             | 2                          | 0                      | 4                     | 2
+                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday | numberOfSpeakers|
+                  | 1             | 2                          | 0                      | 4                     | 2|
 
         @unAuthFlow
         Scenario Outline: unthenticated user plays the selected episode

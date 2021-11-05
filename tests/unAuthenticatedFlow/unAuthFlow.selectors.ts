@@ -1,7 +1,7 @@
 import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
 
 const puppeteer = require("puppeteer");
-import { testDataSet } from '../tasks/unAuthFlow.tasks'
+import { testDataSet } from './unAuthFlow.tasks'
 //import testDataSet from "../stepdefinitions/unAuthFlow.steps";
  //console.log("test data set in selectors",testDataSet)
 export const getExploreSalesforceButton = `shadow/button>span.button-text`

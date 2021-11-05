@@ -1,4 +1,4 @@
-import { clickExploreSalesforceButton, clickSeriesButton, clickEpisodeButton, clickPlayButton, clickPauseButton, clickFirstEpisodeButton, clickSecondEpisodeButton } from "../actions/unAuthFlow.actions";
+import { clickExploreSalesforceButton, clickSeriesButton, clickEpisodeButton, clickPlayButton, clickPauseButton, clickFirstEpisodeButton, clickSecondEpisodeButton } from "../unAuthenticatedFlow/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion";
 import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";

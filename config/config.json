@@ -1,9 +1,6 @@
 {
     "qaCred": {
-        "username": "",
-        "password": "",
-        "loginUrl": "",
-        "instanceUrl": ""
+        
     },
     "uatCred": {
         "username": "hello",

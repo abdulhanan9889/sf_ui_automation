@@ -1,5 +1,5 @@
 import { ACCEPT_COOKIES_BUTTON } from "../selectors/common.selectors";
-import { getExploreSalesforceButton, seriesButton, episodeButton, playButton, pauseButton, firstEpisodeButton, secondEpisodeButton } from "../selectors/unAuthFlow.selectors";
+import { getExploreSalesforceButton, seriesButton, episodeButton, playButton, pauseButton, firstEpisodeButton, secondEpisodeButton } from "./unAuthFlow.selectors";
 
 export async function acceptCookies(page) {
     if (await page.waitForSelector(ACCEPT_COOKIES_BUTTON) !== 'null') {
