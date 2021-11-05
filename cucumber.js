@@ -1,7 +1,7 @@
 
 let unAuthFlow = [
   `tests/features/unAuthFlow.feature
-  --require tests/stepdefinitions/unAuthFlow.steps.ts
+  --require tests/unAuthenticatedFlow/unAuthFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -10,7 +10,7 @@ let unAuthFlow = [
 
 let authFlow = [
   `tests/features/authFlow.feature
-  --require tests/stepdefinitions/authFlow.steps.ts
+  --require tests/authenticatedFlow/authFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -19,7 +19,7 @@ let authFlow = [
 
 let broadcastPage = [
   `tests/features/broadcastPage.feature
-  --require tests/stepdefinitions/broadcastPage.steps.ts
+  --require tests/broadcastPageFlow/broadcastPage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -28,7 +28,7 @@ let broadcastPage = [
 
 let episodePage = [
   `tests/features/episodePage.feature
-  --require tests/stepdefinitions/episodePage.steps.ts
+  --require tests/episodePageFlow/episodePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -37,7 +37,7 @@ let episodePage = [
 
 let loginFlow = [
   `tests/features/loginFlow.feature
-  --require tests/stepdefinitions/loginFlow.steps.ts
+  --require tests/loginFlow/loginFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -46,7 +46,7 @@ let loginFlow = [
 
 let experiencePage = [
   `tests/features/experiencePage.feature
-  --require tests/stepdefinitions/experiencePage.steps.ts
+  --require tests/experiencePageFlow/experiencePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -55,7 +55,7 @@ let experiencePage = [
 
 let homePage = [
   `tests/features/homePage.feature
-  --require tests/stepdefinitions/homePage.steps.ts
+  --require tests/homePageFlow/homePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -100,8 +100,8 @@ module.exports = {
   'perfEnv': perfEnv,
   "authContentFlow": authenticatedContentFlows,
   "unAuthContentFlow": unAuthenticatedContentFlows,
-  "bothFlow":bothFlows,
-  "allFlows":allFlows,
+  "bothFlow": bothFlows,
+  "allFlows": allFlows,
   'expReport': expReport,
   'homePageReport': homePageReport
 };

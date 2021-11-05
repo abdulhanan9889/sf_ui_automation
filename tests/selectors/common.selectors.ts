@@ -3,7 +3,7 @@ const { QueryHandler } = require("query-selector-shadow-dom/plugins/puppeteer");
 puppeteer.registerCustomQueryHandler("shadow", QueryHandler);
 export let ACCEPT_COOKIES_BUTTON = "button#onetrust-accept-btn-handler";
 export let getDreamForceTab = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1"]`
-export let getWatchNowButton = `shadow/[href="/experience/Dreamforce_2021"] .link-content`
+export let getWatchNowButton = `shadow/[href*="/plus/experience/Dreamforce_2021"] .link-content`
 export let getLoginWithTrailblazzerIDButton = `shadow/[href="/a/auth"] .link-content`
 export let getEmailButton = `[id="loginPage:j_id61"] [aria-label="Email"]`
 export let getEmailInputField = `input[id="loginPage:email-card-form:emailTextInput"]`
@@ -31,6 +31,39 @@ export const getSpeakerTwoName = `shadow/ul.speakers-container li:nth-child(2) .
 export const getSpeakerTwoDesignation = `shadow/ul.speakers-container li:nth-child(2) .speaker-card-title`
 export const getSpeakerThreeName = `shadow/ul.speakers-container li:nth-child(3) .speaker-name`
 export const getSpeakerThreeDesignation = `shadow/ul.speakers-container li:nth-child(3) .speaker-card-title`
-export const getMuteButtonViewboxValue = `shadow/div.volume-container svg`
-export const getMaximizeButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
-export const getMinimizedButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
+// export const getMuteButtonViewboxValue = `shadow/div.volume-container svg`
+// export const getMaximizeButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
+// export const getMinimizedButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
+
+export async function getMuteButtonViewboxValue(page) {
+    return await page.evaluateHandle(() => {
+        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
+            ?.shadowRoot?.querySelector("div > salesforceplus-router")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
+            ?.shadowRoot?.querySelector("div > div > div > div.volume-container > button > bxp-global-icon")
+            ?.shadowRoot?.querySelector("svg")?.getAttribute("viewBox")
+    });
+}
+
+export async function getMaximizeButtonPathValue(page) {
+    return await page.evaluateHandle(() => {
+        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
+            ?.shadowRoot?.querySelector("div > salesforceplus-router")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
+            ?.shadowRoot?.querySelector("div > div > div > div.right-side-controls > button.player-button.fullscreen-button.fullscreen-expand-icon > bxp-global-icon")
+            ?.shadowRoot?.querySelector("svg > path")?.getAttribute("d")?.includes("M23")
+    });
+}
+
+export async function getMinimizedButtonPathValue(page) {
+    return await page.evaluateHandle(() => {
+        return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
+            ?.shadowRoot?.querySelector("div > salesforceplus-router")
+            ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
+            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
+            ?.shadowRoot?.querySelector("div > div > div > div.right-side-controls > button.player-button.fullscreen-button.fullscreen-expand-icon > bxp-global-icon")
+            ?.shadowRoot?.querySelector("svg > path")?.getAttribute("d")?.includes("M13")
+    });
+}
