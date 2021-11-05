@@ -125,10 +125,10 @@ export default class SFDataInsertion {
 		s.getFieldsDetails().set("Publish_Status__c", [Status])
 	}
 
-	static async createOriginalSeries(testData:SFDataLogic, numberOfEpisodes: number) {
+	static async createOriginalSeries(testData:SFDataLogic, numberOfEpisodes: number, seriesStartDayFromToday : number , seriesEndDayFromToday:number) {
 		
 		// @ts-ignore
-		let oSeries: Series = await testData.createSeries(1, 4,"Coming Soon");
+		let oSeries: Series = await testData.createSeries(seriesStartDayFromToday, seriesEndDayFromToday,"Coming Soon");
 		console.log("Series is", oSeries)
 		for (let j = 1; j <= numberOfEpisodes; j++) {
 		// @ts-ignore

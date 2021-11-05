@@ -29,7 +29,7 @@ export default class SFObjectSet {
 	 constructor(){
 		 this.channelList =[]
 		 this.segmentList = []
-		 this.seriesNames = []
+		 this.seriesNames = ["abc"]
 		 this.episodeNames = []
 		 this.eventList = []
 		 this.seriesList = []
