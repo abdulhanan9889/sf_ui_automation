@@ -1,10 +1,24 @@
-import { clickExploreSalesforceButton, clickSeriesButton, clickEpisodeButton, clickPlayButton, clickPauseButton, clickFirstEpisodeButton, clickSecondEpisodeButton } from "./unAuthFlow.actions";
+import { clickExploreSalesforceButton, clickSeriesButton, clickEpisodeButton, clickPlayButton, clickPauseButton, clickFirstEpisodeButton, clickSecondEpisodeButton } from "../actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
+import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion";
+import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
+import SFDataDeletion from "../testDataGeneration/testDataLogic/SFDataDeletion";
+export var testDataSet : SFDataLogic = new SFDataLogic()
 
-export async function openEpisode(page) {
+export async function testData(numberOfEpisodesPerSeries : number, 
+    seriesStartDayFromToday :number, seriesEndDayFromToday:number,numberOfSpeakers:number){
+        await SFDataInsertion.createOriginalSeries(testDataSet,numberOfEpisodesPerSeries, 
+           seriesStartDayFromToday,seriesEndDayFromToday,numberOfSpeakers)
+            return testDataSet
+}
+export async function destroy(){
+    await SFDataDeletion.DeleteOriginalSeries(testDataSet)
+}
+export async function openEpisode( page) {
     await clickExploreSalesforceButton(page)
     await waitTillHTMLRendered(page)
     await clickSeriesButton(page)
+    
     await waitTillHTMLRendered(page)
     await clickEpisodeButton(page)
     await waitTillHTMLRendered(page)
