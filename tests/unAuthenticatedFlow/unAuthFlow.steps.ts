@@ -1,14 +1,13 @@
-import { After, Given, Then, When, AfterAll, AfterStep } from '@cucumber/cucumber'
+import { BeforeAll, After, Given, Then, When, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
-import { openEpisode, playEpisode, openFirstEpisode, openSecondEpisode } from './unAuthFlow.tasks'
-import { acceptCookies } from './unAuthFlow.actions'
-import { verifyProgressBarValues } from './unAuthFlow.assertions'
+import { acceptCookies } from '../actions/unAuthFlow.actions'
+import { verifyProgressBarValues } from '../assertions/unAuthFlow.assertions'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
-import { RecordReference } from 'jsforce'
-import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
+import SFDataDeletion from '../testDataGeneration/testDataLogic/SFDataDeletion'
+
 
 var { setDefaultTimeout } = require('@cucumber/cucumber')
 setDefaultTimeout(60000)
@@ -16,9 +15,13 @@ let page
 let recorder
 let ss
 
-Given('user generates data for unauthenticated flows', async function (datatable) {
+import { testData,testDataSet,destroy,openEpisode, playEpisode, openFirstEpisode, openSecondEpisode } from '../tasks/unAuthFlow.tasks'
+Given('user generates data for unauthenticated flows', async function(datatable) {
     const testDataParameters = await datatable.hashes()[0]
-    // await SFDataInsertion.createOriginalSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday)
+
+    await testData(testDataParameters.numberOfEpisodesPerSeries, 
+        testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday , testDataParameters.numberOfSpeakers)
+      
 })
 
 Given('a user is on the salesforce plus platform', async function () {
@@ -31,7 +34,8 @@ Given('a user is on the salesforce plus platform', async function () {
 });
 
 When('user navigates to the episodes page and clicks on a particular episode', async function () {
-    await openEpisode(page)
+    console.log("this is test data", testDataSet)
+    await openEpisode( page)
 });
 
 Then('user is able to play the episode now', async function () {
@@ -50,7 +54,7 @@ Then('user is able to play the first episode', async function () {
 })
 
 When('user clicks on the second episode', async function () {
-    await openSecondEpisode(page)
+    await openSecondEpisode( page)
 });
 
 Then('user is able to play the second episode', async function () {
@@ -59,7 +63,7 @@ Then('user is able to play the second episode', async function () {
     // await recorder.stop()
 })
 
-AfterStep("@unAuthFlow", async function () {
+AfterStep("@unAuthFlow",async function () {
     // await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')
@@ -70,6 +74,8 @@ After("@unAuthFlow", async function () {
 })
 
 AfterAll(async function () {
-    let baseobject = new BaseObject()
-    //SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+ 
+    await destroy()
+    
 })
+
