@@ -68,24 +68,24 @@ export default class SFDataInsertion {
 
 
 	static async createSeriesWithEpisodes(testData: SFDataLogic, seriesStartFromToday: number, seriesEndFromTaday: number, noOfSeries: number,
-		noOfEpisodesPerSeries: number, oEvent: Events) {
+		noOfEpisodesPerSeries: number, noOfSpeakers: number, oEvent: Events, firstname: string, lastname: string, company: string, des: string) {
 		{
-
 			console.log("Create an Event with a channel for 3days having 7 segments and 2 series with 5 episodes");
 			// @ts-ignore
-
-
 			for (let i = 1; i <= noOfSeries; i++) {
-
-
 				// @ts-ignore
 				let oSeries: Series = await testData.createSeries(seriesStartFromToday, seriesEndFromTaday, "Coming Soon");
-
-
 				for (let j = 1; j <= noOfEpisodesPerSeries; j++) {
 					let oEpisode = await testData.createEpisode();
+
+					for (let k = 1; k <= noOfSpeakers; k++) {
+						await testData.createSpeaker(firstname, lastname, company, des)
+						// @ts-ignore
+						await testData.assignSpeakerToEpisode(oEpisode, testData.speakerId[k - 1])
+					}
 					// @ts-ignore
 					await testData.assignEpisodeToSeries(oEpisode, oSeries, false, j, "Publish");
+
 					//@ts-ignore
 
 				}
@@ -93,9 +93,6 @@ export default class SFDataInsertion {
 				await SFDataInsertion.updateSeriesStatus(oSeries, "Publish");
 				console.log(oEvent.objectId)
 				await testData.assignSeriesToEvent(oEvent, oSeries);
-
-
-
 
 			}
 			await SFDataInsertion.updateEventStatus(oEvent, "Publish")
