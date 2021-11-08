@@ -29,5 +29,6 @@
 		"Allow_Share_With_Slack__c",
 		"Allow_Sms__c",
 		"First_Name__c"
-	]
+	],
+	"speakerDetails": []
 }

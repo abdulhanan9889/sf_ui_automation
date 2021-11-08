@@ -3,7 +3,7 @@ import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
 const puppeteer = require("puppeteer");
 import { testDataSet } from './unAuthFlow.tasks'
 //import testDataSet from "../stepdefinitions/unAuthFlow.steps";
- //console.log("test data set in selectors",testDataSet)
+//console.log("test data set in selectors",testDataSet)
 export const getExploreSalesforceButton = `shadow/button>span.button-text`
 
 // export async function exploreSalesforceButton(page) {
@@ -19,10 +19,10 @@ export const getExploreSalesforceButton = `shadow/button>span.button-text`
 // }
 //@ts-ignore
 //export const seriesButton= `shadow/[aria-label="Go to series - "]`
- export function seriesButton() {
-  
+export function seriesButton() {
+
     return `shadow/[aria-label="Go to series - ${testDataSet.seriesNames[0]}"]`
-    
+
 }
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
@@ -36,7 +36,8 @@ export const getExploreSalesforceButton = `shadow/button>span.button-text`
 // }
 
 //@ts-ignore
-export function episodeButton(){ return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-1"]`}
+export function episodeButton() { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-1"]` }
+export function nextEpisodeButton(episodeNo) { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-${episodeNo + 2}"]` }
 // export async function episodeButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
@@ -70,7 +71,7 @@ export const pauseButton = `shadow/[class="play-pause-button play-icon pause-ico
 //     })
 // }
 
-export function firstEpisodeButton() {return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-1"]`}
+export function firstEpisodeButton() { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-1"]` }
 // export async function firstEpisodeButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
@@ -82,7 +83,7 @@ export function firstEpisodeButton() {return `shadow/[href="/plus/series/${testD
 //     })
 // }
 
-export function secondEpisodeButton(){ return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-3"]`}
+export function secondEpisodeButton() { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-3"]` }
 // export async function secondEpisodeButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")

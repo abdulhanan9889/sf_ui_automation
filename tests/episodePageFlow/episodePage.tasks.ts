@@ -1,12 +1,26 @@
-
 import { clickDreamForceTab, clickLoginInWithTrailblazaerID, clickEmailButton, generateRandomEmail, typeEmailAddressInTrailBlazer, clickLoginButton, openSalesForceEmail, typeEmailTokenInTrailBlazzer, clickConitnueButton, clickOnSignUpButton, typeFirstName, typeLastName, generateRandomProfileUrl, typeProfileUrl, clickNextButton, typeCompanyName, typeJobTitle, selectRoleName, selectRelationshipToSalesForce, selectCountryName, selectStateName, checkPrivacyStatement, clickDoneButton, typeWorkEmail, typeWorkPhone, selectCompanySize, selectJobRole, selectGetRecentUpdateCheckbox, typeCountryCode, typePhoneNumber, selectGiveInformationForMarketingPurposeCheckbox, clickCompleteMyMembership } from '../authenticatedFlow/authFlow.actions'
 import { clickSkipForNowButton, clickCancelAndLogoutButton } from '../broadcastPageFlow/broadcastPage.actions'
 import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton } from './episodePage.actions'
 import { acceptCookies } from '../unAuthenticatedFlow/unAuthFlow.actions'
 import { maximizeVideoPlayerButton, minimizeVideoPlayerButton } from './episodePage.selectors'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
+import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion"
+import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
+import SFDataDeletion from "../testDataGeneration/testDataLogic/SFDataDeletion"
+
+export var testDataSetAuth: SFDataLogic = new SFDataLogic()
 
 let email
+//unauth content
+export async function testData(numberOfEpisodesPerSeries: number,
+    seriesStartDayFromToday: number, seriesEndDayFromToday: number, numberOfSpeakers: number) {
+    await SFDataInsertion.createOriginalSeries(testDataSetAuth, numberOfEpisodesPerSeries,
+        seriesStartDayFromToday, seriesEndDayFromToday, numberOfSpeakers)
+    return testDataSetAuth
+}
+export async function destroy() {
+    await SFDataDeletion.DeleteOriginalSeries(testDataSetAuth)
+}
 
 export async function openAuthorizedEpisode(page) {
     await clickDreamForceTab(page)

@@ -5,16 +5,12 @@ import {
     getEpisodeNumber,
     getSeriesTitle,
     getEpisodeTitle,
-    getSpeakerOneName,
-    getSpeakerOneDesignation,
-    getSpeakerTwoName,
-    getSpeakerTwoDesignation,
-    getSpeakerThreeName,
-    getSpeakerThreeDesignation,
     getVideoProgressbar,
     getMuteButtonViewboxValue,
     getMaximizeButtonPathValue,
     getMinimizedButtonPathValue,
+    getSpeakerNames,
+    getSpeakerDesignation,
 } from "../selectors/common.selectors";
 import { forwardButton, reverseButton } from "./episodePage.selectors";
 
@@ -24,7 +20,7 @@ export async function verifyEpisodeNumber(page, episodeNumber) {
         (ele) => ele.innerHTML
     );
     episodeNumberValue = episodeNumberValue.split("• ")[1];
-    await Assertion.softAssert(episodeNumberValue, episodeNumber, "episode number assertion failed", [])
+    await Assertion.softAssert(episodeNumberValue, `EPISODE ${episodeNumber}`, "episode number assertion failed", [])
 }
 
 export async function verifySeriesTitle(page, seriesTitle) {
@@ -33,7 +29,8 @@ export async function verifySeriesTitle(page, seriesTitle) {
         (ele) => ele.innerHTML
     );
     seriesTitleValue = seriesTitleValue.split(" •")[0];
-    await Assertion.softAssert(seriesTitleValue, seriesTitle, "series title assertion failed", [])
+    await Assertion.softAssert(seriesTitleValue.toLowerCase(), seriesTitle.toLowerCase(), "series title assertion failed", [])
+    await Assertion.softAssertAll()
 }
 
 export async function verifyEpisodeTitle(page, episodeTitle) {
@@ -44,33 +41,17 @@ export async function verifyEpisodeTitle(page, episodeTitle) {
     await Assertion.softAssert(episodeTitleValue, episodeTitle, "episode title assertion failed", [])
 }
 
-export async function verifySpeakerOneDetails(page, speakerOneDetails) {
-    let speakerNameElement = await page.$(getSpeakerOneName)
-    let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-    let speakerCard = await page.$(getSpeakerOneDesignation)
-    let speakerCardTitle = await speakerCard.evaluate((ele) => ele.innerHTML);
-    let speakerOneDetailsValue = speakerName + " & " + speakerCardTitle;
-    await Assertion.softAssert(speakerOneDetailsValue, speakerOneDetails, "speaker one assertion failed", [])
+export async function verifySpeakerDetails(page, speakerDetails, noOfSpeakers) {
+    let speakerName = await page.$$eval(getSpeakerNames, vals => vals.map(val => val.innerHTML))
+    let speakerDesignation = await page.$$eval(getSpeakerDesignation, vals => vals.map(val => val.innerHTML))
+    let speakerDesignationValue = `${speakerDetails.get("Company")}, ${speakerDetails.get("Designation")}`
+    for (var i = 0; i < noOfSpeakers; i++) {
+        await Assertion.softAssert(speakerName[i], speakerDetails.get("Name"), "speaker name assertion failed", [])
+        await Assertion.softAssert(speakerDesignation[i], speakerDesignationValue, "speaker name assertion failed", [])
+        await Assertion.softAssertAll()
+    }
 }
 
-export async function verifySpeakerTwoDetails(page, speakerTwoDetails) {
-    let speakerNameElement = await page.$(getSpeakerTwoName)
-    let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-    let speakerCard = await page.$(getSpeakerTwoDesignation)
-    let speakerCardTitle = await speakerCard.evaluate((ele) => ele.innerHTML);
-    let speakerTwoDetailsValue = speakerName + " & " + speakerCardTitle;
-    await Assertion.softAssert(speakerTwoDetailsValue, speakerTwoDetails, "speaker two assertion failed", [])
-    await Assertion.softAssertAll()
-}
-
-export async function verifySpeakerThreeDetails(page, speakerThreeDetails) {
-    let speakerNameElement = await page.$(getSpeakerThreeName)
-    let speakerName = await speakerNameElement.evaluate((ele) => ele.innerHTML);
-    let speakerCard = await page.$(getSpeakerThreeDesignation)
-    let speakerCardTitle = await speakerCard.evaluate((ele) => ele.innerHTML);
-    let speakerThreeDetailsValue = speakerName + " & " + speakerCardTitle;
-    await Assertion.softAssert(speakerThreeDetailsValue, speakerThreeDetails, "speaker three assertion failed", [])
-}
 
 export async function verifyForwardedVideo(page) {
     var progressBarValueBefore = await getVideoProgressbar(page);

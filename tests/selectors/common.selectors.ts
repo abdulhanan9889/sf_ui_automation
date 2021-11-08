@@ -22,15 +22,17 @@ export async function getVideoProgressbar(page) {
     });
 }
 
-export const getEpisodeNumber = `shadow/div.episode-details .bxp-global-eyebrow`
-export const getSeriesTitle = `shadow/div.episode-details .bxp-global-eyebrow`
-export const getEpisodeTitle = `shadow/div.episode-details .episode-details--title bxp-global-headline-three`
-export const getSpeakerOneName = `shadow/ul.speakers-container li:nth-child(1) .speaker-name`
-export const getSpeakerOneDesignation = `shadow/ul.speakers-container li:nth-child(1) .speaker-card-title`
-export const getSpeakerTwoName = `shadow/ul.speakers-container li:nth-child(2) .speaker-name`
-export const getSpeakerTwoDesignation = `shadow/ul.speakers-container li:nth-child(2) .speaker-card-title`
-export const getSpeakerThreeName = `shadow/ul.speakers-container li:nth-child(3) .speaker-name`
-export const getSpeakerThreeDesignation = `shadow/ul.speakers-container li:nth-child(3) .speaker-card-title`
+export const getEpisodeNumber = `shadow/.bxp-global-eyebrow`
+export const getSeriesTitle = `shadow/.bxp-global-eyebrow`
+export const getEpisodeTitle = `shadow/.episode-details--title.bxp-global-headline-three`
+export const getSpeakerNames = `shadow/.speakers-container>li>div>span[class="speaker-name"]`
+export const getSpeakerDesignation = `shadow/.speakers-container>li>div>span[class="speaker-card-title"]`
+// export const getSpeakerOneName = `shadow/ul.speakers-container li:nth-child(1) .speaker-name`
+// export const getSpeakerOneDesignation = `shadow/ul.speakers-container li:nth-child(1) .speaker-card-title`
+// export const getSpeakerTwoName = `shadow/ul.speakers-container li:nth-child(2) .speaker-name`
+// export const getSpeakerTwoDesignation = `shadow/ul.speakers-container li:nth-child(2) .speaker-card-title`
+// export const getSpeakerThreeName = `shadow/ul.speakers-container li:nth-child(3) .speaker-name`
+// export const getSpeakerThreeDesignation = `shadow/ul.speakers-container li:nth-child(3) .speaker-card-title`
 // export const getMuteButtonViewboxValue = `shadow/div.volume-container svg`
 // export const getMaximizeButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
 // export const getMinimizedButtonPathValue = `shadow/[aria-label="fullscreen toggle button"] svg>path`
