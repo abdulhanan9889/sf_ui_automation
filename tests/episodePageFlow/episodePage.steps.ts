@@ -1,6 +1,6 @@
 import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../utilities/loadBrowser'
-import { fillSignUpForms, loginThroughSignedUpUser, loginThroughTrailblazerId, logoutFromSFPlatform, maximizeVideoPlayer, minimizeVideoPlayer, openAuthorizedEpisode } from '../episodePageFlow/episodePage.tasks'
+import { closeTbidModal, fillSignUpForms, loginThroughSignedUpUser, loginThroughTrailblazerId, logoutFromSFPlatform, maximizeVideoPlayer, minimizeVideoPlayer, openAuthorizedEpisode } from '../episodePageFlow/episodePage.tasks'
 import {
     verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
     verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer, verifySpeakerDetails
@@ -105,6 +105,7 @@ Then('user is able to verify episode details', async function () {
 When('a guest user access authorized content and logs in through trailblazer id', async function () {
 
     await openAuthorizedEpisode(page)
+    await closeTbidModal(page)
     // await loginThroughTrailblazerId(page)
 })
 

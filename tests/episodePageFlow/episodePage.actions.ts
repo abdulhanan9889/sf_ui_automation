@@ -1,4 +1,4 @@
-import { authorizedEpisodeButton, authorizedSeriesButton, secondAuthorizedEpisodeButton } from "./episodePage.selectors"
+import { authorizedEpisodeButton, authorizedSeriesButton, getCloseButton, secondAuthorizedEpisodeButton } from "./episodePage.selectors"
 
 export async function clickAuthorizedSeriesButton(page) {
     await page.waitForSelector(authorizedSeriesButton())
@@ -16,4 +16,10 @@ export async function clickSecondAuthorizedEpisodeButton(page) {
     await page.waitForSelector(secondAuthorizedEpisodeButton)
     let AUTHORIZED_EPISODE_BUTTON = await page.$(secondAuthorizedEpisodeButton)
     AUTHORIZED_EPISODE_BUTTON.click()
+}
+
+export async function clickCrossButton(page) {
+    await page.waitForSelector(getCloseButton)
+    let CLOSE_BUTTON = await page.$(getCloseButton)
+    CLOSE_BUTTON.click()
 }

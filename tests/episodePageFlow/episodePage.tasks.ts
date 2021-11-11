@@ -1,6 +1,6 @@
 import { clickDreamForceTab, clickLoginInWithTrailblazaerID, clickEmailButton, generateRandomEmail, typeEmailAddressInTrailBlazer, clickLoginButton, openSalesForceEmail, typeEmailTokenInTrailBlazzer, clickConitnueButton, clickOnSignUpButton, typeFirstName, typeLastName, generateRandomProfileUrl, typeProfileUrl, clickNextButton, typeCompanyName, typeJobTitle, selectRoleName, selectRelationshipToSalesForce, selectCountryName, selectStateName, checkPrivacyStatement, clickDoneButton, typeWorkEmail, typeWorkPhone, selectCompanySize, selectJobRole, selectGetRecentUpdateCheckbox, typeCountryCode, typePhoneNumber, selectGiveInformationForMarketingPurposeCheckbox, clickCompleteMyMembership } from '../authenticatedFlow/authFlow.actions'
 import { clickSkipForNowButton, clickCancelAndLogoutButton } from '../broadcastPageFlow/broadcastPage.actions'
-import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton } from './episodePage.actions'
+import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton, clickCrossButton } from './episodePage.actions'
 import { acceptCookies } from '../unAuthenticatedFlow/unAuthFlow.actions'
 import { getCloseButton, maximizeVideoPlayerButton, minimizeVideoPlayerButton } from './episodePage.selectors'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
@@ -30,16 +30,10 @@ export async function openAuthorizedEpisode(page) {
     await page.waitForTimeout(10000)
     await clickAuthorizedEpisodeButton(page)
     await waitTillHTMLRendered(page)
-
-    //
-    async function clickCrossButton(page) {
-        await page.waitForSelector(getCloseButton)
-        let CLOSE_BUTTON = await page.$(getCloseButton)
-        CLOSE_BUTTON.click()
-    }
+}
+export async function closeTbidModal(page) {
     await clickCrossButton(page)
     await waitTillHTMLRendered(page)
-    //
 }
 
 export async function loginThroughTrailblazerId(page) {
