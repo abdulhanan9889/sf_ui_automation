@@ -37,8 +37,18 @@ import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
 import { verifySignupRecordFromDatabase } from "./authFlow.assertions";
 import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
+import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion";
 
+export var testDataSet: SFDataLogic = new SFDataLogic()
 var email;
+
+export async function testData(seriesStartFromToday: number, seriesEndFromtaday: number, noOfSeries: number, noOfEpisodesPerSeries: number, noOfSpeakers: number, firstName: string, lastName: string, company: string, designation: string) {
+
+  let event = await testDataSet.createEvent(seriesStartFromToday, 0, seriesEndFromtaday, 12)
+  //@ts-ignore
+  await SFDataInsertion.createSeriesWithEpisodes(testDataSet, seriesStartFromToday, seriesEndFromtaday, noOfSeries, noOfEpisodesPerSeries, noOfSpeakers, event, firstName, lastName, company, designation)
+}
+
 export async function openSignInForm(page) {
   await clickDreamForceTab(page);
   await waitTillHTMLRendered(page);

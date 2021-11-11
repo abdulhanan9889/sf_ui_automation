@@ -2,7 +2,7 @@ import { clickDreamForceTab, clickLoginInWithTrailblazaerID, clickEmailButton, g
 import { clickSkipForNowButton, clickCancelAndLogoutButton } from '../broadcastPageFlow/broadcastPage.actions'
 import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton } from './episodePage.actions'
 import { acceptCookies } from '../unAuthenticatedFlow/unAuthFlow.actions'
-import { maximizeVideoPlayerButton, minimizeVideoPlayerButton } from './episodePage.selectors'
+import { getCloseButton, maximizeVideoPlayerButton, minimizeVideoPlayerButton } from './episodePage.selectors'
 import { waitTillHTMLRendered } from '../utilities/waitTillHTMLRendered'
 import SFDataInsertion from "../testDataGeneration/testDataLogic/SFDataInsertion"
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
@@ -12,24 +12,34 @@ export var testDataSetAuth: SFDataLogic = new SFDataLogic()
 
 let email
 //unauth content
-export async function testData(numberOfEpisodesPerSeries: number,
-    seriesStartDayFromToday: number, seriesEndDayFromToday: number, numberOfSpeakers: number) {
-    await SFDataInsertion.createOriginalSeries(testDataSetAuth, numberOfEpisodesPerSeries,
-        seriesStartDayFromToday, seriesEndDayFromToday, numberOfSpeakers)
-    return testDataSetAuth
-}
+// export async function testData(numberOfEpisodesPerSeries: number,
+//     seriesStartDayFromToday: number, seriesEndDayFromToday: number, numberOfSpeakers: number) {
+//     await SFDataInsertion.createOriginalSeries(testDataSetAuth, numberOfEpisodesPerSeries,
+//         seriesStartDayFromToday, seriesEndDayFromToday, numberOfSpeakers)
+//     return testDataSetAuth
+// }
 export async function destroy() {
     await SFDataDeletion.DeleteOriginalSeries(testDataSetAuth)
 }
 
 export async function openAuthorizedEpisode(page) {
-    await clickDreamForceTab(page)
-    await waitTillHTMLRendered(page)
+    // await clickDreamForceTab(page)
+    // await waitTillHTMLRendered(page)
     await clickAuthorizedSeriesButton(page)
     await waitTillHTMLRendered(page)
     await page.waitForTimeout(10000)
     await clickAuthorizedEpisodeButton(page)
     await waitTillHTMLRendered(page)
+
+    //
+    async function clickCrossButton(page) {
+        await page.waitForSelector(getCloseButton)
+        let CLOSE_BUTTON = await page.$(getCloseButton)
+        CLOSE_BUTTON.click()
+    }
+    await clickCrossButton(page)
+    await waitTillHTMLRendered(page)
+    //
 }
 
 export async function loginThroughTrailblazerId(page) {

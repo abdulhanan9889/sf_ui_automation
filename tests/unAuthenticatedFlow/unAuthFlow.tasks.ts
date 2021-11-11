@@ -5,12 +5,13 @@ import SFDataLogic from "../testDataGeneration/testDataLogic/testDataLogic";
 import SFDataDeletion from "../testDataGeneration/testDataLogic/SFDataDeletion";
 export var testDataSet: SFDataLogic = new SFDataLogic()
 
-export async function testData(numberOfEpisodesPerSeries: number,
-    seriesStartDayFromToday: number, seriesEndDayFromToday: number, numberOfSpeakers: number,
-    firstName: string, lastName: string, designation: string, company: string) {
-    await SFDataInsertion.createOriginalSeries(testDataSet, numberOfEpisodesPerSeries, numberOfSpeakers, firstName, lastName, company, designation)
-    return testDataSet
-}
+// export async function testData(numberOfEpisodesPerSeries: number,
+//     seriesStartDayFromToday: number, seriesEndDayFromToday: number, numberOfSpeakers: number,
+//     firstName: string, lastName: string, designation: string, company: string) {
+//     await SFDataInsertion.createOriginalSeries(testDataSet, numberOfEpisodesPerSeries, numberOfSpeakers, firstName, lastName, company, designation)
+//     return testDataSet
+// }
+
 export async function destroy() {
     await SFDataDeletion.DeleteOriginalSeries(testDataSet)
 }

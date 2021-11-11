@@ -14,7 +14,7 @@ export const loadBrowser = async () => {
   return page
 }
 
-After(async function () {
-  await browser.close()
-});
+// After(async function () {
+//   await browser.close()
+// });
 
