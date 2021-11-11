@@ -25,15 +25,6 @@ var password = connectionSetup.password;
 var loginURL = connectionSetup.loginUrl;
 var instanceURL = connectionSetup.instanceUrl;
 
-<<<<<<< HEAD
-export default class SFDataLogic extends SFObjectSet{
-
- 
-
-  constructor(){
-    super()
-   
-=======
 export default class SFDataLogic extends SFObjectSet {
 
 
@@ -41,7 +32,6 @@ export default class SFDataLogic extends SFObjectSet {
   constructor() {
     super()
 
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
   }
 
 
@@ -92,11 +82,7 @@ export default class SFDataLogic extends SFObjectSet {
     return mapOfFieldNameValue;
   }
 
-<<<<<<< HEAD
-   async createEvent(eventStartDayFromToday: number, eventStartHour: number, eventEndDayFromToday: number, eventEndHour: number) {
-=======
   async createEvent(eventStartDayFromToday: number, eventStartHour: number, eventEndDayFromToday: number, eventEndHour: number) {
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
     let tde = SFDataLogic.readTestData(eventData);
     let oEvent = new Events()
     if (tde) {
@@ -114,11 +100,6 @@ export default class SFDataLogic extends SFObjectSet {
       insertFieldNameValue.set("Publish_Date__c", SFDataLogic.getCalendarTimeInstance(8, 0));
 
       oEvent.setObjectApi(tde.apiName);
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
       oEvent.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setEventName(Object.fromEntries(insertFieldNameValue).Name.toString())
       try {
@@ -136,22 +117,14 @@ export default class SFDataLogic extends SFObjectSet {
       // @ts-ignore
       oEvent.setGraphQlAttributeMapping(graphQlAttributes);
       // @ts-ignore
-<<<<<<< HEAD
-      oEvent.setCalendar(clEventStartTime);console.log("Check Event Calendar=",clEventStartTime)
-=======
       oEvent.setCalendar(clEventStartTime); console.log("Check Event Calendar=", clEventStartTime)
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
       this.setEventList(oEvent)
       return oEvent;
     }
   }
 
 
-<<<<<<< HEAD
- async createSegment(cl: Date, segmentStartHour: number, segmentStartMinute: number, durationInMinute: number, ch: Channel) {
-=======
   async createSegment(cl: Date, segmentStartHour: number, segmentStartMinute: number, durationInMinute: number, ch: Channel) {
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
     let tde = SFDataLogic.readTestData(segmentData);
     let oSegment = new Segment();
     if (tde) {
@@ -172,15 +145,9 @@ export default class SFDataLogic extends SFObjectSet {
       clEndTime = add(clEndTime, { minutes: durationInMinute });
       insertFieldNameValue.set("End_Time__c", clEndTime);
       console.log("c1EndTime=", clEndTime)
-<<<<<<< HEAD
-    
-      oSegment.setObjectApi(tde.apiName);
-     
-=======
 
       oSegment.setObjectApi(tde.apiName);
 
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
       oSegment.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString());
       this.setSegmentName(Object.fromEntries(insertFieldNameValue).Name.toString())
 
@@ -226,11 +193,6 @@ export default class SFDataLogic extends SFObjectSet {
       console.log("c1EndTime=", clEndTime)
 
       oChannel.setObjectApi(tde.apiName);
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
       oChannel.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setChannelName(Object.fromEntries(insertFieldNameValue).Name.toString())
 
@@ -239,11 +201,7 @@ export default class SFDataLogic extends SFObjectSet {
         //@ts-ignore
         oChannel.objectId = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), oChannel.objectName);
         console.log("Channel Id=", oChannel.objectId)
-<<<<<<< HEAD
-        this.setChannelID( oChannel.objectId )
-=======
         this.setChannelID(oChannel.objectId)
->>>>>>> 4b5c852fdc7fdc5068c36b6f466446261e507bec
       } catch (e) {
         console.log("Error occured while creating Channel", e);
       }
