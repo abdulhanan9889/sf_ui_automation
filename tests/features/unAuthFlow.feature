@@ -4,10 +4,10 @@ Feature: Unauthenticated Flow
          User would like to browse through available series
               And is able to play selected episodes
      
-        # Scenario: user generates data for unauthenticated flows
-        #     Given user generates data for unauthenticated flows
-        #           | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday |
-        #           | 2              | 5                         | 1                       | 4                     |
+        Scenario: user generates data for unauthenticated flows
+            Given user generates data for unauthenticated flows
+                  | numberOfSeries | numberOfEpisodesPerSeries | seriesStartDayFromToday | seriesEndDayFromToday | numberOfSpeakers|
+                  | 1             | 2                          | 0                      | 4                     | 2|
 
         @unAuthFlow
         Scenario Outline: unthenticated user plays the selected episode

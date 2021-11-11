@@ -3,21 +3,18 @@ import Speaker from "./Speaker"
 
 export default class Episode extends BaseObject {
 
-	speakerList: Array<Speaker>;
+	speakerList: Array<Map<string, string>>;
 
 	constructor() {
 		super()
 		this.speakerList = []
 	}
-	getSpeakerList(): Array<Speaker> {
-		return this.speakerList;
+	// getSpeakerList(): Array<Speaker> {
+	// 	return this.speakerList;
+	// }
+	setSpeakerList(m: Map<string, string>) {
+
+		this.speakerList.push(m)
 	}
 
-	toString() {
-		return "Episode [speakerList=" + this.speakerList + ", getSpeakerList()=" + this.getSpeakerList() + ", getObjectName()="
-			+ this.getObjectName() + ", getObjectId()=" + this.getObjectId() + ", getObjectApi()=" + this.getObjectApi()
-			+ ", getFieldsDetails()=" + this.getFieldsDetails() + ", getFieldsDetailsToBeUpdated()="
-			+ this.getFieldsDetailsToBeUpdated() + ", toString()=" + super.toString() + ", getClass()=" + Episode.name
-			+ ", hashCode()=" + "]";
-	}
 }
