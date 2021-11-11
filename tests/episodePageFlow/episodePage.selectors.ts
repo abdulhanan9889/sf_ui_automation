@@ -1,3 +1,5 @@
+import { testDataSet } from "../authenticatedFlow/authFlow.tasks"
+
 
 export const forwardButton = `shadow/div[class="seek-container"]>button`
 // export async function forwardButton(page) {
@@ -43,7 +45,9 @@ export const minimizeVideoPlayerButton = `shadow/[aria-label="fullscreen toggle 
 //     })
 // }
 
-export const authorizedSeriesButton = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1/series/Sup_E2E0712_CG_Series2"]`
+export function authorizedSeriesButton() {
+    return `shadow/[href="/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}"]`
+}
 // export async function authorizedSeriesButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
@@ -58,5 +62,9 @@ export const authorizedSeriesButton = `shadow/[href="/plus/experience/Sup_E2E071
 // }
 
 
-export const authorizedEpisodeButton = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1/series/Sup_E2E0712_CG_Series2/episode/episode-1"]`
+export function authorizedEpisodeButton() {
+    return `shadow/[href="/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1"]`
+}
+export const getCloseButton = `shadow/span[aria-label="Close"]`
+
 export const secondAuthorizedEpisodeButton = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1/series/Sup_E2E0712_CG_Series2/episode/episode-2"]`

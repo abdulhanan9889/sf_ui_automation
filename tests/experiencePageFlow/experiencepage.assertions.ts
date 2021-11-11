@@ -1,14 +1,38 @@
 
 import {
+    experiencesSectionEvent,
     getAllSponsorsButton,
     getExperiencePageTitle,
     getSponsorsTitle,
     getUpNextTitle,
-    getWatchNowButton
+    getWatchNowButton,
+    experienceSectionTitle,
+    noOfEpisodes,
+    signUpToWatchButton,
+    speakerName
 } from "./experiencePage.selectors";
 import { getAllEpisodesTitle } from "../homePageFlow/homePage.selectors";
 var assert = require('assert')
-
+//Test Data generation Assertions
+export async function checkForNoOfEpisodes(page) {
+    await page.waitForSelector(noOfEpisodes())
+    const noOfEpisodesTitle = await page.$(noOfEpisodes())
+    let noOfEpisodesTitleText = await noOfEpisodesTitle.evaluate(text => text.innerHTML)
+    await assert.equal(noOfEpisodesTitleText, 'All Episodes')
+}
+export async function checkSignUpToWatchButton(page) {
+    await page.waitForSelector(signUpToWatchButton)
+    const signUpToWatchButtonTitle = await page.$(signUpToWatchButton)
+    let signUpToWatchButtonTitleText = await signUpToWatchButtonTitle.evaluate(text => text.innerHTML)
+    await assert.equal(signUpToWatchButtonTitleText, 'Sign up to watch')
+}
+export async function checkSpeakerName(page) {
+    await page.waitForSelector(speakerName)
+    const speakerNameTitle = await page.$(speakerName)
+    let speakerNameTitleText = await speakerNameTitle.evaluate(text => text.innerHTML)
+    await assert.equal(speakerNameTitleText, 'QA Engineer, Emumba')
+}
+//Test Data generation Assertions
 export async function checkForAllEpisodesTitle(page) {
     await page.waitForSelector(getAllEpisodesTitle)
     const allEpisodesTitle = await page.$(getAllEpisodesTitle)
@@ -25,7 +49,7 @@ export async function checkExperiencePagetitle(page) {
     await page.waitForSelector(getExperiencePageTitle)
     const experiencePageTitle = await page.$(getExperiencePageTitle)
     let experiencePageTitleText = await experiencePageTitle.evaluate(text => text.innerHTML)
-    await assert.equal(experiencePageTitleText, 'Keep the magic alive, starting with the Dreamforce Main Show.')
+    await assert.equal(experiencePageTitleText, experienceSectionTitle)
 }
 
 export async function checkForAllSponsorsButton(page) {

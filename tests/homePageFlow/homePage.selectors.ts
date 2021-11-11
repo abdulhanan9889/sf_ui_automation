@@ -1,11 +1,8 @@
 export let ACCEPT_COOKIES_BUTTON = "button#onetrust-accept-btn-handler";
-const puppeteer = require("puppeteer");
-const { QueryHandler } = require("query-selector-shadow-dom/plugins/puppeteer");
-puppeteer.registerCustomQueryHandler("shadow", QueryHandler);
 const originalSeries = "BxP_Learn_Series-1"
 const featuredEpisodeSeries = "Original_Series3"
 const featuredEpisodeNumber = "episode-0"
-
+const experiencesSectionEvent = "Slack_Frontiers_2021"
 export const getPlayIcon = `shadow/[aria-label="Play series - ${originalSeries}"]`
 export let getArrowIcon = `shadow/[aria-label="Go to series - BxP_Learn_Series-1"]`
 export const getTrailorTitle = `shadow/span.bxp-global-eyebrow`
@@ -14,7 +11,7 @@ export const getFeatureEpisodeButton = `shadow/[href="/plus/series/${featuredEpi
 export const getAllEpisodesTitle = `shadow/div.bxp-global-headline-four.episodes-headline > b`
 export let getExploreSFButton = `shadow/[class="text-button bxp-global-cta --tertiary"] [class="button-text"]`
 export const getWatchNowButton = `shadow/[class="text-button bxp-global-cta --link --primary"] [class="button-text"]`
-export let getExperienceSectionButton = `shadow/[href="/plus/experience/Slack_Frontiers_2021"]`
+export let getExperienceSectionButton = `shadow/[href="/plus/experience/${experiencesSectionEvent}"]`
 
 // export async function getExploreSFButton(page) {
 //     return await page.evaluateHandle(() => {

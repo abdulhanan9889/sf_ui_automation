@@ -47,7 +47,8 @@ export default class SFDataDeletion {
             await SFDataLogic.deleteRecord(testData.segmentList[i].objectApi, testData.segmentList[i].objectId)
         }
         //delete speakers
-        for (let i = 0; i < testData.speakerId.length; i++) {
+        for(let i =0 ; i< testData.speakerId.length ; i++)
+        {
             console.log("delete speakers")
             await SFDataLogic.deleteRecord("bxp_speaker__c", testData.speakerId[i])
         }

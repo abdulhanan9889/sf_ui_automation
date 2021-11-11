@@ -2,7 +2,7 @@ var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(720000);
 import { loadBrowser } from "../utilities/loadBrowser";
 import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
-import { acceptCookies, clickOnDreamForce } from "../homePageFlow/homePage.actions";
+import { acceptCookies, clickOnDreamForce, clickOnExperienceSectionButton, navigateToDetailsPageOfTheEvent, navigateToDreamForcePage, navigateToFirstEpisode, navigateToSecondEpisode, testData, testDataDelete, testDataSet } from "../experiencePageFlow/experiencePage.tasks";
 import { waitTillHTMLRendered } from "../utilities/waitTillHTMLRendered";
 const { setWorldConstructor } = require("@cucumber/cucumber")
 import { checkExploreMoreIsPresent } from "../homePageFlow/homepage.assertions";
@@ -21,12 +21,15 @@ import {
     checkForAllSponsorsButton,
     checkForAllSponsorsTitle,
     checkForUpNextTitle,
+    checkSignUpToWatchButton,
+    checkSpeakerName,
     checkWatchcNowButton,
 } from "./experiencepage.assertions";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import SFDataInsertion from '../testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../testDataGeneration/testDataLogic/testDataLogic'
+import { eventURL } from "./experiencePage.selectors";
 export var cliUsername;
 export var cliPassword;
 export var cliLoginUrl;
@@ -37,15 +40,42 @@ let ss;
 let recorder;
 let target;
 
-Given('user generates data for authenticated flows', async function (datatable) {
-    cliUsername = this.parameters.username
-    cliPassword = this.parameters.password
-    cliLoginUrl = this.parameters.loginUrl
-    cliInstanceUrl = this.parameters.instanceUrl
+Given('user generates data for authenticated flows and navigates to added Event Page', async function (datatable) {
+    console.log("Test123123")
     const testDataParameters = await datatable.hashes()[0]
     // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+    await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndFromToday, testDataParameters.noOfSeries, testDataParameters.noOfEpisodesPerSeries, testDataParameters.noOfSpeakers)
+    page = await loadBrowser()
+    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+    await acceptCookies(page)
+    await waitTillHTMLRendered(page)
+    await navigateToDreamForcePage(page)
+    await waitTillHTMLRendered(page)
+    await checkExploreMoreIsPresent(page)
+    await page.goto(eventURL())
+    // await page.waitFor(5000)
+    await waitTillHTMLRendered
+    // await acceptCookies(page);
+    await checkExploreMoreIsPresent(page)
 })
-
+When('user navigates to the added Event details page', async function () {
+    console.log(testDataSet)
+    await navigateToDetailsPageOfTheEvent(page)
+    await waitTillHTMLRendered(page)
+    // await page.waitFor(5000)
+    await checkSignUpToWatchButton(page)
+});
+Then('user navigates to an episode page of the added event', async function () {
+    await navigateToFirstEpisode(page)
+    await waitTillHTMLRendered(page)
+    await checkSpeakerName(page)
+    // await page.waitFor(5000)
+    // await page.goBack()
+    // await waitTillHTMLRendered(page)
+    // await navigateToSecondEpisode(page)
+    // await waitTillHTMLRendered(page)
+    // await page.waitFor(5000)
+});
 // User Navigates to the Experience of Salesforce Plus platform(The Background Given step to all of the Scenarios)
 Given("user navigates to the experience page for Salesforce+ page", async function () {
     page = await loadBrowser()
@@ -54,10 +84,10 @@ Given("user navigates to the experience page for Salesforce+ page", async functi
     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
     await waitTillHTMLRendered(page);
     await acceptCookies(page);
-    // await waitTillHTMLRendered(page)
-    await clickOnDreamForce(page)
-    // await waitTillHTMLRendered(page)
-
+    await waitTillHTMLRendered(page)
+    await clickOnExperienceSectionButton(page)
+    // await clickOnDreamForce(page)
+    await waitTillHTMLRendered(page)
 });
 
 When("user clicks on Explore More", async function () {
@@ -194,6 +224,7 @@ After("@experiencePage", async function () {
 });
 
 AfterAll(async function () {
-    let baseobject = new BaseObject()
-    // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+    // let baseobject = new BaseObject()
+    // // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+    await testDataDelete()
 })
