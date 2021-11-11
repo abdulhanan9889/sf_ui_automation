@@ -43,7 +43,6 @@ let target;
 Given('user generates data for authenticated flows and navigates to added Event Page', async function (datatable) {
     console.log("Test123123")
     const testDataParameters = await datatable.hashes()[0]
-    // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
     await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndFromToday, testDataParameters.noOfSeries, testDataParameters.noOfEpisodesPerSeries, testDataParameters.noOfSpeakers)
     page = await loadBrowser()
     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
@@ -53,16 +52,13 @@ Given('user generates data for authenticated flows and navigates to added Event 
     await waitTillHTMLRendered(page)
     await checkExploreMoreIsPresent(page)
     await page.goto(eventURL())
-    // await page.waitFor(5000)
     await waitTillHTMLRendered
-    // await acceptCookies(page);
     await checkExploreMoreIsPresent(page)
 })
 When('user navigates to the added Event details page', async function () {
     console.log(testDataSet)
     await navigateToDetailsPageOfTheEvent(page)
     await waitTillHTMLRendered(page)
-    // await page.waitFor(5000)
     await checkSignUpToWatchButton(page)
 });
 Then('user navigates to an episode page of the added event', async function () {

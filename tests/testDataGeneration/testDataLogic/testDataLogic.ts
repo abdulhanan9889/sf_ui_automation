@@ -25,13 +25,13 @@ var password = connectionSetup.password;
 var loginURL = connectionSetup.loginUrl;
 var instanceURL = connectionSetup.instanceUrl;
 
-export default class SFDataLogic extends SFObjectSet{
+export default class SFDataLogic extends SFObjectSet {
 
- 
 
-  constructor(){
+
+  constructor() {
     super()
-   
+
   }
 
 
@@ -82,7 +82,7 @@ export default class SFDataLogic extends SFObjectSet{
     return mapOfFieldNameValue;
   }
 
-   async createEvent(eventStartDayFromToday: number, eventStartHour: number, eventEndDayFromToday: number, eventEndHour: number) {
+  async createEvent(eventStartDayFromToday: number, eventStartHour: number, eventEndDayFromToday: number, eventEndHour: number) {
     let tde = SFDataLogic.readTestData(eventData);
     let oEvent = new Events()
     if (tde) {
@@ -100,7 +100,7 @@ export default class SFDataLogic extends SFObjectSet{
       insertFieldNameValue.set("Publish_Date__c", SFDataLogic.getCalendarTimeInstance(8, 0));
 
       oEvent.setObjectApi(tde.apiName);
-      
+
       oEvent.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setEventName(Object.fromEntries(insertFieldNameValue).Name.toString())
       try {
@@ -118,14 +118,14 @@ export default class SFDataLogic extends SFObjectSet{
       // @ts-ignore
       oEvent.setGraphQlAttributeMapping(graphQlAttributes);
       // @ts-ignore
-      oEvent.setCalendar(clEventStartTime);console.log("Check Event Calendar=",clEventStartTime)
+      oEvent.setCalendar(clEventStartTime); console.log("Check Event Calendar=", clEventStartTime)
       this.setEventList(oEvent)
       return oEvent;
     }
   }
 
 
- async createSegment(cl: Date, segmentStartHour: number, segmentStartMinute: number, durationInMinute: number, ch: Channel) {
+  async createSegment(cl: Date, segmentStartHour: number, segmentStartMinute: number, durationInMinute: number, ch: Channel) {
     let tde = SFDataLogic.readTestData(segmentData);
     let oSegment = new Segment();
     if (tde) {
@@ -146,9 +146,9 @@ export default class SFDataLogic extends SFObjectSet{
       clEndTime = add(clEndTime, { minutes: durationInMinute });
       insertFieldNameValue.set("End_Time__c", clEndTime);
       console.log("c1EndTime=", clEndTime)
-    
+
       oSegment.setObjectApi(tde.apiName);
-     
+
       oSegment.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString());
       this.setSegmentName(Object.fromEntries(insertFieldNameValue).Name.toString())
 
@@ -194,7 +194,7 @@ export default class SFDataLogic extends SFObjectSet{
       console.log("c1EndTime=", clEndTime)
 
       oChannel.setObjectApi(tde.apiName);
-    
+
       oChannel.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setChannelName(Object.fromEntries(insertFieldNameValue).Name.toString())
 
@@ -203,7 +203,7 @@ export default class SFDataLogic extends SFObjectSet{
         //@ts-ignore
         oChannel.objectId = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), oChannel.objectName);
         console.log("Channel Id=", oChannel.objectId)
-        this.setChannelID( oChannel.objectId )
+        this.setChannelID(oChannel.objectId)
       } catch (e) {
         console.log("Error occured while creating Channel", e);
       }
@@ -245,14 +245,14 @@ export default class SFDataLogic extends SFObjectSet{
   async createSeries(seriesStartDayFromToday: number, seriesEndDayFromToday: number, publish_status: string) {
     let tde = SFDataLogic.readTestData(seriesData);
 
-    let oSeries : Series= new Series();
+    let oSeries: Series = new Series();
     if (tde) {
       let insertFieldNameValue: Map<string, object> = SFDataLogic.getFieldValuesInObject(tde.fieldName,
         tde.fieldValue);
       let updateFieldNameValue: Map<string, object> = SFDataLogic
         .getFieldValuesInObject(tde.updateFieldName, tde.updateFieldValue);
       //
-      insertFieldNameValue.set("Name", ["Series_Automation-emumba" + SFDataLogic.getStringDateTime("MMddHHmm")]);
+      insertFieldNameValue.set("Name", ["SeriesAutomation-emumba" + SFDataLogic.getStringDateTime("MMddHHmm")]);
 
       let clSeriesStartTime = SFDataLogic.getCalendarTimeInstance(8, 0);
       clSeriesStartTime = add(clSeriesStartTime, { days: seriesStartDayFromToday });
@@ -265,17 +265,17 @@ export default class SFDataLogic extends SFObjectSet{
       insertFieldNameValue.set("Publish_Date__c", SFDataLogic.getCalendarTimeInstance(8, 0));
 
       oSeries.setObjectApi(tde.apiName);
-     
+
       oSeries.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setSeriesNames(Object.fromEntries(insertFieldNameValue).Name.toString())
-    
+
       oSeries.setFieldsDetails(insertFieldNameValue);
       oSeries.setFieldsDetailsToBeUpdated(updateFieldNameValue);
       //@ts-ignore
       insertFieldNameValue.set("Publish_Status__c", publish_status)
 
       try {
-       
+
         oSeries.objectId = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), oSeries.objectName);
         console.log("Series ID:", oSeries.objectId)
         this.setSeriesIDs(oSeries.objectId)
@@ -283,7 +283,7 @@ export default class SFDataLogic extends SFObjectSet{
       catch (e) {
         console.log(e)
       }
- 
+
       this.setSeriesList(oSeries)
       return oSeries;
     }
@@ -291,10 +291,10 @@ export default class SFDataLogic extends SFObjectSet{
 
 
 
-  async createEpisode()  {
+  async createEpisode() {
 
     let tde = SFDataLogic.readTestData(episodeData);
-    let oEpisode : Episode = new Episode()
+    let oEpisode: Episode = new Episode()
 
     if (tde) {
 
@@ -305,18 +305,18 @@ export default class SFDataLogic extends SFObjectSet{
       insertFieldNameValue.set("Name", ["Episode_Automation-eMumba-" + SFDataLogic.getStringDateTime("MMddHHmmss")]);
 
       oEpisode.setObjectApi(tde.apiName);
-     
+
       oEpisode.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
-    
-      
+
+
       this.setEpisodeNames(Object.fromEntries(insertFieldNameValue).Name.toString())
       oEpisode.setFieldsDetails(insertFieldNameValue);
       oEpisode.setFieldsDetailsToBeUpdated(updateFieldNameValue);
       try {
-       
+
         oEpisode.objectId = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), oEpisode.objectName);
         console.log("Episode ID", oEpisode.objectId)
-        
+
       } catch (e) {
         console.log("Error occured while creating Episode", e);
       }
@@ -327,7 +327,7 @@ export default class SFDataLogic extends SFObjectSet{
   }
 
 
-   async assignEpisodeToSeries(ep: Episode, sr: Series, featuredEvent: boolean, order: number, status: string) {
+  async assignEpisodeToSeries(ep: Episode, sr: Series, featuredEvent: boolean, order: number, status: string) {
     let insertFieldNameValue: Map<string, object> = new Map()
     insertFieldNameValue.set("type", ["bxp_Content_Assignment__c"]);
     insertFieldNameValue.set("Content__c", [ep.objectId]);
@@ -344,50 +344,51 @@ export default class SFDataLogic extends SFObjectSet{
     ep.getFieldsDetails().set("Publish_Date__c", SFDataLogic.getCalendarTimeInstance(8, 0));
 
     try {
-     let id=  await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "series");
+      let id = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "series");
       this.setContentAssignmentIDs(id)
+      this.setEpisodeOrder(order)
     } catch (e) {
       console.log("Error occured while assigning Episode to Series", e);
     }
     sr.getEpisodeList().push(ep);
   }
-  async createSpeaker(firstName : string, lastName : string)
-  {
+  async createSpeaker(firstName: string, lastName: string, company: string, designation: string) {
     let insertFieldNameValue: Map<string, object> = new Map()
 
-    insertFieldNameValue.set("type",["bxp_Speaker__c"])
+    insertFieldNameValue.set("type", ["bxp_Speaker__c"])
     insertFieldNameValue.set("Speaker_First_Name__c", [firstName])
-    insertFieldNameValue.set("Speaker_Job_Title__c",["QA Engineer"])
+    insertFieldNameValue.set("Speaker_Job_Title__c", ["QA Engineer"])
     insertFieldNameValue.set("Speaker_Company_Name__c", ["Emumba"])
-    insertFieldNameValue.set("Speaker_Last_Name__c",["What"])
     insertFieldNameValue.set("Speaker_Last_Name__c", [lastName])
-    
+
     try {
-      let id=  await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "Speaker");
+      let id = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "Speaker");
       this.setSpeakerID(id)
-      this.setSpeakerName(firstName+lastName)
-       //this.setContentAssignmentIDs(id)
-     } catch (e) {
-       console.log("Error occured while creating speaker", e);
-     }
+      this.setSpeakerName(firstName + lastName)
+      this.setSpeakerList(`${firstName} ${lastName}`, designation, company)
+      //this.setContentAssignmentIDs(id)
+    } catch (e) {
+      console.log("Error occured while creating speaker", e);
+    }
   }
 
-  async assignSpeakerToEpisode(ep: Episode, speakerID: string)
-  {
+  async assignSpeakerToEpisode(ep: Episode, speakerID: string, order: number) {
+    ep.setSpeakerList(this.speakerList[order])
     let insertFieldNameValue: Map<string, object> = new Map()
     insertFieldNameValue.set("type", ["bxp_Speaker_Assignment__c"]);
     insertFieldNameValue.set("Speaker__c", [speakerID]);
     insertFieldNameValue.set("Content__c", [ep.objectId]);
     insertFieldNameValue.set("Type__c", ["content"])
-    insertFieldNameValue.set("Speaker_Status__c",["published"])
+    insertFieldNameValue.set("Speaker_Status__c", ["published"])
     //published
     try {
-      let id=  await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "speaker assignment");
-       this.setSpeakerAssignment(id)
-     } catch (e) {
-       console.log("Error occured while assigning speaker to episode", e);
-     }
+      let id = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "speaker assignment");
+      this.setSpeakerAssignment(id)
+    } catch (e) {
+      console.log("Error occured while assigning speaker to episode", e);
+    }
   }
+
   async assignSeriesToEvent(ev: Events, sr: Series) {
 
     let insertFieldNameValue: Map<string, object> = new Map()
@@ -396,14 +397,13 @@ export default class SFDataLogic extends SFObjectSet{
     insertFieldNameValue.set("Child_Content_Group__c", [sr.objectId]);
 
     try {
-     let id = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "series");
-     this.setContentGroupAssignmentID(id)
+      let id = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), "series");
+      this.setContentGroupAssignmentID(id)
     } catch (e) {
       console.log("Error occured while assigning Series to Episode", e);
     }
-    // this.setSeriesList(sr);
+    ev.getSeriesList().push(sr);
   }
-
   static async insertRecord(dataMap: Map_Object, type: string) {
     let conn = SFDataLogic.setUpConnection();
     //console.log(dataMap);
@@ -467,22 +467,21 @@ export default class SFDataLogic extends SFObjectSet{
     })
   }
 
-  static async queryUser(email:string)
-  {
+  static async queryUser(email: string) {
     let conn = SFDataLogic.setUpConnection();
     let q = conn.query(`SELECT Id,CreatedById,Company_Size__c,Country__c,First_Name__c,Work_Number__c,
     Job_Role__c,State__c,Last_Name__c,Company_Name__c,Job_Title__c,Mobile_Number__c,
     Work_Email__C FROM bxp_Subscriber__c WHERE Work_Email__c = '${email}'`)
     //@ts-ignore
-   await q.run( function(err:any,result:any){
-      if(err){console.log(err)}
+    await q.run(function (err: any, result: any) {
+      if (err) { console.log(err) }
       else
-      console.log(result)
+        console.log(result)
       return result
     })
 
   }
- 
+
 
   static async deleteRecord(type: string, id: string) {
     let conn = SFDataLogic.setUpConnection();
@@ -496,7 +495,7 @@ export default class SFDataLogic extends SFObjectSet{
 
   static setUpConnection() {
 
-   
+
     let connection = new jsforce.Connection({
 
       loginUrl: loginURL,
