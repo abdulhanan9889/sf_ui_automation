@@ -100,7 +100,6 @@ export default class SFDataLogic extends SFObjectSet {
       insertFieldNameValue.set("Publish_Date__c", SFDataLogic.getCalendarTimeInstance(8, 0));
 
       oEvent.setObjectApi(tde.apiName);
-
       oEvent.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setEventName(Object.fromEntries(insertFieldNameValue).Name.toString())
       try {
@@ -194,7 +193,6 @@ export default class SFDataLogic extends SFObjectSet {
       console.log("c1EndTime=", clEndTime)
 
       oChannel.setObjectApi(tde.apiName);
-
       oChannel.setObjectName(Object.fromEntries(insertFieldNameValue).Name.toString())
       this.setChannelName(Object.fromEntries(insertFieldNameValue).Name.toString())
 
@@ -275,7 +273,6 @@ export default class SFDataLogic extends SFObjectSet {
       insertFieldNameValue.set("Publish_Status__c", publish_status)
 
       try {
-
         oSeries.objectId = await SFDataLogic.insertRecord(Object.fromEntries(insertFieldNameValue), oSeries.objectName);
         console.log("Series ID:", oSeries.objectId)
         this.setSeriesIDs(oSeries.objectId)
@@ -283,7 +280,6 @@ export default class SFDataLogic extends SFObjectSet {
       catch (e) {
         console.log(e)
       }
-
       this.setSeriesList(oSeries)
       return oSeries;
     }
@@ -481,7 +477,6 @@ export default class SFDataLogic extends SFObjectSet {
     })
 
   }
-
 
   static async deleteRecord(type: string, id: string) {
     let conn = SFDataLogic.setUpConnection();
