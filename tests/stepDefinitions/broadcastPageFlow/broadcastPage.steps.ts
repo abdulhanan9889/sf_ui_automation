@@ -139,6 +139,8 @@ When(
 
 When("guest user navigates to the broadcast page", async function () {
   await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
+  await waitTillHTMLRendered(page)
+  await closeTbidModal(page)
 })
 
 Then("guest user verifies the episode details", async function () {
@@ -150,10 +152,6 @@ Then("guest user verifies the episode details", async function () {
     }
     if (i < noOfEpisodes - 1) {
       await openNextAuthenticatedEpisode(page, i)
-    }
-    if (i = 0) {
-      await closeTbidModal(page)
-      continue
     }
   }
   await verifySeriesTitle(page, testDataSet.seriesNames[0])
