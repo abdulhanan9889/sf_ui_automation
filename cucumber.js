@@ -1,7 +1,7 @@
 
 let unAuthFlow = [
   `tests/features/unAuthFlow.feature
-  --require tests/unAuthenticatedFlow/unAuthFlow.steps.ts
+  --require tests/stepDefinitions/unAuthenticatedFlow/unAuthFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -10,7 +10,7 @@ let unAuthFlow = [
 
 let authFlow = [
   `tests/features/authFlow.feature
-  --require tests/authenticatedFlow/authFlow.steps.ts
+  --require tests/stepDefinitions/authenticatedFlow/authFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -19,7 +19,7 @@ let authFlow = [
 
 let broadcastPage = [
   `tests/features/broadcastPage.feature
-  --require tests/broadcastPageFlow/broadcastPage.steps.ts
+  --require tests/stepDefinitions/broadcastPageFlow/broadcastPage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -28,7 +28,7 @@ let broadcastPage = [
 
 let episodePage = [
   `tests/features/episodePage.feature
-  --require tests/episodePageFlow/episodePage.steps.ts
+  --require tests/stepDefinitions/episodePageFlow/episodePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -37,7 +37,7 @@ let episodePage = [
 
 let loginFlow = [
   `tests/features/loginFlow.feature
-  --require tests/loginFlow/loginFlow.steps.ts
+  --require tests/stepDefinitions/loginFlow/loginFlow.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -46,7 +46,7 @@ let loginFlow = [
 
 let experiencePage = [
   `tests/features/experiencePage.feature
-  --require tests/experiencePageFlow/experiencePage.steps.ts
+  --require tests/stepDefinitions/experiencePageFlow/experiencePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet
@@ -55,7 +55,7 @@ let experiencePage = [
 
 let homePage = [
   `tests/features/homePage.feature
-  --require tests/homePageFlow/homePage.steps.ts
+  --require tests/stepDefinitions/homePageFlow/homePage.steps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet

@@ -1,0 +1,1 @@
+export const experiencePage = `shadow/[href="/plus/experience/Sup_E2E0712_CG_Event1"]`

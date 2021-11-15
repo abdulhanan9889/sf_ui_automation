@@ -1,1 +1,0 @@
-export type Map_Object = {[key:string]:any} 

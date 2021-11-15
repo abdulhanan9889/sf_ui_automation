@@ -1,0 +1,1 @@
+export const getTrailorTitle = `shadow/span.bxp-global-eyebrow`

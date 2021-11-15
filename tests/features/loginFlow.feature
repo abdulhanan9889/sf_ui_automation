@@ -23,7 +23,7 @@ Feature: Login flow
                   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
              Then the user is logged out from the salesforce+ platform
 
-        @loginFlow
+        @loginFlow @current
         Scenario Outline: user logins through login button
             Given the user loads the salesforce plus platform
              When user tries to login with an email address

@@ -1,0 +1,33 @@
+{
+	"apiName": "bxp_Segment__c",
+	"fieldValue": [
+		"bxp_Segment__c",
+		null,
+		"Segment Description",
+		null,
+		"https://wp-develop.salesforce.com/bxp/wp-content/uploads/sites/15/2021/07/Primetime@2x.png",
+		null,
+		"Published",
+		null
+	],
+	"fieldName": [
+		"type",
+		"Content__c",
+		"Description__c",
+		"End_Time__c",
+		"Image_Url__c",
+		"Start_Time__c",
+		"Status__c",
+		"Name"
+	],
+	"updateFieldValue": [
+		"Yes",
+		"yes",
+		"Samir"
+	],
+	"updateFieldName": [
+		"Allow_Share_With_Slack__c",
+		"Allow_Sms__c",
+		"First_Name__c"
+	]
+}
