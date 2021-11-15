@@ -33,7 +33,7 @@ import {
   generateRandomProfileUrl,
   checkPrivacyStatement,
 } from "./authFlow.actions";
-import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../originalSeries/actions/unAuthFlow.actions";
 import { verifySignupRecordFromDatabase } from "./authFlow.assertions";
 import SFDataLogic from "../../../testDataGeneration/testDataLogic/testDataLogic";
 import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";

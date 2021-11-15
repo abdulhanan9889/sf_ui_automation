@@ -12,15 +12,15 @@ import {
 import {
   clickPlayButton,
   clickPauseButton,
-} from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
+} from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 import { openSignInForm } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
-import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
+import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
 import {
   fillSignInForm,
   fillInSignUpForm,
   fillInSignInForm,
 } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks";
-import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.assertions";
+import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress";
 import {
   verifySpeakerFourDetails,
   verifySpeakerFiveDetails,
@@ -43,7 +43,7 @@ import {
   verifyReversedVideo,
 } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions";
 
-import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
