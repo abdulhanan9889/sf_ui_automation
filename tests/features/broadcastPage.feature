@@ -1,10 +1,11 @@
 Feature: Broadcast Page
 
 
-     #    Scenario: user generates data for authenticated flows
-     #        Given user generates data for broadcast page
-     #              | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | eventStartHour | eventEndDayFromToday | eventEndHour |
-     #              | 2              | 5                         | 0                      | 7              | 3                    | 22           |
+        @current
+        Scenario: user generates data for authenticated flows
+            Given user generates data for broadcast page flows
+                  | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | seriesStartDayFromToday | eventEndDayFromToday | seriesEndDayFromToday | numberOfSpeakers | firstName | lastName | designation | company |
+                  | 1              | 2                         | 1                      | 1                       | 3                    | 4                     | 2                | dummy     | speaker  | QA          | emumba  |
 
         @broadcastPage
         Scenario Outline: authenticated user plays the selected episode
@@ -25,10 +26,12 @@ Feature: Broadcast Page
                   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
              Then user is logged out
 
+        @current
         @broadcastPage
         Scenario Outline: Verify broadcast details are present in the episode details modal
             Given guest user loads the salesforce plus platform
-             When guest user login through trailblazzer using <email>
+             When guest user navigates to the broadcast page
+       #      When guest user login through trailblazzer using <email>
              Then guest user verifies the episode details
        #      Then guest user is able to verify the episode number: <episodeNumber>
        #      Then guest user is able to verify the series title: <seriesTitle>

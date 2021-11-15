@@ -14,7 +14,7 @@ import {
   clickPauseButton,
 } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
 import { openSignInForm, testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
-import { openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
+import { openNextAuthenticatedEpisode, openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
 import {
   fillSignInForm,
   fillInSignUpForm,
@@ -49,7 +49,7 @@ import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/unAuthent
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
-import { maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks";
+import { closeTbidModal, maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks";
 
 let page;
 let ss
@@ -57,7 +57,7 @@ let recorder
 let noOfEpisodes
 let noOfSpeakers
 
-Given('user generates data for broadcast page', async function (datatable) {
+Given('user generates data for broadcast page flows', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
   noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
   noOfSpeakers = testDataParameters.numberOfSpeakers
@@ -127,6 +127,7 @@ Given(
     await page.waitFor(2000);
   }
 );
+
 When(
   "guest user login through trailblazzer using {word}",
   { timeout: 120 * 1000 },
@@ -136,6 +137,10 @@ When(
   }
 );
 
+When("guest user navigates to the broadcast page", async function () {
+  await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
+})
+
 Then("guest user verifies the episode details", async function () {
   for (var i = 0; i < noOfEpisodes; i++) {
     await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
@@ -144,7 +149,11 @@ Then("guest user verifies the episode details", async function () {
       await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
     }
     if (i < noOfEpisodes - 1) {
-      await openNextEpisode(page, i)
+      await openNextAuthenticatedEpisode(page, i)
+    }
+    if (i = 0) {
+      await closeTbidModal(page)
+      continue
     }
   }
   await verifySeriesTitle(page, testDataSet.seriesNames[0])
@@ -307,11 +316,11 @@ AfterStep("@broadcastPage", async function () {
   await this.attach(ss, 'image/png')
 })
 
-After("@broadcastPage", async function () {
-  await page.close()
-})
+// After("@broadcastPage", async function () {
+//   await page.close()
+// })
 
-AfterAll(async function () {
-  let baseobject = new BaseObject()
-  // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-})
+// AfterAll(async function () {
+//   let baseobject = new BaseObject()
+//   // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+// })
