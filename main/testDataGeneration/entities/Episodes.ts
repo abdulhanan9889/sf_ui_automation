@@ -13,7 +13,6 @@ export default class Episode extends BaseObject {
 	// 	return this.speakerList;
 	// }
 	setSpeakerList(m: Map<string, string>) {
-
 		this.speakerList.push(m)
 	}
 

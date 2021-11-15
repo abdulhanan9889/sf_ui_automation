@@ -6,7 +6,8 @@ import {
     clickPauseButton,
     clickFirstEpisodeButton,
     clickSecondEpisodeButton,
-    clickNextEpisodeButton
+    clickNextEpisodeButton,
+    clickNextAuthenticatedEpisodeButton
 } from "../unAuthenticatedFlow/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";
 import SFDataInsertion from "../../../testDataGeneration/testDataLogic/SFDataInsertion";
@@ -60,6 +61,13 @@ export async function openSecondEpisode(page) {
 }
 
 export async function openNextEpisode(page, episodeNo) {
+    await waitTillHTMLRendered(page)
     await clickNextEpisodeButton(page, episodeNo)
+    await waitTillHTMLRendered(page)
+}
+
+export async function openNextAuthenticatedEpisode(page, episodeNo) {
+    await waitTillHTMLRendered(page)
+    await clickNextAuthenticatedEpisodeButton(page, episodeNo)
     await waitTillHTMLRendered(page)
 }

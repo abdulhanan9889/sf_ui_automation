@@ -13,8 +13,8 @@ import {
   clickPlayButton,
   clickPauseButton,
 } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
-import { openSignInForm } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
-import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
+import { openSignInForm, testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
+import { openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
 import {
   fillSignInForm,
   fillInSignUpForm,
@@ -41,6 +41,7 @@ import {
   // verifySpeakerThreeDetails,
   verifyForwardedVideo,
   verifyReversedVideo,
+  verifySpeakerDetails,
 } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions";
 
 import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
@@ -49,14 +50,19 @@ import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDa
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks";
+
 let page;
 let ss
 let recorder
-
+let noOfEpisodes
+let noOfSpeakers
 
 Given('user generates data for broadcast page', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
-  // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+  noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
+  noOfSpeakers = testDataParameters.numberOfSpeakers
+  await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
+    testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 })
 
 Given("the user is on the salesforce plus webpage", async function () {
@@ -130,97 +136,111 @@ When(
   }
 );
 
-Then(
-  "guest user is able to verify the episode number: {string}",
-  async function (episodeNumber) {
-    await verifyEpisodeNumber(page, episodeNumber);
+Then("guest user verifies the episode details", async function () {
+  for (var i = 0; i < noOfEpisodes; i++) {
+    await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
+    await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+    for (var j = 0; j < noOfSpeakers; j++) {
+      await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+    }
+    if (i < noOfEpisodes - 1) {
+      await openNextEpisode(page, i)
+    }
   }
-);
+  await verifySeriesTitle(page, testDataSet.seriesNames[0])
+})
 
-Then(
-  "guest user is able to verify the series title: {string}",
-  async function (seriesTitle) {
-    await verifySeriesTitle(page, seriesTitle);
-  }
-);
+// Then(
+//   "guest user is able to verify the episode number: {string}",
+//   async function (episodeNumber) {
+//     await verifyEpisodeNumber(page, episodeNumber);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the episode title: {string}",
-  async function (episodeTitle) {
-    await verifyEpisodeTitle(page, episodeTitle);
-  }
-);
+// Then(
+//   "guest user is able to verify the series title: {string}",
+//   async function (seriesTitle) {
+//     await verifySeriesTitle(page, seriesTitle);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker one name and card title: {string}",
-  async function (speakerOneDetails) {
-    // await verifySpeakerOneDetails(page, speakerOneDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the episode title: {string}",
+//   async function (episodeTitle) {
+//     await verifyEpisodeTitle(page, episodeTitle);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker two name and card title: {string}",
-  async function (speakerTwoDetails) {
-    // await verifySpeakerTwoDetails(page, speakerTwoDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker one name and card title: {string}",
+//   async function (speakerOneDetails) {
+//     // await verifySpeakerOneDetails(page, speakerOneDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker three name and card title: {string}",
-  async function (speakerThreeDetails) {
-    // await verifySpeakerThreeDetails(page, speakerThreeDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker two name and card title: {string}",
+//   async function (speakerTwoDetails) {
+//     // await verifySpeakerTwoDetails(page, speakerTwoDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker four name and card title: {string}",
-  async function (speakerFourDetails) {
-    await verifySpeakerFourDetails(page, speakerFourDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker three name and card title: {string}",
+//   async function (speakerThreeDetails) {
+//     // await verifySpeakerThreeDetails(page, speakerThreeDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker five name and card title: {string}",
-  async function (speakerFiveDetails) {
-    await verifySpeakerFiveDetails(page, speakerFiveDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker four name and card title: {string}",
+//   async function (speakerFourDetails) {
+//     await verifySpeakerFourDetails(page, speakerFourDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker six name and card title: {string}",
-  async function (speakerSixDetails) {
-    await verifySpeakerSixDetails(page, speakerSixDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker five name and card title: {string}",
+//   async function (speakerFiveDetails) {
+//     await verifySpeakerFiveDetails(page, speakerFiveDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker seven name and card title: {string}",
-  async function (speakerSevenDetails) {
-    await verifySpeakerSevenDetails(page, speakerSevenDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker six name and card title: {string}",
+//   async function (speakerSixDetails) {
+//     await verifySpeakerSixDetails(page, speakerSixDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker eight name and card title: {string}",
-  async function (speakerEightDetails) {
-    await verifySpeakerEightDetails(page, speakerEightDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker seven name and card title: {string}",
+//   async function (speakerSevenDetails) {
+//     await verifySpeakerSevenDetails(page, speakerSevenDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker nine name and card title: {string}",
-  async function (speakerNineDetails) {
-    await verifySpeakerNineDetails(page, speakerNineDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker eight name and card title: {string}",
+//   async function (speakerEightDetails) {
+//     await verifySpeakerEightDetails(page, speakerEightDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker ten name and card title: {string}",
-  async function (speakerTenDetails) {
-    await verifySpeakerTenDetails(page, speakerTenDetails);
-    // await recorder.stop()
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker nine name and card title: {string}",
+//   async function (speakerNineDetails) {
+//     await verifySpeakerNineDetails(page, speakerNineDetails);
+//   }
+// );
+
+// Then(
+//   "guest user is able to verify the speaker ten name and card title: {string}",
+//   async function (speakerTenDetails) {
+//     await verifySpeakerTenDetails(page, speakerTenDetails);
+//     // await recorder.stop()
+//   }
+// );
 
 Given(
   "authenticated user is on salesforce plus webpage",

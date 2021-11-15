@@ -6,7 +6,8 @@ import {
     secondEpisodeButton,
     nextEpisodeButton,
     seriesButton,
-    episodeButton
+    episodeButton,
+    nextAuthenticatedEpisodeButton
 } from "./user_interface/testDataSelectors";
 
 export async function acceptCookies(page) {
@@ -73,5 +74,10 @@ export async function clickNextEpisodeButton(page, episodeNo) {
     await page.waitForSelector(nextEpisodeButton(episodeNo))
     let EPISODE_BUTTON = await page.$(nextEpisodeButton(episodeNo))
     EPISODE_BUTTON.click()
-    // EPISODE_BUTTON.evaluate((ele) => ele.click())
+}
+
+export async function clickNextAuthenticatedEpisodeButton(page, episodeNo) {
+    await page.waitForSelector(nextAuthenticatedEpisodeButton(episodeNo))
+    let EPISODE_BUTTON = await page.$(nextAuthenticatedEpisodeButton(episodeNo))
+    EPISODE_BUTTON.click()
 }
