@@ -36,7 +36,7 @@ import {
   checkPrivacyStatement,
   clickDoneButton,
 } from "../authenticatedFlow/authFlow.actions";
-import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../originalSeries/actions/unAuthFlow.actions";
 
 export async function fillInSignInForm(page, email) {
   await clickLoginInWithTrailblazaerID(page);

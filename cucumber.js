@@ -1,7 +1,7 @@
 
 let unAuthFlow = [
   `tests/features/unAuthFlow.feature
-  --require tests/stepDefinitions/unAuthenticatedFlow/unAuthFlow.steps.ts
+  --require tests/stepDefinitions/unAuthenticatedFlow/originalSeriesSteps.ts
   --require-module ts-node/register
   --format progress-bar
   --publish-quiet

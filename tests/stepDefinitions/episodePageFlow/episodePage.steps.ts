@@ -14,8 +14,8 @@ import {
     verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
     verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer, verifySpeakerDetails
 } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions'
-import { acceptCookies, clickSecondEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions'
-import { verifyProgressBarValues } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.assertions'
+import { acceptCookies, clickSecondEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions'
+import { verifyProgressBarValues } from '../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress'
 import { waitTillHTMLRendered } from '../../../main/utilities/waitTillHTMLRendered'
 import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions'
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
@@ -23,7 +23,7 @@ import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 
 
-import { destroy, openEpisode, playEpisode, openNextEpisode } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks'
+import { destroy, openEpisode, playEpisode, openNextEpisode } from '../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.actions'
 import { clickSecondAuthorizedEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.actions'
 import { testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'

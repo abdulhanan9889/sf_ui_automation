@@ -22,7 +22,7 @@ import {
   clickDoneButton,
   generateRandomProfileUrl,
 } from "../authenticatedFlow/authFlow.actions";
-import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../originalSeries/actions/unAuthFlow.actions";
 export async function openTheSignInForm(page) {
   await clickTrailblazzerButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });

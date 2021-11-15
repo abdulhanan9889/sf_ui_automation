@@ -34,7 +34,7 @@ import {
 } from '../authenticatedFlow/authFlow.actions'
 import { clickSkipForNowButton, clickCancelAndLogoutButton } from '../broadcastPageFlow/broadcastPage.actions'
 import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton, clickCrossButton } from './episodePage.actions'
-import { acceptCookies } from '../unAuthenticatedFlow/unAuthFlow.actions'
+import { acceptCookies } from '../originalSeries/actions/unAuthFlow.actions'
 import { getCloseButton } from '../selectors/common.selectors'
 import { maximizeVideoPlayerButton, minimizeVideoPlayerButton } from './user_interface/episodePlayerSelectors'
 import { waitTillHTMLRendered } from '../../../utilities/waitTillHTMLRendered'
