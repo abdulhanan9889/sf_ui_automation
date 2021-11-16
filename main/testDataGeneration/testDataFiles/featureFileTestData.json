@@ -1,0 +1,23 @@
+[{
+    "seriesStartFromToday": 0,
+    "seriesEndFromToday": 1,
+    "noOfSeries":2,
+    "noOfEpisodesPerSeries":2,
+    "noOfSpeakers":2,
+    "firstName":"dummy",
+    "lastName":"here",
+    "designation":"QA Engineer",
+    "company": "Emumba"
+},
+{
+    "seriesStartFromToday": 0,
+    "seriesEndFromToday": 2,
+    "noOfSeries":1,
+    "noOfEpisodesPerSeries":1,
+    "noOfSpeakers":3,
+    "firstName":"dummy1",
+    "lastName":"here1",
+    "designation":"QA Engineer yeap",
+    "company": "Emumba pvt"
+}
+]

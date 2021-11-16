@@ -2,8 +2,8 @@ var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(720000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
-import { navigateToDreamForcePage } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigationTasks";
-import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigationTasks";
+import { navigateToDreamForcePage } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigation.tasks";
+import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigation.tasks";
 import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
 import {
     navigateToDetailsPageOfTheEvent,
@@ -11,16 +11,16 @@ import {
     testData,
     testDataDelete,
     testDataSet
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/testDataGenerationTasks";
+} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/testDataGeneration.tasks";
 import { clickOnExperienceSectionButton } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 const { setWorldConstructor } = require("@cucumber/cucumber")
 import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
-import { clickOnAllSponsors } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/sponsorsSectionTasks";
-import { clickOnExploreMore } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageHeroBannerTasks";
+import { clickOnAllSponsors } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/sponsorsSection.tasks";
+import { clickOnExploreMore } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageHeroBanner.tasks";
 import { closeLoginModal } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
 import { clickOnArrowForSeriesInTopic, clickOnPlayForSeriesInTopics} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/topicCarouselTasks";
-import { clickOnArrowForSeriesInRoles, clickOnPlayForSeriesInRoles } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/roleCarouselTasks";
+import { clickOnArrowForSeriesInRoles, clickOnPlayForSeriesInRoles } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/roleCarousel.tasks";
 import { checkForAllSponsorsTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/sponsorsSectionAssertions";
 import { checkWatchcNowButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
 import { checkSpeakerName } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/speakerSectionAssertions";
@@ -34,41 +34,72 @@ import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDa
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { eventURL } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/user_interface/testDataSelectors";
+import expTestData from "../../../main/testDataGeneration/testDataFiles/featureFileTestData.json"
+
 export var cliUsername;
 export var cliPassword;
 export var cliLoginUrl;
 export var cliInstanceUrl;
-
+let i
 let page;
 let ss;
 let recorder;
 let target;
+Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
+    console.log(expTestData.length)
+        for ( i=0; i < expTestData.length; i++){
+            await testData(expTestData[i].seriesStartFromToday,
+                expTestData[i].seriesEndFromToday,
+                expTestData[i].noOfSeries,
+                expTestData[i].noOfEpisodesPerSeries,
+                expTestData[i].noOfSpeakers,
+                expTestData[i].firstName,
+                expTestData[i].lastName,
+                expTestData[i].designation,
+                expTestData[i].company)
+        }
+        
+        page = await loadBrowser()
+        await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+        await acceptCookies(page)
+        await waitTillHTMLRendered(page)
+        await navigateToDreamForcePage(page)
+        await waitTillHTMLRendered(page)
+        await checkExploreMoreIsPresent(page)
+        await page.goto(eventURL())
+        await waitTillHTMLRendered
+        await checkExploreMoreIsPresent(page)
 
-Given('user generates data for authenticated flows and navigates to added Event Page', async function (datatable) {
-    console.log("Test123123")
-    const testDataParameters = await datatable.hashes()[0]
-    await testData(testDataParameters.seriesStartFromToday,
-        testDataParameters.seriesEndFromToday,
-        testDataParameters.noOfSeries,
-        testDataParameters.noOfEpisodesPerSeries,
-        testDataParameters.noOfSpeakers,
-        testDataParameters.firstName,
-        testDataParameters.lastName,
-        testDataParameters.designation,
-        testDataParameters.company)
-    page = await loadBrowser()
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await acceptCookies(page)
-    await waitTillHTMLRendered(page)
-    await navigateToDreamForcePage(page)
-    await waitTillHTMLRendered(page)
-    await checkExploreMoreIsPresent(page)
-    await page.goto(eventURL())
-    await waitTillHTMLRendered
-    await checkExploreMoreIsPresent(page)
-})
+});
+
+
+// Given('user generates data for authenticated flows and navigates to added Event Page', async function (datatable) {
+//     console.log("Test123123")
+//     const testDataParameters = await datatable.hashes()[0]
+//     await testData(testDataParameters.seriesStartFromToday,
+//         testDataParameters.seriesEndFromToday,
+//         testDataParameters.noOfSeries,
+//         testDataParameters.noOfEpisodesPerSeries,
+//         testDataParameters.noOfSpeakers,
+//         testDataParameters.firstName,
+//         testDataParameters.lastName,
+//         testDataParameters.designation,
+//         testDataParameters.company)
+//     page = await loadBrowser()
+//     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//     await acceptCookies(page)
+//     await waitTillHTMLRendered(page)
+//     await navigateToDreamForcePage(page)
+//     await waitTillHTMLRendered(page)
+//     await checkExploreMoreIsPresent(page)
+//     await page.goto(eventURL())
+//     await waitTillHTMLRendered
+//     await checkExploreMoreIsPresent(page)
+// })
+
+
 When('user navigates to the added Event details page', async function () {
-    console.log(testDataSet)
+    // console.log(testDataSet)
     await navigateToDetailsPageOfTheEvent(page)
     await waitTillHTMLRendered(page)
     await checkSignUpToWatchButton(page)

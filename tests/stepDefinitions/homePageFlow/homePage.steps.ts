@@ -1,7 +1,7 @@
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(60000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
-import { After, Given, Then, When, AfterStep, Before } from "@cucumber/cucumber";
+import { After, Given, Then, When, AfterStep, Before, AfterAll } from "@cucumber/cucumber";
 import { checkAllEpisodesTitle } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/episodePageAssertions";
 import { checkWatchNowisPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
 import { checkFeaturedEpisodeTitle } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/featuredEpisodeAsseretions";
@@ -19,10 +19,27 @@ import { navigateToDreamforceTab } from "../../../main/ui/salesforcePlusPlatform
 import { navigateToExploreSFPage } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/homePageHeroBanner.tasks";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { forEachChild } from "typescript";
+import { testData, testDataDelete } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/testDataGeneration.task";
+import homePageTestData from "../../../main/testDataGeneration/testDataFiles/featureFileTestData.json"
 
 let page;
 let recorder;
 let ss
+
+Given('user generates data for authenticated flows', async function () {
+  console.log(homePageTestData.length)
+  for (let i=0; i < homePageTestData.length; i++){
+      await testData(homePageTestData[i].seriesStartFromToday,
+        homePageTestData[i].seriesEndFromToday,
+        homePageTestData[i].noOfSeries,
+          homePageTestData[i].noOfEpisodesPerSeries,
+          homePageTestData[i].noOfSpeakers,
+          homePageTestData[i].firstName,
+          homePageTestData[i].lastName,
+          homePageTestData[i].designation,
+          homePageTestData[i].company)
+  }
+});
 
 Given("user is on the salesforcePlus Homepage", async function () {
   page = await loadBrowser();
@@ -134,4 +151,8 @@ AfterStep("@homePage", async function () {
 After("@homePage", async function () {
   await page.close();
 });
-
+AfterAll(async function () {
+  // let baseobject = new BaseObject()
+  // // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+  await testDataDelete()
+})

@@ -1,5 +1,5 @@
-import { testDataSet } from "../experiencePage.tasks"
-
+// import { testDataSet } from "../../experiencePage.tasks"
+import { testDataSet } from "../tasks/testDataGeneration.tasks"
 export function eventURL() {
     return `https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`
 }
