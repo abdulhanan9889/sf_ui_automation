@@ -1,14 +1,18 @@
 import {
-  clickDreamForceTab,
-  clickCompleteMyMembership,
+  clickCancelAndLogoutButton,
+  clickSkipForNowButton
+} from "../actions/cancelLogout.actions";
+import {
+  muteVideoButton,
+  unmuteVideoButton
+} from "../actions/videoPlayer.actions";
+import {
   clickLoginInWithTrailblazaerID,
-  clickConitnueButton,
-  clickDoneButton,
   clickEmailButton,
   clickLoginButton,
+  clickConitnueButton,
   clickNextButton,
   clickOnSignUpButton,
-  clickWatchNowButton,
   typeCompanyName,
   typeCountryCode,
   typeEmailAddressInTrailBlazer,
@@ -32,31 +36,25 @@ import {
   generateRandomEmail,
   generateRandomProfileUrl,
   checkPrivacyStatement,
-} from "./authFlow.actions";
-import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
-import { verifySignupRecordFromDatabase } from "./authFlow.assertions";
-import SFDataLogic from "../../../testDataGeneration/testDataLogic/testDataLogic";
-import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";
-import SFDataInsertion from "../../../testDataGeneration/testDataLogic/SFDataInsertion";
+  clickDoneButton,
+} from "../../authenticatedFlow/actions/trailBlazzerModal.actions";
+import { acceptCookies } from "../../originalSeries/actions/unAuthFlow.actions";
 
-export var testDataSet: SFDataLogic = new SFDataLogic()
+export async function fillInSignInForm(page, email) {
+  await clickLoginInWithTrailblazaerID(page);
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
+  await acceptCookies(page);
+  await page.waitFor(3000);
+  await clickEmailButton(page);
+  await typeEmailAddressInTrailBlazer(page, email);
+  await clickLoginButton(page);
+  await page.waitFor(2000);
+  let context = await openSalesForceEmail(email);
+  await typeEmailTokenInTrailBlazzer(page, context);
+  await clickConitnueButton(page);
+  await page.waitFor(2000);
+}
 var email;
-
-export async function testData(seriesStartFromToday: number, seriesEndFromtaday: number, noOfSeries: number, noOfEpisodesPerSeries: number, noOfSpeakers: number, firstName: string, lastName: string, company: string, designation: string) {
-
-  let event = await testDataSet.createEvent(seriesStartFromToday, 0, seriesEndFromtaday, 12)
-  //@ts-ignore
-  await SFDataInsertion.createSeriesWithEpisodes(testDataSet, seriesStartFromToday, seriesEndFromtaday, noOfSeries, noOfEpisodesPerSeries, noOfSpeakers, event, firstName, lastName, company, designation)
-}
-
-export async function openSignInForm(page) {
-  await clickDreamForceTab(page);
-  await waitTillHTMLRendered(page);
-  await page.waitForTimeout(15000)
-  await clickWatchNowButton(page);
-  await waitTillHTMLRendered(page);
-}
-
 export async function fillSignInForm(page) {
   await clickLoginInWithTrailblazaerID(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
@@ -70,10 +68,10 @@ export async function fillSignInForm(page) {
   let context = await openSalesForceEmail(email);
   await typeEmailTokenInTrailBlazzer(page, context);
   await clickConitnueButton(page);
-  await waitTillHTMLRendered(page)
+  await page.waitFor(2000);
 }
 
-export async function fillSignUpForm(page, datatable) {
+export async function fillInSignUpForm(page, datatable) {
   const dataFields = await datatable.hashes()[0];
   await clickOnSignUpButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
@@ -92,7 +90,6 @@ export async function fillSignUpForm(page, datatable) {
   await checkPrivacyStatement(page);
   await clickDoneButton(page);
   await page.waitFor(25000);
-  await waitTillHTMLRendered(page)
   await typeWorkEmail(page, email);
   await typeWorkPhone(page, dataFields.phoneNumber);
   await selectCompanySize(page, dataFields.companySize);
@@ -101,13 +98,6 @@ export async function fillSignUpForm(page, datatable) {
   await typeCountryCode(page, dataFields.countryCode);
   await typePhoneNumber(page, dataFields.phoneNumber);
   await selectGiveInformationForMarketingPurposeCheckbox(page);
-  await clickCompleteMyMembership(page);
-  await page.waitForTimeout(3000);
-}
-
-export async function verifySignupFields(page, dataTable) {
-  const signupParameters = await dataTable.hashes()[0]
-  let signupRecord = await SFDataLogic.queryUser(email)
-  console.log(signupRecord)
-  await verifySignupRecordFromDatabase(signupParameters, signupRecord)
+  await clickCancelAndLogoutButton(page);
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 40000 });
 }

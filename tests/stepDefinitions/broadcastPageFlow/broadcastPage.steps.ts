@@ -1,26 +1,24 @@
-import { Given, When, After, Then, AfterAll, AfterStep } from "@cucumber/cucumber";
+  import { Given, When, After, Then, AfterAll, AfterStep } from "@cucumber/cucumber";
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 setDefaultTimeout(60000);
-
-import {
-  muteVideoButton,
-  unmuteVideoButton,
-} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.actions";
+import { muteVideoButton,
+  unmuteVideoButton } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/actions/videoPlayer.actions";
 import {
   clickPlayButton,
   clickPauseButton,
-} from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
-import { openSignInForm } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
-import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
+} from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
+import { openSignInForm} from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/tasks/authFlow.tasks";
+import { testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/tasks/testData.tasks";
+import { openNextAuthenticatedEpisode, openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
 import {
   fillSignInForm,
   fillInSignUpForm,
   fillInSignInForm,
-} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks";
-import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.assertions";
+} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/tasks/broadcastPageSignUp.tasks";
+import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress";
 import {
   verifySpeakerFourDetails,
   verifySpeakerFiveDetails,
@@ -28,9 +26,9 @@ import {
   verifySpeakerSevenDetails,
   verifySpeakerEightDetails,
   verifySpeakerNineDetails,
-  verifySpeakerTenDetails,
-  isUserLoggedOut,
-} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions";
+  verifySpeakerTenDetails
+} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/assertions/speakerDetails.assertions";
+import { isUserLoggedOut } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/assertions/logOut.assertions";
 
 import {
   verifyEpisodeNumber,
@@ -38,25 +36,31 @@ import {
   verifyEpisodeTitle,
   // verifySpeakerOneDetails,
   // verifySpeakerTwoDetails,
-  // verifySpeakerThreeDetails,
-  verifyForwardedVideo,
-  verifyReversedVideo,
-} from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions";
+  // verifySpeakerThreeDetails,  
+  verifySpeakerDetails,
+} from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/assertions/episodeDetails.assertions";
+import { verifyForwardedVideo,verifyReversedVideo, } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/assertions/episodePlayer.assertions";
 
-import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
-import { maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks";
+import { closeTbidModal } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/tasks/episodeNavigation.tasks";
+import { maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/actions/episodePlayer.actions";
+
 let page;
 let ss
 let recorder
+let noOfEpisodes
+let noOfSpeakers
 
-
-Given('user generates data for broadcast page', async function (datatable) {
+Given('user generates data for broadcast page flows', async function (datatable) {
   const testDataParameters = await datatable.hashes()[0]
-  // await SFDataInsertion.createEventFlowHavingSeriesWithEpisodes(testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.eventStartDayFromToday, testDataParameters.eventStartHour, testDataParameters.eventEndDayFromToday, testDataParameters.eventEndHour)
+  noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
+  noOfSpeakers = testDataParameters.numberOfSpeakers
+  await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
+    testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 })
 
 Given("the user is on the salesforce plus webpage", async function () {
@@ -121,6 +125,7 @@ Given(
     await page.waitFor(2000);
   }
 );
+
 When(
   "guest user login through trailblazzer using {word}",
   { timeout: 120 * 1000 },
@@ -130,97 +135,119 @@ When(
   }
 );
 
-Then(
-  "guest user is able to verify the episode number: {string}",
-  async function (episodeNumber) {
-    await verifyEpisodeNumber(page, episodeNumber);
-  }
-);
+When("guest user navigates to the broadcast page", async function () {
+  await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
+})
 
-Then(
-  "guest user is able to verify the series title: {string}",
-  async function (seriesTitle) {
-    await verifySeriesTitle(page, seriesTitle);
+Then("guest user verifies the episode details", async function () {
+  for (var i = 0; i < noOfEpisodes; i++) {
+    await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
+    await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+    for (var j = 0; j < noOfSpeakers; j++) {
+      await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+    }
+    if (i < noOfEpisodes - 1) {
+      await openNextAuthenticatedEpisode(page, i)
+    }
+    if (i = 0) {
+      await closeTbidModal(page)
+      continue
+    }
   }
-);
+  await verifySeriesTitle(page, testDataSet.seriesNames[0])
+})
 
-Then(
-  "guest user is able to verify the episode title: {string}",
-  async function (episodeTitle) {
-    await verifyEpisodeTitle(page, episodeTitle);
-  }
-);
+// Then(
+//   "guest user is able to verify the episode number: {string}",
+//   async function (episodeNumber) {
+//     await verifyEpisodeNumber(page, episodeNumber);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker one name and card title: {string}",
-  async function (speakerOneDetails) {
-    // await verifySpeakerOneDetails(page, speakerOneDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the series title: {string}",
+//   async function (seriesTitle) {
+//     await verifySeriesTitle(page, seriesTitle);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker two name and card title: {string}",
-  async function (speakerTwoDetails) {
-    // await verifySpeakerTwoDetails(page, speakerTwoDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the episode title: {string}",
+//   async function (episodeTitle) {
+//     await verifyEpisodeTitle(page, episodeTitle);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker three name and card title: {string}",
-  async function (speakerThreeDetails) {
-    // await verifySpeakerThreeDetails(page, speakerThreeDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker one name and card title: {string}",
+//   async function (speakerOneDetails) {
+//     // await verifySpeakerOneDetails(page, speakerOneDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker four name and card title: {string}",
-  async function (speakerFourDetails) {
-    await verifySpeakerFourDetails(page, speakerFourDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker two name and card title: {string}",
+//   async function (speakerTwoDetails) {
+//     // await verifySpeakerTwoDetails(page, speakerTwoDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker five name and card title: {string}",
-  async function (speakerFiveDetails) {
-    await verifySpeakerFiveDetails(page, speakerFiveDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker three name and card title: {string}",
+//   async function (speakerThreeDetails) {
+//     // await verifySpeakerThreeDetails(page, speakerThreeDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker six name and card title: {string}",
-  async function (speakerSixDetails) {
-    await verifySpeakerSixDetails(page, speakerSixDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker four name and card title: {string}",
+//   async function (speakerFourDetails) {
+//     await verifySpeakerFourDetails(page, speakerFourDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker seven name and card title: {string}",
-  async function (speakerSevenDetails) {
-    await verifySpeakerSevenDetails(page, speakerSevenDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker five name and card title: {string}",
+//   async function (speakerFiveDetails) {
+//     await verifySpeakerFiveDetails(page, speakerFiveDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker eight name and card title: {string}",
-  async function (speakerEightDetails) {
-    await verifySpeakerEightDetails(page, speakerEightDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker six name and card title: {string}",
+//   async function (speakerSixDetails) {
+//     await verifySpeakerSixDetails(page, speakerSixDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker nine name and card title: {string}",
-  async function (speakerNineDetails) {
-    await verifySpeakerNineDetails(page, speakerNineDetails);
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker seven name and card title: {string}",
+//   async function (speakerSevenDetails) {
+//     await verifySpeakerSevenDetails(page, speakerSevenDetails);
+//   }
+// );
 
-Then(
-  "guest user is able to verify the speaker ten name and card title: {string}",
-  async function (speakerTenDetails) {
-    await verifySpeakerTenDetails(page, speakerTenDetails);
-    // await recorder.stop()
-  }
-);
+// Then(
+//   "guest user is able to verify the speaker eight name and card title: {string}",
+//   async function (speakerEightDetails) {
+//     await verifySpeakerEightDetails(page, speakerEightDetails);
+//   }
+// );
+
+// Then(
+//   "guest user is able to verify the speaker nine name and card title: {string}",
+//   async function (speakerNineDetails) {
+//     await verifySpeakerNineDetails(page, speakerNineDetails);
+//   }
+// );
+
+// Then(
+//   "guest user is able to verify the speaker ten name and card title: {string}",
+//   async function (speakerTenDetails) {
+//     await verifySpeakerTenDetails(page, speakerTenDetails);
+//     // await recorder.stop()
+//   }
+// );
 
 Given(
   "authenticated user is on salesforce plus webpage",
@@ -287,11 +314,11 @@ AfterStep("@broadcastPage", async function () {
   await this.attach(ss, 'image/png')
 })
 
-After("@broadcastPage", async function () {
-  await page.close()
-})
+// After("@broadcastPage", async function () {
+//   await page.close()
+// })
 
-AfterAll(async function () {
-  let baseobject = new BaseObject()
-  // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-})
+// AfterAll(async function () {
+//   let baseobject = new BaseObject()
+//   // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
+// })

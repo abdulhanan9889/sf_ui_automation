@@ -1,32 +1,44 @@
 import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
 import { loadBrowser } from '../../../main/utilities/loadBrowser'
 import {
-    closeTbidModal,
     fillSignUpForms,
     loginThroughSignedUpUser,
     loginThroughTrailblazerId,
-    logoutFromSFPlatform,
-    maximizeVideoPlayer,
-    minimizeVideoPlayer,
-    openAuthorizedEpisode
-} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks'
+    logoutFromSFPlatform
+} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/tasks/signUp.tasks'
+import { openAuthorizedEpisode } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/tasks/episodeNavigation.tasks'
+import { maximizeVideoPlayer, minimizeVideoPlayer } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/actions/episodePlayer.actions'
+import { closeTbidModal } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/tasks/episodeNavigation.tasks'
 import {
-    verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
-    verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer, verifySpeakerDetails
-} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions'
-import { acceptCookies, clickSecondEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions'
-import { verifyProgressBarValues } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.assertions'
+    verifyEpisodeNumber,
+    verifySeriesTitle,
+    verifyEpisodeTitle,
+    verifySpeakerDetails
+} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/assertions/episodeDetails.assertions'
+import {
+    verifyForwardedVideo,
+    verifyReversedVideo,
+    verifyMutedVideo,
+    verifyUnmutedVideo,
+    verifyMaximizedPlayer,
+    verifyMinimizedPlayer
+} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/assertions/episodePlayer.assertions'
+import { acceptCookies, clickSecondEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions'
+import { verifyProgressBarValues } from '../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress'
 import { waitTillHTMLRendered } from '../../../main/utilities/waitTillHTMLRendered'
-import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions'
+import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/assertions/logOut.assertions'
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 
 
-import { destroy, openEpisode, playEpisode, openNextEpisode } from '../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks'
-import { muteVideoButton, unmuteVideoButton } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.actions'
-import { clickSecondAuthorizedEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.actions'
-import { testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
+import { openEpisode, playEpisode, openNextEpisode, openNextAuthenticatedEpisode } from '../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks'
+import {
+    muteVideoButton,
+    unmuteVideoButton
+} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/actions/videoPlayer.actions";
+import { clickSecondAuthorizedEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/actions/episodesButton.actions'
+import { testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/tasks/testData.tasks'
 
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(80000)
@@ -38,6 +50,8 @@ let noOfSpeakers
 
 Given('user generates data for authenticated epsiode flows', async function (datatable) {
     const testDataParameters = await datatable.hashes()[0]
+    noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
+    noOfSpeakers = testDataParameters.numberOfSpeakers
     await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
         testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 })
@@ -68,7 +82,7 @@ When('user navigates to episodes page and clicks on a particular episode', async
     await openEpisode(page)
 });
 
-Then('user is able to verify episode details', async function () {
+Then('user is able to verify unauthenticated episode details', async function () {
     for (var i = 0; i < noOfEpisodes; i++) {
         await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
         await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
@@ -77,6 +91,24 @@ Then('user is able to verify episode details', async function () {
         }
         if (i < noOfEpisodes - 1) {
             await openNextEpisode(page, i)
+        }
+    }
+    await verifySeriesTitle(page, testDataSet.seriesNames[0])
+});
+
+Then('user is able to verify authenticated episode details', async function () {
+    for (var i = 0; i < noOfEpisodes; i++) {
+        await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
+        await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+        for (var j = 0; j < noOfSpeakers; j++) {
+            await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+        }
+        if (i < noOfEpisodes - 1) {
+            await openNextAuthenticatedEpisode(page, i)
+        }
+        if (i = 0) {
+            await closeTbidModal(page)
+            continue
         }
     }
     await verifySeriesTitle(page, testDataSet.seriesNames[0])

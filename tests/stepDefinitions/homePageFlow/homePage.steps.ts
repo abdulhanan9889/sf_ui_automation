@@ -2,25 +2,21 @@ var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(60000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { After, Given, Then, When, AfterStep, Before } from "@cucumber/cucumber";
-import {
-  checkExploreSFisPresent,
-  checkExploreMoreIsPresent,
-  checkTrailorTitle,
-  checkFeaturedEpisodeTitle,
-  checkWatchNowisPresent,
-  checkAllEpisodesTitle,
-} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homepage.assertions";
-import {
-  acceptCookies,
-  clickOnArrowIcon,
-  clickOnDreamForce,
-  clickOnExperienceSectionButton,
-  clickOnExploreSF,
-  clickOnFeaturedEpisode,
-  clickOnPlayIcon
-} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homePage.actions";
+import { checkAllEpisodesTitle } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/episodePageAssertions";
+import { checkWatchNowisPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
+import { checkFeaturedEpisodeTitle } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/featuredEpisodeAsseretions";
+import { checkTrailorTitle } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/episodePageAssertions";
+import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
+import { checkExploreSFisPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/homePageHeroBannerAssertions";
+import { clickOnFeaturedEpisode } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/featuredEpisode.actions";
+import { clickOnExploreSF } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/homePageHeroBanner.actions";
+import { clickOnExperienceSectionButton } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
+import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
+import { clickOnArrowIcon, clickOnPlayIcon } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/homePage.actions";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
-import { navigateToDreamforceTab, navigateToExploreSFPage } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homePage.tasks";
+import { navigateToDreamforceTab } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/homePageTopNavigations.tasks";
+import { navigateToExploreSFPage } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/homePageHeroBanner.tasks";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { forEachChild } from "typescript";
 

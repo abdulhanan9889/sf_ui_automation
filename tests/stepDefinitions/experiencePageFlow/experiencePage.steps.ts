@@ -2,37 +2,33 @@ var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(720000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
+import { navigateToDreamForcePage } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigationTasks";
+import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageTopnavigationTasks";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
 import {
-    acceptCookies,
-    clickOnDreamForce,
-    clickOnExperienceSectionButton,
     navigateToDetailsPageOfTheEvent,
-    navigateToDreamForcePage,
     navigateToFirstEpisode,
-    testData, testDataDelete, testDataSet
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencePage.tasks";
+    testData,
+    testDataDelete,
+    testDataSet
+} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/testDataGenerationTasks";
+import { clickOnExperienceSectionButton } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 const { setWorldConstructor } = require("@cucumber/cucumber")
-import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homepage.assertions";
-import {
-    clickOnAllSponsors,
-    clickOnArrowForSeriesInRoles,
-    clickOnArrowForSeriesInTopic,
-    clickOnExploreMore,
-    clickOnPlayForSeriesInRoles,
-    clickOnPlayForSeriesInTopics,
-    closeLoginModal,
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencePage.tasks";
-import {
-    checkExperiencePagetitle,
-    checkForAllEpisodesTitle,
-    checkForAllSponsorsButton,
-    checkForAllSponsorsTitle,
-    checkForUpNextTitle,
-    checkSignUpToWatchButton,
-    checkSpeakerName,
-    checkWatchcNowButton,
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencepage.assertions";
+import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
+import { clickOnAllSponsors } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/sponsorsSectionTasks";
+import { clickOnExploreMore } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/expPageHeroBannerTasks";
+import { closeLoginModal } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
+import { clickOnArrowForSeriesInTopic, clickOnPlayForSeriesInTopics} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/topicCarouselTasks";
+import { clickOnArrowForSeriesInRoles, clickOnPlayForSeriesInRoles } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/tasks/roleCarouselTasks";
+import { checkForAllSponsorsTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/sponsorsSectionAssertions";
+import { checkWatchcNowButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkSpeakerName } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/speakerSectionAssertions";
+import { checkSignUpToWatchButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkForUpNextTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/upNextSectionAssertions";
+import { checkForAllSponsorsButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/sponsorsSectionAssertions";
+import { checkForAllEpisodesTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkExperiencePagetitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'

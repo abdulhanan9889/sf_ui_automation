@@ -3,16 +3,16 @@ import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import {
   openSignInForm,
   fillSignInForm,
-  fillSignUpForm,
-  verifySignupFields,
-} from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
+  fillSignUpForm
+} from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/tasks/authFlow.tasks";
+import { verifySignupFields } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/tasks/testData.tasks";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
-import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.tasks";
-import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.assertions";
+import { playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
+import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress";
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
-import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/unAuthenticatedFlow/unAuthFlow.actions";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(720000);

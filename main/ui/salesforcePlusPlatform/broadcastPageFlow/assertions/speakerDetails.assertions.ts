@@ -1,4 +1,3 @@
-var assert = require("assert");
 var assertion = require("soft-assert/lib/assertion");
 import {
   getSpeakerFourName,
@@ -15,8 +14,8 @@ import {
   getSpeakerSixName,
   getSpeakerTenDesignation,
   getSpeakerTenName,
-} from "../episodePageFlow/user_interface/speakerSectionSelectors";
-import { getLoggedOutText } from "./user_interface/logoutSelectors";
+} from "../../episodePageFlow/user_interface/speakerSectionSelectors";
+
 
 export async function verifySpeakerFourDetails(page, speakerFourDetails) {
   await page.waitForSelector(getSpeakerFourName)
@@ -138,9 +137,4 @@ export async function verifySpeakerTenDetails(page, speakerTenDetails) {
   await assertion.softAssertAll();
 }
 
-export async function isUserLoggedOut(page) {
-  await page.waitForSelector(getLoggedOutText);
-  let text = await page.$(getLoggedOutText);
-  let IS_LOGGED_OUT = await text.evaluate((status) => status?.innerText);
-  await assert.equal(IS_LOGGED_OUT, "Login");
-}
+

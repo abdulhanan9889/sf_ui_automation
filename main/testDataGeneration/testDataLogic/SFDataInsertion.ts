@@ -81,7 +81,7 @@ export default class SFDataInsertion {
 					for (let k = 1; k <= noOfSpeakers; k++) {
 						await testData.createSpeaker(firstname, lastname, company, des)
 						// @ts-ignore
-						await testData.assignSpeakerToEpisode(oEpisode, testData.speakerId[k - 1])
+						await testData.assignSpeakerToEpisode(oEpisode, testData.speakerId[k - 1], k - 1)
 					}
 					// @ts-ignore
 					await testData.assignEpisodeToSeries(oEpisode, oSeries, false, j, "Publish");

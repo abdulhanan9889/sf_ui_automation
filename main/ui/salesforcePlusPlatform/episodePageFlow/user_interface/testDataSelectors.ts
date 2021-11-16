@@ -1,4 +1,4 @@
-import { testDataSet } from "../../authenticatedFlow/authFlow.tasks"
+import { testDataSet } from "../../authenticatedFlow/tasks/authFlow.tasks"
 
 export function authorizedSeriesButton() {
     return `shadow/[href="/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}"]`

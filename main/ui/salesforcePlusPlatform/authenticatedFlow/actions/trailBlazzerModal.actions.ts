@@ -1,13 +1,12 @@
 import {
-  getDreamForceTab,
   getLoginWithTrailblazzerIDButton,
   getEmailButton,
   getEmailInputField,
   getLoginButton,
   getTokenInputField,
   getContinueButton,
-} from "../selectors/common.selectors";
-import { getWatchNowButton } from "../experiencePageFlow/user_interface/heroBannerSelectors";
+} from "../../selectors/common.selectors";
+
 import {
   getSignUpButton,
   getFirstNameField,
@@ -32,21 +31,9 @@ import {
   getWorkEmailField,
   getWorkPhoneField,
   getShareContactInfoCheckbox
-} from "../loginFlow/user_interface/trailBlazzerModalSelectors";
-
-export async function clickDreamForceTab(page) {
-  await page.waitForSelector(getDreamForceTab)
-  let dreamForce = await page.$(getDreamForceTab)
-  await dreamForce.click();
-}
+} from "../../loginFlow/user_interface/trailBlazzerModalSelectors";
 
 import { Inbox } from "mailinator-inbox";
-
-export async function clickWatchNowButton(page) {
-  // await page.waitForSelector(getWatchNowButton, { visible: true })
-  let watchNowButton = await page.$(getWatchNowButton)
-  await watchNowButton.click();
-}
 export async function clickLoginInWithTrailblazaerID(page) {
   await page.waitForSelector(getLoginWithTrailblazzerIDButton)
   let loginWithTrailblazzerButton = await page.$(getLoginWithTrailblazzerIDButton)

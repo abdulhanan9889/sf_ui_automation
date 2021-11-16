@@ -1,14 +1,10 @@
 import {
-  clickCancelAndLogoutButton,
-  clickSkipForNowButton,
-  muteVideoButton,
-  unmuteVideoButton,
-} from "./broadcastPage.actions";
-import {
+  clickCompleteMyMembership,
   clickLoginInWithTrailblazaerID,
+  clickConitnueButton,
+  clickDoneButton,
   clickEmailButton,
   clickLoginButton,
-  clickConitnueButton,
   clickNextButton,
   clickOnSignUpButton,
   typeCompanyName,
@@ -34,25 +30,23 @@ import {
   generateRandomEmail,
   generateRandomProfileUrl,
   checkPrivacyStatement,
-  clickDoneButton,
-} from "../authenticatedFlow/authFlow.actions";
-import { acceptCookies } from "../unAuthenticatedFlow/unAuthFlow.actions";
-
-export async function fillInSignInForm(page, email) {
-  await clickLoginInWithTrailblazaerID(page);
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
-  await acceptCookies(page);
-  await page.waitFor(3000);
-  await clickEmailButton(page);
-  await typeEmailAddressInTrailBlazer(page, email);
-  await clickLoginButton(page);
-  await page.waitFor(2000);
-  let context = await openSalesForceEmail(email);
-  await typeEmailTokenInTrailBlazzer(page, context);
-  await clickConitnueButton(page);
-  await page.waitFor(2000);
-}
+} from "../actions/trailBlazzerModal.actions";
+import { clickWatchNowButton } from "../actions/experiencePage.actions";
+import { clickOnDreamForce } from "../../tasks/commonTasks";
+import { acceptCookies } from "../../originalSeries/actions/unAuthFlow.actions";
+import { waitTillHTMLRendered } from "../../../../utilities/waitTillHTMLRendered";
 var email;
+
+
+
+export async function openSignInForm(page) {
+  await clickOnDreamForce(page);
+  await waitTillHTMLRendered(page);
+  await page.waitForTimeout(15000)
+  await clickWatchNowButton(page);
+  await waitTillHTMLRendered(page);
+}
+
 export async function fillSignInForm(page) {
   await clickLoginInWithTrailblazaerID(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
@@ -66,10 +60,10 @@ export async function fillSignInForm(page) {
   let context = await openSalesForceEmail(email);
   await typeEmailTokenInTrailBlazzer(page, context);
   await clickConitnueButton(page);
-  await page.waitFor(2000);
+  await waitTillHTMLRendered(page)
 }
 
-export async function fillInSignUpForm(page, datatable) {
+export async function fillSignUpForm(page, datatable) {
   const dataFields = await datatable.hashes()[0];
   await clickOnSignUpButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });
@@ -88,6 +82,7 @@ export async function fillInSignUpForm(page, datatable) {
   await checkPrivacyStatement(page);
   await clickDoneButton(page);
   await page.waitFor(25000);
+  await waitTillHTMLRendered(page)
   await typeWorkEmail(page, email);
   await typeWorkPhone(page, dataFields.phoneNumber);
   await selectCompanySize(page, dataFields.companySize);
@@ -96,6 +91,7 @@ export async function fillInSignUpForm(page, datatable) {
   await typeCountryCode(page, dataFields.countryCode);
   await typePhoneNumber(page, dataFields.phoneNumber);
   await selectGiveInformationForMarketingPurposeCheckbox(page);
-  await clickCancelAndLogoutButton(page);
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 40000 });
+  await clickCompleteMyMembership(page);
+  await page.waitForTimeout(3000);
 }
+
