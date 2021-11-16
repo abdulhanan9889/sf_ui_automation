@@ -10,18 +10,14 @@ export let getLoginButton = `[id="submit-email"]`
 export let getTokenInputField = `[id="loginPage:email-card-form:challengeTextInput"]`
 export let getContinueButton = `[id="verify-challenge-button"]`
 export const getCloseButtonLoginModal = `shadow/[class="close-btn"]`
-
-
-
 export const getSpeakerOneName = `shadow/ul.speakers-container li:nth-child(1) .speaker-name`
 export const getSpeakerOneDesignation = `shadow/ul.speakers-container li:nth-child(1) .speaker-card-title`
 export const getSpeakerTwoName = `shadow/ul.speakers-container li:nth-child(2) .speaker-name`
 export const getSpeakerTwoDesignation = `shadow/ul.speakers-container li:nth-child(2) .speaker-card-title`
 export const getSpeakerThreeName = `shadow/ul.speakers-container li:nth-child(3) .speaker-name`
 export const getSpeakerThreeDesignation = `shadow/ul.speakers-container li:nth-child(3) .speaker-card-title`
-
-
 export const getCloseButton = `shadow/span[aria-label="Close"]`
+export let getWatchNowButton = `shadow/[href="/plus/experience/Dreamforce_2021/series/Best_of_DF/episode/episode-2"] .link-content .button-text`
 
 
 
