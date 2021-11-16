@@ -10,7 +10,12 @@ import {
 } from "../actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../../utilities/waitTillHTMLRendered";
 
-
+export async function openSeries(page) {
+    await clickExploreSalesforceButton(page)
+    await waitTillHTMLRendered(page)
+    await clickSeriesButton(page)
+    await waitTillHTMLRendered(page)
+}
 
 export async function openEpisode(page) {
     await clickExploreSalesforceButton(page)
