@@ -38,10 +38,7 @@ import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDa
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { eventURL } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/user_interface/testDataSelectors";
-export var cliUsername;
-export var cliPassword;
-export var cliLoginUrl;
-export var cliInstanceUrl;
+
 
 let page;
 let ss;
