@@ -10,10 +10,20 @@ import {
     clickNextAuthenticatedEpisodeButton
 } from "../../originalSeries/actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../../utilities/waitTillHTMLRendered";
+
+
+export async function openSeries(page) {
+    await clickExploreSalesforceButton(page)
+    await waitTillHTMLRendered(page)
+    await clickSeriesButton(page)
+    await waitTillHTMLRendered(page)
+}
+
 import SFDataInsertion from "../../../../testDataGeneration/testDataLogic/SFDataInsertion";
 import SFDataLogic from "../../../../testDataGeneration/testDataLogic/testDataLogic";
 import SFDataDeletion from "../../../../testDataGeneration/testDataLogic/SFDataDeletion";
 export var testDataSet: SFDataLogic = new SFDataLogic()
+
 
 
 export async function openEpisode(page) {

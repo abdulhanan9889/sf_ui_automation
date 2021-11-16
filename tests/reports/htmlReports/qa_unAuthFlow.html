@@ -279,8 +279,8 @@ pre {
           <a class="navbar-brand">Cucumberjs Report</a>
           <div class="project-name visible-md visible-lg">package</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 0</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 2</span>
+            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 6</span>
+            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 1</span>
           </div>
         </div>
       </div>
@@ -288,7 +288,7 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Tue Nov 02 2021 16:28:48 GMT+0500 (Pakistan Standard Time)</div>
+      <div class="generated-on">Tue Nov 16 2021 17:06:57 GMT+0500 (Pakistan Standard Time)</div>
 
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
@@ -381,14 +381,15 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepackageb8351f6b-5617-48e0-b950-82eedb1750ee">
+                    <a data-toggle="collapse" href="#collapseFeaturepackage953d3b4c-11d0-4a2f-afd8-36dcbaf47d55">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Feature:</b>Unauthenticated Flow
                         <span class="label-container">
-              
+              <span class="label label-success"
+                                                         title="6 Scenarios Passed">6</span>
               <span class="label label-danger"
-                                                         title="2 Scenarios Failed">2</span>
+                                                         title="1 Scenarios Failed">1</span>
               
               
               
@@ -397,10 +398,10 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepackageb8351f6b-5617-48e0-b950-82eedb1750ee" class="panel-collapse collapse">
+            <div id="collapseFeaturepackage953d3b4c-11d0-4a2f-afd8-36dcbaf47d55" class="panel-collapse collapse">
                 <div class="panel-body">
                     
-                    <div class="description">              As an unauthenticated user<br/>         User would like to browse through available series<br/>              And is able to play selected episodes</div>
+                    <div class="description">        As an unauthenticated user<br/>        User would like to browse through available series<br/>        And is able to play selected episodes</div>
                     
                     
                     
@@ -409,17 +410,17 @@ pre {
                             <h4 class="panel-title">
                                 
                                 
-                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                <div class="tags"> <span class="tag"> @current</span>
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopackage9f25e593-9573-4e41-9df5-c0cacae44a75">
+                                <a data-toggle="collapse" href="#collapseScenariopackageac3c6d33-9038-4853-880e-1510bd26c40f">
                                     <div>
 
-                                        <div style="padding-right: 70px">
+                                        <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario Outline:</b>unthenticated user plays the selected episode
+                                            <b>Scenario:</b>user generates data for unauthenticated flows
                                         </div>
                                         <div>
                             <span class="label-container">
@@ -427,10 +428,8 @@ pre {
                                                                title="1 Steps Passed">1</span>
                               
                               
-                              <span class="label label-warning"
-                                                                title="1 Steps Skipped">1</span>
-                              <span class="label label-danger"
-                                                               title="1 Steps Failed">1</span>
+                              
+                              
                               
                             </span>
                                         </div>
@@ -439,7 +438,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopackage9f25e593-9573-4e41-9df5-c0cacae44a75"
+                        <div id="collapseScenariopackageac3c6d33-9038-4853-880e-1510bd26c40f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -456,14 +455,74 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Given </span>
-                          <span> a user is on the salesforce plus platform</span>
+                          <span> user generates data for unauthenticated flows</span>
                             
                           
                               <span class="step-duration">
-                               21s 370ms
+                               33s 22ms
                               </span>
                             
                          
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          numberOfSeries
+                                        </th>
+                                         
+                                        <th>
+                                          numberOfEpisodesPerSeries
+                                        </th>
+                                         
+                                        <th>
+                                          seriesStartDayFromToday
+                                        </th>
+                                         
+                                        <th>
+                                          seriesEndDayFromToday
+                                        </th>
+                                         
+                                        <th>
+                                          numberOfSpeakers
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          2
+                                        </td>
+                                      
+                                        <td>
+                                          0
+                                        </td>
+                                      
+                                        <td>
+                                          4
+                                        </td>
+                                      
+                                        <td>
+                                          2
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
                             
                           
                           <!-- Adding data table data-->
@@ -477,54 +536,6 @@ pre {
                                     
 
                                     
-                                <a href="#ss0_00"
-                                    data-toggle="collapse" class="toggle">Screenshot +</a>
-                                <div id="ss0_00"
-                                    class="screenshot collapse">
-                                    <pre class="info show-modal"
-                                        data-toggle="modal"
-                                        style="cursor: pointer"
-                                        data-target="#ss-modal-0_00">
-                                        
-                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
-                                        id="ss-image-0_00" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_6357.png"/>
-                                </div>
-                                <div class="screenshot collapse"
-                                   style="cursor: pointer"
-
-                                   data-toggle="modal"
-                                   data-target="#ss-modal-0_00">
-
-                                </div>
-
-                                <div class="modal fade" id="ss-modal-0_00" tabindex="-1" role="dialog"
-                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title" id="ss-modal-title">
-                                                    Screenshot
-                                                </h4>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <img class="screenshot" style="height:100%;width:100%;"
-                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_6357.png"/>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
 
                                     
                                 </div>
@@ -541,17 +552,15 @@ pre {
                                     
                                     
                                     <span class="text">
-                        <span class="keyword highlight">When </span>
-                          <span> user navigates to the episodes page and clicks on a particular episode</span>
+                        <span class="keyword highlight">After</span>
+                          <span> </span>
                             
                           
                               <span class="step-duration">
-                               4s 337ms
+                               1ms
                               </span>
                             
                          
-                            
-                          
                           <!-- Adding data table data-->
                           
                       </span>
@@ -567,12 +576,13 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_01">
-                                            <br> Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')
-    at __puppeteer_evaluation_script__:1:15
-    at ExecutionContext._evaluateInternal (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:273:13)
-    at processTicksAndRejections (internal/process/task_queues.js:95:5)
-    at async ExecutionContext.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:140:12)
-    at async JSHandle.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\JSHandle.ts:161:12)</pre>
+                                            <br> TypeError: Cannot read property 'close' of undefined
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:18:17)
+    at Generator.next ((anonymous))
+    at C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:8:71
+    at new Promise ((anonymous))
+    at __awaiter (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:4:12)
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:28:12)</pre>
                                     </div>
 
                                 <div class="modal fade" id="error-modal-0_01" tabindex="-1" role="dialog"
@@ -589,12 +599,13 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')
-    at __puppeteer_evaluation_script__:1:15
-    at ExecutionContext._evaluateInternal (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:273:13)
-    at processTicksAndRejections (internal/process/task_queues.js:95:5)
-    at async ExecutionContext.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:140:12)
-    at async JSHandle.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\JSHandle.ts:161:12)</pre>
+                                                    <pre><br>TypeError: Cannot read property 'close' of undefined
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:18:17)
+    at Generator.next ((anonymous))
+    at C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:8:71
+    at new Promise ((anonymous))
+    at __awaiter (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:4:12)
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\main\utilities\loadBrowser.ts:28:12)</pre>
                                                 </h5>
                                             </div>
 
@@ -613,98 +624,10 @@ pre {
                                     
 
                                     
-                                <a href="#ss0_01"
-                                    data-toggle="collapse" class="toggle">Screenshot +</a>
-                                <div id="ss0_01"
-                                    class="screenshot collapse">
-                                    <pre class="info show-modal"
-                                        data-toggle="modal"
-                                        style="cursor: pointer"
-                                        data-target="#ss-modal-0_01">
-                                        
-                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
-                                        id="ss-image-0_01" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_9589.png"/>
-                                </div>
-                                <div class="screenshot collapse"
-                                   style="cursor: pointer"
-
-                                   data-toggle="modal"
-                                   data-target="#ss-modal-0_01">
-
-                                </div>
-
-                                <div class="modal fade" id="ss-modal-0_01" tabindex="-1" role="dialog"
-                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title" id="ss-modal-title">
-                                                    Screenshot
-                                                </h4>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <img class="screenshot" style="height:100%;width:100%;"
-                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_9589.png"/>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
 
                                     
                                 </div>
                                 </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-warning" title="Skipped"><i
-                                            class="glyphicon glyphicon-minus"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Then </span>
-                          <span> user is able to play the episode now</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
                                 
                                 
                             </div>
@@ -718,27 +641,26 @@ pre {
                                 
                                 
                                 <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopackage3eecc4b0-685d-4117-aa65-d170dc1d4ec1">
+                                <a data-toggle="collapse" href="#collapseScenariopackagee5fa346d-361a-48db-8307-b596d07eb2f5">
                                     <div>
 
-                                        <div style="padding-right: 70px">
+                                        <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario Outline:</b>unthenticated user plays two back to back episodes
+                                            <b>Scenario Outline:</b>user varifies  series cards
                                         </div>
                                         <div>
                             <span class="label-container">
                               <span class="label label-success"
-                                                               title="1 Steps Passed">1</span>
+                                                               title="2 Steps Passed">2</span>
                               
                               
-                              <span class="label label-warning"
-                                                                title="3 Steps Skipped">3</span>
-                              <span class="label label-danger"
-                                                               title="1 Steps Failed">1</span>
+                              
+                              
                               
                             </span>
                                         </div>
@@ -747,7 +669,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopackage3eecc4b0-685d-4117-aa65-d170dc1d4ec1"
+                        <div id="collapseScenariopackagee5fa346d-361a-48db-8307-b596d07eb2f5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -768,7 +690,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25s 996ms
+                               18s 509ms
                               </span>
                             
                          
@@ -795,7 +717,7 @@ pre {
                                         data-target="#ss-modal-0_10">
                                         
                                         <img class="screenshot" style="height:100%;width:100%;display:block;"
-                                        id="ss-image-0_10" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_4447.png"/>
+                                        id="ss-image-0_10" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_5718.png"/>
                                 </div>
                                 <div class="screenshot collapse"
                                    style="cursor: pointer"
@@ -820,7 +742,1181 @@ pre {
 
                                             <div class="modal-body">
                                                 <img class="screenshot" style="height:100%;width:100%;"
-                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_4447.png"/>
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_5718.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> User verfies the published and unpublished series card</span>
+                            
+                          
+                              <span class="step-duration">
+                               7s 337ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_11"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_11"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_11">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_11" src="..\..\screenshots\unAuthFlow\qa\User_verfies_the_published_and_unpublished_series_card_1119.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_11">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_11" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\User_verfies_the_published_and_unpublished_series_card_1119.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
+                                    
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopackage652e7ebe-1706-4c87-8e22-7b5aaf008b70">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Scenario Outline:</b>user varifies episode cards
+                                        </div>
+                                        <div>
+                            <span class="label-container">
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopackage652e7ebe-1706-4c87-8e22-7b5aaf008b70"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Given </span>
+                          <span> a user is on the salesforce plus platform</span>
+                            
+                          
+                              <span class="step-duration">
+                               18s 876ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_20"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_20"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_20">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_20" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_6462.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_20">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_20" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_6462.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">When </span>
+                          <span> user is on the original series detail page</span>
+                            
+                          
+                              <span class="step-duration">
+                               12s 345ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_21"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_21"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_21">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_21" src="..\..\screenshots\unAuthFlow\qa\user_is_on_the_original_series_detail_page_3438.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_21">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_21" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_on_the_original_series_detail_page_3438.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user is able to verify episode cards details</span>
+                            
+                          
+                              <span class="step-duration">
+                               5s 994ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_22"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_22"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_22">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_22" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_verify_episode_cards_details_174.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_22">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_22" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_verify_episode_cards_details_174.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
+                                    
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopackage293b7321-e9cf-44a4-bb65-8337ad88fdd8">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Scenario Outline:</b>user is able to verify the speaker details and episode details for that episode
+                                        </div>
+                                        <div>
+                            <span class="label-container">
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopackage293b7321-e9cf-44a4-bb65-8337ad88fdd8"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Given </span>
+                          <span> a user is on the salesforce plus platform</span>
+                            
+                          
+                              <span class="step-duration">
+                               17s 722ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_30"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_30"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_30">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_30" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_7015.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_30">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_30" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_7015.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">When </span>
+                          <span> user navigates to the episodes page and clicks on a particular episode</span>
+                            
+                          
+                              <span class="step-duration">
+                               18s 891ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_31"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_31"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_31">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_31" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_4661.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_31">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_31" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_4661.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user is able to verify the speaker details and episode details for that episode</span>
+                            
+                          
+                              <span class="step-duration">
+                               9s 440ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_32"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_32"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_32">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_32" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_verify_the_speaker_details_and_episode_details_for_that_episode_6329.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_32">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_32" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_verify_the_speaker_details_and_episode_details_for_that_episode_6329.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
+                                    
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopackage6b36ca98-1c37-4e86-9651-154bd66ec500">
+                                    <div>
+
+                                        <div style="padding-right: 50px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Scenario Outline:</b>Verify user can interact with the video player controls
+                                        </div>
+                                        <div>
+                            <span class="label-container">
+                              <span class="label label-success"
+                                                               title="5 Steps Passed">5</span>
+                              
+                              
+                              
+                              <span class="label label-danger"
+                                                               title="1 Steps Failed">1</span>
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopackage6b36ca98-1c37-4e86-9651-154bd66ec500"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Given </span>
+                          <span> a user is on the salesforce plus platform</span>
+                            
+                          
+                              <span class="step-duration">
+                               19s 820ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_40"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_40"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_40">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_40" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_2815.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_40">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_40" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_2815.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">When </span>
+                          <span> user navigates to the episodes page and clicks on a particular episode</span>
+                            
+                          
+                              <span class="step-duration">
+                               16s 519ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_41"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_41"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_41">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_41" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_6084.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_41">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_41" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_6084.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user can play and pause the video</span>
+                            
+                          
+                              <span class="step-duration">
+                               29s 317ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_42"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_42"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_42">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_42" src="..\..\screenshots\unAuthFlow\qa\user_can_play_and_pause_the_video_2591.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_42">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_42" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_can_play_and_pause_the_video_2591.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user can forward and reverse the video</span>
+                            
+                          
+                              <span class="step-duration">
+                               9s 548ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_43"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_43"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_43">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_43" src="..\..\screenshots\unAuthFlow\qa\user_can_forward_and_reverse_the_video_2832.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_43">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_43" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_can_forward_and_reverse_the_video_2832.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user can maximize and minimize the video player</span>
+                            
+                          
+                              <span class="step-duration">
+                               5s 53ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_44"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_44"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_44">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_44" src="..\..\screenshots\unAuthFlow\qa\user_can_maximize_and_minimize_the_video_player_6009.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_44">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_44" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_can_maximize_and_minimize_the_video_player_6009.png"/>
                                             </div>
 
                                             <div class="modal-footer">
@@ -849,12 +1945,12 @@ pre {
                                     
                                     
                                     <span class="text">
-                        <span class="keyword highlight">When </span>
-                          <span> user navigates to episodes page and clicks on the first episode</span>
+                        <span class="keyword highlight">Then </span>
+                          <span> user can mute and unmute the video</span>
                             
                           
                               <span class="step-duration">
-                               4s 504ms
+                               4s 453ms
                               </span>
                             
                          
@@ -867,23 +1963,23 @@ pre {
                                 
 
                                     
-                                    <a href="#error0_11"
+                                    <a href="#error0_45"
                                        data-toggle="collapse" class="toggle">Show Error +</a>
-                                    <div id="error0_11"
+                                    <div id="error0_45"
                                          class="collapse">
                                         <pre class="info show-modal"
                                              data-toggle="modal"
                                              style="cursor: pointer"
-                                             data-target="#error-modal-0_11">
-                                            <br> Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')
-    at __puppeteer_evaluation_script__:1:15
-    at ExecutionContext._evaluateInternal (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:273:13)
-    at processTicksAndRejections (internal/process/task_queues.js:95:5)
-    at async ExecutionContext.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:140:12)
-    at async JSHandle.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\JSHandle.ts:161:12)</pre>
+                                             data-target="#error-modal-0_45">
+                                            <br> TypeError: Cannot read property 'stop' of undefined
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\tests\stepDefinitions\unAuthenticatedFlow\originalSeriesSteps.ts:109:20)
+    at Generator.next ((anonymous))
+    at fulfilled (C:\Users\mah.noor\Pictures\sf_ui_automation\tests\stepDefinitions\unAuthenticatedFlow\originalSeriesSteps.ts:5:58)
+    at runMicrotasks ((anonymous))
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)</pre>
                                     </div>
 
-                                <div class="modal fade" id="error-modal-0_11" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="error-modal-0_45" tabindex="-1" role="dialog"
                                      aria-labelledby="stacktraceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -897,12 +1993,12 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>Error: Evaluation failed: TypeError: Cannot read properties of undefined (reading 'click')
-    at __puppeteer_evaluation_script__:1:15
-    at ExecutionContext._evaluateInternal (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:273:13)
-    at processTicksAndRejections (internal/process/task_queues.js:95:5)
-    at async ExecutionContext.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\ExecutionContext.ts:140:12)
-    at async JSHandle.evaluate (C:\Users\fraza\Desktop\SF UI Automation github\sf_ui_automation\node_modules\puppeteer\src\common\JSHandle.ts:161:12)</pre>
+                                                    <pre><br>TypeError: Cannot read property 'stop' of undefined
+    at World.(anonymous) (C:\Users\mah.noor\Pictures\sf_ui_automation\tests\stepDefinitions\unAuthenticatedFlow\originalSeriesSteps.ts:109:20)
+    at Generator.next ((anonymous))
+    at fulfilled (C:\Users\mah.noor\Pictures\sf_ui_automation\tests\stepDefinitions\unAuthenticatedFlow\originalSeriesSteps.ts:5:58)
+    at runMicrotasks ((anonymous))
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)</pre>
                                                 </h5>
                                             </div>
 
@@ -921,27 +2017,27 @@ pre {
                                     
 
                                     
-                                <a href="#ss0_11"
+                                <a href="#ss0_45"
                                     data-toggle="collapse" class="toggle">Screenshot +</a>
-                                <div id="ss0_11"
+                                <div id="ss0_45"
                                     class="screenshot collapse">
                                     <pre class="info show-modal"
                                         data-toggle="modal"
                                         style="cursor: pointer"
-                                        data-target="#ss-modal-0_11">
+                                        data-target="#ss-modal-0_45">
                                         
                                         <img class="screenshot" style="height:100%;width:100%;display:block;"
-                                        id="ss-image-0_11" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_episodes_page_and_clicks_on_the_first_episode_1176.png"/>
+                                        id="ss-image-0_45" src="..\..\screenshots\unAuthFlow\qa\user_can_mute_and_unmute_the_video_501.png"/>
                                 </div>
                                 <div class="screenshot collapse"
                                    style="cursor: pointer"
 
                                    data-toggle="modal"
-                                   data-target="#ss-modal-0_11">
+                                   data-target="#ss-modal-0_45">
 
                                 </div>
 
-                                <div class="modal fade" id="ss-modal-0_11" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="ss-modal-0_45" tabindex="-1" role="dialog"
                                      aria-labelledby="stacktraceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -956,7 +2052,140 @@ pre {
 
                                             <div class="modal-body">
                                                 <img class="screenshot" style="height:100%;width:100%;"
-                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_episodes_page_and_clicks_on_the_first_episode_1176.png"/>
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_can_mute_and_unmute_the_video_501.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
+                                    
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopackage5df10c50-30cc-4617-b947-a44dc50dd3f8">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Scenario Outline:</b>unthenticated user plays the selected episode
+                                        </div>
+                                        <div>
+                            <span class="label-container">
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopackage5df10c50-30cc-4617-b947-a44dc50dd3f8"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Given </span>
+                          <span> a user is on the salesforce plus platform</span>
+                            
+                          
+                              <span class="step-duration">
+                               18s 953ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_50"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_50"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_50">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_50" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_9545.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_50">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_50" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_9545.png"/>
                                             </div>
 
                                             <div class="modal-footer">
@@ -980,8 +2209,399 @@ pre {
                                 <div class="row steps">
                                     
                                     
-                                    <span class="label label-warning" title="Skipped"><i
-                                            class="glyphicon glyphicon-minus"></i></span>
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">When </span>
+                          <span> user navigates to the episodes page and clicks on a particular episode</span>
+                            
+                          
+                              <span class="step-duration">
+                               18s 999ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_51"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_51"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_51">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_51" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_9186.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_51">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_51" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_the_episodes_page_and_clicks_on_a_particular_episode_9186.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Then </span>
+                          <span> user is able to play the episode now</span>
+                            
+                          
+                              <span class="step-duration">
+                               29s 133ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_52"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_52"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_52">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_52" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_episode_now_9271.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_52">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_52" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_episode_now_9271.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags"> <span class="tag"> @unAuthFlow</span>
+                                     <span class="tag"> @current</span>
+                                    
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopackage9c1c29ee-04b3-404e-a99f-4b38dd3895cb">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Scenario Outline:</b>unthenticated user plays two back to back episodes
+                                        </div>
+                                        <div>
+                            <span class="label-container">
+                              <span class="label label-success"
+                                                               title="5 Steps Passed">5</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopackage9c1c29ee-04b3-404e-a99f-4b38dd3895cb"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Given </span>
+                          <span> a user is on the salesforce plus platform</span>
+                            
+                          
+                              <span class="step-duration">
+                               17s 944ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_60"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_60"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_60">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_60" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_5846.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_60">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_60" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\a_user_is_on_the_salesforce_plus_platform_5846.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">When </span>
+                          <span> user navigates to episodes page and clicks on the first episode</span>
+                            
+                          
+                              <span class="step-duration">
+                               19s 281ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+                                <a href="#ss0_61"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_61"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_61">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_61" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_episodes_page_and_clicks_on_the_first_episode_2877.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_61">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_61" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_navigates_to_episodes_page_and_clicks_on_the_first_episode_2877.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
                                     
                                     
                                     <span class="text">
@@ -990,7 +2610,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               29s 854ms
                               </span>
                             
                          
@@ -1007,6 +2627,54 @@ pre {
                                     
 
                                     
+                                <a href="#ss0_62"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_62"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_62">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_62" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_first_episode_4489.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_62">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_62" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_first_episode_4489.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
 
                                     
                                 </div>
@@ -1018,8 +2686,8 @@ pre {
                                 <div class="row steps">
                                     
                                     
-                                    <span class="label label-warning" title="Skipped"><i
-                                            class="glyphicon glyphicon-minus"></i></span>
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
                                     
                                     
                                     <span class="text">
@@ -1028,7 +2696,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               20s 357ms
                               </span>
                             
                          
@@ -1045,6 +2713,54 @@ pre {
                                     
 
                                     
+                                <a href="#ss0_63"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_63"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_63">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_63" src="..\..\screenshots\unAuthFlow\qa\user_clicks_on_the_second_episode_9179.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_63">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_63" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_clicks_on_the_second_episode_9179.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
 
                                     
                                 </div>
@@ -1056,8 +2772,8 @@ pre {
                                 <div class="row steps">
                                     
                                     
-                                    <span class="label label-warning" title="Skipped"><i
-                                            class="glyphicon glyphicon-minus"></i></span>
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
                                     
                                     
                                     <span class="text">
@@ -1066,7 +2782,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               28s 856ms
                               </span>
                             
                          
@@ -1083,6 +2799,54 @@ pre {
                                     
 
                                     
+                                <a href="#ss0_64"
+                                    data-toggle="collapse" class="toggle">Screenshot +</a>
+                                <div id="ss0_64"
+                                    class="screenshot collapse">
+                                    <pre class="info show-modal"
+                                        data-toggle="modal"
+                                        style="cursor: pointer"
+                                        data-target="#ss-modal-0_64">
+                                        
+                                        <img class="screenshot" style="height:100%;width:100%;display:block;"
+                                        id="ss-image-0_64" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_second_episode_1366.png"/>
+                                </div>
+                                <div class="screenshot collapse"
+                                   style="cursor: pointer"
+
+                                   data-toggle="modal"
+                                   data-target="#ss-modal-0_64">
+
+                                </div>
+
+                                <div class="modal fade" id="ss-modal-0_64" tabindex="-1" role="dialog"
+                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="ss-modal-title">
+                                                    Screenshot
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <img class="screenshot" style="height:100%;width:100%;"
+                                                     id="my-ss-images" src="..\..\screenshots\unAuthFlow\qa\user_is_able_to_play_the_second_episode_1366.png"/>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
 
                                     
                                 </div>
@@ -1138,8 +2902,8 @@ pre {
                                             });
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Scenarios",
-                                                            "failed" : 2,
-                                                            "passed" : 0,
+                                                            "failed" : 1,
+                                                            "passed" : 6,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,

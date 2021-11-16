@@ -5,6 +5,7 @@ import { testDataSet, testDataSetUpcoming } from '../tasks/createDestroyOriginal
 //console.log("test data set in selectors",testDataSet)
 export function seriesButton() {
     return `shadow/[aria-label="Go to series - ${testDataSet.seriesNames[0]}"]`
+   //return `shadow/[aria-label="Go to series - BxP_Learn_Series-1"]`
 }
 
 export function seriesPlayButton() {
