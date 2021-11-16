@@ -43,7 +43,7 @@ export async function clickDreamForceTab(page) {
 import { Inbox } from "mailinator-inbox";
 
 export async function clickWatchNowButton(page) {
-  // await page.waitForSelector(getWatchNowButton, { visible: true })
+  await page.waitForSelector(getWatchNowButton, { visible: true })
   let watchNowButton = await page.$(getWatchNowButton)
   await watchNowButton.click();
 }

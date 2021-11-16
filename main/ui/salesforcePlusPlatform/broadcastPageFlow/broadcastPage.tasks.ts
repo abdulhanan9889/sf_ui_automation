@@ -51,6 +51,7 @@ export async function fillInSignInForm(page, email) {
   await typeEmailTokenInTrailBlazzer(page, context);
   await clickConitnueButton(page);
   await page.waitFor(2000);
+  await clickSkipForNowButton(page)
 }
 var email;
 export async function fillSignInForm(page) {

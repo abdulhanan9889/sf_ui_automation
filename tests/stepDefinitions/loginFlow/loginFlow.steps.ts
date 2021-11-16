@@ -4,15 +4,20 @@ import { waitTillHTMLRendered } from '../../../main/utilities/waitTillHTMLRender
 import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions'
 import { fillSignUpForms, loginThroughTrailblazerId, logoutFromSFPlatform, openAuthorizedEpisode } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks'
 import { acceptCookies } from '../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions'
-import { verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
 import { openSignInForm, fillSignUpForm } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
-import { openTheSignInForm, fillTheSignInForm, fillTheSignUpForm } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
-import { fillInSignUpForm, fillSignInForm } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks"
+import { fillInSignInForm, fillInSignUpForm, fillSignInForm } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks"
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 var { setDefaultTimeout } = require('@cucumber/cucumber');
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
+import { verifyProfileSignUpFormAppeared, verifyWrongOTPEntered, verifySignUpFormButton,verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
+import { 
+    fillTrailblazerSignUpForm, signInWithTrailblazzer, 
+    fillProfileSignUpForm, signInWithWrongOTP,openLoginPage, 
+    signInOnSalesforce,openTheSignInForm, 
+    fillTheSignInForm, fillTheSignUpForm 
+       } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
 setDefaultTimeout(60000)
 let page
 let ss
@@ -86,6 +91,55 @@ When("user signs up with following details on salesforce platform", { timeout: 9
     await fillSignUpForm(page, datatable);
     //  await recorder.stop()
 });
+
+When("user signs up form the trailblazzer", { timeout: 90 * 1000 }, async function (dataTable){
+    await fillTrailblazerSignUpForm(page, dataTable);
+})
+
+Then("the profile sign up form appears", async function (dataTable){
+    await verifyProfileSignUpFormAppeared(page)
+})
+
+When("user tries to login with a trailblazzer signed {word}", async function(email){
+   await signInWithTrailblazzer(page,email)
+})
+When("user signs up with the profile sign up form", { timeout: 90 * 1000 }, async function (dataTable){
+    await fillProfileSignUpForm(page,dataTable)
+})
+
+When("user login with {word}",async function(email){
+    await fillInSignInForm(page,email)
+})
+
+When('user tries to login with wrong otp',async function(){
+    await openSignInForm(page);
+    await signInWithWrongOTP(page)
+})
+Then('an error message is shown',async function(){
+    await verifyWrongOTPEntered(page)
+})
+
+Then('sign up form appears',async function(){
+    await verifySignUpFormButton(page)
+})
+
+When('user tries to login with an {word}',async function (email){
+    await openTheSignInForm(page)
+    await signInWithTrailblazzer(page,email)
+})
+Then('sign up form do not appears',async function(){
+    await verifySignUpFormButton(page)
+})
+
+When('user navigates to salesforce login menu', async function () {
+
+    await openLoginPage(page);
+});
+  
+When('user tries to login with valid ceredentials', async function (dataTable) {
+     await signInOnSalesforce(page,dataTable);
+});
+  
 AfterStep("@loginFlow", async function () {
     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })

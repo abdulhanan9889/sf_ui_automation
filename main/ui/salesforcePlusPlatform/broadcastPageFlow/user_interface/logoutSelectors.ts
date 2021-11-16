@@ -1,2 +1,2 @@
-export const getLoggedOutText = `shadow/[href="https://login.salesforce.com/"]`
+export const getLoggedOutText = `shadow/[data-tracking-type="login"]`
 export const getCancelAndLogoutButton = 'shadow/.login__form-cancel'
