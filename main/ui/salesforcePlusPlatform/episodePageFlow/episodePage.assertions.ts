@@ -43,10 +43,10 @@ export async function verifyEpisodeTitle(page, episodeTitle) {
 export async function verifySpeakerDetails(page, speakerDetails, noOfSpeakers) {
     let speakerName = await page.$$eval(getSpeakerNames, vals => vals.map(val => val.innerHTML))
     let speakerDesignation = await page.$$eval(getSpeakerDesignation, vals => vals.map(val => val.innerHTML))
-    let speakerDesignationValue = `${speakerDetails.get("Company")}, ${speakerDetails.get("Designation")}`
+    let speakerDesignationValue = `${speakerDetails.get("Designation")}, ${speakerDetails.get("Company")}`
     for (var i = 0; i < noOfSpeakers; i++) {
         await Assertion.softAssert(speakerName[i], speakerDetails.get("Name"), "speaker name assertion failed", [])
-        await Assertion.softAssert(speakerDesignation[i], speakerDesignationValue, "speaker name assertion failed", [])
+        await Assertion.softAssert(speakerDesignation[i], speakerDesignationValue, "speaker designation assertion failed", [])
         await Assertion.softAssertAll()
     }
 }

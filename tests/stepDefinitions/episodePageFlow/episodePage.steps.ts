@@ -1,3 +1,4 @@
+
 // import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
 // import { loadBrowser } from '../../../main/utilities/loadBrowser'
 // import {
@@ -37,31 +38,116 @@
 // let noOfSpeakers
 
 // Given('user generates data for authenticated epsiode flows', async function (datatable) {
+
+import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
+import { loadBrowser } from '../../../main/utilities/loadBrowser'
+import {
+    closeTbidModal,
+    fillSignUpForms,
+    loginThroughSignedUpUser,
+    loginThroughTrailblazerId,
+    logoutFromSFPlatform,
+    maximizeVideoPlayer,
+    minimizeVideoPlayer,
+    openAuthorizedEpisode
+} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks'
+import {
+    verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
+    verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer, verifySpeakerDetails
+} from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions'
+import { acceptCookies, clickSecondEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions'
+import { verifyProgressBarValues } from '../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress'
+import { waitTillHTMLRendered } from '../../../main/utilities/waitTillHTMLRendered'
+import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions'
+import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
+import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
+import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
+
+
+import { openEpisode, playEpisode, openNextEpisode, openNextAuthenticatedEpisode } from '../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks'
+import { muteVideoButton, unmuteVideoButton } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.actions'
+import { clickSecondAuthorizedEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.actions'
+import { testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
+
+var { setDefaultTimeout } = require('@cucumber/cucumber');
+setDefaultTimeout(80000)
+let page
+let ss
+let recorder
+let noOfEpisodes
+let noOfSpeakers
+
+Given('user generates data for authenticated epsiode flows', async function (datatable) {
+    const testDataParameters = await datatable.hashes()[0]
+    noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
+    noOfSpeakers = testDataParameters.numberOfSpeakers
+    await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
+        testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
+})
+
+// Given('user generates data for unauthenticated epsiode flows', async function (datatable) {
+
+
 //     const testDataParameters = await datatable.hashes()[0]
 //     await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
 //         testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 // })
 
-// // Given('user generates data for unauthenticated epsiode flows', async function (datatable) {
 
-// //     const testDataParameters = await datatable.hashes()[0]
-// //     noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
-// //     noOfSpeakers = testDataParameters.numberOfSpeakers
-// // await testData(testDataParameters.numberOfEpisodesPerSeries,
-// //     testDataParameters.seriesStartDayFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSpeakers,
-// //     testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
-// // })
+Given('a guest user loads salesforce plus platform', async function () {
+    page = await loadBrowser()
+    // recorder = new PuppeteerScreenRecorder(page);
+    // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
+    await page.waitForTimeout(5000)
+    // await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
+    await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`, { waitUntil: 'load', timeout: 0 })
+    await waitTillHTMLRendered(page)
+    await acceptCookies(page)
+    await waitTillHTMLRendered(page)
+});
 
-// Given('a guest user loads salesforce plus platform', async function () {
-//     page = await loadBrowser()
-//     // recorder = new PuppeteerScreenRecorder(page);
-//     // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
-//     await page.waitForTimeout(5000)
-//     // await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
-//     await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`, { waitUntil: 'load', timeout: 0 })
-//     await waitTillHTMLRendered(page)
-//     await acceptCookies(page)
-//     await waitTillHTMLRendered(page)
+When('user navigates to episodes page and clicks on a particular episode', async function () {
+    await openEpisode(page)
+});
+
+Then('user is able to verify unauthenticated episode details', async function () {
+    for (var i = 0; i < noOfEpisodes; i++) {
+        await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
+        await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+        for (var j = 0; j < noOfSpeakers; j++) {
+            await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+        }
+        if (i < noOfEpisodes - 1) {
+            await openNextEpisode(page, i)
+        }
+    }
+    await verifySeriesTitle(page, testDataSet.seriesNames[0])
+});
+
+Then('user is able to verify authenticated episode details', async function () {
+    for (var i = 0; i < noOfEpisodes; i++) {
+        await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
+        await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+        for (var j = 0; j < noOfSpeakers; j++) {
+            await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+        }
+        if (i < noOfEpisodes - 1) {
+            await openNextAuthenticatedEpisode(page, i)
+        }
+        if (i = 0) {
+            await closeTbidModal(page)
+            continue
+        }
+    }
+    await verifySeriesTitle(page, testDataSet.seriesNames[0])
+});
+
+
+
+// Then('user can play and pause the video', async function () {
+//     await playEpisode(page)
+//     await verifyProgressBarValues(page)
+
 // });
 
 // When('user navigates to episodes page and clicks on a particular episode', async function () {

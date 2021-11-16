@@ -6,9 +6,11 @@ import {
     clickPauseButton,
     clickFirstEpisodeButton,
     clickSecondEpisodeButton,
-    clickNextEpisodeButton
-} from "../actions/unAuthFlow.actions";
+    clickNextEpisodeButton,
+    clickNextAuthenticatedEpisodeButton
+} from "../../originalSeries/actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../../utilities/waitTillHTMLRendered";
+
 
 export async function openSeries(page) {
     await clickExploreSalesforceButton(page)
@@ -16,6 +18,13 @@ export async function openSeries(page) {
     await clickSeriesButton(page)
     await waitTillHTMLRendered(page)
 }
+
+import SFDataInsertion from "../../../../testDataGeneration/testDataLogic/SFDataInsertion";
+import SFDataLogic from "../../../../testDataGeneration/testDataLogic/testDataLogic";
+import SFDataDeletion from "../../../../testDataGeneration/testDataLogic/SFDataDeletion";
+export var testDataSet: SFDataLogic = new SFDataLogic()
+
+
 
 export async function openEpisode(page) {
     await clickExploreSalesforceButton(page)
@@ -53,6 +62,13 @@ export async function openSecondEpisode(page) {
 }
 
 export async function openNextEpisode(page, episodeNo) {
+    await waitTillHTMLRendered(page)
     await clickNextEpisodeButton(page, episodeNo)
+    await waitTillHTMLRendered(page)
+}
+
+export async function openNextAuthenticatedEpisode(page, episodeNo) {
+    await waitTillHTMLRendered(page)
+    await clickNextAuthenticatedEpisodeButton(page, episodeNo)
     await waitTillHTMLRendered(page)
 }

@@ -3,7 +3,7 @@ Feature: Episode Page
         Scenario: user generates data for authenticated flows
             Given user generates data for authenticated epsiode flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | seriesStartDayFromToday | eventEndDayFromToday | seriesEndDayFromToday | numberOfSpeakers | firstName | lastName | designation | company |
-                  | 1              | 1                         | 1                      | 1                       | 3                    | 4                     | 2                | dummy     | speaker  | QA          | emumba  |
+                  | 1              | 2                         | 1                      | 1                       | 3                    | 4                     | 2                | dummy     | speaker  | QA          | emumba  |
         
         #Scenario: user generates data for unauthenticated flows
          #   Given user generates data for unauthenticated epsiode flows
@@ -14,15 +14,8 @@ Feature: Episode Page
         Scenario Outline: Verify episode details are present in the episode details modal
             Given a guest user loads salesforce plus platform
              When user navigates to episodes page and clicks on a particular episode
-             Then user is able to verify episode details
-             #Then user is able to verify episode number
-             #Then user is able to verify series title
-             #Then user is able to verify episode title
-             #Then user is able to verify speaker one name and card title
-             #hen user is able to verify speaker two name and card title
-    # Examples:
-    #           | episodeNumber | seriesTitle              | episodeTitle                                              | speakerOneDetails                                   | speakerTwoDetails                                    |
-    #           | "EPISODE 1"   | "LEADING THROUGH CHANGE" | "How a Coffee Shop Continues Serving Customers from Home" | "Ben Wright & Co-Founders, Bitty and Beau's Coffee" | "Bill Patterson & EVP, CRM Applications, Salesforce" |
+             Then user is able to verify unauthenticated episode details
+
 
         @episodePage
         Scenario Outline: Verify user can interact with the video player controls
@@ -82,15 +75,8 @@ Feature: Episode Page
          #When a guest user fills out the sign up forms
           #    | firstName | lastName | roleName | relation | companyName | jobTitle | country | state | companySize      | phoneNumber | countryCode | jobRole   |
            #   | dummy     | here     | Marketer | Customer | xyz         | QA       | US      | CA    | 21-200 employees | 0342561342  | 1           | Marketing |
-             Then user is able to verify episode details
-         #Then user is able to verify series title: <seriesTitle>
-         #Then user is able to verify episode title: <episodeTitle>
-         #Then user is able to verify speaker one name and card title: <speakerOneDetails>
-         #Then user is able to verify speaker two name and card title: <speakerTwoDetails>
-         #Then authenticated user clicks on second episode and can play the authorized episode
-#    Examples:
-#              | episodeNumber | seriesTitle | episodeTitle                                                | speakerOneDetails                                    | speakerTwoDetails                                    |
-#              | "EPISODE 2"   | "SALES"     | "Modernize Selling with the Roadmap for Today's Sales Team" | "MaryAnn Patel & VP, Product Management, Salesforce" | "Kylie Fuentes & VP, Product Management, Salesforce" |
+             Then user is able to verify authenticated episode details
+
 
 #    @episodePage
 #    Scenario Outline: guest user logs out by clicking cancel and logout button

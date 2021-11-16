@@ -1,17 +1,8 @@
 import { ACCEPT_COOKIES_BUTTON } from "../../selectors/common.selectors";
 import { getExploreSalesforceButton } from "../../homePageFlow/user_interface/heroBannerSelectors";
 import { pauseButton, playButton } from "../../episodePageFlow/user_interface/episodePlayerSelectors";
-import {
-    firstEpisodeButton,
-    secondEpisodeButton,
-    nextEpisodeButton,
-    episodeButton
-} from "../user_interface/EpisodeSection";
-import {
-   
-    seriesButton
-} from "../user_interface/OriginalSeriesSection";
-
+import { episodeButton, firstEpisodeButton, nextEpisodeButton, secondEpisodeButton } from "../../originalSeries/user_interface/EpisodeSection"
+import { nextAuthenticatedEpisodeButton, seriesButton } from "../user_interface/OriginalSeriesSection";
 
 export async function acceptCookies(page) {
     if (await page.waitForSelector(ACCEPT_COOKIES_BUTTON) !== 'null') {
@@ -77,5 +68,10 @@ export async function clickNextEpisodeButton(page, episodeNo) {
     await page.waitForSelector(nextEpisodeButton(episodeNo))
     let EPISODE_BUTTON = await page.$(nextEpisodeButton(episodeNo))
     EPISODE_BUTTON.click()
-    // EPISODE_BUTTON.evaluate((ele) => ele.click())
+}
+
+export async function clickNextAuthenticatedEpisodeButton(page, episodeNo) {
+    await page.waitForSelector(nextAuthenticatedEpisodeButton(episodeNo))
+    let EPISODE_BUTTON = await page.$(nextAuthenticatedEpisodeButton(episodeNo))
+    EPISODE_BUTTON.click()
 }
