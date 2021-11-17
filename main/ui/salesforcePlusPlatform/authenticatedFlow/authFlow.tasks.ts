@@ -63,7 +63,7 @@ export async function openSignInForm(page) {
 }
 
 export async function openVideo(page) {
-  await clickDreamForceTab(page);
+  //await clickDreamForceTab(page);
   await waitTillHTMLRendered(page);
   await page.waitForTimeout(1500)
   await clickWatchNowButton(page);

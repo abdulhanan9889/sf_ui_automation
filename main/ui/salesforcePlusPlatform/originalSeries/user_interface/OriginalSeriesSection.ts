@@ -33,8 +33,9 @@ export function episodeButton() { return `shadow/[href="/plus/series/${testDataS
 export function nextEpisodeButton(episodeNo) { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-${episodeNo + 2}"]` }
 export function firstEpisodeButton() { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-1"]` }
 export function secondEpisodeButton() { return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}/episode/episode-2"]` }
+export function AuthenticatedEpisodeButton(episodeNo) { return `shadow/[href="/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}/episode/episode-${episodeNo}"]` }
 
-export function nextAuthenticatedEpisodeButton(episodeNo) { return `shadow/[href="/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}/episode/episode-${episodeNo + 2}"]` }
+export function nextAuthenticatedEpisodeButton(episodeNo) { return `shadow/[href="/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}/episode/episode-${episodeNo}"]` }
 // export async function firstEpisodeButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
