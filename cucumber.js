@@ -1,3 +1,11 @@
+let featuredEpisodeFlow = [
+  `tests/features/featuredEpisodes.feature
+  --require tests/stepDefinitions/featuredEpisodeFlow/featuredEpisode.steps.ts
+  --require-module ts-node/register
+  --format progress-bar
+  --publish-quiet`
+]
+
 
 let unAuthFlow = [
   `tests/features/unAuthFlow.feature
@@ -88,6 +96,7 @@ let homePageReport = [
 ]
 
 module.exports = {
+  'featuredEpisodeFlow':featuredEpisodeFlow,
   'unAuthFlow': unAuthFlow,
   'authFlow': authFlow,
   'broadcastPage': broadcastPage,
