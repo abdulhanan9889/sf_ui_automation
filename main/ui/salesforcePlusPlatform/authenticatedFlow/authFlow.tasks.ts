@@ -38,15 +38,20 @@ import { verifySignupRecordFromDatabase } from "./authFlow.assertions";
 import SFDataLogic from "../../../testDataGeneration/testDataLogic/testDataLogic";
 import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";
 import SFDataInsertion from "../../../testDataGeneration/testDataLogic/SFDataInsertion";
+import SFDataDeletion from "../../../testDataGeneration/testDataLogic/SFDataDeletion";
 
-export var testDataSet: SFDataLogic = new SFDataLogic()
+export var authFlowTestDataSet: SFDataLogic = new SFDataLogic()
 var email;
 
-export async function testData(seriesStartFromToday: number, seriesEndFromtaday: number, noOfSeries: number, noOfEpisodesPerSeries: number, noOfSpeakers: number, firstName: string, lastName: string, company: string, designation: string) {
+export async function authFlowTestData(seriesStartFromToday: number, seriesEndFromtaday: number, noOfSeries: number, noOfEpisodesPerSeries: number, noOfSpeakers: number, firstName: string, lastName: string, company: string, designation: string) {
 
-  let event = await testDataSet.createEvent(seriesStartFromToday, 0, seriesEndFromtaday, 12)
+  let event = await authFlowTestDataSet.createEvent(seriesStartFromToday, 0, seriesEndFromtaday, 12)
   //@ts-ignore
-  await SFDataInsertion.createSeriesWithEpisodes(testDataSet, seriesStartFromToday, seriesEndFromtaday, noOfSeries, noOfEpisodesPerSeries, noOfSpeakers, event, firstName, lastName, company, designation)
+  await SFDataInsertion.createSeriesWithEpisodes(authFlowTestDataSet, seriesStartFromToday, seriesEndFromtaday, noOfSeries, noOfEpisodesPerSeries, noOfSpeakers, event, firstName, lastName, company, designation)
+}
+
+export async function authFlowTestDataDelete() {
+  await SFDataDeletion.DeleteOriginalSeries(authFlowTestDataSet)
 }
 
 export async function openSignInForm(page) {

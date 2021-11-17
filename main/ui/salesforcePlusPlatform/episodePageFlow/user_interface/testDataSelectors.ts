@@ -1,7 +1,7 @@
-import { testDataSet } from "../../authenticatedFlow/authFlow.tasks"
+import { authFlowTestDataSet } from "../../authenticatedFlow/authFlow.tasks"
 
 export function authorizedSeriesButton() {
-    return `shadow/[href="/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}"]`
+    return `shadow/[href="/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}"]`
 }
 // export async function authorizedSeriesButton(page) {
 //     return await page.evaluateHandle(() => {
@@ -17,5 +17,5 @@ export function authorizedSeriesButton() {
 // }
 
 export function authorizedEpisodeButton() {
-    return `shadow/[href="/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1"]`
+    return `shadow/[href="/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}/episode/episode-1"]`
 }

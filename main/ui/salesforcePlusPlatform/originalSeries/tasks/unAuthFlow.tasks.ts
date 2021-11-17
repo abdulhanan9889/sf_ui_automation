@@ -38,11 +38,11 @@ export async function openEpisode(page) {
 
 export async function playEpisode(page) {
     await waitTillHTMLRendered(page)
-    await page.waitForTimeout(10000)
+    // await page.waitForTimeout(10000)
     await clickPlayButton(page)
     await page.waitForTimeout(10000)
     await clickPauseButton(page)
-    await page.waitForTimeout(4000)
+    await page.waitForTimeout(2000)
 }
 
 export async function openFirstEpisode(page) {

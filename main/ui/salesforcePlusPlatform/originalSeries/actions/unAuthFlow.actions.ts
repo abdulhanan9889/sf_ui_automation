@@ -71,7 +71,7 @@ export async function clickNextEpisodeButton(page, episodeNo) {
 }
 
 export async function clickNextAuthenticatedEpisodeButton(page, episodeNo) {
-    await page.waitForSelector(nextAuthenticatedEpisodeButton(episodeNo))
-    let EPISODE_BUTTON = await page.$(nextAuthenticatedEpisodeButton(episodeNo))
+    await page.waitForSelector(await nextAuthenticatedEpisodeButton(episodeNo))
+    let EPISODE_BUTTON = await page.$(await nextAuthenticatedEpisodeButton(episodeNo))
     EPISODE_BUTTON.click()
 }

@@ -12,7 +12,7 @@ import {
   clickPlayButton,
   clickPauseButton,
 } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
-import { openSignInForm, openVideo, testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
+import { openSignInForm, openVideo, authFlowTestDataSet, authFlowTestData, authFlowTestDataDelete } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
 import { openNextAuthenticatedEpisode, openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
 import {
   fillSignInForm,
@@ -63,7 +63,7 @@ Given('user generates data for broadcast page flows', async function (datatable)
   const testDataParameters = await datatable.hashes()[0]
   noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
   noOfSpeakers = testDataParameters.numberOfSpeakers
-  await testData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
+  await authFlowTestData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
     testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 })
 
@@ -152,22 +152,23 @@ Then("user plays a video", async function () {
 // );
 
 When("guest user navigates to the broadcast page", async function () {
-  await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
+  await page.goto(`https://www-qa1.salesforce.com/plus/experience/${authFlowTestDataSet.eventNames[0]}/series/${authFlowTestDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
+  //await page.goto(`https://www-qa1.salesforce.com/plus/experience/1Emumba_Event_Automation-11We1708/series/SeriesAutomation-emumba11We0408/episode/episode-1`, { waitUntil: "load", timeout: 0 })
+  await page.waitFor(5000)
 })
 
 Then("guest user verifies the episode details", async function () {
   for (var i = 0; i < noOfEpisodes; i++) {
-    await verifyEpisodeNumber(page, testDataSet.episodeOrder[i])
-    await verifyEpisodeTitle(page, testDataSet.episodeNames[i])
+    await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
+    await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
     for (var j = 0; j < noOfSpeakers; j++) {
-      await verifySpeakerDetails(page, testDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+      await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
     }
     if (i < noOfEpisodes - 1) {
       await openNextAuthenticatedEpisode(page, i)
     }
   }
-  await verifySeriesTitle(page, testDataSet.seriesNames[0])
+  await verifySeriesTitle(page, authFlowTestDataSet.seriesNames[0])
 })
 
 // Then(
@@ -338,6 +339,6 @@ After("@broadcastPage", async function () {
 
 AfterAll(async function () {
  
-  await destroy()
+  await authFlowTestDataDelete()
   
 })

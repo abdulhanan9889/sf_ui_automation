@@ -14,6 +14,7 @@ import { forwardButton, reverseButton } from "./user_interface/episodePlayerSele
 import { getSpeakerNames, getSpeakerDesignation } from './user_interface/speakerSectionSelectors';
 
 export async function verifyEpisodeNumber(page, episodeNumber) {
+    await page.waitForSelector(getSeriesTitle);
     let episodeNumberElement = await page.$(getEpisodeNumber)
     let episodeNumberValue = await episodeNumberElement.evaluate(
         (ele) => ele.innerHTML
@@ -23,6 +24,7 @@ export async function verifyEpisodeNumber(page, episodeNumber) {
 }
 
 export async function verifySeriesTitle(page, seriesTitle) {
+    await page.waitForSelector(getSeriesTitle);
     let seriesTitleElement = await page.$(getSeriesTitle)
     let seriesTitleValue = await seriesTitleElement.evaluate(
         (ele) => ele.innerHTML
@@ -41,6 +43,7 @@ export async function verifyEpisodeTitle(page, episodeTitle) {
 }
 
 export async function verifySpeakerDetails(page, speakerDetails, noOfSpeakers) {
+    await page.waitForSelector(getSpeakerNames);
     let speakerName = await page.$$eval(getSpeakerNames, vals => vals.map(val => val.innerHTML))
     let speakerDesignation = await page.$$eval(getSpeakerDesignation, vals => vals.map(val => val.innerHTML))
     let speakerDesignationValue = `${speakerDetails.get("Designation")}, ${speakerDetails.get("Company")}`
