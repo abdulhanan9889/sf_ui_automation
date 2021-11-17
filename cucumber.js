@@ -63,8 +63,10 @@ let homePage = [
 ]
 
 let qaEnv = [
-  `--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}`
-]
+  `--world-parameters '{\"URL\":\"https://www-qa1.salesforce.com/plus\"}'`,
+  `--world-parameters '{\"username\":\"nikhil.sharma+standardnikuser4@appexchange.com.qa\"}'`,
+  `--world-parameters '{\"password\":\"salesforce2\"}'`
+].join(' ')
 
 let uatEnv = [
   `--world-parameters '{\"URL\":\"https://www-uat1.salesforce.com/plus\"}`

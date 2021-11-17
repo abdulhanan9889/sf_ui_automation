@@ -39,7 +39,7 @@
 
 // Given('user generates data for authenticated epsiode flows', async function (datatable) {
 
-import { Given, When, After, Then, AfterAll, AfterStep } from '@cucumber/cucumber'
+import { Given, When, After, Then, AfterAll, AfterStep,Before,setDefaultTimeout } from '@cucumber/cucumber'
 import { loadBrowser } from '../../../main/utilities/loadBrowser'
 import {
     closeTbidModal,
@@ -67,10 +67,11 @@ import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testData
 import { openEpisode, playEpisode, openNextEpisode, openNextAuthenticatedEpisode } from '../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks'
 import { muteVideoButton, unmuteVideoButton } from '../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.actions'
 import { clickSecondAuthorizedEpisodeButton } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.actions'
-import { testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
+import { openVideo, testData, testDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
+import { openLoginPage, signInOnSalesforce } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
+import { verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
 
-var { setDefaultTimeout } = require('@cucumber/cucumber');
-setDefaultTimeout(80000)
+setDefaultTimeout(100*1000)
 let page
 let ss
 let recorder
@@ -93,19 +94,36 @@ Given('user generates data for authenticated epsiode flows', async function (dat
 //         testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 // })
 
+Before('@episodePage',async function(){
+    page = await loadBrowser();
+ // recorder = new PuppeteerScreenRecorder(page);
+ // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
+ await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+ await waitTillHTMLRendered(page);
+ await acceptCookies(page);
+ await page.waitFor(2000);
+ await openLoginPage(page);
+ await signInOnSalesforce(page,this.parameters.username,this.parameters.password)
+})
+// Given('a guest user loads salesforce plus platform', async function () {
+    // page = await loadBrowser()
+    // // recorder = new PuppeteerScreenRecorder(page);
+    // // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
+    // await page.waitForTimeout(5000)
+    // // await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
+    // await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`, { waitUntil: 'load', timeout: 0 })
+    // await waitTillHTMLRendered(page)
+    // await acceptCookies(page)
+    // await waitTillHTMLRendered(page)
+// });
 
-Given('a guest user loads salesforce plus platform', async function () {
-    page = await loadBrowser()
-    // recorder = new PuppeteerScreenRecorder(page);
-    // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
-    await page.waitForTimeout(5000)
-    // await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
-    await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`, { waitUntil: 'load', timeout: 0 })
-    await waitTillHTMLRendered(page)
-    await acceptCookies(page)
-    await waitTillHTMLRendered(page)
-});
-
+Given('an authenticated is already logged in',async function(){
+    await verifyUserIsLoggedIn(page)
+})
+When("an authenticated user goes to the episode",async function(){
+    await openVideo(page)
+})
+  
 When('user navigates to episodes page and clicks on a particular episode', async function () {
     await openEpisode(page)
 });
@@ -170,32 +188,32 @@ Then('user is able to verify authenticated episode details', async function () {
 
 
 
-// // Then('user can play and pause the video', async function () {
-// //     await playEpisode(page)
-// //     await verifyProgressBarValues(page)
-// // });
+// Then('user can play and pause the video', async function () {
+//     await playEpisode(page)
+//     await verifyProgressBarValues(page)
+// });
 
-// // Then('user can forward and reverse the video', async function () {
-// //     await verifyForwardedVideo(page)
-// //     await verifyReversedVideo(page)
-// // })
+Then('user can forward and reverse the video', async function () {
+    await verifyForwardedVideo(page)
+    await verifyReversedVideo(page)
+})
 
-// // Then('user can maximize and minimize the video player', async function () {
-// //     await maximizeVideoPlayer(page)
-// //     await verifyMaximizedPlayer(page)
-// //     await page.waitForTimeout(3000)
-// //     await minimizeVideoPlayer(page)
-// //     await verifyMinimizedPlayer(page)
-// // })
+Then('user can maximize and minimize the video player', async function () {
+    await maximizeVideoPlayer(page)
+    await verifyMaximizedPlayer(page)
+    await page.waitForTimeout(3000)
+    await minimizeVideoPlayer(page)
+    await verifyMinimizedPlayer(page)
+})
 
-// // Then('user can mute and unmute the video', async function () {
-// //     await muteVideoButton(page)
-// //     await verifyMutedVideo(page)
-// //     await page.waitForTimeout(3000)
-// //     await unmuteVideoButton(page)
-// //     await verifyUnmutedVideo(page)
-// // await recorder.stop()
-// //})
+Then('user can mute and unmute the video', async function () {
+    await muteVideoButton(page)
+    await verifyMutedVideo(page)
+    await page.waitForTimeout(3000)
+    await unmuteVideoButton(page)
+    await verifyUnmutedVideo(page)
+//await recorder.stop()
+})
 
 // When('a guest user access authorized content and logs in through trailblazer id', async function () {
 
@@ -209,23 +227,23 @@ Then('user is able to verify authenticated episode details', async function () {
 // //     await fillSignUpForms(page, dataFields)
 // // })
 
-// // Then('an authenticated user can play the authorized episode', async function () {
-// //     await playEpisode(page)
-// //     await verifyProgressBarValues(page)
-// //     // recorder.stop()
-// // })
+Then('an authenticated user can play the authorized episode', async function () {
+    await playEpisode(page)
+    await verifyProgressBarValues(page)
+    // recorder.stop()
+})
 
 // // Then('authenticated user can play the first authorized episode', async function () {
 // //     await playEpisode(page)
 // //     await verifyProgressBarValues(page)
 // // })
 
-// // Then('authenticated user clicks on second episode and can play the authorized episode', async function () {
-// //     await clickSecondAuthorizedEpisodeButton(page)
-// //     await playEpisode(page)
-// //     await verifyProgressBarValues(page)
-// //     // await recorder.stop()
-// // })
+Then('authenticated user clicks on second episode and can play the authorized episode', async function () {
+    await clickSecondAuthorizedEpisodeButton(page)
+    await playEpisode(page)
+    await verifyProgressBarValues(page)
+    // await recorder.stop()
+})
 
 // // When('a guest user access authorized content and logs in through trailblazer id: {word}', async function (emailId) {
 // //     await loginThroughSignedUpUser(page, emailId)

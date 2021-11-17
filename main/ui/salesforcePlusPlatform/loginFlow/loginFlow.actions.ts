@@ -25,12 +25,9 @@ export async function randomOTPGenerator() {
 export async function clickSalesforceOptionButton(page){
     
   await page.waitForSelector(getSFButton);
-  console.log("Here 5")
   const salesforceButton = await page.$(getSFButton);
-  console.log("Here 6")
   await salesforceButton.click()
-  console.log("Here 7")
-}
+} 
 
 export async function typeUserName(page,userName) {
 

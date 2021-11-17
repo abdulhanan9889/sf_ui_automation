@@ -57,6 +57,14 @@ export async function openSignInForm(page) {
   await waitTillHTMLRendered(page);
 }
 
+export async function openVideo(page) {
+  await clickDreamForceTab(page);
+  await waitTillHTMLRendered(page);
+  await page.waitForTimeout(1500)
+  await clickWatchNowButton(page);
+  await waitTillHTMLRendered(page);
+}
+
 export async function fillSignInForm(page) {
   await clickLoginInWithTrailblazaerID(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 35000 });

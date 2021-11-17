@@ -131,14 +131,14 @@ Then('sign up form do not appears',async function(){
     await verifySignUpFormButton(page)
 })
 
-When('user navigates to salesforce login menu', async function () {
+// When('user navigates to salesforce login menu', async function () {
 
-    await openLoginPage(page);
-});
+//     await openLoginPage(page);
+// });
   
-When('user tries to login with valid ceredentials', async function (dataTable) {
-     await signInOnSalesforce(page,dataTable);
-});
+// When('user tries to login with valid ceredentials', async function (dataTable) {
+//      await signInOnSalesforce(page,dataTable);
+// });
   
 AfterStep("@loginFlow", async function () {
     await waitTillHTMLRendered(page);

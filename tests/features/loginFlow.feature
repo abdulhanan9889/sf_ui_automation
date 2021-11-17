@@ -75,7 +75,7 @@ Feature: Login flow
              When user tries to login with wrong otp
              Then an error message is shown
 
-        @loginFlow
+        @loginFlow @current
         Scenario Outline: user verifies the sign up button appears
             Given the user loads the salesforce plus platform
              When user tries to login with an email address
@@ -90,11 +90,11 @@ Feature: Login flow
                   | email                             |
                   | logins75hoc7sbf2sf@mailinator.com |
 
-        @loginFlow @current
-        Scenario Outline: User logins on Salesforce
-            Given the user loads the salesforce plus platform
-             When user navigates to salesforce login menu
-             When user tries to login with valid ceredentials
-                  | username | nikhil.sharma+standardnikuser4@appexchange.com.qa |
-                  | password | salesforce2                                       |
-             Then the user is logged in
+     #    @loginFlow @current
+     #    Scenario Outline: User logins on Salesforce
+     #        Given the user loads the salesforce plus platform
+     #         When user navigates to salesforce login menu
+     #         When user tries to login with valid ceredentials
+     #              | username | nikhil.sharma+standardnikuser4@appexchange.com.qa |
+     #              | password | salesforce2                                       |
+     #         Then the user is logged in

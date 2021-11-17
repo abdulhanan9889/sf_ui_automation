@@ -148,14 +148,12 @@ export async function openLoginPage(page){
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });
 }
 
-export async function signInOnSalesforce(page,dataTable){
-  let dataFields=await dataTable.rowsHash();
-  await typeUserName(page,dataFields.username)
-  await typePassword(page,dataFields.password);
+export async function signInOnSalesforce(page,username, password){
+  await typeUserName(page,username)
+  await typePassword(page,password);
   await clickSFLoginButton(page);
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });
-  await page.waitFor(10000);
-  await clickSkipForNowButton(page)
-  await page.waitFor(10000);
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
+  await clickSkipForNowButton(page);
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
   await waitTillHTMLRendered(page)
 }

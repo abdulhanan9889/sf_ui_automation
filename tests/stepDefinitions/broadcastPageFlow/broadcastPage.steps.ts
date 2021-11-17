@@ -1,9 +1,8 @@
-import { Given, When, After, Then, AfterAll, AfterStep } from "@cucumber/cucumber";
+import { Given, When, After, Then, AfterAll, AfterStep,Before,setDefaultTimeout } from "@cucumber/cucumber";
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
-var { setDefaultTimeout } = require("@cucumber/cucumber");
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
-setDefaultTimeout(60000);
+setDefaultTimeout(100 * 1000);
 
 import {
   muteVideoButton,
@@ -13,7 +12,7 @@ import {
   clickPlayButton,
   clickPauseButton,
 } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
-import { openSignInForm, testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
+import { openSignInForm, openVideo, testData, testDataSet } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
 import { openNextAuthenticatedEpisode, openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
 import {
   fillSignInForm,
@@ -50,6 +49,9 @@ import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDa
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { closeTbidModal, maximizeVideoPlayer, minimizeVideoPlayer } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks";
+import { openLoginPage, signInOnSalesforce } from "../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks";
+import { verifyUserIsLoggedIn } from "../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions";
+import { destroy } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/createDestroyOriginalSeries";
 
 let page;
 let ss
@@ -65,27 +67,39 @@ Given('user generates data for broadcast page flows', async function (datatable)
     testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
 })
 
-Given("the user is on the salesforce plus webpage", async function () {
-  page = await loadBrowser();
+// Given("the user is on the salesforce plus webpage", async function () {
+//   page = await loadBrowser();
+//   // recorder = new PuppeteerScreenRecorder(page);
+//   // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
+//   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//   await waitTillHTMLRendered(page);
+//   await acceptCookies(page);
+//   await page.waitFor(2000);
+// });
+
+Before('@broadcastPage',async function(){
+     page = await loadBrowser();
   // recorder = new PuppeteerScreenRecorder(page);
   // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
   await waitTillHTMLRendered(page);
   await acceptCookies(page);
   await page.waitFor(2000);
-});
+  await openLoginPage(page);
+  await signInOnSalesforce(page,this.parameters.username,this.parameters.password)
+})
 
 When("user open the sign in form", async function () {
   await openSignInForm(page);
 });
 
-When(
-  "user login with the following {word}",
-  { timeout: 80000 },
-  async function (email) {
-    await fillInSignInForm(page, email);
-  }
-);
+// When(
+//   "user login with the following {word}",
+//   { timeout: 80000 },
+//   async function (email) {
+//     await fillInSignInForm(page, email);
+//   }
+// );
 
 Then("user plays a video", async function () {
   await playEpisode(page);
@@ -93,52 +107,53 @@ Then("user plays a video", async function () {
   // await recorder.stop()
 });
 
-var email;
-When(
-  "the user tries to login with a dummy email",
-  { timeout: 80000 },
-  async function () {
-    await openSignInForm(page);
-    await fillSignInForm(page);
-  }
-);
+// var email;
+// When(
+//   "the user tries to login with a dummy email",
+//   { timeout: 80000 },
+//   async function () {
+//     await openSignInForm(page);
+//     await fillSignInForm(page);
+//   }
+// );
 
-When(
-  "the user click cancel and logout button after filling the following details",
-  { timeout: 90000 },
-  async function (dataTable) {
-    await fillInSignUpForm(page, dataTable);
-  }
-);
+// When(
+//   "the user click cancel and logout button after filling the following details",
+//   { timeout: 90000 },
+//   async function (dataTable) {
+//     await fillInSignUpForm(page, dataTable);
+//   }
+// );
 
-Then("user is logged out", async function () {
-  await isUserLoggedOut(page);
-  // await recorder.stop()
-});
+// Then("user is logged out", async function () {
+//   await isUserLoggedOut(page);
+//   // await recorder.stop()
+// });
 
-Given(
-  "guest user loads the salesforce plus platform",
-  { timeout: 80000 },
-  async function () {
-    page = await loadBrowser();
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await waitTillHTMLRendered(page);
-    await acceptCookies(page);
-    await page.waitFor(2000);
-  }
-);
+// Given(
+//   "guest user loads the salesforce plus platform",
+//   { timeout: 80000 },
+//   async function () {
+//     page = await loadBrowser();
+//     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//     await waitTillHTMLRendered(page);
+//     await acceptCookies(page);
+//     await page.waitFor(2000);
+//   }
+// );
 
-When(
-  "guest user login through trailblazzer using {word}",
-  { timeout: 120 * 1000 },
-  async function (email) {
-    await openSignInForm(page);
-    await fillInSignInForm(page, email);
-  }
-);
+// When(
+//   "guest user login through trailblazzer using {word}",
+//   { timeout: 120 * 1000 },
+//   async function (email) {
+//     await openSignInForm(page);
+//     await fillInSignInForm(page, email);
+//   }
+// );
 
 When("guest user navigates to the broadcast page", async function () {
   await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}/series/${testDataSet.seriesNames[0]}/episode/episode-1`, { waitUntil: "load", timeout: 0 });
+  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
 })
 
 Then("guest user verifies the episode details", async function () {
@@ -150,10 +165,6 @@ Then("guest user verifies the episode details", async function () {
     }
     if (i < noOfEpisodes - 1) {
       await openNextAuthenticatedEpisode(page, i)
-    }
-    if (i = 0) {
-      await closeTbidModal(page)
-      continue
     }
   }
   await verifySeriesTitle(page, testDataSet.seriesNames[0])
@@ -251,29 +262,34 @@ Then("guest user verifies the episode details", async function () {
 //   }
 // );
 
-Given(
-  "authenticated user is on salesforce plus webpage",
-  { timeout: 80000 },
-  async function () {
-    page = await loadBrowser();
-    // recorder = new PuppeteerScreenRecorder(page);
-    // await recorder.start('tests/reports/videos/broadCastPage/videoPlayerControls.mp4');
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await waitTillHTMLRendered(page);
-    await acceptCookies(page);
-    await page.waitFor(2000);
-  }
-);
+// Given(
+//   "authenticated user is on salesforce plus webpage",
+//   { timeout: 80000 },
+//   async function () {
+//     page = await loadBrowser();
+//     // recorder = new PuppeteerScreenRecorder(page);
+//     // await recorder.start('tests/reports/videos/broadCastPage/videoPlayerControls.mp4');
+//     await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//     await waitTillHTMLRendered(page);
+//     await acceptCookies(page);
+//     await page.waitFor(2000);
+//   }
+// );
 
-When(
-  "authenticated user logins with {word}",
-  { timeout: 100 * 1000 },
-  async function (email) {
-    await openSignInForm(page);
-    await fillInSignInForm(page, email);
-  }
-);
-
+// When(
+//   "authenticated user logins with {word}",
+//   { timeout: 100 * 1000 },
+//   async function (email) {
+//     await openSignInForm(page);
+//     await fillInSignInForm(page, email);
+//   }
+// );
+Given("authenticated user is logged in",async function(){
+     await verifyUserIsLoggedIn(page)
+})
+When("authenticated user goes to the video",async function(){
+  await openVideo(page)
+})
 Then("authenticated user plays the video", async function () {
   await clickPlayButton(page);
   await page.waitForTimeout(2000);
@@ -316,11 +332,12 @@ AfterStep("@broadcastPage", async function () {
   await this.attach(ss, 'image/png')
 })
 
-// After("@broadcastPage", async function () {
-//   await page.close()
-// })
+After("@broadcastPage", async function () {
+  await page.close()
+})
 
-// AfterAll(async function () {
-//   let baseobject = new BaseObject()
-//   // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-// })
+AfterAll(async function () {
+ 
+  await destroy()
+  
+})
