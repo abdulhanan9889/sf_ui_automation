@@ -2,82 +2,142 @@ var { setDefaultTimeout } = require("@cucumber/cucumber");
 setDefaultTimeout(720000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
+import { navigateToDreamForcePage } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageTopnavigation.actions";
+import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageTopnavigation.actions";
+import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
 import {
-    acceptCookies,
-    clickOnDreamForce,
-    clickOnExperienceSectionButton,
     navigateToDetailsPageOfTheEvent,
-    navigateToDreamForcePage,
+    navigateToEpisode,
     navigateToFirstEpisode,
-    testData, testDataDelete, testDataSet
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencePage.tasks";
+    testData,
+    testDataDelete,
+    testDataSet
+} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/testDataGeneration.actions";
+import { clickOnExperienceSectionButton } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 const { setWorldConstructor } = require("@cucumber/cucumber")
-import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homepage.assertions";
-import {
-    clickOnAllSponsors,
-    clickOnArrowForSeriesInRoles,
-    clickOnArrowForSeriesInTopic,
-    clickOnExploreMore,
-    clickOnPlayForSeriesInRoles,
-    clickOnPlayForSeriesInTopics,
-    closeLoginModal,
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencePage.tasks";
-import {
-    checkExperiencePagetitle,
-    checkForAllEpisodesTitle,
-    checkForAllSponsorsButton,
-    checkForAllSponsorsTitle,
-    checkForUpNextTitle,
-    checkSignUpToWatchButton,
-    checkSpeakerName,
-    checkWatchcNowButton,
-} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/experiencepage.assertions";
+import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
+import { clickOnAllSponsors } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/sponsorsSection.actions";
+import { clickOnExploreMore } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageHeroBanner.actions";
+import { closeLoginModal } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
+import { clickOnArrowForSeriesInTopic, clickOnPlayForSeriesInTopics} from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/topicCarousel.actions";
+import { clickOnArrowForSeriesInRoles, clickOnPlayForSeriesInRoles } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/roleCarousel.actions";
+import { checkForAllSponsorsTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/sponsorsSectionAssertions";
+import { checkWatchcNowButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkSpeakerName } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/speakerSectionAssertions";
+import { checkSignUpToWatchButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkForUpNextTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/upNextSectionAssertions";
+import { checkForAllSponsorsButton } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/sponsorsSectionAssertions";
+import { checkForAllEpisodesTitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
+import { checkExperiencePagetitle } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/assertions/testDataGenerationAssertions";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { eventURL } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/user_interface/testDataSelectors";
+import expTestData from "../../../main/testDataGeneration/testDataFiles/featureFileTestData.json"
 
-
+export var cliUsername;
+export var cliPassword;
+export var cliLoginUrl;
+export var cliInstanceUrl;
 let page;
 let ss;
 let recorder;
 let target;
+let noOfEpisodes
+let noOfSpeakers
+let noOfEvents
+let eventURLs
+let noOfSeries
+// Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
+//     console.log(expTestData.length)
+//     noOfSeries = expTestData
+//         for (let i=0; i < expTestData.length; i++){
+//             await testData(expTestData[i].seriesStartFromToday,
+//                 expTestData[i].seriesEndFromToday,
+//                 expTestData[i].noOfSeries,
+//                 expTestData[i].noOfEpisodesPerSeries,
+//                 expTestData[i].noOfSpeakers,
+//                 expTestData[i].firstName,
+//                 expTestData[i].lastName,
+//                 expTestData[i].designation,
+//                 expTestData[i].company)
+//         }
+        
+//         page = await loadBrowser()
+//         await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//         await acceptCookies(page)
+//         await waitTillHTMLRendered(page)
+//         await navigateToDreamForcePage(page)
+//         await waitTillHTMLRendered(page)
+//         await checkExploreMoreIsPresent(page)
+//         await page.goto(eventURL(noOfSeries))
+//         await waitTillHTMLRendered
+//         await checkExploreMoreIsPresent(page)
 
-Given('user generates data for authenticated flows and navigates to added Event Page', async function (datatable) {
-    console.log("Test123123")
-    const testDataParameters = await datatable.hashes()[0]
-    await testData(testDataParameters.seriesStartFromToday,
-        testDataParameters.seriesEndFromToday,
-        testDataParameters.noOfSeries,
-        testDataParameters.noOfEpisodesPerSeries,
-        testDataParameters.noOfSpeakers,
-        testDataParameters.firstName,
-        testDataParameters.lastName,
-        testDataParameters.designation,
-        testDataParameters.company)
-    page = await loadBrowser()
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await acceptCookies(page)
-    await waitTillHTMLRendered(page)
-    await navigateToDreamForcePage(page)
-    await waitTillHTMLRendered(page)
-    await checkExploreMoreIsPresent(page)
-    await page.goto(eventURL())
-    await waitTillHTMLRendered
-    await checkExploreMoreIsPresent(page)
-})
-When('user navigates to the added Event details page', async function () {
-    console.log(testDataSet)
-    await navigateToDetailsPageOfTheEvent(page)
-    await waitTillHTMLRendered(page)
-    await checkSignUpToWatchButton(page)
+// });
+
+
+Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
+    // console.log(expTestData.length)
+    noOfEvents = expTestData.length
+        for (let i=0; i < expTestData.length; i++){
+            await testData(expTestData[i].seriesStartFromToday,
+                expTestData[i].seriesEndFromToday,
+                expTestData[i].noOfSeries,
+                expTestData[i].noOfEpisodesPerSeries,
+                expTestData[i].noOfSpeakers,
+                expTestData[i].firstName,
+                expTestData[i].lastName,
+                expTestData[i].designation,
+                expTestData[i].company)
+        }
+        page = await loadBrowser()
+        await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+        await acceptCookies(page)
+        await waitTillHTMLRendered(page)
+        await navigateToDreamForcePage(page)
+        await waitTillHTMLRendered(page)
+        await checkExploreMoreIsPresent(page)
+        // await page.goto(eventURL(0))
 });
-Then('user navigates to an episode page of the added event', async function () {
-    await navigateToFirstEpisode(page)
-    await waitTillHTMLRendered(page)
-    await checkSpeakerName(page)
+When('user navigates to the added Event details page', async function () {
+    // console.log(testDataSet)
+        for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
+            noOfSeries = expTestData[eventNo].noOfSeries
+            console.log(noOfSeries)
+            for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
+            await page.goto(eventURL(eventNo))
+            await waitTillHTMLRendered(page)
+            await checkExploreMoreIsPresent(page)
+            await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
+            await waitTillHTMLRendered
+            await checkSignUpToWatchButton(page)
+            }
+        }
+});
+Then('user navigates to each episode page of the added event for each series', async function () {
+    for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
+                    noOfSeries = expTestData[eventNo].noOfSeries
+                    noOfEpisodes= expTestData[eventNo].noOfEpisodesPerSeries
+                    console.log(noOfSeries)
+                    for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
+                    await page.goto(eventURL(eventNo))
+                    await waitTillHTMLRendered(page)
+                    await checkExploreMoreIsPresent(page)
+                    await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
+                    await checkSignUpToWatchButton(page)
+                    for(let episodeNo = 1;  episodeNo <= noOfEpisodes ; episodeNo++){
+                        await navigateToEpisode(page, eventNo, seriesNo, episodeNo)
+                        await waitTillHTMLRendered(page)
+                        await checkSpeakerName(page)
+                    }                    
+                    }
+                }
+    // await navigateToFirstEpisode(page)
+    // await waitTillHTMLRendered(page)
+    // await checkSpeakerName(page)
     // await page.waitFor(5000)
     // await page.goBack()
     // await waitTillHTMLRendered(page)
