@@ -38,7 +38,7 @@ export async function openEpisode(page) {
 
 export async function playEpisode(page) {
     await waitTillHTMLRendered(page)
-    // await page.waitForTimeout(10000)
+    await page.waitForTimeout(10000)
     await clickPlayButton(page)
     await page.waitForTimeout(10000)
     await clickPauseButton(page)
@@ -69,6 +69,6 @@ export async function openNextEpisode(page, episodeNo) {
 
 export async function openNextAuthenticatedEpisode(page, episodeNo) {
     await waitTillHTMLRendered(page)
-    await clickNextAuthenticatedEpisodeButton(page, episodeNo)
+    await clickNextAuthenticatedEpisodeButton(page, 2)
     await waitTillHTMLRendered(page)
 }
