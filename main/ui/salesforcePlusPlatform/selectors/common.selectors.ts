@@ -9,7 +9,7 @@ export let getEmailInputField = `input[id="loginPage:email-card-form:emailTextIn
 export let getLoginButton = `[id="submit-email"]`
 export let getTokenInputField = `[id="loginPage:email-card-form:challengeTextInput"]`
 export let getContinueButton = `[id="verify-challenge-button"]`
-export const getCloseButtonLoginModal = `shadow/[class="close-btn"]`
+export const getCloseButtonLoginModal = `shadow/[class="modal--close-btn"]`
 
 
 
