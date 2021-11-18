@@ -32,7 +32,7 @@ import { openVideo, authFlowTestData, authFlowTestDataDelete,authFlowTestDataSet
 import { openLoginPage, signInOnSalesforce } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
 import { verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
 
-setDefaultTimeout(100*1000)
+setDefaultTimeout(120*1000)
 let page
 let ss
 let recorder

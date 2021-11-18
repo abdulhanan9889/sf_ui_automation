@@ -1,5 +1,5 @@
 Feature: Broadcast Page
-        @current
+
         Scenario: user generates data for authenticated flows
             Given user generates data for broadcast page flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | seriesStartDayFromToday | eventEndDayFromToday | seriesEndDayFromToday | numberOfSpeakers | firstName | lastName | designation | company |

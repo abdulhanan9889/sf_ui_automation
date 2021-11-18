@@ -2,7 +2,7 @@ import { Given, When, After, Then, AfterAll, AfterStep,Before,setDefaultTimeout 
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
-setDefaultTimeout(100 * 1000);
+setDefaultTimeout(120 * 1000);
 
 import {
   muteVideoButton,
