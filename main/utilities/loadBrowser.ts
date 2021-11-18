@@ -12,12 +12,12 @@ export const loadBrowser = async () => {
     defaultViewport: null,
     executablePath: revisionInfo.executablePath
   })
-  const context = await browser.createIncognitoBrowserContext()
-  const page = await context.newPage()
+  //const context = await browser.createIncognitoBrowserContext()
+  const page = (await browser.pages())[0]
   return page
 }
 
-After({tags:"@authFlow or @broadcastPage or @loginFlow or @episodePage or @experiencePage or @homePage or @unAuthFlow"},async function () {
-  await browser.close()
-});
+// After({tags:"@authFlow or @broadcastPage or @loginFlow or @episodePage or @experiencePage or @homePage or @unAuthFlow"},async function () {
+//   await browser.close()
+// });
 
