@@ -1,4 +1,4 @@
-@experiencePage
+@experiencePage @regression
 Feature: Experience Page
 
         Scenario: user generates data for authenticated flows
@@ -7,6 +7,13 @@ Feature: Experience Page
                   | 0                    | 2                  | 1          | 2                     | 2            | dummy     | here     | QA Engineer | Emumba  |
              When user navigates to the added Event details page
              Then user navigates to an episode page of the added event
+
+    # Scenario: user generates data for authenticated flows
+    #     Given user generates data for authenticated flows and navigates to added Event Page
+    #         | seriesStartFromToday | seriesEndFromToday | noOfSeries | noOfEpisodesPerSeries | noOfSpeakers | firstName | lastName | designation | company |
+    #         | 0                    | 2                  | 1          | 2                     | 2            | dummy     | here     | QA Engineer | Emumba  |
+    #     When user navigates to the added Event details page
+    #     Then user navigates to an episode page of the added event
 
 
         Scenario: User clicks on Explore more button
