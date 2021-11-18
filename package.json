@@ -29,7 +29,7 @@
     "test_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p qaEnv",
     "test_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p uatEnv",
     "test_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p perfEnv",
-    "test_parallel_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p qaEnv",
+    "test_parallel_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 4 -p allFlows -p qaEnv",
     "test_parallel_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p uatEnv",
     "test_parallel_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p perfEnv",
     "testHome_ExperiencePage": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p uatEnv"

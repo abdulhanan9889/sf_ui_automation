@@ -3,24 +3,56 @@ setDefaultTimeout(60000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
 import { After, Given, Then, When, AfterStep, Before } from "@cucumber/cucumber";
 import {
-  checkExploreSFisPresent,
-  checkExploreMoreIsPresent,
+ 
   checkTrailorTitle,
-  checkFeaturedEpisodeTitle,
-  checkWatchNowisPresent,
+  
   checkAllEpisodesTitle,
-} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homepage.assertions";
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/episodePageAssertions";
+import {
+  checkExploreSFisPresent,
+
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/homePageHeroBannerAssertions";
+import {
+
+
+  checkFeaturedEpisodeTitle,
+
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/featuredEpisodeAsseretions";
+import {
+ 
+  checkExploreMoreIsPresent,
+  checkWatchNowisPresent,
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
+
+import {
+  
+  
+  clickOnExperienceSectionButton,
+  
+  
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
+import {
+ 
+  clickOnFeaturedEpisode,
+
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/featuredEpisode.actions";
+import {
+ 
+  clickOnArrowIcon,
+  
+ 
+  clickOnPlayIcon
+} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/homePage.actions";
 import {
   acceptCookies,
-  clickOnArrowIcon,
+
   clickOnDreamForce,
-  clickOnExperienceSectionButton,
-  clickOnExploreSF,
-  clickOnFeaturedEpisode,
-  clickOnPlayIcon
-} from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homePage.actions";
+} from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
+
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
-import { navigateToDreamforceTab, navigateToExploreSFPage } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/homePage.tasks";
+import { navigateToExploreSFPage } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/homePageHeroBanner.tasks";
+import { navigateToDreamforceTab } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/tasks/homePageTopNavigations.tasks";
+
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { forEachChild } from "typescript";
 
