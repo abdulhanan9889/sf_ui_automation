@@ -139,14 +139,14 @@ Then('user is able to play the second episode', async function () {
 })
 
 AfterStep("@unAuthFlow",async function () {
-    // await waitTillHTMLRendered(page);
+     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')
 })
 
-// After("@unAuthFlow", async function () {
-//     await page.close()
-// })
+After("@unAuthFlow", async function () {
+    await page.close()
+})
 
 AfterAll(async function () {
  

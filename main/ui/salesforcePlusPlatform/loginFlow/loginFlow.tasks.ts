@@ -154,6 +154,7 @@ export async function signInOnSalesforce(page,username, password){
   await clickSFLoginButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
   await clickSkipForNowButton(page);
-  await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
+  await page.waitFor(10000)
+  //await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 60000 });
   await waitTillHTMLRendered(page)
 }
