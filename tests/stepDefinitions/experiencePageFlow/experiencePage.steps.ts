@@ -1,7 +1,6 @@
-var { setDefaultTimeout } = require("@cucumber/cucumber");
-setDefaultTimeout(720000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
-import { After, Before, Given, Then, When, AfterStep, AfterAll } from "@cucumber/cucumber";
+import { After, Before, Given, Then, When, AfterStep, AfterAll,setDefaultTimeout } from "@cucumber/cucumber";
+setDefaultTimeout(7200000);
 import { navigateToDreamForcePage } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageTopnavigation.actions";
 import { clickOnDreamForce } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageTopnavigation.actions";
 import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/tasks/commonTasks";
@@ -15,7 +14,6 @@ import {
 } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/testDataGeneration.actions";
 import { clickOnExperienceSectionButton } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/actions/experienceCarousel.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
-const { setWorldConstructor } = require("@cucumber/cucumber")
 import { checkExploreMoreIsPresent } from "../../../main/ui/salesforcePlusPlatform/homePageFlow/assertions/experiencePageAssertions";
 import { clickOnAllSponsors } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/sponsorsSection.actions";
 import { clickOnExploreMore } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/actions/expPageHeroBanner.actions";

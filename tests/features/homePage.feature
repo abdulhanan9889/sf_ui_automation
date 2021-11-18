@@ -23,7 +23,7 @@ Feature: Homepage
              When user scrolls down Clicks on the play icon for a Series
              Then user should be navigated to Trailor page of the series
         
-        @homePage
+        @homePage @current
         Scenario: User Navigates to a Series detail page from the Home page
             Given user is on the salesforcePlus Home page
              When user scrolls down Clicks on the arrow icon for a Series

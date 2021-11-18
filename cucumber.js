@@ -79,7 +79,7 @@ let perfEnv = [
 let authenticatedContentFlows = `${authFlow} ${broadcastPage} ${loginFlow} ${experiencePage}`
 let unAuthenticatedContentFlows = `${unAuthFlow} ${episodePage}`
 let bothFlows = `${homePage} ${episodePage}`
-let allFlows = ` ${broadcastPage} ${episodePage}  ${unAuthFlow}`
+let allFlows = ` ${broadcastPage} ${episodePage}`
 
 let expReport = [
   `--format json:tests/reports/experiencePage.json`

@@ -1,7 +1,6 @@
-var { setDefaultTimeout } = require("@cucumber/cucumber");
-setDefaultTimeout(60000);
 import { loadBrowser } from "../../../main/utilities/loadBrowser";
-import { After, Given, Then, When, AfterStep, Before } from "@cucumber/cucumber";
+import { After, Given, Then, When, AfterStep, Before,setDefaultTimeout } from "@cucumber/cucumber";
+setDefaultTimeout(720000);
 import {
  
   checkTrailorTitle,
