@@ -29,10 +29,15 @@
     "test_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p qaEnv",
     "test_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p uatEnv",
     "test_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p allFlows -p perfEnv",
-    "test_parallel_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p qaEnv",
+    "test_parallel_qaEnv": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 4 -p allFlows -p qaEnv",
     "test_parallel_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p uatEnv",
     "test_parallel_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p perfEnv",
-    "testHome_ExperiencePage": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p uatEnv"
+    "testHome_ExperiencePage": "node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p qaEnv",
+    "broadcastPageFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
+    "authenticatedEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
+    "homePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
+    "experiencePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
+    "originalSeriesAndEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthFlow -p qaEnv"
   },
   "directories": {
     "test": "tests"
@@ -40,7 +45,7 @@
   "description": "This project consists of the test-generation scripts along with the UI automation scripts for the different environments(QA, UAT, etc)\r ## Dependencies and setup\r *Node.js* needs to be installed globally on your machine. You can find the latest version for your system [here](https://nodejs.org/en/download/)",
   "repository": {
     "type": "git",
-    "url": "https://git.soma.salesforce.com/fraza/SF-UI-Automation-Tasks.git"
+    "url": "https://github.com/smaroof/sf_ui_automation"
   },
   "devDependencies": {
     "cucumber-html-reporter": "^5.5.0",

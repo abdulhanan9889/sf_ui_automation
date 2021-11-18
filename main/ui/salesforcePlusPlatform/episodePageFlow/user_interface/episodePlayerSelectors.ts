@@ -80,7 +80,7 @@ export async function getVideoProgressbar(page) {
         return document?.querySelector("body > div.section.target.parbase > salesforceplus-app")
             ?.shadowRoot?.querySelector("div > salesforceplus-router")
             ?.shadowRoot?.querySelector("div > main > salesforceplus-view")
-            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player")
+            ?.shadowRoot?.querySelector("div > div.player-container > div > bxp-vidyard-player > bxp-vidyard-controls")
             ?.shadowRoot?.querySelector("div > div > div > bxp-vidyard-play-duration")
             ?.shadowRoot?.querySelector("div > h5")?.innerHTML
     });
@@ -121,7 +121,7 @@ export const progressBar = `.duration`
 
 
 // broadCastPageSelectors
-export const getMuteOrUnmuteButton = 'shadow/[aria-label="volume toggle button"]'
+export const getMuteOrUnmuteButton = 'shadow/[class="player-button volume-toggle unmuted-icon"]'
 // export async function getMuteOrUnmuteButton(page) {
 //     return await page.evaluateHandle(() => {
 //         return document

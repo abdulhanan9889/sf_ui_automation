@@ -8,7 +8,7 @@ export async function clickCancelAndLogoutButton(page) {
   await cancelAndLogoutButton.click();
 }
 export async function clickSkipForNowButton(page) {
-  if ((await page.waitForSelector(skipForNowButton)) != null) {
+  if ((await page.waitForSelector(skipForNowButton,{timeout:60000})) != null) {
     await page.focus(skipForNowButton);
     await page.click(skipForNowButton);
   }
