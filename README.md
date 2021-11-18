@@ -87,6 +87,7 @@ After installing Node.js, you need to install the remaining dependencies using `
   multiple-report.js
 
 ### How to run tests
+#### Individual tests
 Test for specific page can be executed using a single command
 ```
 node node_modules/@cucumber/cucumber/bin/cucumber-js -p profileName -p environmentName --tags=@chosenTags
@@ -113,6 +114,23 @@ while the 'environmentName' depends upon the enviornment the test is to be execu
 |perfEnv| https://www-perf.salesforce.com/plus|
 
 and 'chosenTags' will be according to which will be defined in the Feature files and are editable as required.
+
+#### From test suites 
+Tests can be executed from the test suites defined in the package.json file with the following command
+```
+npm run testScriptName
+```
+where "testScriptName" can have one the following values:
+|Value|Description|
+|:---|:---|
+|test_qaEnv|Executes all the flows defined above in a sequence on the QA environment|
+|test_uatEnv|Executes all the flows defined above in a sequence on the UAT environment|
+|test_perfEnv|Executes all the flows defined above in a sequence on the PERF environment|
+|test_parallel_qaEnv|Executes all the flows defined above parallely on the QA environment|
+|test_parallel_uatEnv|Executes all the flows defined above parallely on the UAT environment|
+|test_parallel_perfEnv|Executes all the flows defined above parallely on the PERF environment|
+
+Sequence for the first three suites: {authFlow} {broadcastPage} {episodePage} {experiencePage} {homePage} {loginFlow} {unAuthFlow}
 
 ### How to view reports
 Videos for the specific Features and Data for Reports are generated automatically when the above command is executed and saved in the *tests/reports/videos/homePage/*  and *tests/reports/jsonFiles* folders, respectively. The latest report for a test can be viewed by executing the following command:
