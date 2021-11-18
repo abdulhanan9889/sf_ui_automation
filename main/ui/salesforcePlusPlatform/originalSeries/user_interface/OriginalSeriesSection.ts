@@ -4,7 +4,7 @@ import { authFlowTestDataSet } from '../../authenticatedFlow/authFlow.tasks'
 //import testDataSet from "../stepdefinitions/unAuthFlow.steps";
 //console.log("test data set in selectors",testDataSet)
 export function seriesButton() {
-    return `shadow/[aria-label="Go to series - ${testDataSet.seriesNames[0]}"]`
+    return `shadow/[href="/plus/series/${testDataSet.seriesNames[0]}"]`
    //return `shadow/[aria-label="Go to series - BxP_Learn_Series-1"]`
 }
 

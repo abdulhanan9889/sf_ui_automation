@@ -1,5 +1,5 @@
 Feature: Episode Page
-      
+       
         @episodePage
         Scenario Outline: Verify user can play the authenticated episode
             Given an authenticated is already logged in
