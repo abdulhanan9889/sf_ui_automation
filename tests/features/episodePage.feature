@@ -1,10 +1,10 @@
 Feature: Episode Page
-
+        @current
         Scenario: user generates data for authenticated flows
             Given user generates data for authenticated epsiode flows
                   | numberOfSeries | numberOfEpisodesPerSeries | eventStartDayFromToday | seriesStartDayFromToday | eventEndDayFromToday | seriesEndDayFromToday | numberOfSpeakers | firstName | lastName | designation | company |
                   | 1              | 2                         | 1                      | 1                       | 3                    | 4                     | 2                | dummy     | speaker  | QA          | emumba  |
-        
+        @current
         @episodePage
         Scenario Outline: Verify user can play the authenticated episode
             Given an authenticated is already logged in

@@ -39,6 +39,15 @@ import {
         verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
         verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer
     } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions'
+
+BeforeAll(async function(){
+    
+
+    await testData(2,0, 3, 2, "first","last","qa","emumba")
+    await testDataUnpublished(0, 2)
+      
+
+})
 Given('user generates data for unauthenticated flows', async function(datatable) {
     const testDataParameters = await datatable.hashes()[0]
 
@@ -50,8 +59,6 @@ Given('user generates data for unauthenticated flows', async function(datatable)
 
 Given('a user is on the salesforce plus platform', async function () {
     page = await loadBrowser()
-    // recorder = new PuppeteerScreenRecorder(page);
-    // await recorder.start('tests/reports/videos/unAuthFlow/unAuthFlowVideo.mp4');
     await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 600000 })
     // await waitTillHTMLRendered(page)
     await acceptCookies(page)
@@ -106,12 +113,10 @@ await verifyEpisodeScreenDetails(page)
         await page.waitForTimeout(3000)
         await unmuteVideoButton(page)
         await verifyUnmutedVideo(page)
-    await recorder.stop()
     })
 Then('user is able to play the episode now', async function () {
     await playEpisode(page)
     await verifyProgressBarValues(page)
-    // await recorder.stop()
 })
 
 When('user navigates to episodes page and clicks on the first episode', async function () {
