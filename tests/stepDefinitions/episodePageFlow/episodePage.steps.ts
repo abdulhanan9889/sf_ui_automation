@@ -1,6 +1,6 @@
 
 
-import { Given, When, After, Then, AfterAll, AfterStep,Before,setDefaultTimeout } from '@cucumber/cucumber'
+import { Given, When, After, Then, AfterAll, AfterStep,Before,setDefaultTimeout,BeforeAll } from '@cucumber/cucumber'
 import { loadBrowser } from '../../../main/utilities/loadBrowser'
 import {
     closeTbidModal,
@@ -32,21 +32,18 @@ import { openVideo, authFlowTestData, authFlowTestDataDelete,authFlowTestDataSet
 import { openLoginPage, signInOnSalesforce } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
 import { verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
 
-setDefaultTimeout(120*1000)
+setDefaultTimeout(500*1000)
 let page
 let ss
 let recorder
 let noOfEpisodes
 let noOfSpeakers
 
-Given('user generates data for authenticated epsiode flows', async function (datatable) {
-    const testDataParameters = await datatable.hashes()[0]
-    noOfEpisodes = testDataParameters.numberOfEpisodesPerSeries
-    noOfSpeakers = testDataParameters.numberOfSpeakers
-    await authFlowTestData(testDataParameters.seriesStartFromToday, testDataParameters.seriesEndDayFromToday, testDataParameters.numberOfSeries, testDataParameters.numberOfEpisodesPerSeries, testDataParameters.numberOfSpeakers,
-        testDataParameters.firstName, testDataParameters.lastName, testDataParameters.designation, testDataParameters.company)
+BeforeAll(async function(){  
+    noOfEpisodes = 2
+    noOfSpeakers = 2
+    await authFlowTestData(0, 2, 1, 2, noOfSpeakers,"dummy", "speaker", "QA Engineer", "Emumba")
 })
-
 
 Before('@episodePage',async function(){
     page = await loadBrowser();
@@ -59,17 +56,6 @@ Before('@episodePage',async function(){
  await openLoginPage(page);
  await signInOnSalesforce(page,this.parameters.username,this.parameters.password)
 })
-// Given('a guest user loads salesforce plus platform', async function () {
-    // page = await loadBrowser()
-    // // recorder = new PuppeteerScreenRecorder(page);
-    // // await recorder.start('tests/reports/videos/broadCastPage/playsSelectedEpisode.mp4');
-    // await page.waitForTimeout(5000)
-    // // await page.goto(this.parameters.URL, { waitUntil: 'load', timeout: 0 })
-    // await page.goto(`https://www-qa1.salesforce.com/plus/experience/${testDataSet.eventNames[0]}`, { waitUntil: 'load', timeout: 0 })
-    // await waitTillHTMLRendered(page)
-    // await acceptCookies(page)
-    // await waitTillHTMLRendered(page)
-// });
 
 Given('an authenticated is already logged in',async function(){
     await verifyUserIsLoggedIn(page)
@@ -145,20 +131,15 @@ Then('authenticated user clicks on second episode and can play the authorized ep
     // await recorder.stop()
 })
 
-
-
-// // Then('the user is logged out', async function () {
-// //     await isUserLoggedOut(page);
-// // })
 AfterStep("@episodePage", async function () {
     await waitTillHTMLRendered(page);
     ss = await page.screenshot({ fullPage: true })
     await this.attach(ss, 'image/png')
 })
 
-// After("@episodePage", async function () {
-//     await page.close()
-// })
+After("@episodePage", async function () {
+    await page.close()
+})
 
 AfterAll(async function () {
     await authFlowTestDataDelete()

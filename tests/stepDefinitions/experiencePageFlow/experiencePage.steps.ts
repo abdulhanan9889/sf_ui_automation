@@ -36,11 +36,6 @@ import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
 import { eventURL } from "../../../main/ui/salesforcePlusPlatform/experiencePageFlow/user_interface/testDataSelectors";
 import expTestData from "../../../main/testDataGeneration/testDataFiles/featureFileTestData.json"
-
-export var cliUsername;
-export var cliPassword;
-export var cliLoginUrl;
-export var cliInstanceUrl;
 let page;
 let ss;
 let recorder;
@@ -50,35 +45,6 @@ let noOfSpeakers
 let noOfEvents
 let eventURLs
 let noOfSeries
-// Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
-//     console.log(expTestData.length)
-//     noOfSeries = expTestData
-//         for (let i=0; i < expTestData.length; i++){
-//             await testData(expTestData[i].seriesStartFromToday,
-//                 expTestData[i].seriesEndFromToday,
-//                 expTestData[i].noOfSeries,
-//                 expTestData[i].noOfEpisodesPerSeries,
-//                 expTestData[i].noOfSpeakers,
-//                 expTestData[i].firstName,
-//                 expTestData[i].lastName,
-//                 expTestData[i].designation,
-//                 expTestData[i].company)
-//         }
-        
-//         page = await loadBrowser()
-//         await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-//         await acceptCookies(page)
-//         await waitTillHTMLRendered(page)
-//         await navigateToDreamForcePage(page)
-//         await waitTillHTMLRendered(page)
-//         await checkExploreMoreIsPresent(page)
-//         await page.goto(eventURL(noOfSeries))
-//         await waitTillHTMLRendered
-//         await checkExploreMoreIsPresent(page)
-
-// });
-
-
 Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
     // console.log(expTestData.length)
     noOfEvents = expTestData.length
@@ -295,5 +261,5 @@ After("@experiencePage", async function () {
 AfterAll(async function () {
     // let baseobject = new BaseObject()
     // // SFDataLogic.deleteRecord(baseobject.getObjectId(), baseobject.getObjectName())
-    await testDataDelete()
+    //await testDataDelete()
 })
