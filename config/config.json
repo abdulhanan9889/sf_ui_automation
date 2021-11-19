@@ -1,9 +1,6 @@
 {
     "qaCred": {
-        "username": "mah.noorautomation@appexchange.com.test",
-        "password": "PasswordForSF1",
-        "loginUrl": "https://test.salesforce.com/services/Soap/u/41.0",
-        "instanceUrl": "https://appexchange--Test.my.salesforce.com"
+  
     },
     "uatCred": {
         "username": "hello",
