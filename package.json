@@ -37,7 +37,9 @@
     "authenticatedEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
     "homePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
     "experiencePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
-    "originalSeriesAndEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthFlow -p qaEnv"
+    "originalSeriesAndEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthflow -p qaEnv",
+    "featuredEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p featuredEpisodeFlow -p qaEnv"
+
   },
   "directories": {
     "test": "tests"
