@@ -2,7 +2,7 @@
     "seriesStartFromToday": 0,
     "seriesEndFromToday": 1,
     "noOfSeries":2,
-    "noOfEpisodesPerSeries":1,
+    "noOfEpisodesPerSeries":2,
     "noOfSpeakers":1,
     "firstName":"dummy",
     "lastName":"here",

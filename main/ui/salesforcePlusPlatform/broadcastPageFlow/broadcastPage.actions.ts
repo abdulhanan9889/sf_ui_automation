@@ -33,15 +33,12 @@ export async function proceedToLogin(page){
   
 }
 export async function clickSkipForNowButton(page) {
-  try{ 
-    await page.waitFor(10000)
-    if(skipForNowButton != "null"){
+
+    if(await page.waitForSelector(skipForNowButton) != "null"){
         await page.focus(skipForNowButton);
         await page.click(skipForNowButton);
     }
-  }catch{
-      console.log("Skip For Now Button is not found")
-  }
+ 
 }
 export async function muteVideoButton(page) {
   let muteButton = await page.$(getMuteOrUnmuteButton)

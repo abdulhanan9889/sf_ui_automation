@@ -39,15 +39,32 @@ import {
         verifyEpisodeNumber, verifySeriesTitle, verifyEpisodeTitle, verifyForwardedVideo, verifyReversedVideo,
         verifyMutedVideo, verifyUnmutedVideo, verifyMaximizedPlayer, verifyMinimizedPlayer
     } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions'
-
-BeforeAll(async function(){
+import originalSeriestestData from '../../../main/testDataGeneration/testDataFiles/featureFileTestData.json'
+let noOfEvents
+// BeforeAll(async function(){
     
 
-    await testData(2,0, 3, 2, "first","last","qa","emumba")
-    await testDataUnpublished(0, 2)
+//     await testData(2,0, 3, 2, "first","last","qa","emumba")
+//     await testDataUnpublished(0, 2)
       
 
+// })
+
+BeforeAll(async function(){  
+    noOfEvents = originalSeriestestData.length
+        for (let i=0; i < noOfEvents; i++){
+            await testData(originalSeriestestData[i].noOfEpisodesPerSeries,
+                originalSeriestestData[i].seriesStartFromToday,
+              originalSeriestestData[i].seriesEndFromToday,
+              originalSeriestestData[i].noOfSpeakers,
+              originalSeriestestData[i].firstName,
+              originalSeriestestData[i].lastName,
+              originalSeriestestData[i].designation,
+              originalSeriestestData[i].company)
+              await testDataUnpublished(originalSeriestestData[i].seriesStartFromToday, originalSeriestestData[i].seriesEndFromToday)
+        }
 })
+
 Given('user generates data for unauthenticated flows', async function(datatable) {
     const testDataParameters = await datatable.hashes()[0]
 

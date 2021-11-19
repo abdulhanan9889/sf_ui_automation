@@ -43,72 +43,72 @@ let noOfSpeakers
 let noOfEvents
 let eventURLs
 let noOfSeries
-Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
-    // console.log(expTestData.length)
-    noOfEvents = expTestData.length
-        for (let i=0; i < expTestData.length; i++){
-            await testData(expTestData[i].seriesStartFromToday,
-                expTestData[i].seriesEndFromToday,
-                expTestData[i].noOfSeries,
-                expTestData[i].noOfEpisodesPerSeries,
-                expTestData[i].noOfSpeakers,
-                expTestData[i].firstName,
-                expTestData[i].lastName,
-                expTestData[i].designation,
-                expTestData[i].company)
-        }
-        page = await loadBrowser()
-        await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-        await acceptCookies(page)
-        await waitTillHTMLRendered(page)
-        await navigateToDreamForcePage(page)
-        await waitTillHTMLRendered(page)
-        await checkExploreMoreIsPresent(page)
-        // await page.goto(eventURL(0))
-});
-When('user navigates to the added Event details page', async function () {
-    // console.log(testDataSet)
-        for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
-            noOfSeries = expTestData[eventNo].noOfSeries
-            console.log(noOfSeries)
-            for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
-            await page.goto(eventURL(eventNo))
-            await waitTillHTMLRendered(page)
-            await checkExploreMoreIsPresent(page)
-            await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
-            await waitTillHTMLRendered
-            await checkSignUpToWatchButton(page)
-            }
-        }
-});
-Then('user navigates to each episode page of the added event for each series', async function () {
-    for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
-                    noOfSeries = expTestData[eventNo].noOfSeries
-                    noOfEpisodes= expTestData[eventNo].noOfEpisodesPerSeries
-                    console.log(noOfSeries)
-                    for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
-                    await page.goto(eventURL(eventNo))
-                    await waitTillHTMLRendered(page)
-                    await checkExploreMoreIsPresent(page)
-                    await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
-                    await checkSignUpToWatchButton(page)
-                    for(let episodeNo = 1;  episodeNo <= noOfEpisodes ; episodeNo++){
-                        await navigateToEpisode(page, eventNo, seriesNo, episodeNo)
-                        await waitTillHTMLRendered(page)
-                        await checkSpeakerName(page)
-                    }                    
-                    }
-                }
-    // await navigateToFirstEpisode(page)
-    // await waitTillHTMLRendered(page)
-    // await checkSpeakerName(page)
-    // await page.waitFor(5000)
-    // await page.goBack()
-    // await waitTillHTMLRendered(page)
-    // await navigateToSecondEpisode(page)
-    // await waitTillHTMLRendered(page)
-    // await page.waitFor(5000)
-});
+// Given('user generates data for authenticated flows and navigates to added Event Page', async function () {
+//     // console.log(expTestData.length)
+//     noOfEvents = expTestData.length
+//         for (let i=0; i < expTestData.length; i++){
+//             await testData(expTestData[i].seriesStartFromToday,
+//                 expTestData[i].seriesEndFromToday,
+//                 expTestData[i].noOfSeries,
+//                 expTestData[i].noOfEpisodesPerSeries,
+//                 expTestData[i].noOfSpeakers,
+//                 expTestData[i].firstName,
+//                 expTestData[i].lastName,
+//                 expTestData[i].designation,
+//                 expTestData[i].company)
+//         }
+//         page = await loadBrowser()
+//         await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+//         await acceptCookies(page)
+//         await waitTillHTMLRendered(page)
+//         await navigateToDreamForcePage(page)
+//         await waitTillHTMLRendered(page)
+//         await checkExploreMoreIsPresent(page)
+//         // await page.goto(eventURL(0))
+// });
+// When('user navigates to the added Event details page', async function () {
+//     // console.log(testDataSet)
+//         for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
+//             noOfSeries = expTestData[eventNo].noOfSeries
+//             console.log(noOfSeries)
+//             for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
+//             await page.goto(eventURL(eventNo))
+//             await waitTillHTMLRendered(page)
+//             await checkExploreMoreIsPresent(page)
+//             await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
+//             await waitTillHTMLRendered
+//             await checkSignUpToWatchButton(page)
+//             }
+//         }
+// });
+// Then('user navigates to each episode page of the added event for each series', async function () {
+//     for( let eventNo=0 ; eventNo < noOfEvents ; eventNo++){
+//                     noOfSeries = expTestData[eventNo].noOfSeries
+//                     noOfEpisodes= expTestData[eventNo].noOfEpisodesPerSeries
+//                     console.log(noOfSeries)
+//                     for (let seriesNo=0; seriesNo < noOfSeries ; seriesNo++){
+//                     await page.goto(eventURL(eventNo))
+//                     await waitTillHTMLRendered(page)
+//                     await checkExploreMoreIsPresent(page)
+//                     await navigateToDetailsPageOfTheEvent(page, eventNo, seriesNo)
+//                     await checkSignUpToWatchButton(page)
+//                     for(let episodeNo = 1;  episodeNo <= noOfEpisodes ; episodeNo++){
+//                         await navigateToEpisode(page, eventNo, seriesNo, episodeNo)
+//                         await waitTillHTMLRendered(page)
+//                         await checkSpeakerName(page)
+//                     }                    
+//                     }
+//                 }
+//     // await navigateToFirstEpisode(page)
+//     // await waitTillHTMLRendered(page)
+//     // await checkSpeakerName(page)
+//     // await page.waitFor(5000)
+//     // await page.goBack()
+//     // await waitTillHTMLRendered(page)
+//     // await navigateToSecondEpisode(page)
+//     // await waitTillHTMLRendered(page)
+//     // await page.waitFor(5000)
+// });
 // User Navigates to the Experience of Salesforce Plus platform(The Background Given step to all of the Scenarios)
 Given("user navigates to the experience page for Salesforce+ page", async function () {
     page = await loadBrowser()
@@ -169,7 +169,7 @@ When("user clicks on the arrow button for series in Role section", async functio
 );
 
 Then("user should be navigated to Episode1 of the series", async function () {
-    await closeLoginModal(page)
+  //  await closeLoginModal(page)
     await checkForUpNextTitle(page)
     // await checkForSeriesTitle(page)
     // await recorder.stop()

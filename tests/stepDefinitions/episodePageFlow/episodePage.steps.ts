@@ -31,18 +31,34 @@ import { clickAuthorizedEpisodeButton, clickAuthorizedSeriesButton, clickSecondA
 import { openVideo, authFlowTestData, authFlowTestDataDelete,authFlowTestDataSet } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
 import { openLoginPage, signInOnSalesforce } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks'
 import { verifyUserIsLoggedIn } from '../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.assertions'
-
+import testData from '../../../main/testDataGeneration/testDataFiles/featureFileTestData.json'
 setDefaultTimeout(500*1000)
 let page
 let ss
 let recorder
-let noOfEpisodes
+let noOfEpisodes;
 let noOfSpeakers
-
+let noOfEvents
+// BeforeAll(async function(){  
+//     noOfEpisodes = 2
+//     noOfSpeakers = 2
+//     await authFlowTestData(0, 2, 1, 2, noOfSpeakers,"dummy", "speaker", "QA Engineer", "Emumba")
+// })
 BeforeAll(async function(){  
-    noOfEpisodes = 2
-    noOfSpeakers = 2
-    await authFlowTestData(0, 2, 1, 2, noOfSpeakers,"dummy", "speaker", "QA Engineer", "Emumba")
+    noOfEvents = testData.length
+        for (let i=0; i < noOfEvents; i++){
+            noOfEpisodes=testData[i].noOfEpisodesPerSeries
+            noOfSpeakers= testData[i].noOfSpeakers
+            await authFlowTestData(testData[i].seriesStartFromToday,
+                testData[i].seriesEndFromToday,
+                testData[i].noOfSeries,
+                testData[i].noOfEpisodesPerSeries,
+                testData[i].noOfSpeakers,
+                testData[i].firstName,
+                testData[i].lastName,
+                testData[i].designation,
+                testData[i].company)
+    }
 })
 
 Before('@episodePage',async function(){
@@ -72,22 +88,21 @@ When('an authenticated user goes to the episode', async function () {
 
 
 Then('user is able to verify authenticated episode details', async function () {
-    for (var i = 0; i < noOfEpisodes; i++) {
-       
+    for (let i = 0; i < noOfEpisodes; i++) {
         await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
-      
         await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
-      
-        for (var j = 0; j < noOfSpeakers; j++) {
-            await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
-          
-        }
+        console.log("No of speakers:",noOfSpeakers)
+        // for (let j = 0; j < noOfSpeakers; j++) {
+        //     await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+            
+        // }
         if (i < noOfEpisodes - 1) {
             await openNextAuthenticatedEpisode(page, i)
            
         }
     }
     await verifySeriesTitle(page, authFlowTestDataSet.seriesNames[0])
+    console.log(`seriesTitle_${0}_verified`)
 });
 
 

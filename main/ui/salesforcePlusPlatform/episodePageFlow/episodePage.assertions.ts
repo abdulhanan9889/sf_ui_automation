@@ -14,7 +14,7 @@ import { forwardButton, reverseButton } from "./user_interface/episodePlayerSele
 import { getSpeakerNames, getSpeakerDesignation } from './user_interface/speakerSectionSelectors';
 
 export async function verifyEpisodeNumber(page, episodeNumber) {
-    await page.waitForSelector(getSeriesTitle);
+    await page.waitForSelector(getEpisodeNumber);
     let episodeNumberElement = await page.$(getEpisodeNumber)
     let episodeNumberValue = await episodeNumberElement.evaluate(
         (ele) => ele.innerHTML
@@ -35,6 +35,7 @@ export async function verifySeriesTitle(page, seriesTitle) {
 }
 
 export async function verifyEpisodeTitle(page, episodeTitle) {
+    await page.waitForSelector(getEpisodeTitle);
     let episodeTitleElement = await page.$(getEpisodeTitle)
     let episodeTitleValue = await episodeTitleElement.evaluate(
         (ele) => ele.innerHTML
@@ -43,7 +44,6 @@ export async function verifyEpisodeTitle(page, episodeTitle) {
 }
 
 export async function verifySpeakerDetails(page, speakerDetails, noOfSpeakers) {
-    await page.waitForSelector(getSpeakerNames);
     let speakerName = await page.$$eval(getSpeakerNames, vals => vals.map(val => val.innerHTML))
     let speakerDesignation = await page.$$eval(getSpeakerDesignation, vals => vals.map(val => val.innerHTML))
     let speakerDesignationValue = `${speakerDetails.get("Designation")}, ${speakerDetails.get("Company")}`
@@ -53,7 +53,6 @@ export async function verifySpeakerDetails(page, speakerDetails, noOfSpeakers) {
         await Assertion.softAssertAll()
     }
 }
-
 
 export async function verifyForwardedVideo(page) {
     var progressBarValueBefore = await getVideoProgressbar(page);
