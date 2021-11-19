@@ -35,6 +35,7 @@ import {
 import { acceptCookies } from "../originalSeries/actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";
 import { clickSkipForNowButton } from "../broadcastPageFlow/broadcastPage.actions";
+import { bypassSecurity } from "../broadcastPageFlow/broadcastPage.tasks";
 export async function openTheSignInForm(page) {
   await clickTrailblazzerButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });
@@ -146,6 +147,7 @@ export async function openLoginPage(page){
   await page.waitFor(2000);
   await clickSalesforceOptionButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });
+  // await bypassSecurity(page)
 }
 
 export async function signInOnSalesforce(page,username, password){

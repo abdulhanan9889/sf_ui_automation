@@ -1,6 +1,6 @@
 // export const getTrailblazzerMeButton = `shadow/[href="/a/auth"]`
-
-
+export const loginLink = `[id="final-paragraph"] [class="small-link"]`
+export const advancedButton = '#details-button'
 export const getTrailblazzerMeButton = `shadow/[href="/a/auth"] .header-text`
 export let skipForNowButton = `[onclick="skipForNowActionJS();"]`;
 export const getSignUpButton = `[name="loginPage:email-card-form:j_id119"][value="Sign Up"]`

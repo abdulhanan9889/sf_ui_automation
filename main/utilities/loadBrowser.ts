@@ -17,7 +17,7 @@ export const loadBrowser = async () => {
   return page
 }
 
-After({tags:"@authFlow or @broadcastPage or @loginFlow or @episodePage or @experiencePage or @homePage or @unAuthFlow"},async function () {
-  await browser.close()
-});
+// After({tags:"@authFlow or @broadcastPage or @loginFlow or @episodePage or @experiencePage or @homePage or @unAuthFlow"},async function () {
+//   await browser.close()
+// });
 

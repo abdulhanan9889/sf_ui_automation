@@ -12,32 +12,14 @@ import {
   clickPlayButton,
   clickPauseButton,
 } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
-import { openSignInForm, openVideo, authFlowTestDataSet, authFlowTestData, authFlowTestDataDelete } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
+import { openVideo, authFlowTestDataSet, authFlowTestData, authFlowTestDataDelete } from "../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks";
 import { openNextAuthenticatedEpisode, openNextEpisode, playEpisode } from "../../../main/ui/salesforcePlusPlatform/originalSeries/tasks/unAuthFlow.tasks";
-import {
-  fillSignInForm,
-  fillInSignUpForm,
-  fillInSignInForm,
-} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks";
 import { verifyProgressBarValues } from "../../../main/ui/salesforcePlusPlatform/originalSeries/assertions/VideoProgress";
-import {
-  verifySpeakerFourDetails,
-  verifySpeakerFiveDetails,
-  verifySpeakerSixDetails,
-  verifySpeakerSevenDetails,
-  verifySpeakerEightDetails,
-  verifySpeakerNineDetails,
-  verifySpeakerTenDetails,
-  isUserLoggedOut,
-} from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.assertions";
 
 import {
   verifyEpisodeNumber,
   verifySeriesTitle,
   verifyEpisodeTitle,
-  // verifySpeakerOneDetails,
-  // verifySpeakerTwoDetails,
-  // verifySpeakerThreeDetails,
   verifyForwardedVideo,
   verifyReversedVideo,
   verifySpeakerDetails,
