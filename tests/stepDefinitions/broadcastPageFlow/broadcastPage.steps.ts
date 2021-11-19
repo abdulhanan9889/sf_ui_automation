@@ -92,16 +92,16 @@ Then("user plays a video", async function () {
 });
 
 Then("guest user verifies the episode details", async function () {
-  for (let i = 0; i < noOfEpisodes; i++) {
-    await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
-    await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
-    // for (let j = 0; j < noOfSpeakers; j++) {
-    //   await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
-    // }
-    if (i < noOfEpisodes - 1) {
-      await openNextAuthenticatedEpisode(page, i)
-    }
-  }
+  // for (let i = 0; i < noOfEpisodes; i++) {
+  //   await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
+  //   await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
+  //   // for (let j = 0; j < noOfSpeakers; j++) {
+  //   //   await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+  //   // }
+  //   if (i < noOfEpisodes - 1) {
+  //     await openNextAuthenticatedEpisode(page, i)
+  //   }
+  // }
   await verifySeriesTitle(page, authFlowTestDataSet.seriesNames[0])
 })
 

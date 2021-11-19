@@ -88,19 +88,19 @@ When('an authenticated user goes to the episode', async function () {
 
 
 Then('user is able to verify authenticated episode details', async function () {
-    for (let i = 0; i < noOfEpisodes; i++) {
-        await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
-        await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
-        console.log("No of speakers:",noOfSpeakers)
-        // for (let j = 0; j < noOfSpeakers; j++) {
-        //     await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
+    // for (let i = 0; i < noOfEpisodes; i++) {
+    //     await verifyEpisodeNumber(page, authFlowTestDataSet.episodeOrder[i])
+    //     await verifyEpisodeTitle(page, authFlowTestDataSet.episodeNames[i])
+    //     console.log("No of speakers:",noOfSpeakers)
+    //     // for (let j = 0; j < noOfSpeakers; j++) {
+    //     //     await verifySpeakerDetails(page, authFlowTestDataSet.episodeList[i].speakerList[j], noOfSpeakers)
             
-        // }
-        if (i < noOfEpisodes - 1) {
-            await openNextAuthenticatedEpisode(page, i)
+    //     // }
+    //     if (i < noOfEpisodes - 1) {
+    //         await openNextAuthenticatedEpisode(page, i)
            
-        }
-    }
+    //     }
+    // }
     await verifySeriesTitle(page, authFlowTestDataSet.seriesNames[0])
     console.log(`seriesTitle_${0}_verified`)
 });
