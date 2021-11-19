@@ -5,9 +5,15 @@ import { episodeButton, firstEpisodeButton, nextEpisodeButton, secondEpisodeButt
 import { nextAuthenticatedEpisodeButton, seriesButton } from "../user_interface/OriginalSeriesSection";
 
 export async function acceptCookies(page) {
-    if (await page.waitForSelector(ACCEPT_COOKIES_BUTTON) !== 'null') {
-        await page.focus(ACCEPT_COOKIES_BUTTON);
-        await page.click(ACCEPT_COOKIES_BUTTON);
+    try {
+        await page.waitFor(2000)
+        if (ACCEPT_COOKIES_BUTTON != 'null') {
+            await page.focus(ACCEPT_COOKIES_BUTTON);
+            await page.click(ACCEPT_COOKIES_BUTTON);
+        }
+    }
+    catch{  
+        console.log("Accept Cookies button not present")
     }
 }
 
