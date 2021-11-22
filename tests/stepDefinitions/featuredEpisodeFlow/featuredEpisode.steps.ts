@@ -9,7 +9,7 @@ import { After, Before, Given, Then, When, AfterStep, AfterAll, BeforeAll } from
 import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 import { waitTillHTMLRendered } from "../../../main/utilities/waitTillHTMLRendered";
 // import { playFeauredEpisode } from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/featuredEpisodeTasks/featuredEpisodeFlow.tasks";
-import { verifyFeaturedEpisodeNumber, verifyFeaturedEpisodeTitle, verifyFeaturedEpisodeGuestSpeakerNames } from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/assertion/featuredEpisodeFlow.assertions";
+import  { verifyFeaturedEpisodeNumber, verifyFeaturedEpisodeTitle, verifyFeaturedEpisodeGuestSpeakerNames } from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/assertion/featuredEpisodeFlow.assertions";
 import { destroy, testData } from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/featuredEpisodeTasks/createDestroyFeaturedEpisodes";
 import verifySpeakerCardDetails from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/assertion/speakerCardAssertion";
 import { playFeauredEpisode } from "../../../main/ui/salesforcePlusPlatform/featuredEpisodeFlow/featuredEpisodeTasks/featuredEpisodeFlow.tasks";
@@ -31,13 +31,14 @@ Given('User is on the salesforce platform',async function(){
   page = await loadBrowser()
   await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
   await acceptCookies(page);
+  
 })
 
 Given('user selects a featured episode to play', async function () {
 
-    page = await loadBrowser()
-    await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
-    await acceptCookies(page);
+    // page = await loadBrowser()
+    // await page.goto(this.parameters.URL, { waitUntil: "load", timeout: 0 });
+    // await acceptCookies(page);
 
     
   });
@@ -45,12 +46,14 @@ Given('user selects a featured episode to play', async function () {
 
   When('he clicks the featured episode', async function () {
      
+    await waitTillHTMLRendered(page);
     await playFeauredEpisode(page);
-    // await waitTillHTMLRendered(page);
+    await waitTillHTMLRendered(page);
     // await verifyFeaturedEpisodeNumber(page);
     // await verifyFeaturedEpisodeTitle(page);
     // await verifyFeaturedEpisodeGuestSpeakerNames(page);
     await verifySpeakerCardDetails(page);
+    await verifyFeaturedEpisodeTitle(page);
     await waitTillHTMLRendered(page);
   
 });

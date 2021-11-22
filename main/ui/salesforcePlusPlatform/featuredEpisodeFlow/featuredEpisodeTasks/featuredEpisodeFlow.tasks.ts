@@ -9,7 +9,7 @@ import { clickFeaturedEpisodeCard, getFeatureEpisodeTitles } from "../featuredEp
 
 export async function playFeauredEpisode(page) {
     // await clickDreamForceTab(page)
-    // await waitTillHTMLRendered(page);
+    await waitTillHTMLRendered(page);
     await clickFeaturedEpisodeCard(page);
     // await waitTillHTMLRendered(page);
     await waitTillHTMLRendered(page);

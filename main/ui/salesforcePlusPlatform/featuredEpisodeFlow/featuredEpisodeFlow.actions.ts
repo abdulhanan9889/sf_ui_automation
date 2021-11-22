@@ -1,13 +1,17 @@
+import getEpisodeDataFromDB from "../../../testDataGeneration/testDataLogic/dbAssertions/dBAssertionsEpisode";
 import { waitTillHTMLRendered } from "../../../utilities/waitTillHTMLRendered";
 import { testDataSet } from "../featuredEpisodeFlow/featuredEpisodeTasks/createDestroyFeaturedEpisodes";
 import { clickPauseButton, clickPlayButton } from "../originalSeries/actions/unAuthFlow.actions";
-import { featuredEpisodeCard, featuredEpisodeTitles} from "./user_interface/featuredEpisode.selectors";
+import { episodeButton, featuredEpisodeCard, featuredEpisodeTitles,} from "./user_interface/featuredEpisode.selectors";
+import assert from "soft-assert"
 
 
 export async function clickFeaturedEpisodeCard(page) {
-    const a= featuredEpisodeCard(testDataSet.seriesNames[0]);
-    await page.waitForSelector(a,{visible:true,timeout:10000});
-    let FEATURED_EPISODE_CARD = await page.$(a);
+    // await page.waitForSelector(featuredEpisodeCard(),{visible:true,timeout:10000});
+    // let FEATURED_EPISODE_CARD = await page.$(featuredEpisodeCard());
+    // await FEATURED_EPISODE_CARD.click();
+    await page.waitForSelector(episodeButton(),{visible:true,timeout:10000});
+    let FEATURED_EPISODE_CARD = await page.$(episodeButton());
     await FEATURED_EPISODE_CARD.click();
 
 }
@@ -35,5 +39,50 @@ export async function getFeatureEpisodeTitles(page){
     console.log(titles.length);
     console.log('after Titles');
     // console.log('Titles Element',TitlesElement);
+    console.log('/////////////////////////////////////////////////////////////');
+    console.log(testDataSet)
+    console.log('/////////////////////////////////////////////////////////////');
+    let object : object
+    console.log('5555555555555555555555555555555555555555555555555555');
+    object = await getEpisodeDataFromDB(testDataSet.episodeIDs[0])
+    console.log('5555555555555555555555555555555555555555555555555555');
+
+    for (let i =0; i < testDataSet.episodeList.length ; i++){
+
+        console.log(`inside for loop at index : ${i}`)
+        console.log(titles[i]);
+        console.log(`just for readability`)
+
+        object = await getEpisodeDataFromDB(testDataSet.episodeIDs[i])
+        //@ts-ignore
+       assert.softContains(titles[i], object.records[0].Name, `Episode Name for episode ${i} is not correct` ,[] )
+        //@ts-ignore
+    //    assert.softContains(episodeNumberValue, object.records[0].Description__c, `Episode Name for episode ${i} is not correct` ,[] )
+ 
+     }
 
 }
+
+// export  async function verifyEpisodeCardDetails(page){
+
+//     console.log(testDataSet)
+//     let object : object
+
+
+//     let episodeNumberElement = await page.$(episodecard())
+//     let episodeNumberValue = await episodeNumberElement.evaluate(
+//         (ele) => ele.innerHTML
+//     );
+
+//     for (let i =0; i < testDataSet.episodeList.length ; i++){
+
+//         object = await getEpisodeDataFromDB(testDataSet.episodeIDs[i])
+//         //@ts-ignore
+//        assert.softContains(episodeNumberValue, object.records[0].Name, `Episode Name for episode ${i} is not correct` ,[] )
+//         //@ts-ignore
+//        assert.softContains(episodeNumberValue, object.records[0].Description__c, `Episode Name for episode ${i} is not correct` ,[] )
+ 
+//      }
+  
+   
+// }

@@ -33,13 +33,12 @@
     "test_parallel_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p uatEnv",
     "test_parallel_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p perfEnv",
     "testHome_ExperiencePage": "node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p qaEnv",
-    "broadcastPageFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
-    "authenticatedEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
-    "homePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
-    "experiencePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
-    "originalSeriesAndEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthflow -p qaEnv",
-    "featuredEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p featuredEpisodeFlow -p qaEnv"
-
+    "broadcastPageFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
+    "authenticatedEpisodeFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
+    "homePageFlow": "node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
+    "experiencePageFlow": "node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
+    "originalSeriesAndEpisodeFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthflow -p qaEnv",
+    "featuredEpisodeFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p featuredEpisodeFlow -p qaEnv"
   },
   "directories": {
     "test": "tests"
