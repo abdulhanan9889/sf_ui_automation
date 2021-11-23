@@ -11,21 +11,21 @@ import dBAssertionOriginalSeries from "../../../../testDataGeneration/testDataLo
 export  async function verifyEpisodeCardDetails(page){
 
     console.log(testDataSet)
-    let object : object
+    let object1 : object
 
-
+    await page.waitFor(2000)
     let episodeNumberElement = await page.$(episodecard())
+    await page.waitFor(2000)
     let episodeNumberValue = await episodeNumberElement.evaluate(
         (ele) => ele.innerHTML
-    );
-
+    ); 
     for (let i =0; i < testDataSet.episodeList.length ; i++){
 
-        object = await getEpisodeDataFromDB(testDataSet.episodeIDs[i])
+        object1 = await getEpisodeDataFromDB(testDataSet.episodeIDs[i])
         //@ts-ignore
-       assert.softContains(episodeNumberValue, object.records[0].Name, `Episode Name for episode ${i} is not correct` ,[] )
+       assert.softContains(episodeNumberValue, object1.records[0].Name, `Episode Name for episode ${i} is not correct` ,[] )
         //@ts-ignore
-       assert.softContains(episodeNumberValue, object.records[0].Description__c, `Episode Name for episode ${i} is not correct` ,[] )
+       assert.softContains(episodeNumberValue, object1.records[0].Description__c, `Episode Name for episode ${i} is not correct` ,[] )
  
      }
   
@@ -38,20 +38,6 @@ export  async function verifyEpisodeScreenDetails(page){
     let object : object
    
 
-    // let episodeTitleElement = await page.$(getEpisodeTitle)
-    // console.log(episodeTitleElement)
-    // let episodeTitleValue = await episodeTitleElement.evaluate(
-    //     (ele) => ele.innerHTML
-    // );
-    // console.log(episodeTitleValue)
-
-    // let episodeDetailElement = await page.$(getEpisodeDetail)
-    // console.log(episodeDetailElement)
-    // let episodeDetailValue = await episodeDetailElement.evaluate(
-    //     (ele) => ele.innerHTML
-    // );
-   // console.log(episodeDetailValue)
-
   let obj: object
   obj = await dBAssertionOriginalSeries.getSeriesDataFromDB(testDataSet.seriesIDs[0])
 
@@ -60,11 +46,13 @@ export  async function verifyEpisodeScreenDetails(page){
     for(let i =0; i <testDataSet.episodeList.length ; i++)
     {
         let episodeNumberElement = await page.$(getEpisodeNumber)
+        await page.waitFor(1000)
         let episodeNumberValue = await episodeNumberElement.evaluate(
             (ele) => ele.innerHTML
         );
         episodeNumberValue = episodeNumberValue.split("• ")[1];
         let seriesTitleElement = await page.$(getSeriesTitle)
+        await page.waitFor(1000)
         let seriesTitleValue = await seriesTitleElement.evaluate(
             (ele) => ele.innerHTML
         );

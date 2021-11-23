@@ -1,6 +1,6 @@
 Feature: Broadcast Page
 
-        @broadcastPage
+        @broadcastPage @current
         Scenario Outline: authenticated user plays the selected episode
             Given authenticated user is logged in
              When guest user navigates to the broadcast page

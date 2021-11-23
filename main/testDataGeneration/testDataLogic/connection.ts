@@ -1,5 +1,5 @@
 
-var config = require("../../../config/config")[process.env.NODE_ENV || "uatCred"]
+var config = require("../../../config/config")[process.env.NODE_ENV || "qaCred"]
 class Connection {
   username: string;  
   password: string;

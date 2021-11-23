@@ -4,21 +4,21 @@ Feature: Unauthenticated Flow
         User would like to browse through available series
               And is able to play selected episodes
         
-        @unAuthFlow
+        @unAuthFlow 
         Scenario Outline: user verifies  series cards
             Given a user is on the salesforce plus platform
              Then User verfies the published and unpublished series card
-        @unAuthFlow
+        @unAuthFlow @current
         Scenario Outline: user verifies episode cards
             Given a user is on the salesforce plus platform
              When user is on the original series detail page
              Then user is able to verify episode cards details
-        @unAuthFlow
+        @unAuthFlow @current
         Scenario Outline: user is able to verify the speaker details and episode details for that episode
             Given a user is on the salesforce plus platform
              When user navigates to the episodes page and clicks on a particular episode
              Then user is able to verify the speaker details and episode details for that episode
-        @unAuthFlow
+        @unAuthFlow @current
         Scenario Outline: Verify user can interact with the video player controls
             Given a user is on the salesforce plus platform
              When user navigates to the episodes page and clicks on a particular episode

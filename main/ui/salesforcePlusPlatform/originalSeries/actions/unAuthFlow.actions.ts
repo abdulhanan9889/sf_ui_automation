@@ -3,7 +3,7 @@ import { getExploreSalesforceButton } from "../../homePageFlow/user_interface/he
 import { pauseButton, playButton } from "../../episodePageFlow/user_interface/episodePlayerSelectors";
 import { episodeButton, firstEpisodeButton, nextEpisodeButton, secondEpisodeButton } from "../../originalSeries/user_interface/EpisodeSection"
 import { nextAuthenticatedEpisodeButton, seriesButton } from "../user_interface/OriginalSeriesSection";
-
+var assert = require('assert')
 export async function acceptCookies(page) {
     try {
         await page.waitFor(2000)
@@ -18,48 +18,66 @@ export async function acceptCookies(page) {
 }
 
 export async function clickExploreSalesforceButton(page) {
-    // let EXPLORE_SALESFORCE_BUTTON = await exploreSalesforceButton(page)
+  try {
     await page.waitForSelector(getExploreSalesforceButton)
     const EXPLORE_SALESFORCE_BUTTON = await page.$(getExploreSalesforceButton)
-    EXPLORE_SALESFORCE_BUTTON.click()
-    // await EXPLORE_SALESFORCE_BUTTON.evaluate((ele) => ele.click())
+    EXPLORE_SALESFORCE_BUTTON.click()}
+    catch{
+        assert.fail("Explore more button was not found")
+    }
+  
 }
 
 export async function clickSeriesButton(page) {
-    await page.waitForSelector(seriesButton())
+  try {  await page.waitForSelector(seriesButton())
     let SERIES_BUTTON = await page.$(seriesButton())
-    SERIES_BUTTON.click()
-    // SERIES_BUTTON.evaluate((ele) => ele.click())
+    SERIES_BUTTON.click()}
+    catch{
+        assert.fail("Series Button was not found")
+    }
+   
 }
 
 export async function clickEpisodeButton(page) {
-
-    await page.waitForSelector(episodeButton())
+try 
+   { await page.waitForSelector(episodeButton())
     let EPISODE_BUTTON = await page.$(episodeButton())
-    EPISODE_BUTTON.click()
-    // EPISODE_BUTTON.evaluate((ele) => ele.click())
+    EPISODE_BUTTON.click()}
+    catch{
+        assert.fail("Episode Button was not found")
+    }
 }
 
 export async function clickPlayButton(page) {
+    try{
     await page.waitForSelector(playButton)
     let PLAY_BUTTON = await page.$(playButton)
-    //PLAY_BUTTON.click()
     PLAY_BUTTON.evaluate((ele) => ele.click())
+}
+catch{
+ assert.fail("Play button was not found")
+}
 }
 
 export async function clickPauseButton(page) {
-    await page.waitForSelector(pauseButton)
+  try { await page.waitForSelector(pauseButton)
     let PAUSE_BUTTON = await page.$(pauseButton)
     // PAUSE_BUTTON.click()
-    PAUSE_BUTTON.evaluate((ele) => ele.click())
+    PAUSE_BUTTON.evaluate((ele) => ele.click())}
+    catch{
+        assert.fail("Pause button was not found")
+    }
 }
 
 export async function clickFirstEpisodeButton(page) {
-
+try {
     await page.waitForSelector(firstEpisodeButton())
     let FIRST_EPISODE_BUTTON = await page.$(firstEpisodeButton())
     FIRST_EPISODE_BUTTON.click()
-    // FIRST_EPISODE_BUTTON.evaluate((ele) => ele.click())
+   }
+   catch{
+       assert.fail("First episode Button was not found")
+   }
 }
 
 export async function clickSecondEpisodeButton(page) {
@@ -67,7 +85,7 @@ export async function clickSecondEpisodeButton(page) {
     await page.waitForSelector(secondEpisodeButton())
     let SECOND_EPISODE_BUTTON = await page.$(secondEpisodeButton())
     SECOND_EPISODE_BUTTON.click()
-    // SECOND_EPISODE_BUTTON.evaluate((ele) => ele.click())
+   
 }
 
 export async function clickNextEpisodeButton(page, episodeNo) {
