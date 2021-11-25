@@ -123,18 +123,18 @@ Given("user navigates to the experience page for Salesforce+ page", async functi
     await waitTillHTMLRendered(page)
 });
 
-// When("user clicks on Explore More", async function () {
-//     await waitTillHTMLRendered(page)
-//     // await checkWatchcNowButton(page)
-//     // // await checkExploreMoreIsPresent(page);
-//     await checkExperiencePagetitle(page)
-//     await clickOnExploreMore(page);
-// });
+When("user clicks on Explore More", async function () {
+    // await waitTillHTMLRendered(page)
+    // await checkWatchcNowButton(page)
+    // // await checkExploreMoreIsPresent(page);
+    // await checkExperiencePagetitle(page)
+    // await clickOnExploreMore(page);
+});
 
-// Then("user is navigated to Best of DF series", async function () {
-//     // await checkForAllEpisodesTitle(page);
-//     // await recorder.stop()
-// });
+Then("user is navigated to Best of DF series", async function () {
+    // await checkForAllEpisodesTitle(page);
+    // await recorder.stop()
+});
 
 Given("user navigates to the experiencePage for Salesforce+ page", async function () {
     page = await loadBrowser()
