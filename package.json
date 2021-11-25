@@ -33,12 +33,15 @@
     "test_parallel_uatEnv": "set NODE_ENV=uatCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p uatEnv",
     "test_parallel_perfEnv": "set NODE_ENV=perfCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p authFlow -p unAuthFlow -p perfEnv",
     "testHome_ExperiencePage": "node node_modules/@cucumber/cucumber/bin/cucumber-js --parallel 2 -p experiencePage -p homePage -p qaEnv",
-    "broadcastPageFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
-    "authenticatedEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
-    "homePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
-    "experiencePageFlow":"node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
-    "originalSeriesAndEpisodeFlow":"set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthFlow -p qaEnv"
-  },
+    "broadcastPageFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
+    "broadcastPageFlowMac": "export NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p broadcastPage -p qaEnv",
+    "authenticatedEpisodeFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
+    "authenticatedEpisodeFlowMac": "export NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p episodePage -p qaEnv",
+    "homePageFlow": "node node_modules/@cucumber/cucumber/bin/cucumber-js -p homePage -p qaEnv",
+    "experiencePageFlow": "node node_modules/@cucumber/cucumber/bin/cucumber-js -p experiencePage -p qaEnv",
+    "originalSeriesAndEpisodeFlow": "set NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthFlow -p qaEnv",
+    "originalSeriesAndEpisodeFlowMac": "export NODE_ENV=qaCred&&node node_modules/@cucumber/cucumber/bin/cucumber-js -p unAuthFlow -p qaEnv"
+},
   "directories": {
     "test": "tests"
   },
