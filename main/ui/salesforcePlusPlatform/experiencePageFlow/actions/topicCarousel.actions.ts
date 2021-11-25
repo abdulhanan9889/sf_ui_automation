@@ -1,16 +1,36 @@
+import { isAssertionExpression } from "typescript";
+var assert = require("assert");
 import { getPlayForSeriesInTopicButton, getArrowForSeriesInTopicButton } from "../user_interface/topicCarouselSelectors";
 export async function clickOnPlayForSeriesInTopics(page) {
-    // let playButton = await getPlayForSeriesInTopicButton(page);
-    // await playButton.asElement().click();
+ 
+ try{
+    await page.waitFor(2000)
     await page.waitForSelector(getPlayForSeriesInTopicButton)
+    await page.waitFor(1000)
     let playForSeriesInTopicButton = await page.$(getPlayForSeriesInTopicButton)
+    await page.waitFor(1000)
     await playForSeriesInTopicButton.click()
+    await page.waitFor(5000)
+ }
+ catch{
+     assert.fail("Series in topics play button was not found")
+ }
+   
 }
 
 export async function clickOnArrowForSeriesInTopic(page) {
-    // let arrowButton = await getArrowForSeriesInTopic(page);
-    // await arrowButton.asElement().click();
-    await page.waitForSelector(getArrowForSeriesInTopicButton)
+    try
+   { await page.waitFor(1000)
+       await page.waitForSelector(getArrowForSeriesInTopicButton)
+       await page.waitFor(1000)
     let arrowForSeriesInTopicButton = await page.$(getArrowForSeriesInTopicButton)
+    await page.waitFor(1000)
     await arrowForSeriesInTopicButton.click()
+    await page.waitFor(5000)
+
+}
+
+    catch{
+        assert.fail("Series in topics arrow button was not found")
+    }
 }

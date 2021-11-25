@@ -76,7 +76,25 @@ export async function fillTheSignUpForm(page, dataTable) {
   await clickDoneButton(page);
   await page.waitFor(20000);
 }
-
+export async function profileComplete(page){
+ // await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 40000 });
+  try{
+    await page.waitFor(5000)
+    if(typeCompanyName != null){
+  await typeCompanyName(page, "eMumba");
+  await typeJobTitle(page, "QA Engineer");
+  await selectRoleName(page, "Marketer");
+  await selectRelationshipToSalesForce(page, "customer");
+  await selectCountryName(page, "US");
+  await selectStateName(page, "US", "CA");
+  await checkPrivacyStatement(page);
+  await clickDoneButton(page);
+  await page.waitFor(20000);}
+  }
+  catch{
+    console.log("Profile is already completed for this user")
+  }
+}
 export async function signInWithTrailblazzer(page,email){
   await typeEmailAddressInTrailBlazer(page, email);
   await clickLoginButton(page);
@@ -147,7 +165,7 @@ export async function openLoginPage(page){
   await page.waitFor(2000);
   await clickSalesforceOptionButton(page);
   await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 37000 });
-  // await bypassSecurity(page)
+   await bypassSecurity(page)
 }
 
 export async function signInOnSalesforce(page,username, password){

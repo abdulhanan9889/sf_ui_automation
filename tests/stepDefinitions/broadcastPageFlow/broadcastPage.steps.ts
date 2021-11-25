@@ -24,7 +24,7 @@ import {
   verifyReversedVideo,
   verifySpeakerDetails,
 } from "../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.assertions";
-
+import {profileComplete} from "../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks"
 import { acceptCookies } from "../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions";
 
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
@@ -74,6 +74,7 @@ Before('@broadcastPage',async function(){
   await page.waitFor(2000);
   await openLoginPage(page);
   await signInOnSalesforce(page,this.parameters.username,this.parameters.password)
+  await profileComplete(page)
 })
 
 Given("authenticated user is logged in",async function(){

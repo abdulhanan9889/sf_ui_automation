@@ -169,10 +169,9 @@ When("user clicks on the arrow button for series in Role section", async functio
 );
 
 Then("user should be navigated to Episode1 of the series", async function () {
-  //  await closeLoginModal(page)
+   await closeLoginModal(page)
     await checkForUpNextTitle(page)
-    // await checkForSeriesTitle(page)
-    // await recorder.stop()
+    
 }
 );
 Given("user navigates to the experience Page for Salesforce+", async function () {

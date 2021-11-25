@@ -5,7 +5,7 @@ import { isUserLoggedOut } from '../../../main/ui/salesforcePlusPlatform/broadca
 import { fillSignUpForms, loginThroughTrailblazerId, logoutFromSFPlatform, openAuthorizedEpisode } from '../../../main/ui/salesforcePlusPlatform/episodePageFlow/episodePage.tasks'
 import { acceptCookies } from '../../../main/ui/salesforcePlusPlatform/originalSeries/actions/unAuthFlow.actions'
 import { openSignInForm, fillSignUpForm } from '../../../main/ui/salesforcePlusPlatform/authenticatedFlow/authFlow.tasks'
-import { fillInSignInForm, fillInSignUpForm, fillSignInForm } from "../../../main/ui/salesforcePlusPlatform/broadcastPageFlow/broadcastPage.tasks"
+//import { fillInSignInForm, fillInSignUpForm, fillSignInForm } from "../../../main/ui/salesforcePlusPlatform/loginFlow/loginFlow.tasks
 import SFDataInsertion from '../../../main/testDataGeneration/testDataLogic/SFDataInsertion'
 import BaseObject from '../../../main/testDataGeneration/entities/BaseObject'
 import SFDataLogic from '../../../main/testDataGeneration/testDataLogic/testDataLogic'
@@ -56,17 +56,17 @@ Then('the user is logged in', async function () {
 When(
     "the user clicks on dreamforce button and access authorized content", async function () {
         await openSignInForm(page);
-        await fillSignInForm(page);
+      //  await fillSignInForm(page);
     }
 );
 
 
-When(
-    "the user fills out the sign up forms and clicks cancel and logout button", { timeout: 90 * 1000 }, async function (dataTable) {
-        await fillInSignUpForm(page, dataTable);
-        // await recorder.stop()
-    }
-);
+// When(
+//     "the user fills out the sign up forms and clicks cancel and logout button", { timeout: 90 * 1000 }, async function (dataTable) {
+//         await fillInSignUpForm(page, dataTable);
+//         await recorder.stop()
+//     }
+// );
 
 Then("the user is logged out from the salesforce+ platform", async function () {
     await isUserLoggedOut(page);
@@ -84,7 +84,7 @@ Then("user signs up for the page with the following details", { timeout: 90 * 10
 
 When("user tries to login with a dummy email address", { timeout: 90 * 1000 }, async function () {
     await openSignInForm(page);
-    await fillSignInForm(page);
+   // await fillSignInForm(page);
 });
 
 When("user signs up with following details on salesforce platform", { timeout: 90 * 1000 }, async function (datatable) {
@@ -108,7 +108,7 @@ When("user signs up with the profile sign up form", { timeout: 90 * 1000 }, asyn
 })
 
 When("user login with {word}",async function(email){
-    await fillInSignInForm(page,email)
+  //  await fillInSignInForm(page,email)
 })
 
 When('user tries to login with wrong otp',async function(){
