@@ -30,7 +30,7 @@ pipeline
               allowMissing: false,
               alwaysLinkToLastBuild: false,
               keepAll: false,
-              reportDir: "htmlreports",
+              reportDir: "tests/reports/htmlReports/mutliple.html",
               reportFiles: "index.html",
               reportName: 'Demo Report'
              ]
