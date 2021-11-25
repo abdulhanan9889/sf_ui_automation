@@ -118,7 +118,7 @@ Given("user navigates to the experience page for Salesforce+ page", async functi
     await waitTillHTMLRendered(page);
     await acceptCookies(page);
     await waitTillHTMLRendered(page)
-    await clickOnExperienceSectionButton(page)
+    // await clickOnExperienceSectionButton(page)
     // await clickOnDreamForce(page)
     await waitTillHTMLRendered(page)
 });
