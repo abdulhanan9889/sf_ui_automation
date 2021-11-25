@@ -17,27 +17,27 @@ Feature: Homepage
              When user clicks on Explore Salesforce Button
              Then user clicks on the Dreamforce tab
         
-        @homePage
-        Scenario: User Navigates to Trailor Page of a series from the Home page
-            Given user navigates to the salesforcePlus Homepage
-             When user scrolls down Clicks on the play icon for a Series
-             Then user should be navigated to Trailor page of the series
+        # @homePage
+        # Scenario: User Navigates to Trailor Page of a series from the Home page
+        #     Given user navigates to the salesforcePlus Homepage
+        #      When user scrolls down Clicks on the play icon for a Series
+        #      Then user should be navigated to Trailor page of the series
         
-        @homePage @current
-        Scenario: User Navigates to a Series detail page from the Home page
-            Given user is on the salesforcePlus Home page
-             When user scrolls down Clicks on the arrow icon for a Series
-             Then user should be navigated to the series detail page and play the trailor
+        # @homePage @current
+        # Scenario: User Navigates to a Series detail page from the Home page
+        #     Given user is on the salesforcePlus Home page
+        #      When user scrolls down Clicks on the arrow icon for a Series
+        #      Then user should be navigated to the series detail page and play the trailor
 
-        @homePage
-        Scenario: User clicks on a featured episode
-            Given user is on the salesforce Plus Home page
-             When user clicks on an episode in the Featured section
-             Then user should be navigated to the relevant episode page
+        # @homePage
+        # Scenario: User clicks on a featured episode
+        #     Given user is on the salesforce Plus Home page
+        #      When user clicks on an episode in the Featured section
+        #      Then user should be navigated to the relevant episode page
     
-        @homePage
-        Scenario: User clicks on a clicks on an Experiences page tile
-            Given user is on the salesforce Plus Homepage
-             When user clicks on a tile in the Experiences section
-             Then user should be navigated to the relevant experience page
+        # @homePage
+        # Scenario: User clicks on a clicks on an Experiences page tile
+        #     Given user is on the salesforce Plus Homepage
+        #      When user clicks on a tile in the Experiences section
+        #      Then user should be navigated to the relevant experience page
 
