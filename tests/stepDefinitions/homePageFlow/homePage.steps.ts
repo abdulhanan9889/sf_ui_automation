@@ -70,13 +70,13 @@ Given("user is on the salesforcePlus Homepage", async function () {
 });
 
 When("user clicks on Explore Salesforce Button", async function () {
-  await navigateToExploreSFPage(page)
-  await waitTillHTMLRendered(page);
+  // await navigateToExploreSFPage(page)
+  // await waitTillHTMLRendered(page);
 });
 
 Then("user clicks on the Dreamforce tab", async function () {
-  await navigateToDreamforceTab(page)
-  await checkWatchNowisPresent(page)
+  // await navigateToDreamforceTab(page)
+  // await checkWatchNowisPresent(page)
   // await recorder.stop()
 });
 
