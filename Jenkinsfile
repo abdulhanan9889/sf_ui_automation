@@ -28,8 +28,8 @@ pipeline
           publishHTML (target:
               [
               allowMissing: false,
-              alwaysLinkToLastBuild: false,
-              keepAll: false,
+              alwaysLinkToLastBuild: true,
+              keepAll: true,
               reportDir: "tests/reports/htmlReports/multiple.html",
               reportFiles: "index.html",
               reportName: 'Demo Report'
