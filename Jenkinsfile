@@ -31,7 +31,7 @@ pipeline
               alwaysLinkToLastBuild: false,
               keepAll: false,
               reportDir: "htmlreports",
-              reportFiles: "index.html",
+              reportFiles: "index",
               reportName: 'Demo Report'
              ]
           )
