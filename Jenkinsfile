@@ -23,7 +23,19 @@ pipeline
             }
         }
     }
-}
-
-
+    post {
+        always {
+          publishHTML (target:
+              [
+              allowMissing: false,
+              alwaysLinkToLastBuild: false,
+              keepAll: false,
+              reportDir: "htmlreports",
+              reportFiles: "index.html",
+              reportName: 'Demo Report'
+             ]
+          )
+        }
+    }   
+   
 }
